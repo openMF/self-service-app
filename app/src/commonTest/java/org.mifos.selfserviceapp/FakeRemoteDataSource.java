@@ -29,6 +29,12 @@ public class FakeRemoteDataSource {
 
     private static TestDataFactory mTestDataFactory = new TestDataFactory();
 
+    public static Client getCurrentClientAccount() {
+        return mTestDataFactory.getObjectTypePojo(Client.class,
+                FakeJsonName.CLIENT_CURRENT_JSON);
+    }
+
+
     public static ClientAccounts getClientAccounts() {
         return mTestDataFactory.getListTypePojo(new TypeToken<ClientAccounts>() {
             }, FakeJsonName.CLIENT_ACCOUNTS_JSON);

@@ -1,0 +1,105 @@
+{
+  "id": 1,
+  "accountNo": "000000001",
+  "externalId": "100001-241563",
+  "status": {
+    "id": 300,
+    "code": "clientStatusType.active",
+    "value": "Active"
+  },
+  "subStatus": {
+    "active": false,
+    "mandatory": false
+  },
+  "active": true,
+  "activationDate": [
+    2014,
+    3,
+    7
+  ],
+  "firstname": "Smith",
+  "middlename": "W",
+  "lastname": "R",
+  "displayName": "Smith W R",
+  "mobileNo": "254728000000",
+  "dateOfBirth": [
+    2017,
+    4,
+    1
+  ],
+  "gender": {
+    "id": 22,
+    "name": "Male",
+    "active": false,
+    "mandatory": false
+  },
+  "clientType": {
+    "id": 31,
+    "name": "Individual",
+    "active": false,
+    "mandatory": false
+  },
+  "clientClassification": {
+    "id": 82,
+    "name": "Student",
+    "active": false,
+    "mandatory": false
+  },
+  "officeId": 1,
+  "officeName": "Head Office",
+  "imageId": 116,
+  "imagePresent": true,
+  "staffId": 15,
+  "staffName": "CHUI, jira",
+  "timeline": {
+    "submittedOnDate": [
+      2010,
+      1,
+      1
+    ],
+    "submittedByUsername": "mifos",
+    "submittedByFirstname": "App",
+    "submittedByLastname": "Administrator",
+    "activatedOnDate": [
+      2014,
+      3,
+      7
+    ],
+    "activatedByUsername": "mifos",
+    "activatedByFirstname": "App",
+    "activatedByLastname": "Administrator"
+  },
+  "savingsAccountId": 888,
+  "legalForm": {
+    "id": 1,
+    "code": "legalFormType.person",
+    "value": "PERSON"
+  },
+  "groups": [
+    {
+      "id": 29,
+      "accountNo": "000000029",
+      "name": "Group12"
+    },
+    {
+      "id": 220,
+      "accountNo": "000000220",
+      "name": "ttestt"
+    },
+    {
+      "id": 756,
+      "accountNo": "Head Office000000756",
+      "name": "Andela Bootcamp"
+    }
+  ],
+  "clientNonPersonDetails": {
+    "constitution": {
+      "active": false,
+      "mandatory": false
+    },
+    "mainBusinessLine": {
+      "active": false,
+      "mandatory": false
+    }
+  }
+}

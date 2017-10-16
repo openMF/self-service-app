@@ -8,6 +8,8 @@ public class FakeJsonName {
 
     public static final String ACCOUNT_OPTION_TEMPLATE = "accountOptionTemplate.json";
 
+    public static final String CLIENT_CURRENT_JSON = "currentClient.json";
+
     public static final String CLIENT_ACCOUNTS_JSON = "clientAccounts.json";
 
     public static final String CLIENT_SAVINGS_ACCOUNT_JSON = "clientSavingsAccounts.json";

@@ -28,8 +28,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        // A test runner provided by https://code.google.com/p/android-test-kit/
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "org.mifos.selfserviceapp.SelfServiceTestRunner"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -43,6 +42,7 @@ android {
         def commonTestDir = 'src/commonTest/java'
         androidTest {
             java.srcDir commonTestDir
+            resources.srcDirs += ['src/test/resources']
         }
         test {
             java.srcDir commonTestDir
@@ -139,4 +139,5 @@ dependencies {
     androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
     androidTestCompile "com.android.support.test:runner:$rootProject.runnerVersion"
     androidTestCompile "com.android.support.test:rules:$rootProject.rulesVersion"
+    androidTestApt "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
 }
