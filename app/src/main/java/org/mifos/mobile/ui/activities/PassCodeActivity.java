@@ -1,6 +1,7 @@
 package org.mifos.mobile.ui.activities;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.mifos.mobile.passcode.utils.EncryptionUtil;
 import org.mifos.mobile.R;
 import org.mifos.mobile.utils.CheckSelfPermissionAndRequest;
 import org.mifos.mobile.utils.Constants;
+import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Toaster;
 
 public class PassCodeActivity extends MifosPassCodeActivity {
@@ -51,10 +53,28 @@ public class PassCodeActivity extends MifosPassCodeActivity {
 
     @Override
     public void startLoginActivity() {
-        Intent i = new Intent(PassCodeActivity.this, LoginActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(i);
-        finish();
+        new MaterialDialog.Builder().init(PassCodeActivity.this)
+                .setMessage(R.string.passcode_title)
+                .setPositiveButton(getString(R.string.yes),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(PassCodeActivity.this, LoginActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                                finish();
+                            }
+                        })
+                .setNegativeButton(getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                .createMaterialDialog()
+                .show();
     }
 
     @Override
