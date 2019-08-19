@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/layout_padding_24dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_key"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_key"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:gravity="center_horizontal"
+            android:text=""
+            android:textSize="27sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_16dp"
+                android:layout_toLeftOf="@+id/tv_or"
+                android:background="@color/gray_dark" />
+
+            <TextView
+                android:id="@+id/tv_or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/default_margin"
+                android:text="@string/or" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin_16dp"
+                android:layout_toRightOf="@+id/tv_or"
+                android:background="@color/gray_dark" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_key_label" />
+
+        <ImageView
+            android:id="@+id/iv_qr_code"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/default_margin"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_submit"
+        android:layout_marginLeft="@dimen/layout_padding_24dp"
+        android:layout_marginTop="@dimen/layout_padding_24dp"
+        android:layout_marginRight="@dimen/layout_padding_24dp"
+        android:hint="@string/enter_verification_code"
+        android:inputType="numberPassword" />
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/layout_padding_24dp"
+        android:layout_marginRight="@dimen/layout_padding_24dp"
+        android:layout_marginBottom="@dimen/layout_padding_24dp"
+        android:text="@string/verify" />
+
+    <include
+        android:id="@+id/layout_error"
+        layout="@layout/layout_sweet_exception_handler"
+        android:visibility="gone" />
+
+</RelativeLayout>

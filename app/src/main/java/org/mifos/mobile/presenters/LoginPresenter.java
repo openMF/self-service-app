@@ -117,7 +117,11 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                                 final String authToken = Constants.BASIC +
                                         user.getBase64EncodedAuthenticationKey();
                                 saveAuthenticationTokenForSession(userName, userID, authToken);
-                                getMvpView().onLoginSuccess(userName);
+                                if (user.getGoogleAutenticatorKey().isEmpty()) {
+                                    getMvpView().onLoginSuccess(userName);
+                                } else {
+                                    getMvpView().showTwoFactorAuthActivity(userName);
+                                }
                             } else {
                                 getMvpView().hideProgress();
                             }

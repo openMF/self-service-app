@@ -4,6 +4,7 @@ import org.mifos.mobile.injection.PerActivity;
 import org.mifos.mobile.injection.module.ActivityModule;
 import org.mifos.mobile.ui.activities.HomeActivity;
 import org.mifos.mobile.ui.activities.SplashActivity;
+import org.mifos.mobile.ui.activities.TwoFactorAuthActivity;
 import org.mifos.mobile.ui.fragments.AccountOverviewFragment;
 import org.mifos.mobile.ui.fragments.AddGuarantorFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryAddOptionsFragment;
@@ -11,6 +12,7 @@ import org.mifos.mobile.ui.activities.PassCodeActivity;
 import org.mifos.mobile.ui.fragments.BeneficiaryApplicationFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryDetailFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryListFragment;
+import org.mifos.mobile.ui.fragments.EnableTwoFactorAuthFragment;
 import org.mifos.mobile.ui.fragments.GuarantorDetailFragment;
 import org.mifos.mobile.ui.fragments.GuarantorListFragment;
 import org.mifos.mobile.ui.fragments.HelpFragment;
@@ -36,6 +38,7 @@ import org.mifos.mobile.ui.fragments.SavingAccountsTransactionFragment;
 import org.mifos.mobile.ui.fragments.SavingsAccountApplicationFragment;
 import org.mifos.mobile.ui.fragments.SavingsAccountWithdrawFragment;
 import org.mifos.mobile.ui.fragments.SavingsMakeTransferFragment;
+import org.mifos.mobile.ui.fragments.SettingsFragment;
 import org.mifos.mobile.ui.fragments.ThirdPartyTransferFragment;
 import org.mifos.mobile.ui.fragments.TransferProcessFragment;
 import org.mifos.mobile.ui.fragments.UpdatePasswordFragment;
@@ -126,4 +129,10 @@ public interface ActivityComponent {
     void inject(SavingsAccountApplicationFragment savingsAccountApplicationFragment);
 
     void inject(SavingsAccountWithdrawFragment savingsAccountWithdrawFragment);
+
+    void inject(TwoFactorAuthActivity twoFactorAuthActivity);
+
+    void inject(EnableTwoFactorAuthFragment enableTwoFactorAuthFragment);
+
+    void inject(SettingsFragment settingsFragment);
 }

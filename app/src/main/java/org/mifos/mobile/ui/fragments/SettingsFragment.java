@@ -3,8 +3,10 @@ package org.mifos.mobile.ui.fragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import org.mifos.mobile.R;
+import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.utils.ConfigurationDialogFragmentCompat;
 import org.mifos.mobile.utils.ConfigurationPreference;
@@ -16,12 +18,17 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import javax.inject.Inject;
+
 /**
  * Created by dilpreet on 02/10/17.
  */
 
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.
         OnSharedPreferenceChangeListener {
+
+    @Inject
+    PreferencesHelper preferencesHelper;
 
     public static SettingsFragment newInstance() {
         SettingsFragment fragment = new SettingsFragment();
@@ -30,6 +37,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        ((BaseActivity) getActivity()).getActivityComponent().inject(this);
         addPreferencesFromResource(R.xml.settings_preference);
     }
 
@@ -84,6 +92,15 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
             case Constants.PASSWORD:
                 ((BaseActivity) getActivity()).replaceFragment(UpdatePasswordFragment
                         .newInstance(), false, R.id.container);
+                break;
+            case Constants.TOTP:
+                if (preferencesHelper.isTwoAuthEnabled()) {
+                    Toast.makeText(getContext(), getString(R.string.toast_enabled),
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    ((BaseActivity) getActivity()).replaceFragment(EnableTwoFactorAuthFragment
+                            .Companion.newInstance(), true, R.id.container);
+                }
                 break;
         }
         return super.onPreferenceTreeClick(preference);

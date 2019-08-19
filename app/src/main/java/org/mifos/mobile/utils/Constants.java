@@ -121,9 +121,19 @@ public class Constants {
 
     public static final String PASSWORD = "Password";
 
+    public static final String TOTP = "totp";
+
     public static final String SAVINGS_ACCOUNT_STATE = "savingsaccountstate";
 
     public static  final String OUTSTANDING_BALANCE = "outstanding_balance";
 
     public static final String LOAN_REPAYMENT = "loan_repayment";
+
+    public static final String TWO_FACTOR_AUTHENTICATION = "two_factor_authentication";
+
+    public static final String TWO_FACTOR_AUTHENTICATION_KEY = "two_factor_authentication_key";
+
+    public static final String IS_TWO_FACTOR_AUTHENTICATION = "is_two_factor_authentication";
+
+    public static final String USER_NAME = "user_name";
 }

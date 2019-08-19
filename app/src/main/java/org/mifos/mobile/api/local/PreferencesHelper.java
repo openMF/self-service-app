@@ -34,6 +34,7 @@ public class PreferencesHelper {
     private static final String BASE_URL = "preferences_base_url_key";
     private static final String PROFILE_IMAGE = "preferences_profile_image";
     public static final String CLIENT_NAME = "client_name";
+    private static final String TWO_FACTOR_AUTH_SHARED_KEY = "two_auth_shared_key";
 
     private SharedPreferences sharedPreferences;
 
@@ -194,5 +195,17 @@ public class PreferencesHelper {
 
     public String getBaseUrl() {
         return getString(BASE_URL, new BaseURL().getDefaultBaseUrl());
+    }
+
+    public boolean isTwoAuthEnabled() {
+        return !getSharedKey().isEmpty();
+    }
+
+    public void setSharedKey(String sharedKey) {
+        putString(TWO_FACTOR_AUTH_SHARED_KEY, sharedKey);
+    }
+
+    public String getSharedKey() {
+        return getString(TWO_FACTOR_AUTH_SHARED_KEY, "");
     }
 }

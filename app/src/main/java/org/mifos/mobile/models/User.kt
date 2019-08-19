@@ -13,5 +13,6 @@ data class User (
     var isAuthenticated: Boolean = false,
     var username: String? = null,
     var base64EncodedAuthenticationKey: String? = null,
-    var permissions: List<String> = ArrayList()
+    var permissions: List<String> = ArrayList(),
+    var googleAutenticatorKey: String = ""
     )

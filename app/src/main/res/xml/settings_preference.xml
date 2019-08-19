@@ -30,4 +30,10 @@
             android:summary="@string/pref_base_url_desc"
             android:title="@string/pref_base_url_title"/>
     </PreferenceCategory>
+
+    <Preference
+        android:key="totp"
+        android:summary="@string/pref_totp_desc"
+        android:title="@string/pref_totp"/>
+
 </androidx.preference.PreferenceScreen>

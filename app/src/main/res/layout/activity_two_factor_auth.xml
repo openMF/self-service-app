@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ll"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/layout_padding_24dp"
+        android:gravity="center"
+        android:text="@string/enter_verification_code_from_ga"
+        android:textSize="21sp" />
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_submit"
+            android:layout_marginLeft="@dimen/layout_padding_24dp"
+            android:layout_marginTop="@dimen/layout_padding_24dp"
+            android:layout_marginRight="@dimen/layout_padding_24dp"
+            android:hint="@string/enter_verification_code"
+            android:inputType="numberPassword" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/layout_padding_24dp"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginRight="@dimen/layout_padding_24dp"
+            android:layout_marginBottom="@dimen/layout_padding_24dp"
+            android:text="@string/verify" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/layout_error"
+        layout="@layout/layout_sweet_exception_handler"
+        android:visibility="gone" />
+
+</RelativeLayout>

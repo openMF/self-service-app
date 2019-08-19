@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.mifos.mobile.R;
@@ -18,7 +21,6 @@ import org.mifos.mobile.utils.Toaster;
 
 import javax.inject.Inject;
 
-import androidx.appcompat.widget.AppCompatButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -46,6 +48,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
     LinearLayout llLogin;
 
     private String userName;
+    private int totpRequestCode = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void showPassCodeActivity() {
         showToast(getString(R.string.toast_welcome, userName));
         startPassCodeActivity();
+    }
+
+    @Override
+    public void showTwoFactorAuthActivity(String userName) {
+        Intent intent = new Intent(LoginActivity.this, TwoFactorAuthActivity.class);
+        intent.putExtra(Constants.USER_NAME, userName);
+        startActivityForResult(intent, totpRequestCode);
     }
 
     /**
@@ -160,5 +170,17 @@ public class LoginActivity extends BaseActivity implements LoginView {
         intent.putExtra(Constants.INTIAL_LOGIN, true);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == totpRequestCode) {
+            if (resultCode == RESULT_OK) {
+                assert data != null;
+                onLoginSuccess(data.getStringExtra(Constants.USER_NAME));
+            } else {
+                showMessage(getString(R.string.totp_verification_failed));
+            }
+        }
     }
 }

@@ -561,6 +561,23 @@
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
 
+    <string name="pref_totp_desc">Enable Two Factor Authentication using Google Authenticator</string>
+    <string name="pref_totp">Two Factor Authentication</string>
+    <string name="toast_enabled">Already Enabled</string>
+    <string name="enter_key">Enter Key Into Google Authenticator App</string>
+    <string name="scan_key_label">Scan QR code to Google Authenticator App</string>
+    <string name="or">OR</string>
+    <string name="enter_verification_code">Enter Verification Code</string>
+    <string name="title_two_factor">Enable 2FA</string>
+    <string name="totp_enabled">Two Factor Authentication enabled successfully!</string>
+    <string name="incorrect_code">Incorrect Verification Code!</string>
+    <string name="invalid_code">Invalid Verification Code!</string>
+    <string name="key_label">Google Authenticator Key</string>
+    <string name="toast_copied">Key Copied!</string>
+    <string name="title_verify_code">Enter TOTP</string>
+    <string name="enter_verification_code_from_ga">Enter Verification Code from Google Authenticator</string>
+    <string name="totp_verification_failed">TOTP verification failed</string>
+
     <string-array name="languages" translatable="false">
         <item>English</item>
         <item>हिंदी</item>

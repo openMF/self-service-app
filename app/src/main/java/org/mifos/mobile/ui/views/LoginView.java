@@ -48,4 +48,6 @@ public interface LoginView extends MVPView {
      */
     void showPassCodeActivity();
 
+    void showTwoFactorAuthActivity(String userName);
+
 }

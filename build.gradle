@@ -63,5 +63,8 @@ ext {
     mifosPasscodeVersion = '0.3.0'
     cropviewVersion = '1.1.7'
     multiDexVersion = '2.0.1'
+    googleAuthVersion = '1.1.2'
+    lifecycleVersion = '2.0.0'
+    easyValidationVersion = '1.0.1'
 
 }
