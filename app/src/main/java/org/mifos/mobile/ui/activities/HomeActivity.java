@@ -35,6 +35,7 @@ import org.mifos.mobile.ui.fragments.HomeOldFragment;
 import org.mifos.mobile.ui.fragments.NotificationFragment;
 import org.mifos.mobile.ui.fragments.RecentTransactionsFragment;
 import org.mifos.mobile.ui.fragments.ThirdPartyTransferFragment;
+import org.mifos.mobile.ui.fragments.TransferProcessFragment;
 import org.mifos.mobile.ui.views.UserDetailsView;
 import org.mifos.mobile.utils.CircularImageView;
 import org.mifos.mobile.utils.Constants;
@@ -389,6 +390,9 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                     doubleBackToExitPressedOnce = false;
                 }
             }, 2000);
+        } else if (fragment instanceof TransferProcessFragment) {
+            ((TransferProcessFragment) fragment).onBackPressed();
+            return;
         }
 
         if (stackCount() != 0) {

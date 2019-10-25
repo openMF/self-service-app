@@ -147,6 +147,22 @@ public class TransferProcessFragment extends BaseFragment implements TransferPro
     }
 
     /**
+     * Created by Devansh 25/10/19
+     * Used to handle back press button
+     */
+    public void onBackPressed() {
+        Toaster.cancelTransfer(rootView, getString(R.string.cancel_transfer),
+                getString(R.string.yes), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        ((BaseActivity) getActivity()).replaceFragment(
+                                new ThirdPartyTransferFragment(),
+                                true, R.id.container);
+                    }
+                });
+    }
+
+    /**
      * Closes the transfer fragment
      */
     @OnClick(R.id.btn_close)
