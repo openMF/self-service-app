@@ -34,6 +34,8 @@ public class PreferencesHelper {
     private static final String BASE_URL = "preferences_base_url_key";
     private static final String PROFILE_IMAGE = "preferences_profile_image";
     public static final String CLIENT_NAME = "client_name";
+    private static final String BOCKET_CHAT_SERVER_PROTOCOL = "rocket_chat_server_protocol";
+    private static final String BOCKET_CHAT_SERVER_DOMAIN = "rocket_chat_server_domain";
 
     private SharedPreferences sharedPreferences;
 
@@ -195,4 +197,18 @@ public class PreferencesHelper {
     public String getBaseUrl() {
         return getString(BASE_URL, new BaseURL().getDefaultBaseUrl());
     }
+
+    public void saveRocketChatServerConfiguration(String protocol, String domain) {
+        putString(BOCKET_CHAT_SERVER_PROTOCOL, protocol);
+        putString(BOCKET_CHAT_SERVER_DOMAIN, domain);
+    }
+
+    public String getRocketChatServerProtocol() {
+        return getString(BOCKET_CHAT_SERVER_PROTOCOL, "https");
+    }
+
+    public String getRocketChatServerDomain() {
+        return getString(BOCKET_CHAT_SERVER_DOMAIN, "");
+    }
+
 }

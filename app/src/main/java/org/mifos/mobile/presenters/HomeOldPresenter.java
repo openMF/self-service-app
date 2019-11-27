@@ -183,9 +183,13 @@ public class HomeOldPresenter extends BasePresenter<HomeOldView> {
         if (image == null) {
             return;
         }
-        final byte[] decodedBytes = Base64.decode(image, Base64.DEFAULT);
-        Bitmap decodedBitmap = ImageUtil.getInstance().compressImage(decodedBytes);
-        getMvpView().showUserImage(decodedBitmap);
+        try {
+            final byte[] decodedBytes = Base64.decode(image, Base64.DEFAULT);
+            Bitmap decodedBitmap = ImageUtil.getInstance().compressImage(decodedBytes);
+            getMvpView().showUserImage(decodedBitmap);
+        } catch (Exception e) {
+            Log.e(HomeOldPresenter.class.getSimpleName(), e.toString());
+        }
     }
 
     public void getUnreadNotificationsCount() {

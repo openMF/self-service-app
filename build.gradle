@@ -22,7 +22,11 @@ allprojects {
         google()
         jcenter()
         maven { url "https://www.jitpack.io" }
-        maven { url 'https://maven.fabric.io/public' }
+            maven { url 'https://maven.fabric.io/public' }
+            maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+            maven { url "https://jitpack.io" }
+            maven { url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases" }
+            maven { url 'https://dl.bintray.com/abc925/maven' }
     }
 }
 
@@ -32,15 +36,15 @@ task clean(type: Delete) {
 
 ext {
     // Sdk and tools
-    minSdkVersion = 15
+    minSdkVersion = 21
     targetSdkVersion = 28
     compileSdkVersion = 28
     buildToolsVersion = '28.0.3'
 
     // App dependencies
     supportLibraryVersion = '1.0.0'
-    daggerVersion = '2.5'
-    retrofitVersion = '2.2.0'
+    daggerVersion = '2.16'
+    retrofitVersion = '2.3.0'
     okHttp3Version = '3.6.0'
     butterKnifeVersion = '8.0.1'
     dbflowVersion = '4.1.2'

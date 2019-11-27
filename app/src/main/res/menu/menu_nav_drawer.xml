@@ -46,6 +46,10 @@
             android:icon="@drawable/ic_settings"
             android:title="@string/settings"/>
         <item
+            android:id="@+id/item_support"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/support"/>
+        <item
             android:id="@+id/item_about_us"
             android:icon="@drawable/ic_info_black_24dp"
             android:title="@string/about_us"/>

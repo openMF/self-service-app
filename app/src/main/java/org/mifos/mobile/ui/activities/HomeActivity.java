@@ -20,7 +20,9 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
+import org.jetbrains.annotations.NotNull;
 import org.mifos.mobile.R;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.models.client.Client;
@@ -51,16 +53,25 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import chat.rocket.android.authentication.RocketChat;
+import chat.rocket.android.authentication.presentation.RocketChatView;
+import chat.rocket.android.helper.ActivityKtKt;
+import okhttp3.HttpUrl;
+
+import static chat.rocket.android.authentication.RocketChatKt.STATE_ERROR;
+import static chat.rocket.android.authentication.RocketChatKt.STATE_LOADING;
 
 /**
  * @author Vishwajeet
  * @since 14/07/2016
  */
 public class HomeActivity extends BaseActivity implements UserDetailsView, NavigationView.
-        OnNavigationItemSelectedListener, View.OnClickListener {
+        OnNavigationItemSelectedListener, View.OnClickListener, RocketChatView {
 
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
@@ -84,6 +95,9 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     private boolean isReceiverRegistered;
     private int menuItem;
     boolean doubleBackToExitPressedOnce = false;
+
+
+    RocketChat<HomeActivity> rocketChat;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,6 +133,24 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             startService(intent);
         }
 
+        String userName = preferencesHelper.getUserName();
+        String roomName = "self_service_" + preferencesHelper.getClientId();
+        String userEmail = preferencesHelper.getUserId() + "@gmail.com";
+        String userPassword = "password";
+        String name = preferencesHelper.getClientName();
+        String protocol = preferencesHelper.getRocketChatServerProtocol();
+        String serverDomain = preferencesHelper.getRocketChatServerDomain();
+        rocketChat = new RocketChat<>(this,
+                protocol,
+                serverDomain,
+                name,
+                userName,
+                userEmail,
+                userPassword,
+                roomName
+        );
+
+        rocketChat.loadCredentials();
     }
 
     @Override
@@ -187,6 +219,9 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             case R.id.item_settings:
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
                 break;
+            case R.id.item_support:
+                moveToSupportChannel();
+                break;
             case R.id.item_about_us:
                 startActivity(new Intent(HomeActivity.this, AboutUsActivity.class));
                 break;
@@ -210,6 +245,51 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
         return true;
     }
 
+    private void moveToSupportChannel() {
+        if (rocketChat.getState().getValue().equals(STATE_LOADING)) {
+            showProgress();
+            rocketChat.getState().observe(this,
+                    new Observer<String>() {
+                        @Override
+                        public void onChanged(String s) {
+                            hideProgress();
+                            if (s.equals(STATE_ERROR)) {
+                                Log.e(HomeActivity.class.getSimpleName(), rocketChat.getMessage());
+                                Snackbar snackbar = Snackbar
+                                        .make(findViewById(R.id.container),
+                                                rocketChat.getMessage(), Snackbar.LENGTH_LONG)
+                                        .setAction("RETRY", new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                rocketChat.loadCredentials();
+                                                moveToSupportChannel();
+                                            }
+                                        });
+                                snackbar.show();
+                            } else {
+                                rocketChat.loadChatRoom();
+                            }
+                        }
+                    });
+        } else if (rocketChat.getState().getValue().equals(STATE_ERROR)) {
+            Log.e(HomeActivity.class.getSimpleName(), rocketChat.getMessage());
+            Snackbar snackbar = Snackbar
+                    .make(findViewById(R.id.container),
+                            rocketChat.getMessage(), Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            rocketChat.loadCredentials();
+                            moveToSupportChannel();
+                        }
+                    });
+            snackbar.show();
+        } else {
+            rocketChat.loadChatRoom();
+        }
+    }
+
+
     /**
      * Asks users to confirm whether he want to logout or not
      */
@@ -222,6 +302,7 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 preferencesHelper.clear();
+                                rocketChat.logoutCurrentUser();
                                 Intent i = new Intent(HomeActivity.this, LoginActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.
                                         FLAG_ACTIVITY_CLEAR_TASK);
@@ -340,11 +421,13 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     @Override
     public void showProgress() {
         //empty, no need to show/hide progress in headerview
+        showProgressDialog(getString(R.string.loading));
     }
 
     @Override
     public void hideProgress() {
         //empty
+        hideProgressDialog();
     }
 
     /**
@@ -473,4 +556,38 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                 .RESULT_UNCHANGED_SHOWN);
     }
 
+    @Override
+    public void saveSmartLockCredentials(@NotNull String s, @NotNull String s1) {
+        ActivityKtKt.saveCredentials(this, s, s1);
+    }
+
+    @Override
+    public void alertNotRecommendedVersion() {
+
+    }
+
+    @Override
+    public void blockAndAlertNotRequiredVersion() {
+
+    }
+
+    @Override
+    public void errorCheckingServerVersion() {
+
+    }
+
+    @Override
+    public void errorInvalidProtocol() {
+
+    }
+
+    @Override
+    public void updateServerUrl(@NotNull HttpUrl httpUrl) {
+
+    }
+
+    @Override
+    public void versionOk() {
+
+    }
 }

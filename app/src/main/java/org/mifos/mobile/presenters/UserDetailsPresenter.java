@@ -149,9 +149,13 @@ public class UserDetailsPresenter extends BasePresenter<UserDetailsView> {
         if (image == null) {
             return;
         }
-        final byte[] decodedBytes = Base64.decode(image, Base64.DEFAULT);
-        Bitmap decodedBitmap = ImageUtil.getInstance().compressImage(decodedBytes);
-        getMvpView().showUserImage(decodedBitmap);
+        try {
+            final byte[] decodedBytes = Base64.decode(image, Base64.DEFAULT);
+            Bitmap decodedBitmap = ImageUtil.getInstance().compressImage(decodedBytes);
+            getMvpView().showUserImage(decodedBitmap);
+        } catch (Exception e) {
+            Log.e(UserDetailsPresenter.class.getSimpleName(), e.toString());
+        }
     }
 
     public void registerNotification(final String token) {

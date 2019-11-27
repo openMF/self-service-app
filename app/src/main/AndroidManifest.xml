@@ -16,7 +16,8 @@
         android:name="org.mifos.mobile.MifosSelfServiceApp"
         android:supportsRtl="true"
         android:theme="@style/MaterialAppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon,android:name">
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -128,8 +129,10 @@
             android:authorities="org.mifos.mobile.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true"
-            android:name="androidx.core.content.FileProvider">
+            android:name="androidx.core.content.FileProvider"
+            tools:replace="android:authorities">
             <meta-data
+                tools:replace="android:resource"
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileproviderpath"/>
         </provider>

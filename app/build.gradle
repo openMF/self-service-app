@@ -67,6 +67,11 @@ android {
     androidExtensions {
         experimental = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -135,6 +140,9 @@ dependencies {
     
     //TableView
     implementation "com.evrencoskun.library:tableview:$rootProject.tableViewVersion"
+
+    //mifos-rocketchat
+    implementation 'chat.rocket.android:mifos-rocketchat:1.0.9'
 
     // Unit tests dependencies
     testImplementation "junit:junit:$rootProject.jUnitVersion"

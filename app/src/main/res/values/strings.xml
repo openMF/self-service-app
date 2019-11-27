@@ -541,8 +541,11 @@
     <string name="no_notification">No Notification</string>
 
     <string name="pref_base_url_title">Update Endpoint</string>
+    <string name="pref_rocket_chat_url_title">Update Rocket Chat Endpoint</string>
     <string name="pref_base_url_desc">Click here to change your Endpoint Configurations</string>
+    <string name="pref_rocket_chat_url_desc">Click here to change your Rocket Chat Endpoint Configurations</string>
     <string name="pref_configuration" translatable="false">pref_configuration</string>
+    <string name="pref_rocket_chat_configuration" translatable="false">pref_rocket_chat_configuration</string>
     <string name="enter_base_url">Enter the Base URL</string>
     <string name="enter_tenant">Enter the Tenant</string>
     <string name="account_type_loan" translatable="false">accountType.loan</string>
@@ -553,6 +556,10 @@
     <string name="password_strength_medium">Medium</string>
     <string name="password_strength_strong">Strong</string>
     <string name="password_strength_very_strong">Very Strong</string>
+    <string name="support">Support</string>
+    <string name="rocket_chat_generic_error_message">Error connecting to rocket chat server!</string>
+    <string name="invalid_rocket_chat_server">Invalid rocket chat server URL</string>
+    <string name="loading">Loading</string>
     <string name="loan_purpose_not_provided">Not Provided</string>
     <string name="details">Details</string>
     <string name="product">Product</string>

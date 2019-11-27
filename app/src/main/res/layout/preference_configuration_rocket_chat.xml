@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/layout_padding_16dp">
+
+<RelativeLayout
+    android:id="@+id/server_url_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_border"
+    android:padding="@dimen/layout_padding_16dp">
+
+    <Spinner
+        android:id="@+id/spinner_server_protocol"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:popupBackground="@color/colorWhite" />
+
+    <EditText
+        android:id="@+id/et_server_url"
+        style="@style/Authentication.EditText.Hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/spinner_server_protocol"
+        android:background="@color/colorWhite"
+        android:hint="@string/server_hint_url"
+        android:imeOptions="actionDone"
+        android:inputType="text|textUri" />
+</RelativeLayout>
+</LinearLayout>

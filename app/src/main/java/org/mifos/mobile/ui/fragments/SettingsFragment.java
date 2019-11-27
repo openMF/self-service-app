@@ -10,6 +10,8 @@ import org.mifos.mobile.utils.ConfigurationDialogFragmentCompat;
 import org.mifos.mobile.utils.ConfigurationPreference;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.LanguageHelper;
+import org.mifos.mobile.utils.RocketChatConfigurationDialogFragmentCompat;
+import org.mifos.mobile.utils.RocketChatConfigurationPreference;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.ListPreference;
@@ -51,6 +53,11 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         DialogFragment dialogFragment = null;
         if (preference instanceof ConfigurationPreference) {
             dialogFragment = new ConfigurationDialogFragmentCompat();
+            Bundle bundle = new Bundle(1);
+            bundle.putString("key", preference.getKey());
+            dialogFragment.setArguments(bundle);
+        } else if (preference instanceof RocketChatConfigurationPreference) {
+            dialogFragment = new RocketChatConfigurationDialogFragmentCompat();
             Bundle bundle = new Bundle(1);
             bundle.putString("key", preference.getKey());
             dialogFragment.setArguments(bundle);

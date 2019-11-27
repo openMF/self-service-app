@@ -33,5 +33,10 @@
             android:icon="@drawable/ic_update"
             android:summary="@string/pref_base_url_desc"
             android:title="@string/pref_base_url_title"/>
+
+        <org.mifos.mobile.utils.RocketChatConfigurationPreference
+            android:key="@string/pref_rocket_chat_configuration"
+            android:summary="@string/pref_rocket_chat_url_desc"
+            android:title="@string/pref_rocket_chat_url_title"/>
     </PreferenceCategory>
 </androidx.preference.PreferenceScreen>
