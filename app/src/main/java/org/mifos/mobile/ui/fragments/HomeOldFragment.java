@@ -192,10 +192,15 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
-            showUserDetails((Client) savedInstanceState.getParcelable(Constants.USER_DETAILS));
-            presenter.setUserProfile(preferencesHelper.getUserProfileImage());
-            showLoanAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_LOAN));
-            showSavingAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_SAVINGS));
+            client = savedInstanceState.getParcelable(Constants.USER_DETAILS);
+            if (client != null) {
+                showUserDetails(client);
+                presenter.setUserProfile(preferencesHelper.getUserProfileImage());
+                showLoanAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_LOAN));
+                showSavingAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_SAVINGS));
+            } else {
+                showError(getString(R.string.error_client_not_found));
+            }
         }
     }
 
@@ -483,6 +488,5 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
         }
         presenter.detachView();
     }
-
 }
 

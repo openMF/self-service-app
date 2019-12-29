@@ -224,6 +224,10 @@ public class LoanApplicationFragment extends BaseFragment implements LoanApplica
             tilPrincipalAmount.setError(getString(R.string.amount_greater_than_zero));
             return;
         }
+        if (loanTemplate == null) {
+            Toaster.show(rootView, "Loan Template is not available");
+            return;
+        }
         if (loanState == LoanState.CREATE) {
             reviewNewLoanApplication();
         } else {

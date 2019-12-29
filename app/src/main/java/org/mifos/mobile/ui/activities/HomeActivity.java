@@ -84,6 +84,7 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     private boolean isReceiverRegistered;
     private int menuItem;
     boolean doubleBackToExitPressedOnce = false;
+    private boolean isClientNull = false;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,8 +110,14 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             showUserImage(null);
         } else {
             client = savedInstanceState.getParcelable(Constants.USER_DETAILS);
-            detailsPresenter.setUserProfile(preferencesHelper.getUserProfileImage());
-            showUserDetails(client);
+            if (client != null) {
+                isClientNull = false;
+                detailsPresenter.setUserProfile(preferencesHelper.getUserProfileImage());
+                showUserDetails(client);
+            } else {
+                isClientNull = true;
+                showError(getString(R.string.error_client_not_found));
+            }
         }
 
         if (checkPlayServices() && !preferencesHelper.sentTokenToServerState()) {
@@ -457,8 +464,10 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     private BroadcastReceiver registerReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String token = intent.getStringExtra(Constants.TOKEN);
-            detailsPresenter.registerNotification(token);
+            if (!isClientNull) {
+                String token = intent.getStringExtra(Constants.TOKEN);
+                detailsPresenter.registerNotification(token);
+            }
         }
     };
 
@@ -472,5 +481,4 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
         inputManager.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager
                 .RESULT_UNCHANGED_SHOWN);
     }
-
 }
