@@ -305,9 +305,25 @@ public class AccountsFragment extends BaseFragment implements
      *
      * @param input String which is needs to be searched in list
      */
-    public void searchSavingsAccount(String input) {
+    public void searchSavingsAccount(String input, List<CheckboxStatus> statusModelList) {
+        List<SavingAccount> savingAccountSearchList = new ArrayList<>();
+        if (statusModelList == null) {
+            savingAccountSearchList = savingAccounts;
+        } else {
+            for (CheckboxStatus statusList: statusModelList) {
+                if (statusList.component3()) {
+                    for (CheckboxStatus status :
+                            accountsPresenter.getCheckedStatus(statusModelList)) {
+                        savingAccountSearchList.addAll(
+                                accountsPresenter.getFilteredSavingsAccount(savingAccounts,
+                                        status));
+                    }
+                    break;
+                }
+            }
+        }
         savingAccountsListAdapter.setSavingAccountsList(accountsPresenter.
-                searchInSavingsList(savingAccounts, input));
+                searchInSavingsList(savingAccountSearchList, input));
     }
 
     /**
@@ -316,9 +332,25 @@ public class AccountsFragment extends BaseFragment implements
      *
      * @param input String which is needs to be searched in list
      */
-    public void searchLoanAccount(String input) {
+    public void searchLoanAccount(String input, List<CheckboxStatus> statusModelList) {
+        List<LoanAccount> loanAccountSearchList = new ArrayList<>();
+        if (statusModelList == null) {
+            loanAccountSearchList = loanAccounts;
+        } else {
+            for (CheckboxStatus statusList : statusModelList) {
+                if (statusList.component3()) {
+                    for (CheckboxStatus status :
+                            accountsPresenter.getCheckedStatus(statusModelList)) {
+                        loanAccountSearchList.addAll(
+                                accountsPresenter.getFilteredLoanAccount(loanAccounts,
+                                        status));
+                    }
+                    break;
+                }
+            }
+        }
         loanAccountsListAdapter.setLoanAccountsList(accountsPresenter.
-                searchInLoanList(loanAccounts, input));
+                searchInLoanList(loanAccountSearchList, input));
     }
 
     /**
@@ -327,9 +359,25 @@ public class AccountsFragment extends BaseFragment implements
      *
      * @param input String which is needs to be searched in list
      */
-    public void searchSharesAccount(String input) {
+    public void searchSharesAccount(String input, List<CheckboxStatus> statusModelList) {
+        List<ShareAccount> shareAccountSearchList = new ArrayList<>();
+        if (statusModelList == null) {
+            shareAccountSearchList = shareAccounts;
+        } else {
+            for (CheckboxStatus statusList : statusModelList) {
+                if (statusList.component3()) {
+                    for (CheckboxStatus status :
+                            accountsPresenter.getCheckedStatus(statusModelList)) {
+                        shareAccountSearchList.addAll(
+                                accountsPresenter.getFilteredShareAccount(shareAccounts,
+                                        status));
+                    }
+                    break;
+                }
+            }
+        }
         shareAccountsListAdapter.setShareAccountsList(accountsPresenter.
-                searchInSharesList(shareAccounts, input));
+                searchInSharesList(shareAccountSearchList, input));
     }
 
     /**

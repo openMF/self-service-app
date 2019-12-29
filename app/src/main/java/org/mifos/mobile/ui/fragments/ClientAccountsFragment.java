@@ -343,13 +343,16 @@ public class ClientAccountsFragment extends BaseFragment implements AccountsView
 
                 if (account == AccountType.SAVINGS) {
                     ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                            getFragmentTag(0))).searchSavingsAccount(newText);
+                            getFragmentTag(0))).searchSavingsAccount(
+                                    newText, checkBoxAdapter.getStatusList());
                 } else if (account == AccountType.LOAN) {
                     ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                            getFragmentTag(1))).searchLoanAccount(newText);
+                            getFragmentTag(1))).searchLoanAccount(
+                                    newText, checkBoxAdapter.getStatusList());
                 } else if (account == AccountType.SHARE) {
                     ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                            getFragmentTag(2))).searchSharesAccount(newText);
+                            getFragmentTag(2))).searchSharesAccount(
+                                    newText, checkBoxAdapter.getStatusList());
                 }
 
                 return false;
