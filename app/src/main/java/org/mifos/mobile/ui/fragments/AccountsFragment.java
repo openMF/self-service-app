@@ -215,7 +215,6 @@ public class AccountsFragment extends BaseFragment implements
     public void onRefresh() {
         if (Network.isConnected(getContext())) {
             sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
-            clearFilter();
             accountsPresenter.loadAccounts(accountType);
         } else {
             hideProgress();
@@ -244,7 +243,11 @@ public class AccountsFragment extends BaseFragment implements
         Collections.sort(loanAccounts, new ComparatorBasedOnId());
         this.loanAccounts = loanAccounts;
         if (loanAccounts.size() != 0) {
-            loanAccountsListAdapter.setLoanAccountsList(loanAccounts);
+            if (getCurrentFilterList() != null && !getCurrentFilterList().isEmpty()) {
+                filterLoanAccount(getCurrentFilterList());
+            } else {
+                loanAccountsListAdapter.setLoanAccountsList(loanAccounts);
+            }
             rvAccounts.setAdapter(loanAccountsListAdapter);
         } else {
             showEmptyAccounts(getString(R.string.loan_account));
@@ -262,7 +265,11 @@ public class AccountsFragment extends BaseFragment implements
         Collections.sort(savingAccounts, new ComparatorBasedOnId());
         this.savingAccounts = savingAccounts;
         if (savingAccounts.size() != 0) {
-            savingAccountsListAdapter.setSavingAccountsList(savingAccounts);
+            if (getCurrentFilterList() != null && !getCurrentFilterList().isEmpty()) {
+                filterSavingsAccount(getCurrentFilterList());
+            } else {
+                savingAccountsListAdapter.setSavingAccountsList(savingAccounts);
+            }
             rvAccounts.setAdapter(savingAccountsListAdapter);
         } else {
             showEmptyAccounts(getString(R.string.savings_account));
@@ -280,7 +287,11 @@ public class AccountsFragment extends BaseFragment implements
         Collections.sort(shareAccounts, new ComparatorBasedOnId());
         this.shareAccounts = shareAccounts;
         if (shareAccounts.size() != 0) {
-            shareAccountsListAdapter.setShareAccountsList(shareAccounts);
+            if (getCurrentFilterList() != null && !getCurrentFilterList().isEmpty()) {
+                filterShareAccount(getCurrentFilterList());
+            } else {
+                shareAccountsListAdapter.setShareAccountsList(shareAccounts);
+            }
             rvAccounts.setAdapter(shareAccountsListAdapter);
         } else {
             showEmptyAccounts(getString(R.string.share_account));
