@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.mifos.mobile.passcode.MifosPassCodeActivity;
 import com.mifos.mobile.passcode.utils.EncryptionUtil;
+import com.mifos.mobile.passcode.utils.PasscodePreferencesHelper;
 
 import org.mifos.mobile.R;
 import org.mifos.mobile.utils.CheckSelfPermissionAndRequest;
@@ -16,6 +17,8 @@ import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Toaster;
 
 public class PassCodeActivity extends MifosPassCodeActivity {
+    private String currPass = "";
+    private Boolean updatePassword = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,10 @@ public class PassCodeActivity extends MifosPassCodeActivity {
         if (!CheckSelfPermissionAndRequest.checkSelfPermission(this,
                 Manifest.permission.READ_PHONE_STATE)) {
             requestPermission();
+        }
+        if (getIntent() != null) {
+            currPass = getIntent().getStringExtra(Constants.CURR_PASSWORD);
+            updatePassword = getIntent().getBooleanExtra(Constants.UPDATE_PASSWORD_KEY, false);
         }
     }
 
@@ -89,4 +96,13 @@ public class PassCodeActivity extends MifosPassCodeActivity {
         return EncryptionUtil.MOBILE_BANKING;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (updatePassword && !currPass.isEmpty()) {
+            PasscodePreferencesHelper helper = new PasscodePreferencesHelper(this);
+            helper.savePassCode(currPass);
+        }
+        finish();
+    }
 }
