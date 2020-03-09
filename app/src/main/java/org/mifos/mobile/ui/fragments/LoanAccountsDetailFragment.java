@@ -123,8 +123,10 @@ public class LoanAccountsDetailFragment extends BaseFragment implements LoanAcco
 
         sweetUIErrorHandler = new SweetUIErrorHandler(getActivity(), rootView);
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && this.loanWithAssociations == null) {
             loanAccountDetailsPresenter.loadLoanAccountDetails(loanId);
+        } else {
+            showLoanAccountsDetail(this.loanWithAssociations);
         }
 
         return rootView;

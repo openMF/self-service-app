@@ -133,8 +133,10 @@ public class SavingAccountsDetailFragment extends BaseFragment implements Saving
         savingAccountsDetailPresenter.attachView(this);
         sweetUIErrorHandler = new SweetUIErrorHandler(getContext(), rootView);
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null && this.savingsWithAssociations == null) {
             savingAccountsDetailPresenter.loadSavingsWithAssociations(savingsId);
+        } else {
+            showSavingAccountsDetail(this.savingsWithAssociations);
         }
         setHasOptionsMenu(true);
         return rootView;
