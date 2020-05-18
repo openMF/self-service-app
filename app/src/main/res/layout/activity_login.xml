@@ -2,9 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:onClick="hideKeyboard"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -28,7 +30,8 @@
                 android:layout_height="@dimen/login_height"
                 android:layout_marginBottom="@dimen/login_margin_bottom"
                 android:layout_width="wrap_content"
-                android:src="@drawable/mifos_logo"/>
+                android:src="@drawable/mifos_logo"
+                tools:ignore="ContentDescription" />
 
             <!-- Username  Label -->
             <com.google.android.material.textfield.TextInputLayout
@@ -46,7 +49,8 @@
                     android:hint="@string/username"
                     android:inputType="textEmailAddress"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"/>
+                    android:layout_width="match_parent"
+                    tools:ignore="Autofill" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +71,8 @@
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"/>
+                    android:layout_width="match_parent"
+                    tools:ignore="Autofill" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton

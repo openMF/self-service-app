@@ -8,6 +8,8 @@
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:id="@+id/register_linear"
+        android:onClick="hideKeyboardregister"
         android:orientation="vertical"
         android:paddingTop="@dimen/login_padding_top">
 

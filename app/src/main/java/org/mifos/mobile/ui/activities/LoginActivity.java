@@ -1,8 +1,10 @@
 package org.mifos.mobile.ui.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -18,7 +20,11 @@ import org.mifos.mobile.utils.Toaster;
 
 import javax.inject.Inject;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.AppCompatButton;
+
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -144,6 +150,14 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void onRegisterClicked() {
         startActivity(new Intent(LoginActivity.this, RegistrationActivity.class));
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    @OnClick(R.id.ll_login)
+    public void hideKeyboard(View view) {
+        InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(Objects.requireNonNull(getCurrentFocus()).
+                getWindowToken(), 0);
     }
 
     @Override
