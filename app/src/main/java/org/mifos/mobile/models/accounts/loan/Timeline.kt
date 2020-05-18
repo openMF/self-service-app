@@ -26,13 +26,13 @@ data class Timeline(
         var approvedOnDate: List<Int>,
 
         @SerializedName("approvedByUsername")
-        var approvedByUsername: String,
+        var approvedByUsername: String? = null,
 
         @SerializedName("approvedByFirstname")
-        var approvedByFirstname: String,
+        var approvedByFirstname: String? = null,
 
         @SerializedName("approvedByLastname")
-        var approvedByLastname: String,
+        var approvedByLastname: String? = null,
 
         @SerializedName("expectedDisbursementDate")
         var expectedDisbursementDate: List<Int>,
@@ -41,13 +41,13 @@ data class Timeline(
         var actualDisbursementDate: List<Int>,
 
         @SerializedName("disbursedByUsername")
-        var disbursedByUsername: String,
+        var disbursedByUsername: String? = null,
 
         @SerializedName("disbursedByFirstname")
-        var disbursedByFirstname: String,
+        var disbursedByFirstname: String? = null,
 
         @SerializedName("disbursedByLastname")
-        var disbursedByLastname: String,
+        var disbursedByLastname: String? = null,
 
         @SerializedName("closedOnDate")
         var closedOnDate: List<Int>,

@@ -107,12 +107,24 @@ public class DataManager {
                 });
     }
 
+    public Observable<Charge> getClientChargeDetails(int chargeId) {
+        return baseApiManager.getClientChargeApi().getClientChargeDetails(clientId, chargeId);
+    }
+
     public Observable<List<Charge>> getLoanCharges(long loanId) {
         return baseApiManager.getClientChargeApi().getLoanAccountChargeList(loanId);
     }
 
+    public Observable<Charge> getLoanChargeDetails(long loanId, int chargeId) {
+        return baseApiManager.getClientChargeApi().getLoanChargeDetails(loanId, chargeId);
+    }
+
     public Observable<List<Charge>> getSavingsCharges(long savingsId) {
         return baseApiManager.getClientChargeApi().getSavingsAccountChargeList(savingsId);
+    }
+
+    public Observable<Charge> getSavingsChargeDetails(long accountId, int chargeId) {
+        return baseApiManager.getClientChargeApi().getSavingsChargeDetails(accountId, chargeId);
     }
 
     public Observable<SavingsWithAssociations> getSavingsWithAssociations(long accountId,

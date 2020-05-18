@@ -59,7 +59,7 @@ data class LoanAccount(
         var amountPaid: Double = 0.toDouble(),
 
         @SerializedName("currency")
-        var currency: Currency,
+        var currency: Currency? = null,
 
         @SerializedName("inArrears")
         var inArrears: Boolean? = null,

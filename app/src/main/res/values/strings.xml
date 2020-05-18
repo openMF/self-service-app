@@ -572,6 +572,12 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+    <string name="charge_detail">Charge Details</string>
+    <string name="name">Name</string>
+    <string name="charge_type">Charge Type</string>
+    <string name="payment_due_at">Payment Due at</string>
+    <string name="payment_due_as_of">Payment due as of</string>
+    <string name="calculation_type">Calculation Type</string>
 
     <string-array name="languages" translatable="false">
         <item>English</item>

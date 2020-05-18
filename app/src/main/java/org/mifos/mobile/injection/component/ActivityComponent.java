@@ -11,6 +11,7 @@ import org.mifos.mobile.ui.activities.PassCodeActivity;
 import org.mifos.mobile.ui.fragments.BeneficiaryApplicationFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryDetailFragment;
 import org.mifos.mobile.ui.fragments.BeneficiaryListFragment;
+import org.mifos.mobile.ui.fragments.ChargeDetailsFragment;
 import org.mifos.mobile.ui.fragments.GuarantorDetailFragment;
 import org.mifos.mobile.ui.fragments.GuarantorListFragment;
 import org.mifos.mobile.ui.fragments.HelpFragment;
@@ -129,4 +130,6 @@ public interface ActivityComponent {
     void inject(SavingsAccountWithdrawFragment savingsAccountWithdrawFragment);
 
     void inject(ReviewLoanApplicationFragment reviewLoanApplicationFragment);
+
+    void inject(ChargeDetailsFragment chargeDetailsFragment);
 }

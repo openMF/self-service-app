@@ -261,6 +261,10 @@ public class Client implements Parcelable {
         dest.writeString(this.officeName);
         dest.writeValue(this.staffId);
         dest.writeString(this.staffName);
+        dest.writeParcelable(this.timeline, flags);
+        dest.writeInt(this.imageId);
+        dest.writeByte((byte) (this.imagePresent ? 1 : 0));
+        dest.writeString(this.externalId);
     }
 
     public Client() {
@@ -285,7 +289,6 @@ public class Client implements Parcelable {
         this.staffId = (Integer) in.readValue(Integer.class.getClassLoader());
         this.staffName = in.readString();
         this.timeline = in.readParcelable(Timeline.class.getClassLoader());
-        this.fullname = in.readString();
         this.imageId = in.readInt();
         this.imagePresent = in.readByte() != 0;
         this.externalId = in.readString();
