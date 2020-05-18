@@ -54,6 +54,10 @@ public class NotificationPresenter extends BasePresenter<NotificationView> {
         compositeDisposable.clear();
     }
 
+    /**
+     * Used to load {@link List} of {@link MifosNotification} from the local sql database and
+     * notify the view to display it. Notify the view, in case there is any errors
+     */
     public void loadNotifications() {
 
         checkViewAttached();
@@ -63,9 +67,7 @@ public class NotificationPresenter extends BasePresenter<NotificationView> {
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<List<MifosNotification>>() {
                     @Override
-                    public void onComplete() {
-
-                    }
+                    public void onComplete() { }
 
                     @Override
                     public void onError(Throwable e) {

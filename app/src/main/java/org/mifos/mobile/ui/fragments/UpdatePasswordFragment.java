@@ -91,13 +91,9 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
         String newPassword = tilNewPassword.getEditText().getText().toString().trim();
         String repeatPassword = tilConfirmNewPassword.getEditText().getText().toString().trim();
 
-        if (!checkNewPasswordFieldsComplete()) {
+        if (!checkNewPasswordFieldsComplete() || !checkConfirmPasswordFieldsComplete()) {
             rv = false;
-        }
-        if (!checkConfirmPasswordFieldsComplete()) {
-            rv = false;
-        }
-        if (!newPassword.equals(repeatPassword)) {
+        } else if (!newPassword.equals(repeatPassword)) {
             Toaster.show(rootView, getString(R.string.error_password_not_match));
             rv = false;
         }
@@ -143,9 +139,7 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
     }
 
     @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -158,17 +152,15 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
     }
 
     @Override
-    public void afterTextChanged(Editable s) {
-
-    }
+    public void afterTextChanged(Editable s) { }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (v.getId() == R.id.et_new_password && !isFocusLostNewPassword && !hasFocus) {
             checkNewPasswordFieldsComplete();
             isFocusLostNewPassword = true;
-        }
-        if (v.getId() == R.id.et_confirm_password && !isFocusLostConfirmPassword && !hasFocus) {
+        } else if (v.getId() == R.id.et_confirm_password && !isFocusLostConfirmPassword
+                && !hasFocus) {
             checkConfirmPasswordFieldsComplete();
             isFocusLostConfirmPassword = true;
         }
@@ -182,8 +174,7 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
                     getString(R.string.error_validation_blank,
                             getString(R.string.new_password)));
             return false;
-        }
-        if (newPassword.length() < 6) {
+        } else if (newPassword.length() < 6) {
             tilNewPassword.setError(
                     getString(R.string.error_validation_minimum_chars,
                             getString(R.string.new_password),
@@ -202,8 +193,7 @@ public class UpdatePasswordFragment extends BaseFragment implements UpdatePasswo
                     getString(R.string.error_validation_blank,
                             getString(R.string.confirm_password)));
             return false;
-        }
-        if (confirmPassword.length() < 6) {
+        } else if (confirmPassword.length() < 6) {
             tilConfirmNewPassword.setError(
                     getString(R.string.error_validation_minimum_chars,
                             getString(R.string.confirm_password),

@@ -137,9 +137,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<Page<Client>>() {
                     @Override
-                    public void onComplete() {
-
-                    }
+                    public void onComplete() { }
 
                     @Override
                     public void onError(Throwable e) {
@@ -173,7 +171,15 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         );
     }
 
-
+    /**
+     * This method checks if the credentials entered are valid or not and reports in case of
+     * invalid details entered.
+     *
+     * @param username Username of the user trying to login.
+     * @param password Password of the user trying to login.
+     *
+     * @return {@link Boolean} value indicating validity
+     */
     private boolean isCredentialsValid(final String username, final String password) {
         boolean credentialValid = true;
         final Resources resources = context.getResources();

@@ -149,8 +149,6 @@ public class SavingAccountsTransactionPresenter extends
      * @return Returns {@link List} of filtered {@link Transactions} according to the
      * {@code status} provided.
      */
-
-
     public  List<Transactions> filterTranactionListbyType(
             List<Transactions> savingAccountsTransactionList, final CheckboxStatus status) {
 

@@ -213,19 +213,13 @@ public class ThirdPartyTransferFragment extends BaseFragment implements ThirdPar
         if (etAmount.getText().toString().equals("")) {
             Toaster.show(rootView, getString(R.string.enter_amount));
             return;
-        }
-
-        if (etAmount.getText().toString().equals(".")) {
+        } else if (etAmount.getText().toString().equals(".")) {
             Toaster.show(rootView, getString(R.string.invalid_amount));
             return;
-        }
-
-        if (etRemark.getText().toString().trim().equals("")) {
+        } else if (etRemark.getText().toString().trim().equals("")) {
             Toaster.show(rootView, getString(R.string.remark_is_mandatory));
             return;
-        }
-
-        if (spBeneficiary.getSelectedItem().toString().
+        } else if (spBeneficiary.getSelectedItem().toString().
                 equals(spPayFrom.getSelectedItem().toString())) {
             Toaster.show(rootView, getString(R.string.error_same_account_transfer));
             return;
@@ -346,14 +340,10 @@ public class ThirdPartyTransferFragment extends BaseFragment implements ThirdPar
         if (etAmount.getText().toString().equals("")) {
             showToaster(getString(R.string.enter_amount));
             return;
-        }
-
-        if (etAmount.getText().toString().equals(".")) {
+        } else if (etAmount.getText().toString().equals(".")) {
             showToaster(getString(R.string.invalid_amount));
             return;
-        }
-
-        if (Double.parseDouble(etAmount.getText().toString()) == 0) {
+        } else if (Double.parseDouble(etAmount.getText().toString()) == 0) {
             showToaster(getString(R.string.amount_greater_than_zero));
             return;
         }

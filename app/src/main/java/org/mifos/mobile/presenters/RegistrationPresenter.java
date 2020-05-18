@@ -54,6 +54,13 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
         compositeDisposables.clear();
     }
 
+    /**
+     * Used to register instance of the user if details entered meet the required standards and
+     * notify the view on completion. Also notifies the view in case of any errors
+     *
+     * @param registerPayload Instance of {@link RegisterPayload} that contains the details of
+     *                        client that has to be registered
+     */
     public void registerUser(RegisterPayload registerPayload) {
         checkViewAttached();
         getMvpView().showProgress();
@@ -62,9 +69,7 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<ResponseBody>() {
                     @Override
-                    public void onComplete() {
-
-                    }
+                    public void onComplete() { }
 
                     @Override
                     public void onError(Throwable e) {

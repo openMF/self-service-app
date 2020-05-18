@@ -220,14 +220,10 @@ public class ClientChargeFragment extends BaseFragment implements
     }
 
     @Override
-    public void onItemClick(View childView, int position) {
-
-    }
+    public void onItemClick(View childView, int position) { }
 
     @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
+    public void onItemLongPress(View childView, int position) { }
 
     @Override
     public void onDestroyView() {

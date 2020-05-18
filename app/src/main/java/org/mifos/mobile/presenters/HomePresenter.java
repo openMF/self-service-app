@@ -143,15 +143,17 @@ public class HomePresenter extends BasePresenter<HomeView> {
         );
     }
 
+    /**
+     * Used to get count of unread Notifications from the local sql database and on completion
+     * notifies the view
+     */
     public void getUnreadNotificationsCount() {
         compositeDisposable.add(dataManager.getUnreadNotificationsCount()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.computation())
                 .subscribeWith(new DisposableObserver<Integer>() {
                     @Override
-                    public void onComplete() {
-
-                    }
+                    public void onComplete() { }
 
                     @Override
                     public void onError(Throwable e) {

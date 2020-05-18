@@ -215,7 +215,9 @@ public class ClientAccountsFragment extends BaseFragment implements AccountsView
                 .hideProgress();
     }
 
-
+    /**
+     * Responds to {@link FloatingActionButton} for creating new loans
+     */
     @OnClick(R.id.fab_create_loan)
     public void createLoan() {
         switch (viewPager.getCurrentItem()) {
@@ -248,12 +250,10 @@ public class ClientAccountsFragment extends BaseFragment implements AccountsView
     }
 
     @Override
-    public void showProgress() {
-    }
+    public void showProgress() { }
 
     @Override
-    public void hideProgress() {
-    }
+    public void hideProgress() { }
 
     @Override
     public void onDestroyView() {
@@ -264,32 +264,34 @@ public class ClientAccountsFragment extends BaseFragment implements AccountsView
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_account, menu);
-        if (viewPager.getCurrentItem() == 0) {
-            menu.findItem(R.id.menu_filter_savings).setVisible(true);
-            menu.findItem(R.id.menu_filter_loan).setVisible(false);
-            menu.findItem(R.id.menu_filter_shares).setVisible(false);
-            menu.findItem(R.id.menu_search_saving).setVisible(true);
-            menu.findItem(R.id.menu_search_loan).setVisible(false);
-            menu.findItem(R.id.menu_search_share).setVisible(false);
-            initSearch(menu, AccountType.SAVINGS);
-        } else if (viewPager.getCurrentItem() == 1) {
-            menu.findItem(R.id.menu_filter_savings).setVisible(false);
-            menu.findItem(R.id.menu_filter_loan).setVisible(true);
-            menu.findItem(R.id.menu_filter_shares).setVisible(false);
-            menu.findItem(R.id.menu_search_saving).setVisible(false);
-            menu.findItem(R.id.menu_search_loan).setVisible(true);
-            menu.findItem(R.id.menu_search_share).setVisible(false);
-            initSearch(menu, AccountType.LOAN);
-        } else if (viewPager.getCurrentItem() == 2) {
-            menu.findItem(R.id.menu_filter_savings).setVisible(false);
-            menu.findItem(R.id.menu_filter_loan).setVisible(false);
-            menu.findItem(R.id.menu_filter_shares).setVisible(true);
-            menu.findItem(R.id.menu_search_saving).setVisible(false);
-            menu.findItem(R.id.menu_search_loan).setVisible(false);
-            menu.findItem(R.id.menu_search_share).setVisible(true);
-            initSearch(menu, AccountType.SHARE);
+        switch (viewPager.getCurrentItem()) {
+            case 0:
+                setItemVisibility(menu, true, false, false,
+                        true, false, false);
+                initSearch(menu, AccountType.SAVINGS);
+                break;
+            case 1:
+                setItemVisibility(menu, false, true, false,
+                        false, true, false);
+                initSearch(menu, AccountType.LOAN);
+                break;
+            case 2:
+                setItemVisibility(menu, false, false, true,
+                        false, false, true);
+                initSearch(menu, AccountType.SHARE);
+                break;
         }
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    private void setItemVisibility( Menu menu, boolean fSavings, boolean fLoan, boolean fShare,
+                                   boolean sSavings, boolean sLoan, boolean sShare) {
+        menu.findItem(R.id.menu_filter_savings).setVisible(fSavings);
+        menu.findItem(R.id.menu_filter_loan).setVisible(fLoan);
+        menu.findItem(R.id.menu_filter_shares).setVisible(fShare);
+        menu.findItem(R.id.menu_search_saving).setVisible(sSavings);
+        menu.findItem(R.id.menu_search_loan).setVisible(sLoan);
+        menu.findItem(R.id.menu_search_share).setVisible(sShare);
     }
 
     @Override

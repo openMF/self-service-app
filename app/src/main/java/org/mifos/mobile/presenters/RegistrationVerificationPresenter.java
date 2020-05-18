@@ -63,9 +63,7 @@ public class RegistrationVerificationPresenter extends BasePresenter<Registratio
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<ResponseBody>() {
                     @Override
-                    public void onComplete() {
-
-                    }
+                    public void onComplete() { }
 
                     @Override
                     public void onError(Throwable e) {

@@ -135,7 +135,6 @@ public class SavingsAccountWithdrawFragment extends BaseFragment
     @Override
     public void showProgress() {
         showMifosProgressDialog(getString(R.string.progress_message_loading));
-
     }
 
     @Override

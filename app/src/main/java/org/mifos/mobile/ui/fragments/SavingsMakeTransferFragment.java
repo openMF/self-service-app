@@ -439,14 +439,10 @@ public class SavingsMakeTransferFragment extends BaseFragment implements
         if (etAmount.getText().toString().equals("")) {
             showToaster(getString(R.string.enter_amount));
             return;
-        }
-
-        if (etAmount.getText().toString().equals(".")) {
+        } else if (etAmount.getText().toString().equals(".")) {
             showToaster(getString(R.string.invalid_amount));
             return;
-        }
-
-        if (Double.parseDouble(etAmount.getText().toString()) == 0) {
+        } else if (Double.parseDouble(etAmount.getText().toString()) == 0) {
             showToaster(getString(R.string.amount_greater_than_zero));
             return;
         }

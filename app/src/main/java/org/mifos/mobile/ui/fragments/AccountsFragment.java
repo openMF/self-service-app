@@ -468,9 +468,7 @@ public class AccountsFragment extends BaseFragment implements
     }
 
     @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
+    public void onItemLongPress(View childView, int position) { }
 
     /**
      * This function opens up an activity only if the intent

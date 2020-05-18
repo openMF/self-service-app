@@ -29,6 +29,15 @@ public class SavingsAccountApplicationPresenter
     private CompositeDisposable compositeDisposable;
     private DataManager dataManager;
 
+    /**
+     * Initialises the SavingAccountApplicationPresenter by automatically injecting an instance of
+     * {@link DataManager} and {@link Context}.
+     *
+     * @param dataManager DataManager class that provides access to the data
+     *                    via the API.
+     * @param context     Context of the view attached to the presenter. In this case
+     *                    it is that of an {@link androidx.appcompat.app.AppCompatActivity}
+     */
     @Inject
     public SavingsAccountApplicationPresenter(DataManager dataManager,
                                               @ApplicationContext Context context) {
@@ -48,6 +57,16 @@ public class SavingsAccountApplicationPresenter
         compositeDisposable.clear();
     }
 
+    /**
+     * Used to load {@link SavingsAccountTemplate} from the remote server according to the
+     * clientId and SavingsAccountState provided. Notifies the view to display on success and also
+     * in case of any errors that occurred
+     *
+     * @param clientId Specifies the unique id of the current client that can be used to uniquely
+     *                 fetch data from the server
+     * @param state Instance of {@link SavingsAccountState} that specifies whether to show new
+     *              template or update template
+     */
     public void loadSavingsAccountApplicationTemplate(long clientId,
                                                       final SavingsAccountState state) {
         checkViewAttached();

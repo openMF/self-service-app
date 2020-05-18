@@ -300,9 +300,7 @@ public class BeneficiaryApplicationFragment extends BaseFragment implements
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) { }
 
     /**
      * It is called whenever any error occurs while executing a request

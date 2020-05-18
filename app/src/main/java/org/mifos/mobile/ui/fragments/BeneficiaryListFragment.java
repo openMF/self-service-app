@@ -157,7 +157,6 @@ public class BeneficiaryListFragment extends BaseFragment implements RecyclerIte
     /**
      * Refreshes {@code beneficiaryList} by calling {@code loadBeneficiaries()}
      */
-
     @Override
     public void onRefresh() {
         if (layoutError.getVisibility() == View.VISIBLE) {
@@ -219,9 +218,7 @@ public class BeneficiaryListFragment extends BaseFragment implements RecyclerIte
     }
 
     @Override
-    public void onItemLongPress(View childView, int position) {
-
-    }
+    public void onItemLongPress(View childView, int position) { }
 
     public void showSwipeRefreshLayout(final boolean show) {
         swipeRefreshLayout.post(new Runnable() {

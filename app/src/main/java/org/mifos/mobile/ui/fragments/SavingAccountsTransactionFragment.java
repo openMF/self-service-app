@@ -446,7 +446,6 @@ public class SavingAccountsTransactionFragment extends BaseFragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_saving_accounts_transaction, menu);
         super.onCreateOptionsMenu(menu, inflater);
-
     }
 
     /**

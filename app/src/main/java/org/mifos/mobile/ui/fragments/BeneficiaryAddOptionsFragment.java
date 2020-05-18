@@ -108,6 +108,11 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
         }
     }
 
+
+    /**
+     * Checks for permissions needed to complete the action, if not granted then requests for
+     * the same
+     */
     public void accessReadWriteAccess() {
         if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
                 Manifest.permission.READ_EXTERNAL_STORAGE)) {

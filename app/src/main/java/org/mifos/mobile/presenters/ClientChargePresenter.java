@@ -57,6 +57,11 @@ public class ClientChargePresenter extends BasePresenter<ClientChargeView> {
         compositeDisposable.clear();
     }
 
+    /**
+     * Used to load ClientCharges as a {@link Page} of {@link Charge} from server and notifies
+     * the view to display it. And in case of any error during fetching the required details it
+     * notifies the view.
+     */
     public void loadClientCharges(long clientId) {
         checkViewAttached();
         getMvpView().showProgress();
@@ -86,6 +91,11 @@ public class ClientChargePresenter extends BasePresenter<ClientChargeView> {
         );
     }
 
+    /**
+     * Used to load LoanAccountCharges as a {@link List} of {@link Charge} from server and notifies
+     * the view to display it. And in case of any error during fetching the required details it
+     * notifies the view.
+     */
     public void loadLoanAccountCharges(long loanId) {
         checkViewAttached();
         getMvpView().showProgress();
@@ -113,6 +123,11 @@ public class ClientChargePresenter extends BasePresenter<ClientChargeView> {
         );
     }
 
+    /**
+     * Used to load SavingsAccountCharges as a {@link List} of {@link Charge} from server and
+     * notifies the view to display it. And in case of any error during fetching the
+     * required details it notifies the view.
+     */
     public void loadSavingsAccountCharges(long savingsId) {
         checkViewAttached();
         getMvpView().showProgress();
@@ -121,8 +136,7 @@ public class ClientChargePresenter extends BasePresenter<ClientChargeView> {
                 .subscribeOn(Schedulers.io())
                 .subscribeWith(new DisposableObserver<List<Charge>>() {
                     @Override
-                    public void onComplete() {
-                    }
+                    public void onComplete() { }
 
                     @Override
                     public void onError(Throwable e) {
@@ -140,6 +154,11 @@ public class ClientChargePresenter extends BasePresenter<ClientChargeView> {
         );
     }
 
+    /**
+     * Used to load ClientCharges as a {@link Page} of {@link Charge} from the local sql database
+     * and notifies the view to display it. And in case of any error during getting the
+     * required details it notifies the view.
+     */
     public void loadClientLocalCharges() {
         checkViewAttached();
         compositeDisposable.add(dataManager.getClientLocalCharges()
