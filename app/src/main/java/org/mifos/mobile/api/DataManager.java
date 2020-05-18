@@ -4,6 +4,7 @@ import org.mifos.mobile.FakeRemoteDataSource;
 import org.mifos.mobile.api.local.DatabaseHelper;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.models.Charge;
+import org.mifos.mobile.models.accounts.savings.Transactions;
 import org.mifos.mobile.models.client.Client;
 import org.mifos.mobile.models.guarantor.GuarantorApplicationPayload;
 import org.mifos.mobile.models.guarantor.GuarantorPayload;
@@ -95,6 +96,23 @@ public class DataManager {
     public Observable<Page<Transaction>> getRecentTransactions(int offset, int limit) {
         return baseApiManager.getRecentTransactionsApi()
                 .getRecentTransactionsList(clientId, offset, limit);
+    }
+
+    public Observable<Transactions> getSavingAccountTransactionDetails(long accountId,
+                                                                       long transactionId) {
+        return baseApiManager.getSavingAccountsListApi().getSavingsAccountTransaction(accountId,
+                transactionId);
+    }
+
+    public Observable<Transaction> getLoanAccountTransactionDetails(long loanId,
+                                                                    long transactionId) {
+        return baseApiManager.getLoanAccountsListApi().getLoanAccountTransaction(loanId,
+                transactionId);
+    }
+
+    public Observable<Transaction> getClientTransaction(long transactionId) {
+        return baseApiManager.getRecentTransactionsApi().getClientTransaction(clientId,
+                transactionId);
     }
 
     public Observable<Page<Charge>> getClientCharges(long clientId) {

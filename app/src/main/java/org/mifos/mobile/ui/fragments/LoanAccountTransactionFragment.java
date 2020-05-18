@@ -19,10 +19,12 @@ import org.mifos.mobile.models.accounts.loan.LoanWithAssociations;
 import org.mifos.mobile.presenters.LoanAccountsTransactionPresenter;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.ui.adapters.RecentTransactionListAdapter;
+import org.mifos.mobile.ui.enums.TransactionType;
 import org.mifos.mobile.ui.fragments.base.BaseFragment;
 import org.mifos.mobile.ui.views.LoanAccountsTransactionView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.RecyclerItemClickListener;
 
 import javax.inject.Inject;
 
@@ -38,7 +40,7 @@ import butterknife.OnClick;
  */
 
 public class LoanAccountTransactionFragment extends BaseFragment
-        implements LoanAccountsTransactionView {
+        implements LoanAccountsTransactionView, RecyclerItemClickListener.OnItemClickListener {
 
     @BindView(R.id.layout_error)
     View layoutError;
@@ -124,6 +126,8 @@ public class LoanAccountTransactionFragment extends BaseFragment
         rvLoanTransactions.setHasFixedSize(true);
         rvLoanTransactions.setLayoutManager(layoutManager);
         rvLoanTransactions.setAdapter(transactionsListAdapter);
+        rvLoanTransactions.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), this));
     }
 
     /**
@@ -174,6 +178,20 @@ public class LoanAccountTransactionFragment extends BaseFragment
             Toast.makeText(getContext(), getString(R.string.internet_not_connected),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        ((BaseActivity) getActivity()).replaceFragment(TransactionDetailsFragment
+                        .newInstance(loanId,
+                                loanWithAssociations.getTransactions().get(position).getId(),
+                                TransactionType.LOAN)
+                , true, R.id.container);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 
     @Override

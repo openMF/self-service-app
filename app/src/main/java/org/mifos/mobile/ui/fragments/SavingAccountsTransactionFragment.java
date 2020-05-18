@@ -32,6 +32,7 @@ import org.mifos.mobile.presenters.SavingAccountsTransactionPresenter;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.ui.adapters.CheckBoxAdapter;
 import org.mifos.mobile.ui.adapters.SavingAccountsTransactionListAdapter;
+import org.mifos.mobile.ui.enums.TransactionType;
 import org.mifos.mobile.ui.fragments.base.BaseFragment;
 import org.mifos.mobile.ui.views.SavingAccountsTransactionView;
 import org.mifos.mobile.utils.Constants;
@@ -40,6 +41,7 @@ import org.mifos.mobile.utils.DatePick;
 import org.mifos.mobile.utils.MFDatePicker;
 import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.RecyclerItemClickListener;
 import org.mifos.mobile.utils.StatusUtils;
 import org.mifos.mobile.utils.Toaster;
 
@@ -58,6 +60,7 @@ import butterknife.OnClick;
 
 public class SavingAccountsTransactionFragment extends BaseFragment
         implements SavingAccountsTransactionView,
+        RecyclerItemClickListener.OnItemClickListener,
 //        RadioGroup.OnCheckedChangeListener,
         MFDatePicker.OnDatePickListener {
 
@@ -167,6 +170,8 @@ public class SavingAccountsTransactionFragment extends BaseFragment
         rvSavingAccountsTransaction.setHasFixedSize(true);
         rvSavingAccountsTransaction.setLayoutManager(layoutManager);
         rvSavingAccountsTransaction.setAdapter(transactionListAdapter);
+        rvSavingAccountsTransaction.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), this));
 
 //        radioGroup.setOnCheckedChangeListener(this);
         mfDatePicker = MFDatePicker.newInstance(this, MFDatePicker.ALL_DAYS, active);
@@ -440,6 +445,19 @@ public class SavingAccountsTransactionFragment extends BaseFragment
                 .setNegativeButton(R.string.cancel)
                 .createMaterialDialog()
                 .show();
+    }
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        ((BaseActivity) getActivity()).replaceFragment(TransactionDetailsFragment
+                        .newInstance(transactionsList.get(position).getAccountId(),
+                                transactionsList.get(position).getId(), TransactionType.SAVINGS)
+                , true, R.id.container);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 
     @Override

@@ -19,4 +19,10 @@ public interface RecentTransactionsService {
             @Path("clientId") long clientId,
             @Query("offset") int offset,
             @Query("limit") int limit);
+
+    @GET(ApiEndPoints.LOANS + "/{clientId}/transaction/{transactionId}")
+    Observable<Transaction> getClientTransaction(
+            @Path("clientId") long clientId,
+            @Path("transactionId") long transactionId);
+
 }

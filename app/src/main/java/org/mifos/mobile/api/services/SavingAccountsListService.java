@@ -5,6 +5,7 @@ import org.mifos.mobile.models.accounts.savings.SavingsAccountApplicationPayload
 import org.mifos.mobile.models.accounts.savings.SavingsAccountUpdatePayload;
 import org.mifos.mobile.models.accounts.savings.SavingsAccountWithdrawPayload;
 import org.mifos.mobile.models.accounts.savings.SavingsWithAssociations;
+import org.mifos.mobile.models.accounts.savings.Transactions;
 import org.mifos.mobile.models.payload.TransferPayload;
 import org.mifos.mobile.models.templates.account.AccountOptionsTemplate;
 import org.mifos.mobile.models.templates.savings.SavingsAccountTemplate;
@@ -50,4 +51,9 @@ public interface SavingAccountsListService {
     @POST(ApiEndPoints.SAVINGS_ACCOUNTS + "/{savingsId}?command=withdrawnByApplicant")
     Observable<ResponseBody> submitWithdrawSavingsAccount(
             @Path("savingsId") String savingsId, @Body SavingsAccountWithdrawPayload payload);
+
+    @GET(ApiEndPoints.SAVINGS_ACCOUNTS + "/{accountId}/transactions/{transactionId}")
+    Observable<Transactions> getSavingsAccountTransaction(
+            @Path("accountId") long accountId,
+            @Path("transactionId") long transactionId);
 }

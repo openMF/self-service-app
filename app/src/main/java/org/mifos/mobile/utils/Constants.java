@@ -126,4 +126,10 @@ public class Constants {
     public static  final String OUTSTANDING_BALANCE = "outstanding_balance";
 
     public static final String LOAN_REPAYMENT = "loan_repayment";
+
+    public static final String TRANSACTION = "transaction";
+
+    public static final String TRANSACTION_ID = "transactionId";
+
+    public static final String TRANSACTION_TYPE = "transactionType";
 }

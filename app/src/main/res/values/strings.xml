@@ -572,6 +572,13 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+    <string name="transaction_details">Transaction Details</string>
+    <string name="transaction_id">Transaction ID</string>
+    <string name="transaction_date">Transaction Date</string>
+    <string name="payment_details">Payment Details</string>
+    <string name="type">Type</string>
+    <string name="receipt_number">Receipt Number</string>
+    <string name="error_transaction_details_loading">Error loading in transaction details</string>
 
     <string-array name="languages" translatable="false">
         <item>English</item>

@@ -38,6 +38,7 @@ import org.mifos.mobile.ui.fragments.SavingsAccountApplicationFragment;
 import org.mifos.mobile.ui.fragments.SavingsAccountWithdrawFragment;
 import org.mifos.mobile.ui.fragments.SavingsMakeTransferFragment;
 import org.mifos.mobile.ui.fragments.ThirdPartyTransferFragment;
+import org.mifos.mobile.ui.fragments.TransactionDetailsFragment;
 import org.mifos.mobile.ui.fragments.TransferProcessFragment;
 import org.mifos.mobile.ui.fragments.UpdatePasswordFragment;
 import org.mifos.mobile.ui.fragments.UserProfileFragment;
@@ -129,4 +130,6 @@ public interface ActivityComponent {
     void inject(SavingsAccountWithdrawFragment savingsAccountWithdrawFragment);
 
     void inject(ReviewLoanApplicationFragment reviewLoanApplicationFragment);
+
+    void inject (TransactionDetailsFragment transactionDetailsFragment);
 }

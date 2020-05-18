@@ -14,12 +14,14 @@ import org.mifos.mobile.models.Transaction;
 import org.mifos.mobile.presenters.RecentTransactionsPresenter;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.ui.adapters.RecentTransactionListAdapter;
+import org.mifos.mobile.ui.enums.TransactionType;
 import org.mifos.mobile.ui.fragments.base.BaseFragment;
 import org.mifos.mobile.ui.views.RecentTransactionsView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.DividerItemDecoration;
 import org.mifos.mobile.utils.EndlessRecyclerViewScrollListener;
 import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +41,7 @@ import butterknife.OnClick;
  * @since 09/08/16
  */
 public class RecentTransactionsFragment extends BaseFragment implements RecentTransactionsView,
+        RecyclerItemClickListener.OnItemClickListener,
         SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.rv_recent_transactions)
@@ -123,6 +126,8 @@ public class RecentTransactionsFragment extends BaseFragment implements RecentTr
                 layoutManager.getOrientation()));
         recentTransactionsListAdapter.setTransactions(recentTransactionList);
         rvRecentTransactions.setAdapter(recentTransactionsListAdapter);
+        rvRecentTransactions.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), this));
         rvRecentTransactions.addOnScrollListener(
                 new EndlessRecyclerViewScrollListener(layoutManager) {
                     @Override
@@ -224,6 +229,21 @@ public class RecentTransactionsFragment extends BaseFragment implements RecentTr
     @Override
     public void hideProgress() {
         showSwipeRefreshLayout(false);
+    }
+
+    @Override
+    public void onItemClick(View childView, int position) {
+        // created just to be passed to the constructor
+        long accountId = 0;
+        ((BaseActivity) getActivity()).replaceFragment(TransactionDetailsFragment
+                        .newInstance(accountId, recentTransactionList.get(position).getId(),
+                                TransactionType.CLIENT)
+                , true, R.id.container);
+    }
+
+    @Override
+    public void onItemLongPress(View childView, int position) {
+
     }
 
     @Override
