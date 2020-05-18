@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.mifos.mobile.R;
+import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.presenters.LoginPresenter;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.ui.views.LoginView;
@@ -44,6 +45,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @BindView(R.id.ll_login)
     LinearLayout llLogin;
+
+    @Inject
+    PreferencesHelper preferencesHelper;
 
     private String userName;
 
@@ -90,7 +94,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void showPassCodeActivity() {
         showToast(getString(R.string.toast_welcome, userName));
-        startPassCodeActivity();
+        if (preferencesHelper.getBoolean(getString(R.string.use_passcode), true)) {
+            startPassCodeActivity();
+        } else {
+            startActivity(new Intent(this, HomeActivity.class));
+            finish();
+        }
     }
 
     /**

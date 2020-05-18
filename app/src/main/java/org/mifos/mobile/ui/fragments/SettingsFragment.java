@@ -68,13 +68,27 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         Preference preference = findPreference(s);
-        if (preference instanceof ListPreference) {
-            ListPreference listPreference = (ListPreference) preference;
-            LanguageHelper.setLocale(getContext(), listPreference.getValue());
-            Intent intent = new Intent(getActivity(), getActivity().getClass());
-            intent.putExtra(Constants.HAS_SETTINGS_CHANGED, true);
-            startActivity(intent);
-            getActivity().finish();
+        switch (s) {
+            case Constants.USE_PASSCODE:
+                boolean isChecked = getPreferenceScreen().getSharedPreferences()
+                        .getBoolean(s, true);
+                if (isChecked == false) {
+                    findPreference(getString(R.string.passcode)).setEnabled(false);
+                } else {
+                    findPreference(getString(R.string.passcode)).setEnabled(true);
+                }
+                break;
+            case Constants.LANGUAGE_TYPE:
+            case Constants.PREF_CONFIGURATION  :
+                if (preference instanceof ListPreference) {
+                    ListPreference listPreference = (ListPreference) preference;
+                    LanguageHelper.setLocale(getContext(), listPreference.getValue());
+                    Intent intent = new Intent(getActivity(), getActivity().getClass());
+                    intent.putExtra(Constants.HAS_SETTINGS_CHANGED, true);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+                break;
         }
     }
 

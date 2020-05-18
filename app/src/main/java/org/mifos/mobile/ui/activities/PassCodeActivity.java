@@ -10,12 +10,16 @@ import com.mifos.mobile.passcode.MifosPassCodeActivity;
 import com.mifos.mobile.passcode.utils.EncryptionUtil;
 
 import org.mifos.mobile.R;
+import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.utils.CheckSelfPermissionAndRequest;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Toaster;
 
+
 public class PassCodeActivity extends MifosPassCodeActivity {
+
+    PreferencesHelper preferencesHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,7 @@ public class PassCodeActivity extends MifosPassCodeActivity {
                 Manifest.permission.READ_PHONE_STATE)) {
             requestPermission();
         }
+        preferencesHelper = new PreferencesHelper(this);
     }
 
     /**
@@ -87,6 +92,13 @@ public class PassCodeActivity extends MifosPassCodeActivity {
     @Override
     public int getEncryptionType() {
         return EncryptionUtil.MOBILE_BANKING;
+    }
+
+    @Override
+    public void skip(View v) {
+        preferencesHelper.putBoolean(getString(R.string.use_passcode), false);
+        startActivity(new Intent(this, HomeActivity.class));
+        finish();
     }
 
 }
