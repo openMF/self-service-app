@@ -15,6 +15,7 @@ import org.mifos.mobile.ui.views.LoginView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.Network;
 import org.mifos.mobile.utils.Toaster;
+import org.mifos.mobile.utils.Utils;
 
 import javax.inject.Inject;
 
@@ -55,6 +56,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         loginPresenter.attachView(this);
+    }
+
+    @OnClick(R.id.background_screen)
+    public void backgroundTap(View view) {
+        Utils.hideSoftKeyboard(LoginActivity.this);
     }
 
     /**

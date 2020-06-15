@@ -1,5 +1,6 @@
 package org.mifos.mobile.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
@@ -9,6 +10,8 @@ import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import org.mifos.mobile.R;
 
@@ -85,4 +88,13 @@ public class Utils {
         return builder.toString();
     }
 
+    public static void hideSoftKeyboard(Activity context) {
+        View view = context.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager)
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 }
+

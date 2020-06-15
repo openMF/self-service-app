@@ -13,6 +13,13 @@
         android:layout_width="match_parent">
 
         <LinearLayout
+            android:id="@+id/background_screen"
+            android:onClick="backgroundTap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
             android:id="@+id/ll_login"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -87,6 +94,8 @@
                 android:text="@string/create_an_account"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/primary"/>
+
+        </LinearLayout>
 
         </LinearLayout>
 
