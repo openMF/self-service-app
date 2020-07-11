@@ -27,6 +27,8 @@ import org.mifos.mobile.utils.Toaster;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -89,8 +91,26 @@ public class BeneficiaryDetailFragment extends BaseFragment implements Beneficia
         presenter.attachView(this);
 
         showUserInterface();
-
+        updateThemeVariables(rootView);
         return rootView;
+    }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card_details))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((TextView) rootView.findViewById(R.id.tv_account_number))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_beneficiary_name))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_client_name))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_account_type))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_transfer_limit))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_office_name))
+                .setTextColor(baseActivity.getTextColor());
     }
 
     /**

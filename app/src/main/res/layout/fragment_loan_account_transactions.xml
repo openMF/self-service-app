@@ -26,7 +26,6 @@
             android:layout_marginStart="@dimen/default_margin"
             android:layout_width="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/black"
             tools:text="loanProductName"/>
 
         <androidx.recyclerview.widget.RecyclerView

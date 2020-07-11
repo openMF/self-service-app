@@ -11,6 +11,7 @@ import org.mifos.mobile.injection.ActivityContext;
 import org.mifos.mobile.models.accounts.loan.LoanAccount;
 import org.mifos.mobile.utils.CurrencyUtil;
 import org.mifos.mobile.utils.DateHelper;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +32,12 @@ public class LoanAccountsListAdapter extends RecyclerView.Adapter<RecyclerView.V
     private final Context context;
     private List<LoanAccount> loanAccountsList = new ArrayList<>();
 
+    private ThemeHelper themeHelper;
+
     @Inject
-    public LoanAccountsListAdapter(@ActivityContext Context context) {
+    public LoanAccountsListAdapter(@ActivityContext Context context, ThemeHelper themeHelper) {
         this.context = context;
+        this.themeHelper = themeHelper;
     }
 
     public void setLoanAccountsList(List<LoanAccount> loanAccountsList) {
@@ -64,6 +68,8 @@ public class LoanAccountsListAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             LoanAccount loanAccount = getItem(position);
             ((ViewHolder) holder).tvClientLoanAccountNumber.setText(loanAccount.getAccountNo());
+            ((ViewHolder) holder).tvClientLoanAccountNumber
+                    .setTextColor(themeHelper.getTextColor());
             ((ViewHolder) holder).tvLoanAccountProductName.setText(loanAccount.getProductName());
             ((ViewHolder) holder).tvAccountBalance.setVisibility(View.GONE);
 

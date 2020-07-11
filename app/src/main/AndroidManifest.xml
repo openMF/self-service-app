@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:name="org.mifos.mobile.MifosSelfServiceApp"
         android:supportsRtl="true"
-        android:theme="@style/MaterialAppTheme"
+        android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data

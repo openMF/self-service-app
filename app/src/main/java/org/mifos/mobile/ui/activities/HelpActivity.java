@@ -18,6 +18,11 @@ public class HelpActivity extends BaseActivity {
         setContentView(R.layout.activity_container);
         setToolbarTitle(getString(R.string.help));
         showBackButton();
+        updateThemeVariables();
         replaceFragment(HelpFragment.newInstance(), false, R.id.container);
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

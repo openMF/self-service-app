@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import com.evrencoskun.tableview.TableView;
 import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler;
@@ -44,7 +45,6 @@ public class LoanRepaymentScheduleFragment extends BaseFragment implements
 
     @BindView(R.id.tv_repayment_schedule)
     TableView tvRepaymentSchedule;
-
 
     @BindView(R.id.tv_account_number)
     TextView tvAccountNumber;
@@ -102,7 +102,24 @@ public class LoanRepaymentScheduleFragment extends BaseFragment implements
         if (savedInstanceState == null) {
             loanRepaymentSchedulePresenter.loanLoanWithAssociations(loanId);
         }
+        updateThemeVariables(rootView);
         return rootView;
+    }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card_details))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+
+        ((TextView) rootView.findViewById(R.id.tv_account_number_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_disbursement_date_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_number_of_payments_label))
+                .setTextColor(baseActivity.getTextColor());
+
+        tvRepaymentSchedule.setSelectedColor(baseActivity.getPrimaryColor());
+        tvRepaymentSchedule.setBackgroundColor(baseActivity.getCardBackgroundColor());
     }
 
     @Override

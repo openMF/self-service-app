@@ -96,7 +96,14 @@ public class LoanAccountTransactionFragment extends BaseFragment
         if (savedInstanceState == null) {
             loanAccountsTransactionPresenter.loadLoanAccountDetails(loanId);
         }
+        updateThemeVariables(rootView);
         return rootView;
+    }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((TextView) rootView.findViewById(R.id.tv_loan_product_name))
+                .setTextColor(baseActivity.getTextColor());
     }
 
     @Override

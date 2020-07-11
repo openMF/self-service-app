@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,6 +17,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -45,13 +54,6 @@ import org.mifos.mobile.utils.fcm.RegistrationIntentService;
 
 import javax.inject.Inject;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -118,7 +120,30 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
+        updateThemeVariables();
+    }
 
+    private void updateThemeVariables() {
+        ColorStateList navMenuColorList = new ColorStateList(
+                new int[][]{
+                        new int[]{android.R.attr.state_checked},
+                        new int[]{android.R.attr.state_enabled},
+                        new int[]{android.R.attr.state_pressed},
+                        new int[]{android.R.attr.state_focused},
+                        new int[]{android.R.attr.state_pressed}
+                },
+                new int[] {
+                        getAccentColor(),
+                        getTextColor(),
+                        getTextColor(),
+                        getTextColor(),
+                        getTextColor()
+                }
+        );
+        navigationView.setItemTextColor(navMenuColorList);
+        navigationView.setItemIconTintList(navMenuColorList);
+        toolbar.setBackgroundColor(getPrimaryColor());
+        navigationView.getHeaderView(0).setBackgroundColor(getPrimaryColor());
     }
 
     @Override

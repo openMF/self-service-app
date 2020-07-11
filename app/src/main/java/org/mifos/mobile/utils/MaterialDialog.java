@@ -23,8 +23,9 @@ public final class MaterialDialog {
 
         //This is the Default Builder Initialization with Material Style
         public Builder init(Context context) {
+            ThemeHelper themeHelper = new ThemeHelper(context);
             mMaterialDialogBuilder =
-                    new AlertDialog.Builder(context, R.style.MaterialAlertDialogStyle);
+                    new AlertDialog.Builder(context, themeHelper.getDialogStyle());
             this.context = context;
             return this;
         }

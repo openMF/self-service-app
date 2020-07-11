@@ -20,9 +20,13 @@ public class SavingsAccountContainerActivity extends BaseActivity {
         setContentView(R.layout.activity_container);
 
         savingsId = getIntent().getExtras().getLong(Constants.SAVINGS_ID);
-
+        updateThemeVariables();
         replaceFragment(SavingAccountsDetailFragment.newInstance(savingsId), false, R.id.container);
         showBackButton();
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 
     @Override

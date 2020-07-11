@@ -13,7 +13,11 @@ public class NotificationActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        updateThemeVariables();
         replaceFragment(NotificationFragment.newInstance(), false, R.id.container);
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

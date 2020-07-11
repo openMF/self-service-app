@@ -40,6 +40,8 @@ import org.mifos.mobile.utils.Utils;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -137,8 +139,38 @@ public class SavingAccountsDetailFragment extends BaseFragment implements Saving
             savingAccountsDetailPresenter.loadSavingsWithAssociations(savingsId);
         }
         setHasOptionsMenu(true);
+        updateThemeVariables(rootView);
         return rootView;
     }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card_account_details))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_transaction_details))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_monitor))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((TextView) rootView.findViewById(R.id.acc_balance))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.account_status))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_savingAccountNumber))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_nominalInterestRate))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_totalDeposits))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.total_withdrawals))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.last_trans))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.made_on))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_minRequiredBalance))
+                .setTextColor(baseActivity.getTextColor());
+    }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {

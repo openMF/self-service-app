@@ -21,6 +21,8 @@ import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.CurrencyUtil;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -120,8 +122,43 @@ public class LoanAccountSummaryFragment extends BaseFragment {
         ButterKnife.bind(this, rootView);
 
         showLoanAccountsDetail(loanWithAssociations);
-
+        updateThemeVariables(rootView);
         return rootView;
+    }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card1))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card2))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card3))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+
+        ((TextView) rootView.findViewById(R.id.tv_loan_account_number))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_loan_product_name))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_principal))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_interest_charged))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_fees))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_penalties))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_total_repayment))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_interest_waived))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_penalties_waived))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_fees_waived))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_outstanding_balance))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_account_status))
+                .setTextColor(baseActivity.getTextColor());
     }
 
     /**

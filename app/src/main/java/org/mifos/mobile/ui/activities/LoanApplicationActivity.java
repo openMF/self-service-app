@@ -17,6 +17,11 @@ public class LoanApplicationActivity extends BaseActivity {
             replaceFragment(LoanApplicationFragment.newInstance(LoanState.CREATE), false,
                     R.id.container);
         }
+        updateThemeVariables();
         showBackButton();
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

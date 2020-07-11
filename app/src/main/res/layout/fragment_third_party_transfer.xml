@@ -13,7 +13,6 @@
     android:layout_width="match_parent">
 
     <androidx.core.widget.NestedScrollView
-        android:background="@color/white"
         android:id="@+id/view_flipper"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
@@ -68,8 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:paddingTop="10dp"
-                        android:prompt="@string/select_pay_from"
-                        android:spinnerMode="dialog"/>
+                        android:prompt="@string/select_pay_from"/>
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_pay_from"
@@ -146,7 +144,6 @@
                         android:layout_width="match_parent"
                         android:paddingTop="10dp"
                         android:prompt="@string/select_beneficiary"
-                        android:spinnerMode="dialog"
                         android:visibility="gone"/>
 
                     <androidx.appcompat.widget.AppCompatButton

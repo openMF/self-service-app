@@ -157,7 +157,6 @@ public class ThirdPartyTransferFragment extends BaseFragment implements ThirdPar
         if (savedInstanceState == null) {
             presenter.loadTransferTemplate();
         }
-
         return rootView;
     }
 

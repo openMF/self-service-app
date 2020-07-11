@@ -5,16 +5,14 @@
 
     <style name="Toolbar.Common">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="android:background">@color/primary</item>
+        <item name="colorControlNormal">@android:color/white</item>
         <item name="popupTheme">@style/AppToolbarPopup</item>
     </style>
 
     <style name="AppToolbarPopup" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:colorBackground">@android:color/white</item>
-        <item name="android:background">@android:color/white</item>
         <item name="android:windowActionBarOverlay">false</item>
     </style>
 

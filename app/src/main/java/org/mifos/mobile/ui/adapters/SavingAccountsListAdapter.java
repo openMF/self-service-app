@@ -11,6 +11,7 @@ import org.mifos.mobile.injection.ActivityContext;
 import org.mifos.mobile.models.accounts.savings.SavingAccount;
 import org.mifos.mobile.utils.CurrencyUtil;
 import org.mifos.mobile.utils.DateHelper;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +31,14 @@ import butterknife.ButterKnife;
 public class SavingAccountsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
+    private ThemeHelper themeHelper;
 
     private List<SavingAccount> savingAccountsList = new ArrayList<>();
 
     @Inject
-    public SavingAccountsListAdapter(@ActivityContext Context context) {
+    public SavingAccountsListAdapter(@ActivityContext Context context, ThemeHelper themeHelper) {
         this.context = context;
+        this.themeHelper = themeHelper;
     }
 
     public void setSavingAccountsList(List<SavingAccount> savingAccountsList) {
@@ -68,6 +71,9 @@ public class SavingAccountsListAdapter extends RecyclerView.Adapter<RecyclerView
 
             ((ViewHolder) holder).tvClientSavingAccountNumber.setText(
                     savingAccount.getAccountNo());
+
+            ((ViewHolder) holder).tvClientSavingAccountNumber.setTextColor(
+                    themeHelper.getTextColor());
 
             ((ViewHolder) holder).tvSavingAccountProductName.setText(
                     savingAccount.getProductName());

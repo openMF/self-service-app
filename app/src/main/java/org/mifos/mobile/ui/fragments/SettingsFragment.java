@@ -69,8 +69,10 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         Preference preference = findPreference(s);
         if (preference instanceof ListPreference) {
-            ListPreference listPreference = (ListPreference) preference;
-            LanguageHelper.setLocale(getContext(), listPreference.getValue());
+            if (preference.getKey().equals(getString(R.string.language_type))) {
+                ListPreference listPreference = (ListPreference) preference;
+                LanguageHelper.setLocale(getContext(), listPreference.getValue());
+            }
             Intent intent = new Intent(getActivity(), getActivity().getClass());
             intent.putExtra(Constants.HAS_SETTINGS_CHANGED, true);
             startActivity(intent);

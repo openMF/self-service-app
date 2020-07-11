@@ -20,11 +20,17 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
         setToolbarTitle(getString(R.string.settings));
         showBackButton();
+        updateThemeVariables();
         replaceFragment(SettingsFragment.newInstance(), false, R.id.container);
         if (getIntent().hasExtra(Constants.HAS_SETTINGS_CHANGED)) {
             hasSettingsChanged = getIntent().getBooleanExtra(Constants.HAS_SETTINGS_CHANGED,
                     false);
         }
+    }
+
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 
     @Override

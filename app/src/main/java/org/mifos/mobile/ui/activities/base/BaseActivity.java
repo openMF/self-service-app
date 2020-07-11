@@ -7,7 +7,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RadioButton;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.ViewCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.mifos.mobile.passcode.BasePassCodeActivity;
 
@@ -19,13 +27,7 @@ import org.mifos.mobile.injection.module.ActivityModule;
 import org.mifos.mobile.ui.activities.PassCodeActivity;
 import org.mifos.mobile.ui.views.BaseActivityCallback;
 import org.mifos.mobile.utils.LanguageHelper;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import org.mifos.mobile.utils.ThemeHelper;
 
 /**
  * @author ishan
@@ -37,6 +39,7 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
     protected Toolbar toolbar;
     private ActivityComponent activityComponent;
     private ProgressDialog progress;
+    ThemeHelper themeHelper;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -65,6 +68,14 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        themeHelper = new ThemeHelper(getApplicationContext());
+        switch (themeHelper.getBaseTheme()) {
+            case ThemeHelper.DARK_THEME:
+                setTheme(R.style.AppTheme_Dark);
+                break;
+            case ThemeHelper.LIGHT_THEME:
+                setTheme(R.style.MaterialAppTheme);
+        }
     }
 
     /**
@@ -247,5 +258,69 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
                         Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
+    }
+
+    @Override
+    protected void onResume() {
+        themeHelper.updateTheme();
+        switch (themeHelper.getBaseTheme()) {
+            case ThemeHelper.DARK_THEME:
+                setTheme(R.style.AppTheme_Dark);
+                break;
+            case ThemeHelper.LIGHT_THEME:
+                setTheme(R.style.MaterialAppTheme);
+        }
+        super.onResume();
+    }
+
+    public int getBackgroundColor() {
+        return themeHelper.getBackgroundColor();
+    }
+
+    public int getPrimaryColor() {
+        return themeHelper.getPrimaryColor();
+    }
+    public int getPrimaryDarkColor() {
+        return themeHelper.getPrimaryDarkColor();
+    }
+
+    public int getAccentColor() {
+        return themeHelper.getAccentColor();
+    }
+
+    public String getBaseTheme() {
+        return themeHelper.getBaseTheme();
+    }
+
+    protected int getInvertedBackgroundColor() {
+        return themeHelper.getInvertedBackgroundColor();
+    }
+
+    public int getTextColor() {
+        return themeHelper.getTextColor();
+    }
+
+    public int getSubTextColor() {
+        return themeHelper.getSubTextColor();
+    }
+
+    public int getCardBackgroundColor() {
+        return themeHelper.getCardBackgroundColor();
+    }
+
+    public int getHighlightedItemColor() {
+        return themeHelper.getHighlightedItemColor();
+    }
+
+    protected int getDrawerBackground() {
+        return themeHelper.getDrawerBackground();
+    }
+
+    protected void updateRadioButtonColor(RadioButton radioButton) {
+        themeHelper.updateRadioButtonColor(radioButton);
+    }
+
+    protected void setRadioTextButtonColor(RadioButton radioButton, int color) {
+        themeHelper.setRadioTextButtonColor(radioButton, color);
     }
 }

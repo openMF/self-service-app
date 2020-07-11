@@ -11,6 +11,7 @@ import org.mifos.mobile.models.accounts.savings.TransactionType;
 import org.mifos.mobile.models.accounts.savings.Transactions;
 import org.mifos.mobile.utils.CurrencyUtil;
 import org.mifos.mobile.utils.DateHelper;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +32,12 @@ public class SavingAccountsTransactionListAdapter extends
 
     private List<Transactions> savingAccountsTransactionList;
     private Context context;
+    private ThemeHelper themeHelper;
 
     @Inject
-    public SavingAccountsTransactionListAdapter() {
+    public SavingAccountsTransactionListAdapter(ThemeHelper themeHelper) {
         savingAccountsTransactionList = new ArrayList<>();
+        this.themeHelper = themeHelper;
     }
 
     public void setContext(Context context) {
@@ -69,6 +72,8 @@ public class SavingAccountsTransactionListAdapter extends
                 string_and_string, transaction.getCurrency().getDisplaySymbol(), CurrencyUtil.
                 formatCurrency(context, transaction.getAmount())));
 
+        ((ViewHolder) holder).tvSavingAccountAmount.setTextColor(themeHelper.getTextColor());
+
         ((ViewHolder) holder).tvSavingAccountRunningBalance.setText(context.getString(R.string.
                 string_and_string, transaction.getCurrency().getDisplaySymbol(), CurrencyUtil.
                 formatCurrency(context, transaction.getRunningBalance())));
@@ -84,6 +89,7 @@ public class SavingAccountsTransactionListAdapter extends
 
         ((ViewHolder) holder).tvTransactionDate.setText(DateHelper.
                 getDateAsString(transaction.getDate()));
+        ((ViewHolder) holder).tvTransactionDate.setTextColor(themeHelper.getTextColor());
 
         ColorSelect color = getColor(transaction.getTransactionType());
         if (color == ColorSelect.RED) {

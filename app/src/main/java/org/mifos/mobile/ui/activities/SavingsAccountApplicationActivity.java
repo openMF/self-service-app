@@ -19,7 +19,12 @@ public class SavingsAccountApplicationActivity extends BaseActivity {
         setContentView(R.layout.activity_savings_account_application);
         setToolbarTitle(getString(R.string.apply_savings_account));
         showBackButton();
+        updateThemeVariables();
         replaceFragment(SavingsAccountApplicationFragment.newInstance(SavingsAccountState.CREATE,
                 null), false, R.id.container);
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

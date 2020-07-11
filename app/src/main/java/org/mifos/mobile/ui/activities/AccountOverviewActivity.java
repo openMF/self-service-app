@@ -16,8 +16,13 @@ public class AccountOverviewActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
+        updateThemeVariables();
         replaceFragment(AccountOverviewFragment.newInstance(), false, R.id.container);
         showBackButton();
         hideToolbarElevation();
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

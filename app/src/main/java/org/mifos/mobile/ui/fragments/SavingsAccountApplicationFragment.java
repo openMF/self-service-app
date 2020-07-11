@@ -35,6 +35,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -96,8 +98,17 @@ public class SavingsAccountApplicationFragment extends BaseFragment
 
         presenter.attachView(this);
         presenter.loadSavingsAccountApplicationTemplate(preferencesHelper.getClientId(), state);
+        updateThemeVariables(rootView);
         return rootView;
     }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card_details))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+    }
+
+
 
     @Override
     public void showUserInterfaceSavingAccountApplication(SavingsAccountTemplate template) {

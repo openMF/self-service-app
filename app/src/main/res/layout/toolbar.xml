@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Toolbar.Common"
-    android:id="@+id/toolbar"
     android:theme="@style/Toolbar.Common"
+    android:id="@+id/toolbar"
     app:contentInsetStartWithNavigation="0dp"
     app:layout_scrollFlags="scroll|enterAlways"
-    app:popupTheme="@style/AppToolbarPopup"
-    app:titleTextAppearance="@style/ToolbarTitle">
+    app:titleTextAppearance="@style/ToolbarTitle"
+    >
 </androidx.appcompat.widget.Toolbar>

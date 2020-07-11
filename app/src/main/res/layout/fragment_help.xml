@@ -6,7 +6,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -37,7 +36,6 @@
         android:id="@+id/bnv_help"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        app:itemBackground="@color/white"
         app:itemIconTint="@drawable/bottom_nav_item_color_state"
         app:itemTextColor="@drawable/bottom_nav_item_color_state"
         app:menu="@menu/menu_help_bottom_bar"/>

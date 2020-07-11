@@ -20,7 +20,7 @@
         android:visibility="visible">
 
         <androidx.cardview.widget.CardView
-            android:background="@color/white"
+            android:id="@+id/card_details"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             app:cardElevation="@dimen/cardview_default_elevation"
@@ -34,13 +34,13 @@
 
                 <TableRow>
                     <TextView
+                        android:id="@+id/tv_account_number_label"
                         android:layout_gravity="start"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:text="@string/account_number"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                     <TextView
                         android:gravity="start"
                         android:id="@+id/tv_account_number"
@@ -54,13 +54,13 @@
 
                 <TableRow>
                     <TextView
+                        android:id="@+id/tv_disbursement_date_label"
                         android:layout_gravity="start"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:text="@string/disbursement_date"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                     <TextView
                         android:gravity="start"
                         android:id="@+id/tv_disbursement_date"
@@ -74,13 +74,13 @@
 
                 <TableRow>
                     <TextView
+                        android:id="@+id/tv_number_of_payments_label"
                         android:layout_gravity="start"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_width="wrap_content"
                         android:text="@string/no_of_payments"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
                     <TextView
                         android:gravity="start"
                         android:id="@+id/tv_number_of_payments"

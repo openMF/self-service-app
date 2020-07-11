@@ -17,6 +17,11 @@ public class AddBeneficiaryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_container);
         showBackButton();
+        updateThemeVariables();
         replaceFragment(BeneficiaryAddOptionsFragment.newInstance(), false, R.id.container);
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

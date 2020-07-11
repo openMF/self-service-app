@@ -18,6 +18,7 @@
             android:visibility="gone">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_account_details"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
@@ -33,6 +34,7 @@
                     android:paddingBottom="@dimen/default_margin">
 
                     <TextView
+                        android:id="@+id/tv_outstanding_balance_label"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/divider_margin"
                         android:layout_width="wrap_content"
@@ -48,6 +50,7 @@
                         tools:text="outstanding_balance"/>
 
                     <TextView
+                        android:id="@+id/tv_next_installment_label"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_weight="1"
@@ -65,6 +68,7 @@
                         tools:text="next_installement"/>
 
                     <TextView
+                        android:id="@+id/tv_due_date_label"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="match_parent"
@@ -79,6 +83,7 @@
                         android:textAppearance="?android:textAppearanceSmall"
                         tools:text="due_date"/>
                     <TextView
+                        android:id="@+id/tv_account_number_label"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_weight="1"
@@ -95,6 +100,7 @@
                         android:textAppearance="?android:textAppearanceSmall"
                         tools:text="account_number"/>
                     <TextView
+                        android:id="@+id/tv_loan_type_label"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="match_parent"
@@ -110,6 +116,7 @@
                         android:textAppearance="?android:textAppearanceSmall"
                         tools:text="loan_type"/>
                     <TextView
+                        android:id="@+id/tv_currency_label"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="match_parent"
@@ -146,10 +153,10 @@
                 android:layout_marginTop="@dimen/default_padding"
                 android:layout_width="match_parent"
                 android:text="@string/monitor"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/black"/>
+                android:textAppearance="?android:textAppearanceMedium"/>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_monitor"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:layout_width="match_parent">
@@ -185,6 +192,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tv_loan_summary"
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/loan_summary"
@@ -227,6 +235,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tv_loan_charges"
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/loan_charges"
@@ -269,6 +278,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tv_repayment_schedule"
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/repayment_schedule"
@@ -311,6 +321,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tv_transactions"
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/transactions"
@@ -353,6 +364,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/tv_qr_code"
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/qr_code"

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import org.mifos.mobile.R;
 import org.mifos.mobile.injection.ActivityContext;
 import org.mifos.mobile.models.accounts.share.ShareAccount;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +28,13 @@ import butterknife.ButterKnife;
 
 public class ShareAccountsListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final Context context;
+    private ThemeHelper themeHelper;
     private List<ShareAccount> shareAccountsList = new ArrayList<>();
 
     @Inject
-    public ShareAccountsListAdapter(@ActivityContext Context context) {
+    public ShareAccountsListAdapter(@ActivityContext Context context, ThemeHelper themeHelper) {
         this.context = context;
+        this.themeHelper = themeHelper;
     }
 
     public void setShareAccountsList(List<ShareAccount> shareAccountsList) {
@@ -59,6 +62,8 @@ public class ShareAccountsListAdapter extends RecyclerView.Adapter<RecyclerView.
             ShareAccount shareAccount = getItem(position);
             ((ViewHolder) holder).tvClientShareAccountsNumber
                     .setText(shareAccount.getAccountNo());
+            ((ViewHolder) holder).tvClientShareAccountsNumber
+                    .setTextColor(themeHelper.getTextColor());
             ((ViewHolder) holder).tvShareAccountsProductName
                     .setText(shareAccount.getProductName());
             ((ViewHolder) holder).llAccountDetail.setVisibility(View.GONE);

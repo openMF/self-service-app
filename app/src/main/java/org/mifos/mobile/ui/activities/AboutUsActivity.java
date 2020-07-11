@@ -18,6 +18,11 @@ public class AboutUsActivity extends BaseActivity {
         setContentView(R.layout.activity_container);
         setToolbarTitle(getString(R.string.about_us));
         showBackButton();
+        updateThemeVariables();
         replaceFragment(AboutUsFragment.newInstance(), false, R.id.container);
+    }
+
+    private void updateThemeVariables() {
+        toolbar.setBackgroundColor(getPrimaryColor());
     }
 }

@@ -19,7 +19,7 @@
             android:visibility="visible">
 
             <androidx.cardview.widget.CardView
-                android:background="@color/white"
+                android:id="@+id/card_account_details"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
@@ -36,8 +36,7 @@
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="match_parent"
                         android:text="@string/account_balance"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_acc_balance"
@@ -54,8 +53,7 @@
                         android:layout_width="match_parent"
                         android:lines="1"
                         android:text="@string/account_status"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <LinearLayout
                         android:gravity="start|center"
@@ -89,8 +87,7 @@
                         android:layout_width="wrap_content"
                         android:lines="1"
                         android:text="@string/account_number"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_saving_account_number"
@@ -107,8 +104,7 @@
                         android:layout_width="wrap_content"
                         android:lines="1"
                         android:text="@string/nominal_interest_rate"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_nominal_interest_rate"
@@ -125,8 +121,7 @@
                         android:layout_width="wrap_content"
                         android:lines="1"
                         android:text="@string/total_deposits"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_total_deposits"
@@ -143,8 +138,7 @@
                         android:layout_width="wrap_content"
                         android:lines="1"
                         android:text="@string/total_withdrawal"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_total_withdrawals"
@@ -192,7 +186,7 @@
                 android:text="@string/last_trans"/>
 
             <androidx.cardview.widget.CardView
-                android:background="@color/white"
+                android:id="@+id/card_transaction_details"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
@@ -208,8 +202,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:text="@string/last_transaction"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_last_transaction"
@@ -224,8 +217,7 @@
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="wrap_content"
                         android:text="@string/made_on"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
 
                     <TextView
                         android:id="@+id/tv_made_on"
@@ -239,8 +231,7 @@
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="wrap_content"
                         android:text="@string/min_required_balance"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textColor="@color/black"/>
+                        android:textAppearance="?android:textAppearanceMedium" />
                     <TextView
                         android:id="@+id/tv_min_req_bal"
                         android:layout_height="wrap_content"
@@ -263,6 +254,7 @@
                 android:textAppearance="?android:textAppearanceMedium"/>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_monitor"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
@@ -301,8 +293,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/transactions"
-                                android:textAppearance="?android:textAppearanceMedium"
-                                android:textColor="@color/black"/>
+                                android:textAppearance="?android:textAppearanceMedium" />
 
                             <TextView
                                 android:layout_height="wrap_content"
@@ -344,8 +335,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/savings_charges"
-                                android:textAppearance="?android:textAppearanceMedium"
-                                android:textColor="@color/black"/>
+                                android:textAppearance="?android:textAppearanceMedium" />
 
                             <TextView
                                 android:layout_height="wrap_content"
@@ -387,8 +377,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_width="match_parent"
                                 android:text="@string/qr_code"
-                                android:textAppearance="?android:textAppearanceMedium"
-                                android:textColor="@color/black"/>
+                                android:textAppearance="?android:textAppearanceMedium" />
 
                             <TextView
                                 android:layout_height="wrap_content"

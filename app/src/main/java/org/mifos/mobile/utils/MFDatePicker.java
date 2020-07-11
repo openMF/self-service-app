@@ -11,13 +11,11 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.DatePicker;
 
-import org.mifos.mobile.R;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 /**
  * Created by ishankhanna on 30/06/14.
@@ -81,9 +79,9 @@ public class MFDatePicker extends DialogFragment implements DatePickerDialog.OnD
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
+        ThemeHelper themeHelper = new ThemeHelper(getContext());
         DatePickerDialog dialog = new DatePickerDialog(getActivity(),
-                R.style.MaterialDatePickerTheme,
+                themeHelper.getDatePickerStyle(),
                 this,
                 mCalendar.get(Calendar.YEAR),
                 mCalendar.get(Calendar.MONTH),

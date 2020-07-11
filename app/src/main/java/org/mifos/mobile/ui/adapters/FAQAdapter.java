@@ -12,6 +12,7 @@ import org.mifos.mobile.R;
 import org.mifos.mobile.injection.ActivityContext;
 import org.mifos.mobile.models.FAQ;
 import org.mifos.mobile.utils.FaqDiffUtil;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.ArrayList;
 
@@ -33,10 +34,12 @@ public class FAQAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<FAQ> faqArrayList;
     private int alreadySelectedPosition;
     private Context context;
+    private ThemeHelper themeHelper;
 
     @Inject
-    public FAQAdapter(@ActivityContext Context context) {
+    public FAQAdapter(@ActivityContext Context context, ThemeHelper themeHelper) {
         faqArrayList = new ArrayList<>();
+        this.themeHelper = themeHelper;
         this.context = context;
     }
 
@@ -63,6 +66,7 @@ public class FAQAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         FAQ faq = faqArrayList.get(position);
 
         ((ViewHolder) holder).tvFaqQs.setText(faq.getQuestion());
+        ((ViewHolder) holder).tvFaqQs.setTextColor(themeHelper.getTextColor());
         ((ViewHolder) holder).tvFaqAns.setText(faq.getAnswer());
 
         if (faq.isSelected()) {

@@ -23,7 +23,6 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/black"
             tools:text="@string/small_text"/>
 
         <ImageView

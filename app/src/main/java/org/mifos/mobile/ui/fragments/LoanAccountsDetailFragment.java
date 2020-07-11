@@ -40,6 +40,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -127,7 +129,40 @@ public class LoanAccountsDetailFragment extends BaseFragment implements LoanAcco
             loanAccountDetailsPresenter.loadLoanAccountDetails(loanId);
         }
 
+        updateThemeVariables(rootView);
+
         return rootView;
+    }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card_account_details))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_monitor))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+
+        ((TextView) rootView.findViewById(R.id.tv_outstanding_balance_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_next_installment_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_due_date_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_account_number_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_loan_type_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_currency_label))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_loan_summary))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_loan_charges))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_repayment_schedule))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_transactions))
+                .setTextColor(baseActivity.getTextColor());
+        ((TextView) rootView.findViewById(R.id.tv_qr_code))
+                .setTextColor(baseActivity.getTextColor());
     }
 
     @Override

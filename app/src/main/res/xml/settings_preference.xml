@@ -28,6 +28,14 @@
             android:summary="@string/choose_language"
             android:title="@string/language"/>
 
+        <androidx.preference.ListPreference
+            android:defaultValue="LIGHT_THEME"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes_values"
+            android:key="@string/themes_key"
+            android:summary="@string/choose_theme"
+            android:title="@string/themes" />
+
         <org.mifos.mobile.utils.ConfigurationPreference
             android:key="@string/pref_configuration"
             android:icon="@drawable/ic_update"

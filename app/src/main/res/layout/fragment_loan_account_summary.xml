@@ -55,7 +55,6 @@
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/black"
                         tools:text="loanAccountNumber"/>
 
                 </LinearLayout>
@@ -83,7 +82,6 @@
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/black"
                         tools:text="@string/loan_product"/>
 
                 </LinearLayout>
@@ -120,7 +118,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
-                android:background="@color/white"
+                android:id="@+id/card1"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/table_row_padding_top"
@@ -154,7 +152,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="@string/principal"/>
 
                     </LinearLayout>
@@ -180,7 +177,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="Interest"/>
 
                     </LinearLayout>
@@ -206,7 +202,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="fees"/>
 
                     </LinearLayout>
@@ -232,7 +227,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="Penalties"/>
 
                     </LinearLayout>
@@ -242,7 +236,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:background="@color/white"
+                android:id="@+id/card2"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/table_row_padding_top"
@@ -277,7 +271,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="repayment"/>
 
                     </LinearLayout>
@@ -303,7 +296,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="paid"/>
 
                     </LinearLayout>
@@ -329,7 +321,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="@string/interest_waived"/>
 
                     </LinearLayout>
@@ -355,7 +346,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="penalties_waived"/>
 
                     </LinearLayout>
@@ -381,7 +371,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="fees_waived"/>
 
                     </LinearLayout>
@@ -391,7 +380,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:background="@color/white"
+                android:id="@+id/card3"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/table_row_padding_top"
@@ -418,8 +407,7 @@
                             android:layout_width="0dp"
                             android:lines="1"
                             android:text="@string/outstanding_balance"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"/>
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
 
                         <TextView
                             android:id="@+id/tv_outstanding_balance"
@@ -427,7 +415,6 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"
                             tools:text="balance"/>
 
                     </LinearLayout>
@@ -445,8 +432,7 @@
                             android:layout_width="0dp"
                             android:lines="1"
                             android:text="@string/account_status"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                            android:textColor="@color/black"/>
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
 
                         <LinearLayout
                             android:layout_height="wrap_content"
@@ -460,7 +446,6 @@
                                 android:layout_height="wrap_content"
                                 android:layout_width="wrap_content"
                                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                                android:textColor="@color/black"
                                 tools:text="@string/inactive_uc"/>
 
                             <ImageView

@@ -20,7 +20,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:background="@color/primary_dark"
+                android:id="@+id/ll_header"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?selectableItemBackground"
@@ -58,11 +58,11 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_overview"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
 
                 <LinearLayout
-                    android:background="@android:color/white"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
@@ -80,6 +80,7 @@
                         android:paddingTop="@dimen/default_margin">
 
                         <TextView
+                            android:id="@+id/tv_account_overview"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_width="0dp"
@@ -122,6 +123,7 @@
                                 tools:text="@string/amount"/>
 
                             <TextView
+                                android:id="@+id/tv_total_savings_label"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
                                 android:layout_width="wrap_content"
@@ -155,6 +157,7 @@
                                 tools:text="@string/amount"/>
 
                             <TextView
+                                android:id="@+id/tv_total_loan_label"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
                                 android:layout_width="wrap_content"
@@ -184,6 +187,7 @@
                     android:weightSum="3">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/card_accounts"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_4dp"
                         android:layout_marginLeft="@dimen/margin_4dp"
@@ -192,7 +196,6 @@
                         android:layout_width="wrap_content">
 
                         <LinearLayout
-                            android:background="@android:color/white"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?selectableItemBackground"
@@ -209,6 +212,7 @@
                                 app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
 
                             <TextView
+                                android:id="@+id/tv_accounts_label"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
@@ -221,6 +225,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/card_transfer"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_4dp"
                         android:layout_marginLeft="@dimen/margin_4dp"
@@ -229,7 +234,6 @@
                         android:layout_width="wrap_content">
 
                         <LinearLayout
-                            android:background="@android:color/white"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?selectableItemBackground"
@@ -246,6 +250,7 @@
                                 app:srcCompat="@drawable/ic_compare_arrows_black_24dp"/>
 
                             <TextView
+                                android:id="@+id/tv_transfer_label"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
@@ -258,6 +263,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/card_charges"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_4dp"
                         android:layout_marginEnd="@dimen/margin_4dp"
@@ -284,6 +290,7 @@
                                 app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp"/>
 
                             <TextView
+                                android:id="@+id/tv_charges_label"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
@@ -303,6 +310,7 @@
                     android:weightSum="3">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/card_apply_for_loan"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_4dp"
                         android:layout_marginLeft="@dimen/margin_4dp"
@@ -327,6 +335,7 @@
                                 app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
 
                             <TextView
+                                android:id="@+id/tv_apply_for_loan_label"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
@@ -339,6 +348,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/card_beneficiaries"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_4dp"
                         android:layout_marginLeft="@dimen/margin_4dp"
@@ -363,6 +373,7 @@
                                 app:srcCompat="@drawable/ic_beneficiaries_48px"/>
 
                             <TextView
+                                android:id="@+id/tv_beneficiaries_lbel"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
@@ -375,6 +386,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/card_surveys"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_4dp"
                         android:layout_marginEnd="@dimen/margin_4dp"
@@ -401,6 +413,7 @@
                                 app:srcCompat="@drawable/ic_surveys_48px"/>
 
                             <TextView
+                                android:id="@+id/tv_surveys_label"
                                 android:gravity="center"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
@@ -424,6 +437,7 @@
                 android:paddingTop="@dimen/default_padding">
 
                 <TextView
+                    android:id="@+id/tv_contact_us"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/row_padding_right"
@@ -442,6 +456,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_phone_number"
                         android:autoLink="phone"
                         android:gravity="end"
                         android:layout_height="wrap_content"
@@ -452,6 +467,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/tv_email"
                         android:autoLink="email"
                         android:gravity="end"
                         android:layout_height="wrap_content"

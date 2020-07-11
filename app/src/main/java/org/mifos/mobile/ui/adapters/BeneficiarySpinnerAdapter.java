@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.mifos.mobile.R;
 import org.mifos.mobile.models.beneficiary.BeneficiaryDetail;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.List;
 
@@ -33,12 +34,14 @@ public class BeneficiarySpinnerAdapter extends ArrayAdapter<String> {
     LayoutInflater layoutInflater;
     Context context;
     List<BeneficiaryDetail> list;
+    private ThemeHelper themeHelper;
 
     public BeneficiarySpinnerAdapter(Context context, int resource, List list) {
         super(context, resource, 0, list);
         this.resource = resource;
         this.context = context;
         this.list = list;
+        this.themeHelper = new ThemeHelper(context);
         layoutInflater = LayoutInflater.from(context);
     }
 
@@ -59,7 +62,9 @@ public class BeneficiarySpinnerAdapter extends ArrayAdapter<String> {
         ButterKnife.bind(this, view);
 
         tvAccountNumber.setText(list.get(position).getAccountNumber());
+//        tvAccountNumber.setTextColor(themeHelper.getTextColor());
         tvBeneficiaryName.setText(list.get(position).getBeneficiaryName());
+//        tvBeneficiaryName.setTextColor(themeHelper.getSubTextColor());
         return view;
     }
 

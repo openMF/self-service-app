@@ -42,6 +42,7 @@ import org.mifos.mobile.utils.Toaster;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -127,10 +128,30 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
         if (savedInstanceState == null) {
             loadClientData();
         }
-
+        updateThemeVariables(rootView);
         setToolbarTitle(getString(R.string.home));
         showUserInterface();
         return rootView;
+    }
+
+    private void updateThemeVariables(View rootView) {
+        BaseActivity baseActivity = ((BaseActivity) getActivity());
+        ((CardView) rootView.findViewById(R.id.card_overview))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_accounts))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_transfer))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_charges))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_apply_for_loan))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_beneficiaries))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((CardView) rootView.findViewById(R.id.card_surveys))
+                .setCardBackgroundColor(baseActivity.getCardBackgroundColor());
+        ((LinearLayout) rootView.findViewById(R.id.ll_header))
+                .setBackgroundColor(baseActivity.getPrimaryDarkColor());
     }
 
     private BroadcastReceiver notificationReceiver = new BroadcastReceiver() {

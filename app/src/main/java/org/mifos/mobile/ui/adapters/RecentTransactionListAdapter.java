@@ -11,6 +11,7 @@ import org.mifos.mobile.injection.ActivityContext;
 import org.mifos.mobile.models.Transaction;
 import org.mifos.mobile.utils.CurrencyUtil;
 import org.mifos.mobile.utils.DateHelper;
+import org.mifos.mobile.utils.ThemeHelper;
 import org.mifos.mobile.utils.Utils;
 
 import java.util.ArrayList;
@@ -31,10 +32,13 @@ public class RecentTransactionListAdapter extends
 
     private List<Transaction> transactions;
     private Context context;
+    private ThemeHelper themeHelper;
 
     @Inject
-    public RecentTransactionListAdapter(@ActivityContext Context context) {
+    public RecentTransactionListAdapter(@ActivityContext Context context,
+                                        ThemeHelper themeHelper) {
         transactions = new ArrayList<>();
+        this.themeHelper = themeHelper;
         this.context = context;
     }
 
@@ -56,6 +60,7 @@ public class RecentTransactionListAdapter extends
                 currencyRepresentation, CurrencyUtil.formatCurrency(context,
                         transaction.getAmount())));
         holder.tvTypeValue.setText(Utils.formatTransactionType(transaction.getType().getValue()));
+        holder.tvTypeValue.setTextColor(themeHelper.getTextColor());
         holder.tvTransactionsDate.setText(DateHelper.getDateAsString(transaction.
                 getSubmittedOnDate()));
     }
