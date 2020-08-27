@@ -20,6 +20,7 @@ import org.mifos.mobile.presenters.LoginPresenter
 import org.mifos.mobile.ui.activities.base.BaseActivity
 import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
+import org.mifos.mobile.utils.EspressoIdlingResouce
 import org.mifos.mobile.utils.Network
 import org.mifos.mobile.utils.Toaster
 
@@ -88,6 +89,7 @@ class LoginActivity : BaseActivity(), LoginView {
      * Starts [PassCodeActivity]
      */
     override fun showPassCodeActivity() {
+        EspressoIdlingResouce.decrement()
         showToast(getString(R.string.toast_welcome, userName))
         startPassCodeActivity()
     }
@@ -98,6 +100,7 @@ class LoginActivity : BaseActivity(), LoginView {
      * @param errorMessage Error message that tells the user about the problem.
      */
     override fun showMessage(errorMessage: String?) {
+        EspressoIdlingResouce.decrement()
         showToast(errorMessage!!, Toast.LENGTH_LONG)
         llLogin?.visibility = View.VISIBLE
     }
@@ -127,6 +130,7 @@ class LoginActivity : BaseActivity(), LoginView {
         val username = tilUsername?.editText?.editableText.toString()
         val password = tilPassword?.editText?.editableText.toString()
         if (Network.isConnected(this)) {
+            EspressoIdlingResouce.increment()
             val payload = LoginPayload()
             payload.username = username
             payload.password = password

@@ -68,6 +68,9 @@ android {
     androidExtensions {
         experimental = true
     }
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 dependencies {
@@ -139,6 +142,9 @@ dependencies {
 
     //TableView
     implementation "com.evrencoskun.library:tableview:$rootProject.tableViewVersion"
+
+    //Espresso Idling Resource
+    implementation "androidx.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
 
     // Unit tests dependencies
     testImplementation "junit:junit:$rootProject.jUnitVersion"
