@@ -14,6 +14,7 @@
     <color name="blue">#ff003fff</color>
     <color name="red">#FF0000</color>
     <color name="light_black">#1C1C1C</color>
+    <color name="offwhite">#EBECF0</color>
 
     <color name="dashboard_gray_background">#B2C1C8</color>
 
@@ -34,7 +35,7 @@
     <!-- A dark Holo shade of red -->
     <color name="red_dark">#ffcc0000</color>
     <!-- A Holo shade of purple -->
-    <color name="purple">#ffaa66cc</color>
+    <color name="purple">#673AB7</color>
     <!-- A light Holo shade of orange -->
     <color name="orange_light">#ffffbb33</color>
     <!-- A dark Holo shade of orange -->
@@ -43,6 +44,14 @@
     <color name="blue_bright">#ff00ddff</color>
     <!-- A really bright Holo shade of gray -->
     <color name="gray_bright">#33CCCCCC</color>
+    <!-- Redesign Grey -->
+    <color name="grey_redesign">#7A7A7A</color>
+    <color name="colorTextPrimary">@color/colorBlack87</color>
+    <color name="colorTextSecondary">@color/colorBlack54</color>
+    <!--Accounts Screen-->
+    <color name="foreground_text_btn">#4C56C0</color>
+
+
 
     <!-- Material design colors -->
 
@@ -60,6 +69,13 @@
     <color name="divider">#BDBDBD</color>
     <color name="cell_background_color">#ffffff</color>
     <color name="header_line_color">@color/blue_light</color>
+    <color name="colorBlack100">#000000</color>
+    <color name="colorBlack87">#DE000000</color>
+    <color name="colorBlack70">#B3000000</color>
+    <color name="colorBlack54">#8A000000</color>
+    <color name="colorBlack50">#80000000</color>
+    <color name="colorBlack38">#61000000</color>
+    <color name="colorBlack12">#1F000000</color>
 
     <!--Swipe Refresh Colors-->
     <array name="swipeRefreshColors">

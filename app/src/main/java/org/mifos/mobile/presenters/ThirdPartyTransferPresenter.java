@@ -50,7 +50,7 @@ public class ThirdPartyTransferPresenter extends BasePresenter<ThirdPartyTransfe
      */
     @Inject
     public ThirdPartyTransferPresenter(DataManager dataManager,
-            @ApplicationContext Context context) {
+                                       @ApplicationContext Context context) {
         super(context);
         this.dataManager = dataManager;
         compositeDisposable = new CompositeDisposable();
@@ -83,8 +83,8 @@ public class ThirdPartyTransferPresenter extends BasePresenter<ThirdPartyTransfe
                         AccountOptionAndBeneficiary>() {
                     @Override
                     public AccountOptionAndBeneficiary apply(AccountOptionsTemplate
-                            accountOptionsTemplate,
-                            List<Beneficiary> beneficiaries) {
+                                                                     accountOptionsTemplate,
+                                                             List<Beneficiary> beneficiaries) {
                         return new AccountOptionAndBeneficiary(accountOptionsTemplate,
                                 beneficiaries);
                     }
@@ -122,7 +122,7 @@ public class ThirdPartyTransferPresenter extends BasePresenter<ThirdPartyTransfe
      * @return Returns {@link List} containing {@code accountNumbers}
      */
     public List<AccountDetail> getAccountNumbersFromAccountOptions(List<AccountOption>
-            accountOptions) {
+                                                                           accountOptions) {
         final List<AccountDetail> accountNumber = new ArrayList<>();
         Observable.fromIterable(accountOptions)
                 .filter(new Predicate<AccountOption>() {
@@ -156,14 +156,14 @@ public class ThirdPartyTransferPresenter extends BasePresenter<ThirdPartyTransfe
      * @return Returns {@link List} containing {@code accountNumbers}
      */
     public List<BeneficiaryDetail> getAccountNumbersFromBeneficiaries(final List<Beneficiary>
-            beneficiaries) {
+                                                                              beneficiaries) {
         final List<BeneficiaryDetail> accountNumbers = new ArrayList<>();
         Observable.fromIterable(beneficiaries)
                 .flatMap(new Function<Beneficiary, Observable<BeneficiaryDetail>>() {
                     @Override
                     public Observable<BeneficiaryDetail> apply(Beneficiary beneficiary) {
                         return Observable.just(new BeneficiaryDetail(beneficiary.getAccountNumber(),
-                                beneficiary.getName()));
+                                beneficiary.getName(), beneficiary.getTransferLimit().toString()));
                     }
                 })
                 .subscribe(new Consumer<BeneficiaryDetail>() {

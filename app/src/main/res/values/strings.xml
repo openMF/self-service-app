@@ -572,6 +572,16 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+    <string name="list">List</string>
+    <string name="savings_account_type">Savings Account type</string>
+    <string name="four_hundred_dollars">$400</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="name">Name</string>
+    <string name="profile">Profile</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+
 
     <string-array name="languages" translatable="false">
         <item>English</item>

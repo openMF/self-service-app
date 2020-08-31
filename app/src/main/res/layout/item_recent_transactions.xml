@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_loan_accounts"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ll_recent_transactions"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_padding_75dp"
+        android:layout_marginBottom="@dimen/layout_padding_10dp"
+        android:orientation="horizontal"
+        app:cardCornerRadius="@dimen/layout_corner_radius_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_padding_24dp"
+            android:paddingTop="@dimen/layout_padding_16dp"
+            android:paddingLeft="@dimen/layout_padding_24dp"
+            android:paddingStart="@dimen/layout_padding_24dp"
+            android:paddingRight="@dimen/layout_padding_24dp"
+            android:paddingEnd="@dimen/layout_padding_24dp">
+
+            <TextView
+                android:id="@+id/tv_type"
+                style="@style/Base.TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_20sp"
+                tools:text="CREDIT" />
+
+            <TextView
+                android:id="@+id/tv_transaction_date"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:visibility="gone"
+                tools:text="2018-06-13T09:37:11.508Z" />
+
+            <TextView
+                android:id="@+id/tv_message"
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                tools:text="Message 0" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/layout_padding_24dp"
+                android:fontFamily="monospace"
+                android:textColor="@color/purple"
+                android:textSize="@dimen/text_size_30sp"
+                android:textStyle="bold"
+                tools:text="@string/four_hundred_dollars" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/layout_padding_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/layout_padding_24dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/balance"
+                android:textSize="@dimen/text_medium"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/tv_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_medium"
+                tools:text="-5.0" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
+

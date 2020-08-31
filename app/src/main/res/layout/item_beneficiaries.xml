@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_padding_64dp"
+        android:backgroundTint="@color/white"
+        android:layout_marginStart="@dimen/layout_padding_30dp"
+        android:layout_marginLeft="@dimen/layout_padding_30dp"
+        android:layout_marginRight="@dimen/layout_padding_30dp"
+        android:layout_marginEnd="@dimen/layout_padding_30dp"
+        app:cardCornerRadius="@dimen/layout_padding_10dp"
+        android:layout_marginTop="@dimen/layout_padding_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:padding="@dimen/layout_padding_10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/layout_padding_15dp"
+                android:layout_marginLeft="@dimen/layout_padding_15dp">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/name"
+                    android:textSize="@dimen/text_size_20sp"/>
+
+                <TextView
+                    android:id="@+id/tv_beneficiaries_decription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/beneficiary_detail"
+                    android:textColor="@color/gray_light"
+                    android:textSize="@dimen/text_size_14sp"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="7">
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="@string/dummy_principal_amount"
+                    android:textColor="@color/purple"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_22sp"
+                    android:gravity="center"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

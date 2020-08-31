@@ -12,6 +12,6 @@
         android:id="@+id/menu_withdraw_savings_account"
         android:title="@string/withdraw_savings_account"
         android:visible="false"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
 </menu>

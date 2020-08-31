@@ -50,7 +50,7 @@ public class BeneficiarySpinnerAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView,
-            @NonNull ViewGroup parent) {
+                                @NonNull ViewGroup parent) {
         return createItemView(position, convertView, parent);
     }
 
@@ -58,14 +58,14 @@ public class BeneficiarySpinnerAdapter extends ArrayAdapter<String> {
         View view = layoutInflater.inflate(resource, parent, false);
         ButterKnife.bind(this, view);
 
-        tvAccountNumber.setText(list.get(position).getAccountNumber());
-        tvBeneficiaryName.setText(list.get(position).getBeneficiaryName());
+        tvAccountNumber.setText(list.get(position).getName());
+        tvBeneficiaryName.setText(list.get(position).getDescription());
         return view;
     }
 
     @Nullable
     @Override
     public String getItem(int position) {
-        return list.get(position).getAccountNumber();
+        return list.get(position).getName();
     }
 }

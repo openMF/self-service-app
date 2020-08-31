@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context="org.mifos.mobile.ui.activities.NotificationActivity">
+    android:layout_height="match_parent"
+    android:background="@color/offwhite">
 
-    <LinearLayout style="@style/LinearLayout.Base">
+    <include layout="@layout/toolbar_new"></include>
 
-        <include layout="@layout/toolbar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <FrameLayout style="@style/FrameLayout.Container"/>
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/no_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
 
-</LinearLayout>
+            <ImageView
+                android:id="@+id/bell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/notification" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="58dp"
+                android:layout_marginTop="@dimen/layout_corner_radius_10dp"
+                android:src="@drawable/notification_circle"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="12dp"
+                android:text="0"
+                android:textColor="@color/white"></TextView>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/no_notification"
+            android:layout_centerHorizontal="true"
+            android:text="No new notification"></TextView>
+    </RelativeLayout>
+
+
+</RelativeLayout>

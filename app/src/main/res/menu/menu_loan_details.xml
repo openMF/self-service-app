@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_view_guarantor"
-        app:showAsAction="never"
+        android:title="@string/view_guarantor"
         android:visible="false"
-        android:title="@string/view_guarantor"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_update_loan"
-        app:showAsAction="never"
+        android:title="@string/update_loan"
         android:visible="false"
-        android:title="@string/update_loan"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_withdraw_loan"
-        app:showAsAction="never"
+        android:title="@string/withdraw_loan"
         android:visible="false"
-        android:title="@string/withdraw_loan"/>
+        app:showAsAction="never" />
 </menu>

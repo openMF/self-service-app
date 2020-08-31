@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/layout_padding_30dp"
+        android:layout_marginLeft="@dimen/layout_padding_30dp"
+        android:layout_marginTop="@dimen/text_size_38sp"
+        android:text="@string/beneficiaries"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_30sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-20dp"
+        android:backgroundTint="@color/offwhite"
+        app:cardCornerRadius="@dimen/layout_padding_30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_padding_80dp"
+            android:layout_marginLeft="@dimen/layout_padding_40dp"
+            android:layout_marginTop="@dimen/layout_padding_20dp"
+            android:layout_marginRight="@dimen/layout_padding_40dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/layout_padding_5dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnListBeneficiary"
+                android:layout_width="@dimen/layout_padding_120dp"
+                android:layout_height="@dimen/layout_padding_50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/layout_padding_10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/list"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/layout_padding_20dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddBeneficiary"
+                android:layout_width="@dimen/layout_padding_120dp"
+                android:layout_height="@dimen/layout_padding_50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/layout_padding_10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/add"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/layout_padding_20dp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/mBtnListFocused"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/layout_padding_100dp"
+            android:layout_marginBottom="@dimen/layout_padding_20dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/beneficiariesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/layout_padding_20dp"/>
+
+        </LinearLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_padding_100dp"
+            android:layout_marginBottom="@dimen/layout_padding_18dp">
+            <LinearLayout
+                android:id="@+id/mBtnAddFocused"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_padding_64dp"
+                    android:layout_marginStart="@dimen/layout_padding_50dp"
+                    android:layout_marginLeft="@dimen/layout_padding_50dp"
+                    android:layout_marginTop="@dimen/layout_padding_10dp"
+                    android:layout_marginEnd="@dimen/layout_padding_40dp"
+                    android:layout_marginRight="@dimen/layout_padding_40dp"
+                    android:layout_marginBottom="@dimen/layout_padding_15dp"
+                    android:textColorHint="@color/purple"
+                    app:boxStrokeColor="@color/purple"
+                    app:helperText="@string/savings_account_type">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_padding_40dp"
+                        android:hint="@string/savings_account" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_padding_64dp"
+                    android:layout_marginStart="@dimen/layout_padding_50dp"
+                    android:layout_marginLeft="@dimen/layout_padding_50dp"
+                    android:layout_marginEnd="@dimen/layout_padding_40dp"
+                    android:layout_marginRight="@dimen/layout_padding_40dp"
+                    android:layout_marginBottom="@dimen/layout_padding_15dp"
+                    app:boxStrokeColor="@color/purple"
+                    app:helperText="@string/account_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_padding_40dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_padding_64dp"
+                    android:layout_marginStart="@dimen/layout_padding_50dp"
+                    android:layout_marginLeft="@dimen/layout_padding_50dp"
+                    android:layout_marginEnd="@dimen/layout_padding_40dp"
+                    android:layout_marginRight="@dimen/layout_padding_40dp"
+                    android:layout_marginBottom="@dimen/layout_padding_15dp"
+                    app:boxStrokeColor="@color/purple"
+                    app:helperText="@string/office_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_padding_40dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_padding_64dp"
+                    android:layout_marginStart="@dimen/layout_padding_50dp"
+                    android:layout_marginLeft="@dimen/layout_padding_50dp"
+                    android:layout_marginEnd="@dimen/layout_padding_40dp"
+                    android:layout_marginRight="@dimen/layout_padding_40dp"
+                    android:layout_marginBottom="18dp"
+                    app:boxStrokeColor="@color/purple"
+                    app:helperText="@string/transfer_limit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_padding_40dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_padding_64dp"
+                    android:layout_marginStart="@dimen/layout_padding_50dp"
+                    android:layout_marginLeft="@dimen/layout_padding_50dp"
+                    android:layout_marginEnd="@dimen/layout_padding_40dp"
+                    android:layout_marginRight="@dimen/layout_padding_40dp"
+                    android:layout_marginBottom="@dimen/layout_padding_20dp"
+                    app:boxStrokeColor="@color/purple"
+                    app:helperText="@string/beneficiary_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_padding_40dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_padding_50dp"
+                    android:layout_marginLeft="@dimen/layout_padding_50dp"
+                    android:layout_marginRight="@dimen/layout_padding_50dp"
+                    android:layout_marginBottom="@dimen/layout_padding_32dp"
+                    android:backgroundTint="@color/purple"
+                    android:text="@string/submit_beneficiary"
+                    android:textSize="@dimen/text_medium"
+                    app:cornerRadius="@dimen/layout_padding_8dp" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

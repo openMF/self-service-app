@@ -11,6 +11,8 @@ public class Constants {
 
     public static final String CLIENT_ID = "clientId";
 
+    public static final String CUSTOMER_IDENTIFIER = "customer_identifier";
+
     public static final String ACCOUNT_ID = "accountId";
 
     public static final String LOAN_ID = "loanId";

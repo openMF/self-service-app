@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item android:id="@+id/menu_notifications"
-        app:showAsAction="always"
-        app:actionLayout="@layout/action_bar_notification_layout"
-        android:title="@string/notification" />
-</menu>
+    xmlns:app="http://schemas.android.com/apk/res-auto"></menu>

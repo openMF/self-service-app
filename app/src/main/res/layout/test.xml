@@ -1,0 +1,176 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_padding_100dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/layout_padding_30dp"
+            android:fontFamily="monospace"
+            android:text="@string/apply_for_loan"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_padding_100dp"
+        android:layout_marginBottom="@dimen/layout_padding_negative_40dp"
+        android:backgroundTint="@color/offwhite"
+        app:cardCornerRadius="@dimen/layout_dimen_40dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_padding_25dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="@dimen/layout_padding_12dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/deposit_toggle_btn"
+                        style="@style/AppTheme.RoundedCornerMaterialButton"
+                        android:layout_width="@dimen/layout_padding_130dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:fontFamily="monospace"
+                        android:text="@string/deposit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/foreground_text_btn"
+                        android:textSize="@dimen/text_medium"
+                        app:cornerRadius="@dimen/layout_padding_50dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/layout_padding_12dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loan_toggle_btn"
+                        style="@style/AppTheme.RoundedCornerMaterialButton"
+                        android:layout_width="@dimen/layout_padding_130dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:fontFamily="monospace"
+                        android:text="@string/loan"
+                        android:textAllCaps="false"
+                        android:textColor="@color/foreground_text_btn"
+                        android:textSize="@dimen/text_medium"
+                        app:cornerRadius="@dimen/layout_padding_50dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <RelativeLayout
+                    android:layout_width="@dimen/layout_padding_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/layout_padding_12dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/deposit_toggle_focus_btn"
+                        style="@style/AppTheme.RoundedCornerMaterialButton"
+                        android:layout_width="@dimen/layout_padding_130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:backgroundTint="@color/purple"
+                        android:fontFamily="monospace"
+                        android:text="@string/deposit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_medium"
+                        app:cornerRadius="@dimen/layout_padding_50dp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="@dimen/layout_padding_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingLeft="@dimen/layout_padding_12dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loan_toggle_focus_btn"
+                        style="@style/AppTheme.RoundedCornerMaterialButton"
+                        android:layout_width="@dimen/layout_padding_130dp"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/purple"
+                        android:fontFamily="monospace"
+                        android:text="@string/loan"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_medium"
+                        android:visibility="gone"
+                        app:cornerRadius="@dimen/layout_padding_50dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_padding_50dp"
+            android:backgroundTint="@color/white"
+            android:visibility="gone">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/white"
+                app:tabMode="fixed" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/layout_padding_100dp"
+            android:backgroundTint="@color/offwhite"
+            android:padding="@dimen/layout_padding_10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create_loan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="@dimen/margin_16dp"
+            android:clickable="true"
+            android:visibility="gone"
+            app:layout_behavior="org.mifos.mobile.cn.ui.utils.ScrollFabBehaviour"
+            app:srcCompat="@drawable/ic_add_white_24dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

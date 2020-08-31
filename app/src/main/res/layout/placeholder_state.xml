@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/iv_empty_no_transaction_history"
+        android:layout_width="@dimen/layout_padding_64dp"
+        android:layout_height="@dimen/layout_padding_64dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_error_state"
+        android:contentDescription="Placeholder" />
+
+    <TextView
+        android:id="@+id/tv_empty_no_transaction_history_title"
+        android:layout_marginTop="@dimen/layout_padding_24dp"
+        android:text="Oops"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_empty_no_transaction_history_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/layout_padding_24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="@dimen/layout_padding_24dp"
+        android:layout_marginBottom="@dimen/layout_padding_24dp"
+        android:text="An unexpected error occured. Please try again."
+        android:textAlignment="center"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="@dimen/text_size_14sp" />
+</LinearLayout>

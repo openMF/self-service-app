@@ -97,7 +97,7 @@
                         android:id="@+id/tv_user_name"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 
@@ -119,7 +119,7 @@
                         android:id="@+id/tv_account_number"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 
@@ -140,7 +140,7 @@
                         android:id="@+id/tv_activation_date"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 
@@ -161,7 +161,7 @@
                         android:id="@+id/tv_office_name"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 
@@ -182,7 +182,7 @@
                         android:id="@+id/tv_groups"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 
@@ -203,7 +203,7 @@
                         android:id="@+id/tv_client_type"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 
@@ -224,7 +224,7 @@
                         android:id="@+id/tv_client_classification"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
+                        android:paddingTop="@dimen/layout_padding_5dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         tools:text="@string/medium_text"/>
 

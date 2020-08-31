@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        app:srcCompat="@drawable/shape_bottom_sheet_dialog_grip" />
+
+    <TextView
+        android:id="@+id/dialog_home_bottom_sheet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginItemsInSectionSmall"
+        android:text="Account Details"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="@dimen/text_medium" />
+
+    <include
+        android:id="@+id/inc_account_details_email"
+        layout="@layout/item_casual_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginItemsInSectionLarge" />
+
+    <include
+        android:id="@+id/inc_account_details_vpa"
+        layout="@layout/item_casual_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginItemsInSectionMedium" />
+
+    <include
+        android:id="@+id/inc_account_details_mobile_number"
+        layout="@layout/item_casual_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginItemsInSectionMedium" />
+
+    <Button
+        android:id="@+id/btn_profile_bottom_sheet_action"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/marginItemsInSectionSmall"
+        android:layout_marginTop="@dimen/marginBetweenSections"
+        android:text="Edit Profile" />
+
+</LinearLayout>

@@ -107,7 +107,7 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_home_old, container, false);
         ((HomeActivity) getActivity()).getActivityComponent().inject(this);
         ButterKnife.bind(this, rootView);
@@ -144,7 +144,7 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_main, menu);
-        MenuItem menuItem = menu.findItem(R.id.menu_notifications);
+        MenuItem menuItem = menu.findItem(R.id.rv_notifications);
         View count = menuItem.getActionView();
         tvNotificationCount = count.findViewById(R.id.tv_notification_indicator);
         presenter.getUnreadNotificationsCount();
@@ -228,7 +228,8 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
      */
     public void openAccount(AccountType accountType) {
         ((BaseActivity) getActivity()).replaceFragment(
-                ClientAccountsFragment.newInstance(accountType), true, R.id.container);
+                ClientAccountsFragment.Companion.newInstance(accountType), true, R.id.container);
+
     }
 
     /**
@@ -485,4 +486,3 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     }
 
 }
-

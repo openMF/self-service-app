@@ -6,14 +6,9 @@
     <dimen name="toolbar_height">32dp</dimen>
     <dimen name="tab_layout_height">28dp</dimen>
     <dimen name="login_height">72dp</dimen>
+    <dimen name="layout_dimen_40dp">40dp</dimen>
 
     <!-- Dimen values for padding -->
-    <dimen name="layout_padding_4dp">4dp</dimen>
-    <dimen name="layout_padding_8dp">8dp</dimen>
-    <dimen name="layout_padding_16dp">16dp</dimen>
-    <dimen name="layout_padding_24dp">24dp</dimen>
-    <dimen name="layout_padding_30dp">30dp</dimen>
-    <dimen name="layout_padding_48dp">48dp</dimen>
     <dimen name="default_padding">16dp</dimen>
     <dimen name="row_padding_left">16dp</dimen>
     <dimen name="row_padding_right">16dp</dimen>
@@ -22,7 +17,41 @@
     <dimen name="login_padding_top">56dp</dimen>
     <dimen name="login_padding_button">12dp</dimen>
     <dimen name="ticker">24dp</dimen>
+    <dimen name="layout_padding_2dp">2dp</dimen>
     <dimen name="table_row_padding_top">15dp</dimen>
+    <dimen name="layout_padding_8dp">8dp</dimen>
+    <dimen name="layout_padding_5dp">5dp</dimen>
+    <dimen name="layout_padding_7dp">7dp</dimen>
+    <dimen name="layout_padding_10dp">10dp</dimen>
+    <dimen name="layout_padding_12dp">12dp</dimen>
+    <dimen name="layout_padding_15dp">15dp</dimen>
+    <dimen name="layout_padding_16dp">16dp</dimen>
+    <dimen name="layout_padding_18dp">18dp</dimen>
+    <dimen name="layout_padding_20dp">20dp</dimen>
+    <dimen name="layout_padding_24dp">24dp</dimen>
+    <dimen name="layout_padding_25dp">25dp</dimen>
+    <dimen name="layout_padding_30dp">30dp</dimen>
+    <dimen name="layout_padding_32dp">32dp</dimen>
+    <dimen name="layout_padding_35dp">35dp</dimen>
+    <dimen name="layout_padding_40dp">40dp</dimen>
+    <dimen name="layout_padding_50dp">50dp</dimen>
+    <dimen name="layout_padding_60dp">60dp</dimen>
+    <dimen name="layout_padding_64dp">64dp</dimen>
+    <dimen name="layout_padding_65dp">65dp</dimen>
+    <dimen name="layout_padding_70dp">70dp</dimen>
+    <dimen name="layout_padding_75dp">75dp</dimen>
+    <dimen name="layout_padding_80dp">80dp</dimen>
+    <dimen name="layout_padding_98dp">98dp</dimen>
+    <dimen name="layout_padding_100dp">100dp</dimen>
+    <dimen name="layout_padding_120dp">120dp</dimen>
+    <dimen name="layout_padding_130dp">130dp</dimen>
+    <dimen name="layout_padding_140dp">140dp</dimen>
+    <dimen name="layout_padding_150dp">150dp</dimen>
+    <dimen name="layout_padding_180dp">180dp</dimen>
+    <dimen name="layout_padding_250dp">250dp</dimen>
+    <dimen name="layout_padding_520dp">520dp</dimen>
+    <dimen name="layout_padding_550dp">550dp</dimen>
+    <dimen name="layout_padding_620dp">620dp</dimen>
 
     <!-- Dimen values for margins-->
     <dimen name="login_margin_top">20dp</dimen>
@@ -36,12 +65,27 @@
     <dimen name="margin_4dp">4dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="marginItemsInSectionSmall">16dp</dimen>
+    <dimen name="marginItemsInSectionMedium">20dp</dimen>
+    <dimen name="marginItemsInSectionLarge">24dp</dimen>
+    <dimen name="marginBetweenSections">48dp</dimen>
+    <dimen name="marginBetweenWords">4dp</dimen>
 
     <!-- Dimen values for text size -->
     <dimen name="text_headline">24sp</dimen>
     <dimen name="text_large">20sp</dimen>
     <dimen name="text_medium">16sp</dimen>
     <dimen name="text_small">14sp</dimen>
+    <dimen name="text_size_15sp">15sp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_20sp">20sp</dimen>
+    <dimen name="text_size_22sp">22sp</dimen>
+    <dimen name="text_size_25sp">25sp</dimen>
+    <dimen name="text_size_28sp">28sp</dimen>
+    <dimen name="text_size_30sp">30sp</dimen>
+    <dimen name="text_size_35sp">35sp</dimen>
+    <dimen name="text_size_38sp">38sp</dimen>
+    <dimen name="text_size_60sp">60sp</dimen>
 
     <!-- Dimen values for Account Status-->
     <dimen name="account_status_width">25dp</dimen>
@@ -74,4 +118,18 @@
     <dimen name="row_header_width">55dp</dimen>
     <dimen name="text_size">14sp</dimen>
     <dimen name="table_header_line">1dp</dimen>
+    <dimen name="layout_padding_negative_50dp">-50dp</dimen>
+    <dimen name="layout_padding_negative_40dp">-40dp</dimen>
+    <dimen name="layout_padding_negative_30dp">-30dp</dimen>
+    <dimen name="layout_padding_0dp">0dp</dimen>
+    <dimen name="layout_corner_radius_10dp">10dp</dimen>
+    <dimen name="layout_corner_radius_50dp">50dp</dimen>
+
+    <dimen name="layout_width_25dp">25dp</dimen>
+    <dimen name="layout_width_105dp">105dp</dimen>
+
+    <dimen name="layout_height_25dp">25dp</dimen>
+    <dimen name="layout_height_38dp">38dp</dimen>
+    <dimen name="layout_peak_height_350">350dp</dimen>
+    <dimen name="layout_height_450dp">450dp</dimen>
 </resources>

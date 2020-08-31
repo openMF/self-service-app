@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_deposit_accounts"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/layout_padding_24dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="@dimen/layout_padding_24dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_card"
+        android:elevation="@dimen/layout_padding_10dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_status_indicator"
+            android:layout_width="@dimen/side_bar_width"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            app:srcCompat="@drawable/round_corner" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/layout_padding_24dp">
+            android:padding="@dimen/layout_padding_10dp">
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Body1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/account_type" />
+
+            <TextView
+                android:id="@+id/tv_customer_account_identifier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_medium"
+                tools:text="Deposit Identifier" />
+            tools:text="Deposit Identifier" />
+
+            <TextView
+                android:id="@+id/tv_deposit_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_small"
+                tools:text="Deposit Product" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_account_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/layout_padding_24dp"
+            android:layout_marginRight="@dimen/layout_padding_24dp"
+            android:textColor="@color/purple"
+            android:textSize="24sp"
+            tools:text="Amount" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.2dp"
+        android:background="#E7DFDF" />
+
+    <androidx.legacy.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_padding_10dp" />
+</LinearLayout>

@@ -99,7 +99,7 @@ public class TransferProcessFragment extends BaseFragment implements TransferPro
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_transfer_process, container, false);
+        rootView = inflater.inflate(R.layout.fragment_transfer, container, false);
         ((BaseActivity) getActivity()).getActivityComponent().inject(this);
         setToolbarTitle(getString(R.string.transfer));
 

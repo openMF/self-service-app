@@ -24,7 +24,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
-                    android:paddingTop="@dimen/layout_padding_48dp">
+                    android:paddingTop="@dimen/layout_padding_50dp">
 
                     <TextView
                         android:gravity="center"
@@ -39,7 +39,7 @@
                     <TextView
                         android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/layout_padding_4dp"
+                        android:layout_marginTop="@dimen/layout_padding_5dp"
                         android:layout_width="match_parent"
                         android:text="@string/total_loan_balance"
                         android:textColor="@color/white"
@@ -76,7 +76,7 @@
                     <TextView
                         android:gravity="center"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/layout_padding_4dp"
+                        android:layout_marginTop="@dimen/layout_padding_5dp"
                         android:layout_width="match_parent"
                         android:text="@string/total_saving_balance"
                         android:textColor="@color/white"

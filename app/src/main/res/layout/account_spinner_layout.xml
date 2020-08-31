@@ -17,8 +17,8 @@
     <TextView
         android:id="@+id/tv_account_type"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/layout_padding_4dp"
-        android:layout_marginStart="@dimen/layout_padding_4dp"
+        android:layout_marginLeft="@dimen/layout_padding_5dp"
+        android:layout_marginStart="@dimen/layout_padding_5dp"
         android:layout_width="match_parent"
         android:textAppearance="?android:textAppearanceSmall"
         tools:text="Loan"/>
