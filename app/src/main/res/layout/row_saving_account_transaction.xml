@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:text="@string/medium_text"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"/>
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:id="@+id/tv_transaction_type"
@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:text="@string/medium_text"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"/>
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:gravity="end"

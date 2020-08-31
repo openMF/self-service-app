@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"
+            android:textColor="@color/primary_text"
             tools:text="@string/medium_text"/>
 
         <TextView

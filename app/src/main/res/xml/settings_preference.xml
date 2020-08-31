@@ -1,37 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/accounts">
         <Preference
+            android:icon="@drawable/ic_lock_black_24dp"
             android:key="@string/password"
             android:persistent="false"
-            android:icon="@drawable/ic_lock_black_24dp"
             android:summary="@string/change_account_password"
-            android:title="@string/change_password"/>
+            android:title="@string/change_password" />
 
         <Preference
+            android:icon="@drawable/ic_passcode"
             android:key="@string/passcode"
             android:persistent="false"
-            android:icon="@drawable/ic_passcode"
             android:summary="@string/change_app_passcode"
-            android:title="@string/change_passcode"/>
+            android:title="@string/change_passcode" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/other">
+        <ListPreference
+            android:defaultValue="en"
+            android:entries="@array/mode_entries"
+            android:entryValues="@array/mode_values"
+            android:icon="@drawable/ic_theme"
+            android:key="@string/dark_mode"
+            android:summary="@string/choose_theme"
+            android:title="@string/theme" />
+
         <androidx.preference.ListPreference
             android:defaultValue="en"
             android:entries="@array/languages"
-            android:icon="@drawable/ic_translate"
             android:entryValues="@array/languages_value"
+            android:icon="@drawable/ic_translate"
             android:key="@string/language_type"
             android:summary="@string/choose_language"
-            android:title="@string/language"/>
+            android:title="@string/language" />
 
         <org.mifos.mobile.utils.ConfigurationPreference
-            android:key="@string/pref_configuration"
             android:icon="@drawable/ic_update"
+            android:key="@string/pref_configuration"
             android:summary="@string/pref_base_url_desc"
-            android:title="@string/pref_base_url_title"/>
+            android:title="@string/pref_base_url_title" />
     </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

@@ -28,7 +28,7 @@
             android:lines="1"
             android:text="@string/medium_text"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"/>
+            android:textColor="@color/primary_text"/>
 
         <TextView
             android:id="@+id/tv_loanAccountProductName"

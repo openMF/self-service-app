@@ -1,6 +1,8 @@
 package org.mifos.mobile;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.crashlytics.android.Crashlytics;
 import com.mifos.mobile.passcode.utils.ForegroundChecker;
@@ -11,6 +13,7 @@ import org.mifos.mobile.injection.component.ApplicationComponent;
 import org.mifos.mobile.injection.component.DaggerApplicationComponent;
 import org.mifos.mobile.injection.module.ApplicationModule;
 import org.mifos.mobile.utils.LanguageHelper;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import java.util.Locale;
 
@@ -49,6 +52,10 @@ public class MifosSelfServiceApp extends MultiDexApplication {
         instance = this;
         FlowManager.init(new FlowConfig.Builder(this).build());
         ForegroundChecker.init(this);
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
+        String themePref = sharedPreferences.getString("dark_mode", ThemeHelper.DEFAULT_MODE);
+        ThemeHelper.applyTheme(themePref);
     }
 
     @Override

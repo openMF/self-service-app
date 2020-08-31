@@ -1,22 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ This project is licensed under the open source MPL V2.
+  ~ See https://github.com/openMF/android-client/blob/master/LICENSE.md
+  -->
+
 <resources>
-    <color name="white">#ffffffff</color>
-    <color name="black">#000000</color>
-    <color name="background">#eaeaea</color>
+    <color name="white">#212121</color>
+    <color name="black">#ffffff</color>
     <color name="deposit_green">#ff14c416</color>
     <color name="light_green">#ff8bf98a</color>
     <color name="light_yellow">#fff9ac06</color>
-    <color name="light_blue">#FF87DBF9</color>
+    <color name="light_blue">#33999999</color>
     <color name="light_red">#fff9393c</color>
     <color name="light_grey">#ffd1d1d1</color>
     <color name="transaction_detail_bg">#8ad3da44</color>
     <color name="transaction_detail_table_header_bg">#8ada6134</color>
     <color name="blue">#ff003fff</color>
     <color name="red">#FF0000</color>
-    <color name="light_black">#1C1C1C</color>
-    <color name="foreground">#ffffffff</color>
 
-    <color name="dashboard_gray_background">#B2C1C8</color>
+    <!-- Color resources common to Accounts -->
+    <color name="status_submitted_and_pending_approval">#FFA500</color>
+    <color name="status_approved">#0536E4</color>
+
+    <!-- Color resources for Loan Account Statuses -->
+    <color name="loan_status_disbursed">#008000</color>
+    <color name="status_closed">#555555</color>
+
+    <!-- Color resources for Savings Account Statuses -->
+    <color name="savings_account_status_active">#008000</color>
 
     <!-- A light Holo shade of blue -->
     <color name="blue_light">#ff33b5e5</color>
@@ -45,22 +55,18 @@
     <!-- A really bright Holo shade of gray -->
     <color name="gray_bright">#33CCCCCC</color>
 
+
     <!-- Material design colors -->
 
-    <!-- New UI color palette -->
-    <!--<color name="primary">#068799</color>-->
-    <!--<color name="primary_dark">#006978</color>-->
-    <!--<color name="primary_light">#56c8d8</color>-->
-    <color name="primary">#03A9F4</color>
-    <color name="primary_dark">#0288D1</color>
-    <color name="primary_light">#B3E5FC</color>
-    <color name="accent">#FF4081</color>
-    <color name="primary_text">#212121</color>
-    <color name="secondary_text">#757575</color>
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="primary_light">#16754e</color>
+    <color name="accent">#03A9F4</color>
+    <color name="primary_text">#ffffff</color>
+    <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
-    <color name="divider">#BDBDBD</color>
-    <color name="cell_background_color">#ffffff</color>
-    <color name="header_line_color">@color/blue_light</color>
+    <color name="divider">#B6B6B6</color>
+    <color name="foreground">#555555</color>
 
     <!--Swipe Refresh Colors-->
     <array name="swipeRefreshColors">

@@ -10,6 +10,7 @@ import org.mifos.mobile.utils.ConfigurationDialogFragmentCompat;
 import org.mifos.mobile.utils.ConfigurationPreference;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.LanguageHelper;
+import org.mifos.mobile.utils.ThemeHelper;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.ListPreference;
@@ -31,6 +32,20 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.settings_preference);
+        ListPreference themePreference = (ListPreference) findPreference("dark_mode");
+        if (themePreference != null) {
+            themePreference.setOnPreferenceChangeListener(
+                    new Preference.OnPreferenceChangeListener() {
+
+                        @Override
+                        public boolean onPreferenceChange(Preference preference, Object newValue) {
+                            String themeOption = (String) newValue;
+                            ThemeHelper.applyTheme(themeOption);
+                            startActivity(new Intent(getActivity(), getActivity().getClass()));
+                            return true;
+                        }
+                    });
+        }
     }
 
     @Override

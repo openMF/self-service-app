@@ -62,7 +62,6 @@
                 android:layout_width="match_parent">
 
                 <LinearLayout
-                    android:background="@android:color/white"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
@@ -192,7 +191,6 @@
                         android:layout_width="wrap_content">
 
                         <LinearLayout
-                            android:background="@android:color/white"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?selectableItemBackground"
@@ -229,7 +227,6 @@
                         android:layout_width="wrap_content">
 
                         <LinearLayout
-                            android:background="@android:color/white"
                             android:clickable="true"
                             android:focusable="true"
                             android:foreground="?selectableItemBackground"

@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:lines="1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/black"
+                    android:textColor="@color/primary_text"
                     tools:text="@string/medium_text"/>
 
                 <TextView
@@ -67,7 +67,7 @@
                     android:lines="1"
                     android:text="@string/amount_due"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/primary_text"/>
 
                 <TextView
                     android:id="@+id/tv_amount"
@@ -91,7 +91,7 @@
                     android:lines="1"
                     android:text="@string/amount_paid"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/primary_text"/>
 
                 <TextView
                     android:id="@+id/tv_amount_paid"
@@ -115,7 +115,7 @@
                     android:lines="1"
                     android:text="@string/amount_waived"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/primary_text"/>
 
                 <TextView
                     android:id="@+id/tv_amount_waived"
@@ -139,7 +139,7 @@
                     android:lines="1"
                     android:text="@string/amount_outstanding"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/primary_text"/>
 
                 <TextView
                     android:id="@+id/tv_amount_outstanding"

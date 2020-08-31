@@ -481,13 +481,28 @@
     <string name="settings">Settings</string>
     <string name="language">Language</string>
     <string name="choose_language">Choose your language</string>
+    <string name="choose_theme">Choose your theme</string>
     <string name="notification">Notifications</string>
     <string name="base_url">Base URL</string>
     <string name="tenant">Tenant</string>
     <string name="no_saving_account">Saving Accounts</string>
     <string name="no_loan_account">Loan Accounts</string>
     <string name="no_sharing_account">Sharing Accounts</string>
+    <string name="theme">Theme</string>
+    <string name="ui">UI</string>
+    <string name="dark_mode_def_value">MODE_NIGHT_FOLLOW_SYSTEM</string>
 
+    <string-array name="mode_entries"  translatable="true">
+        <item>Light</item>
+        <item>Dark</item>
+        <item>System Default</item>
+    </string-array>
+
+    <string-array name="mode_values"  translatable="true">
+        <item>light</item>
+        <item>dark</item>
+        <item>default</item>
+    </string-array>
 
     <string-array name="faq_qs">
         <item>How do I apply for new loan account?</item>
@@ -524,6 +539,7 @@
     </string-array>
 
     <string name="language_type" translatable="false">language_type</string>
+    <string name="dark_mode" translatable="false">dark_mode</string>
     <string name="total_saving_balance">Total Savings Balance</string>
     <string name="total_loan_balance">Total Loan Balance</string>
     <string name="total_loan_savings_description">Above Loan and Savings account balance are
