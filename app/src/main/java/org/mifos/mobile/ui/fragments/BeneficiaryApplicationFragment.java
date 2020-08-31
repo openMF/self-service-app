@@ -171,6 +171,7 @@ public class BeneficiaryApplicationFragment extends BaseFragment implements
     @Override
     public void showBeneficiaryTemplate(BeneficiaryTemplate beneficiaryTemplate) {
         this.beneficiaryTemplate = beneficiaryTemplate;
+        listAccountType.clear();
         for (AccountTypeOption accountTypeOption : beneficiaryTemplate.getAccountTypeOptions()) {
             listAccountType.add(accountTypeOption.getValue());
         }
