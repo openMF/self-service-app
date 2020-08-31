@@ -227,6 +227,9 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                                         FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
                                 finish();
+                                Toast.makeText(HomeActivity.this,
+                                        R.string.logged_out_successfully, Toast.LENGTH_SHORT)
+                                        .show();
                             }
                         })
                 .setNegativeButton(getString(R.string.cancel),
