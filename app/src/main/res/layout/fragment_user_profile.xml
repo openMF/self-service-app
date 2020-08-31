@@ -174,54 +174,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/default_margin"
                         android:layout_width="wrap_content"
-                        android:text="@string/groups"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/primary"/>
-                    <TextView
-                        android:gravity="center"
-                        android:id="@+id/tv_groups"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        tools:text="@string/medium_text"/>
-
-                    <View
-                        android:background="@color/light_grey"
-                        android:layout_height="1dp"
-                        android:layout_width="match_parent"/>
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_width="wrap_content"
                         android:text="@string/client_type"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/primary"/>
                     <TextView
                         android:gravity="center"
                         android:id="@+id/tv_client_type"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:paddingTop="@dimen/layout_padding_4dp"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                        tools:text="@string/medium_text"/>
-
-                    <View
-                        android:background="@color/light_grey"
-                        android:layout_height="1dp"
-                        android:layout_width="match_parent"/>
-
-                    <TextView
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/default_margin"
-                        android:layout_width="wrap_content"
-                        android:text="@string/client_classification"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                        android:textColor="@color/primary"/>
-                    <TextView
-                        android:gravity="center"
-                        android:id="@+id/tv_client_classification"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
                         android:paddingTop="@dimen/layout_padding_4dp"
