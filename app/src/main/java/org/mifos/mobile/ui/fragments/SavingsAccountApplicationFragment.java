@@ -13,6 +13,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler;
+
 import org.mifos.mobile.R;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.models.accounts.savings.SavingsAccountApplicationPayload;
@@ -28,6 +30,8 @@ import org.mifos.mobile.ui.views.SavingsAccountApplicationView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.DateHelper;
 import org.mifos.mobile.utils.MFDatePicker;
+import org.mifos.mobile.utils.Network;
+import org.mifos.mobile.utils.Toaster;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +39,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -51,6 +56,12 @@ public class SavingsAccountApplicationFragment extends BaseFragment
     @BindView(R.id.tv_client_name)
     TextView tvClientName;
 
+    @BindView(R.id.ll_savings_application)
+    CardView layoutSavingsApplication;
+
+    @BindView(R.id.layout_error)
+    View layoutError;
+
     @Inject
     SavingsAccountApplicationPresenter presenter;
 
@@ -64,6 +75,7 @@ public class SavingsAccountApplicationFragment extends BaseFragment
     private SavingsAccountTemplate template;
     private List<ProductOptions> productOptions;
     private List<String> productIdList = new ArrayList<>();
+    private SweetUIErrorHandler sweetUIErrorHandler;
 
     public static SavingsAccountApplicationFragment newInstance(
             SavingsAccountState state, SavingsWithAssociations savingsWithAssociations) {
@@ -96,6 +108,9 @@ public class SavingsAccountApplicationFragment extends BaseFragment
 
         presenter.attachView(this);
         presenter.loadSavingsAccountApplicationTemplate(preferencesHelper.getClientId(), state);
+
+        sweetUIErrorHandler = new SweetUIErrorHandler(getContext(), rootView);
+
         return rootView;
     }
 
@@ -169,7 +184,21 @@ public class SavingsAccountApplicationFragment extends BaseFragment
 
     @Override
     public void showError(String error) {
-        Toast.makeText(getContext(), error, Toast.LENGTH_SHORT).show();
+        if (!Network.isConnected(getContext())) {
+            sweetUIErrorHandler.showSweetNoInternetUI(layoutSavingsApplication, layoutError);
+        } else {
+            sweetUIErrorHandler.showSweetErrorUI(error, layoutSavingsApplication, layoutError);
+        }
+    }
+
+    @OnClick(R.id.btn_try_again)
+    void onRetry() {
+        if (!Network.isConnected(getContext())) {
+            Toaster.show(rootView, R.string.internet_not_connected);
+        } else {
+            sweetUIErrorHandler.hideSweetErrorLayoutUI(layoutSavingsApplication, layoutError);
+            presenter.loadSavingsAccountApplicationTemplate(preferencesHelper.getClientId(), state);
+        }
     }
 
     @Override

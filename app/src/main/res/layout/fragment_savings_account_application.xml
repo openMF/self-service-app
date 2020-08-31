@@ -1,99 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_16dp"
-    android:layout_width="match_parent"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:elevation="@dimen/cardview_default_elevation"
-        android:layout_height="wrap_content"
+        android:id="@+id/ll_savings_application"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/cardview_default_elevation"
         app:cardCornerRadius="@dimen/cardview_default_radius">
 
         <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/default_margin"
-            android:layout_width="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_padding"
                 android:layout_marginTop="@dimen/default_padding"
-                android:layout_width="match_parent">
+                android:layout_marginBottom="@dimen/default_padding">
 
                 <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:layout_width="0dp"
                     android:text="@string/client_name"
-                    android:textColor="@color/light_grey"/>
+                    android:textColor="@color/light_grey" />
 
                 <TextView
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:gravity="center"
                     android:id="@+id/tv_client_name"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:layout_width="0dp"
-                    tools:text="@string/medium_text"/>
+                    android:gravity="center"
+                    tools:text="@string/medium_text" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_padding"
-                android:layout_marginTop="@dimen/default_padding"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_marginBottom="@dimen/default_padding"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:layout_width="0dp"
                     android:text="@string/submission_date"
-                    android:textColor="@color/light_grey"/>
+                    android:textColor="@color/light_grey" />
 
                 <TextView
-                    style="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:gravity="center"
                     android:id="@+id/tv_submission_date"
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:layout_width="0dp"
-                    tools:text="@string/medium_text"/>
+                    android:gravity="center"
+                    tools:text="@string/medium_text" />
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:text="@string/select_product_id"
+                android:textColor="@color/light_grey" />
+
+            <Spinner
+                android:id="@+id/sp_product_id"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:spinnerMode="dropdown" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/submit" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_padding"
-        android:layout_marginTop="@dimen/default_padding"
-        android:layout_width="match_parent"
-        android:text="@string/select_product_id"
-        android:textColor="@color/light_grey"/>
-
-    <Spinner
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:id="@+id/sp_product_id"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/default_padding"
-        android:layout_marginTop="@dimen/default_padding"
-        android:layout_width="match_parent"
-        android:spinnerMode="dropdown"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"/>
+    <include
+        android:id="@+id/layout_error"
+        layout="@layout/layout_sweet_exception_handler"
+        android:visibility="gone" />
 
 </LinearLayout>
