@@ -548,7 +548,8 @@ public class LoanApplicationFragment extends BaseFragment implements LoanApplica
                 break;
 
             case R.id.sp_loan_purpose:
-                if (loanTemplate.getLoanPurposeOptions() != null) {
+                if (loanTemplate.getLoanPurposeOptions() != null &&
+                        loanTemplate.getLoanPurposeOptions().size() > position) {
                     purposeId = loanTemplate.getLoanPurposeOptions().get(position).getId();
                 }
                 break;
