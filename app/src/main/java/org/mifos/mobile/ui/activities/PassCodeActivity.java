@@ -1,7 +1,6 @@
 package org.mifos.mobile.ui.activities;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,6 @@ import com.mifos.mobile.passcode.utils.EncryptionUtil;
 import org.mifos.mobile.R;
 import org.mifos.mobile.utils.CheckSelfPermissionAndRequest;
 import org.mifos.mobile.utils.Constants;
-import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Toaster;
 
 public class PassCodeActivity extends MifosPassCodeActivity {
@@ -53,30 +51,12 @@ public class PassCodeActivity extends MifosPassCodeActivity {
 
     @Override
     public void startLoginActivity() {
-        new MaterialDialog.Builder().init(PassCodeActivity.this)
-                .setCancelable(false)
-                .setMessage(R.string.login_using_password_confirmation)
-                .setPositiveButton(getString(R.string.logout),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent i = new Intent(PassCodeActivity.this,
-                                        LoginActivity.class);
-                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.
-                                        FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(i);
-                                finish();
-                            }
-                        })
-                .setNegativeButton(getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                .createMaterialDialog()
-                .show();
+        Intent i = new Intent(PassCodeActivity.this,
+                LoginActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.
+                FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
+        finish();
     }
 
     @Override
