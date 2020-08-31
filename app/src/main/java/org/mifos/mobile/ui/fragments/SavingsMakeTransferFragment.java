@@ -175,7 +175,7 @@ public class SavingsMakeTransferFragment extends BaseFragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_savings_make_transfer, container, false);
         ((BaseActivity) getActivity()).getActivityComponent().inject(this);
         setToolbarTitle(getString(R.string.transfer));
@@ -397,6 +397,12 @@ public class SavingsMakeTransferFragment extends BaseFragment implements
      */
     @OnClick(R.id.btn_pay_to)
     public void payToSelected() {
+        String payToIdString = payTo.replaceFirst("^0+(?!$)", "");
+        int payToId = Integer.parseInt(payToIdString);
+        if (payToId == Math.round(accountId)) {
+            showToaster(getString(R.string.error_same_account_transfer));
+            return;
+        }
         pvOne.setCurrentCompeleted();
         pvTwo.setCurrentActive();
 
