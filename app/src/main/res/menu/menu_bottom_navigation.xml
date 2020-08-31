@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_home"
+        android:checked="true"
+        android:icon="@drawable/ic_account_balance_black_24dp"
+        android:title="@string/home"/>
+
+    <item
+        android:id="@+id/item_accounts"
+        android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+        android:title="@string/accounts"/>
+
+    <item
+        android:id="@+id/item_transfer"
+        android:checked="false"
+        android:icon="@drawable/ic_compare_arrows_black_24dp"
+        android:title="@string/transfer"/>
+
+    <item
+        android:id="@+id/item_beneficiaries"
+        android:checked="false"
+        android:icon="@drawable/ic_beneficiaries_48px"
+        android:title="@string/manage_beneficiaries"/>
+
+    <item
+        android:id="@+id/item_charges"
+        android:checked="false"
+        android:icon="@drawable/ic_charges"
+        android:title="@string/charges"/>
+
+</menu>

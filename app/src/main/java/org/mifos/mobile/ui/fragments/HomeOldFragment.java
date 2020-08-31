@@ -1,12 +1,13 @@
 package org.mifos.mobile.ui.fragments;
 
 import android.animation.LayoutTransition;
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,27 +16,28 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.mifos.mobile.R;
 import org.mifos.mobile.api.local.PreferencesHelper;
 import org.mifos.mobile.models.client.Client;
 import org.mifos.mobile.presenters.HomeOldPresenter;
 import org.mifos.mobile.ui.activities.HomeActivity;
-import org.mifos.mobile.ui.activities.LoanApplicationActivity;
 import org.mifos.mobile.ui.activities.NotificationActivity;
 import org.mifos.mobile.ui.activities.UserProfileActivity;
 import org.mifos.mobile.ui.activities.base.BaseActivity;
 import org.mifos.mobile.ui.enums.AccountType;
-import org.mifos.mobile.ui.enums.ChargeType;
 import org.mifos.mobile.ui.fragments.base.BaseFragment;
 import org.mifos.mobile.ui.views.HomeOldView;
 import org.mifos.mobile.utils.CircularImageView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.CurrencyUtil;
-import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.TextDrawable;
 import org.mifos.mobile.utils.Toaster;
 
@@ -43,6 +45,7 @@ import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import butterknife.BindView;
@@ -85,6 +88,24 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     @BindView(R.id.ll_container)
     LinearLayout llContainer;
 
+    @BindView(R.id.tv_view_recent_transactions)
+    TextView tvViewTransactions;
+
+    @BindView(R.id.fab_contact_us)
+    FloatingActionButton fabContactUs;
+
+    @BindView(R.id.fab_mail)
+    FloatingActionButton fabMail;
+
+    @BindView(R.id.fab_phone)
+    FloatingActionButton fabPhone;
+
+    @BindView(R.id.tv_phone)
+    TextView tvPhone;
+
+    @BindView(R.id.tv_mail)
+    TextView tvMail;
+
     @Inject
     HomeOldPresenter presenter;
 
@@ -99,6 +120,10 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     private boolean isDetailVisible;
     private boolean isReceiverRegistered = false;
     private TextView tvNotificationCount;
+    RecentTransactionsFragment recentTransactionsFragment;
+    Boolean isOpen = false;
+
+    Animation fabOpen, fabClose;
 
     public static HomeOldFragment newInstance() {
         HomeOldFragment fragment = new HomeOldFragment();
@@ -112,6 +137,16 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
         ((HomeActivity) getActivity()).getActivityComponent().inject(this);
         ButterKnife.bind(this, rootView);
         clientId = preferencesHelper.getClientId();
+        recentTransactionsFragment = new RecentTransactionsFragment();
+
+        fabContactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fabAction();
+            }
+        });
+        fabClose = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_close);
+        fabOpen = AnimationUtils.loadAnimation(getActivity(), R.anim.fab_open);
 
         presenter.attachView(this);
         setHasOptionsMenu(true);
@@ -128,9 +163,55 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
             loadClientData();
         }
 
-        setToolbarTitle(getString(R.string.home));
+        getRecentTransactionsFragment();
         showUserInterface();
+        setToolbarTitle(getString(R.string.home));
         return rootView;
+    }
+
+    @SuppressLint("RestrictedApi")
+    private void fabAction() {
+        if (isOpen) {
+            tvMail.setVisibility(View.INVISIBLE);
+            tvPhone.setVisibility(View.INVISIBLE);
+            fabPhone.setVisibility(View.INVISIBLE);
+            fabMail.setVisibility(View.INVISIBLE);
+            fabPhone.startAnimation(fabClose);
+            fabMail.startAnimation(fabClose);
+            fabPhone.setClickable(false);
+            fabMail.setClickable(false);
+            isOpen = false;
+        } else {
+            tvMail.setVisibility(View.VISIBLE);
+            tvPhone.setVisibility(View.VISIBLE);
+            fabPhone.setVisibility(View.VISIBLE);
+            fabMail.setVisibility(View.VISIBLE);
+            fabPhone.startAnimation(fabOpen);
+            fabMail.startAnimation(fabOpen);
+            fabPhone.setClickable(true);
+            fabMail.setClickable(true);
+            isOpen = true;
+        }
+        fabPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + getString(R.string.help_line_number)));
+                startActivity(intent);
+            }
+        });
+
+        fabMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:" + getString(R.string.contact_email)));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.user_query));
+                if (emailIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(emailIntent);
+                }
+            }
+        });
     }
 
     private BroadcastReceiver notificationReceiver = new BroadcastReceiver() {
@@ -191,12 +272,18 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         if (savedInstanceState != null) {
             showUserDetails((Client) savedInstanceState.getParcelable(Constants.USER_DETAILS));
             presenter.setUserProfile(preferencesHelper.getUserProfileImage());
             showLoanAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_LOAN));
             showSavingAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_SAVINGS));
         }
+    }
+
+    private void getRecentTransactionsFragment() {
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.fl_recent_transactions, recentTransactionsFragment).commit();
     }
 
     @Override
@@ -356,6 +443,12 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
         }
     }
 
+    @OnClick(R.id.tv_view_recent_transactions)
+    public void viewTransactions () {
+        ((HomeActivity) getActivity()).replaceFragment(
+                RecentTransactionsFragment.newInstance(), true, R.id.container);
+    }
+
     /**
      * Makes Overview state visible
      */
@@ -373,74 +466,6 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
                 .getDrawable(R.drawable.ic_visibility_off_24px));
         ivVisibility.setColorFilter(ContextCompat.getColor(getActivity(), R.color.light_grey));
         llAccountDetail.setVisibility(View.GONE);
-    }
-
-
-    /**
-     * Calls {@code openAccount()} for opening {@link ClientAccountsFragment}
-     */
-    @OnClick(R.id.ll_accounts)
-    public void accountsClicked() {
-        openAccount(AccountType.SAVINGS);
-        ((HomeActivity) getActivity()).setNavigationViewSelectedItem(R.id.item_accounts);
-    }
-
-    /**
-     * Shows a dialog with options: Normal Transfer and Third Party Transfer
-     */
-    @OnClick(R.id.ll_transfer)
-    public void transferClicked() {
-        String[] transferTypes = {getString(R.string.transfer), getString(R.string.
-                third_party_transfer)};
-        new MaterialDialog.Builder().init(getActivity())
-                .setTitle(R.string.choose_transfer_type)
-                .setItems(transferTypes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            ((HomeActivity) getActivity()).replaceFragment(
-                                    SavingsMakeTransferFragment.newInstance(1, ""), true,
-                                    R.id.container);
-                        } else {
-                            ((HomeActivity) getActivity()).replaceFragment(
-                                    ThirdPartyTransferFragment.newInstance(), true, R.id.container);
-                        }
-                    }
-                })
-                .createMaterialDialog()
-                .show();
-    }
-
-    /**
-     * Opens {@link ClientChargeFragment} to display all Charges associated with client's account
-     */
-    @OnClick(R.id.ll_charges)
-    public void chargesClicked() {
-        ((HomeActivity) getActivity()).replaceFragment(ClientChargeFragment.newInstance(clientId,
-                ChargeType.CLIENT), true, R.id.container);
-    }
-
-    /**
-     * Opens {@link LoanApplicationFragment} to apply for a loan
-     */
-    @OnClick(R.id.ll_apply_for_loan)
-    public void applyForLoan() {
-        startActivity(new Intent(getActivity(), LoanApplicationActivity.class));
-    }
-
-    /**
-     * Opens {@link BeneficiaryListFragment} which contains list of Beneficiaries associated with
-     * Client's account
-     */
-    @OnClick(R.id.ll_beneficiaries)
-    public void beneficiaries() {
-        ((HomeActivity) getActivity()).replaceFragment(BeneficiaryListFragment.
-                newInstance(), true, R.id.container);
-    }
-
-    @OnClick(R.id.ll_surveys)
-    public void surveys() {
-
     }
 
     /**

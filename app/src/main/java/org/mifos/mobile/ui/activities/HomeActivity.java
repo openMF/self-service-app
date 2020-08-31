@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.mifos.mobile.R;
@@ -33,7 +34,7 @@ import org.mifos.mobile.ui.fragments.ClientAccountsFragment;
 import org.mifos.mobile.ui.fragments.ClientChargeFragment;
 import org.mifos.mobile.ui.fragments.HomeOldFragment;
 import org.mifos.mobile.ui.fragments.NotificationFragment;
-import org.mifos.mobile.ui.fragments.RecentTransactionsFragment;
+import org.mifos.mobile.ui.fragments.SavingsMakeTransferFragment;
 import org.mifos.mobile.ui.fragments.ThirdPartyTransferFragment;
 import org.mifos.mobile.ui.views.UserDetailsView;
 import org.mifos.mobile.utils.CircularImageView;
@@ -45,6 +46,7 @@ import org.mifos.mobile.utils.fcm.RegistrationIntentService;
 
 import javax.inject.Inject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
@@ -67,6 +69,9 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
 
     @BindView(R.id.drawer)
     DrawerLayout drawerLayout;
+
+    @BindView(R.id.bottom_nav)
+    BottomNavigationView bottomNavigationView;
 
     @Inject
     PreferencesHelper preferencesHelper;
@@ -95,7 +100,6 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
         setupNavigationBar();
         setToolbarElevation();
         setToolbarTitle(getString(R.string.home));
-        replaceFragment(HomeOldFragment.newInstance(), false, R.id.container);
 
         if (getIntent() != null && getIntent().getBooleanExtra(getString(R.string.notification),
                 false)) {
@@ -137,6 +141,7 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     @Override
     protected void onResume() {
         super.onResume();
+        bottomNavigationView.setSelectedItemId(R.id.item_home);
         if (!isReceiverRegistered) {
             LocalBroadcastManager.getInstance(this).registerReceiver(registerReceiver,
                     new IntentFilter(Constants.REGISTER_ON_SERVER));
@@ -162,27 +167,9 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             clearFragmentBackStack();
         }
         switch (item.getItemId()) {
-            case R.id.item_home:
+            case R.id.item_apply_loan:
                 hideToolbarElevation();
-                replaceFragment(HomeOldFragment.newInstance(), true, R.id.container);
-                break;
-            case R.id.item_accounts:
-                hideToolbarElevation();
-                replaceFragment(ClientAccountsFragment.newInstance(AccountType.SAVINGS),
-                        true, R.id.container);
-                break;
-            case R.id.item_recent_transactions:
-                replaceFragment(RecentTransactionsFragment.newInstance(), true, R.id.container);
-                break;
-            case R.id.item_charges:
-                replaceFragment(ClientChargeFragment.newInstance(clientId, ChargeType.CLIENT), true,
-                        R.id.container);
-                break;
-            case R.id.item_third_party_transfer:
-                replaceFragment(ThirdPartyTransferFragment.newInstance(), true, R.id.container);
-                break;
-            case R.id.item_beneficiaries:
-                replaceFragment(BeneficiaryListFragment.newInstance(), true, R.id.container);
+                startActivity(new Intent(this, LoanApplicationActivity.class));
                 break;
             case R.id.item_settings:
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
@@ -210,6 +197,53 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
         return true;
     }
 
+
+    private void selectFragment(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_home:
+                replaceFragment(HomeOldFragment.newInstance(), true, R.id.container);
+                break;
+            case R.id.item_accounts:
+                replaceFragment(ClientAccountsFragment.newInstance(AccountType.SAVINGS),
+                        true, R.id.container);
+                break;
+            case R.id.item_transfer:
+                String[] transferTypes = {getString(R.string.transfer), getString(R.string.
+                        third_party_transfer)};
+                new MaterialDialog.Builder().init(this)
+                        .setTitle(R.string.choose_transfer_type)
+                        .setItems(transferTypes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (which == 0) {
+                                    replaceFragment(
+                                            SavingsMakeTransferFragment.newInstance(1,
+                                                    ""),
+                                            true,
+                                            R.id.container);
+                                } else {
+                                    replaceFragment(
+                                            ThirdPartyTransferFragment.newInstance(),
+                                            true,
+                                            R.id.container);
+                                }
+                            }
+                        })
+                        .createMaterialDialog()
+                        .show();
+                break;
+            case R.id.item_beneficiaries:
+                replaceFragment(BeneficiaryListFragment.newInstance(),
+                        true, R.id.container);
+                break;
+            case R.id.item_charges:
+                replaceFragment(ClientChargeFragment.newInstance(clientId, ChargeType.CLIENT),
+                        true,
+                        R.id.container);
+                break;
+        }
+    }
+
     /**
      * Asks users to confirm whether he want to logout or not
      */
@@ -222,7 +256,8 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 preferencesHelper.clear();
-                                Intent i = new Intent(HomeActivity.this, LoginActivity.class);
+                                Intent i = new Intent(HomeActivity.this,
+                                        LoginActivity.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.
                                         FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(i);
@@ -241,13 +276,19 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     }
 
     /**
-     * This method is used to set up the navigation drawer for
+     * This method is used to set up the navigation drawers for
      * self-service application
      */
     private void setupNavigationBar() {
-
         navigationView.setNavigationItemSelectedListener(this);
-
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                        selectFragment(menuItem);
+                        return true;
+                    }
+                });
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
                 drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer) {
 
@@ -409,12 +450,8 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                         } else if (fragment instanceof ClientAccountsFragment) {
                             hideToolbarElevation();
                             setNavigationViewSelectedItem(R.id.item_accounts);
-                        } else if (fragment instanceof RecentTransactionsFragment) {
-                            setNavigationViewSelectedItem(R.id.item_recent_transactions);
                         } else if (fragment instanceof ClientChargeFragment) {
                             setNavigationViewSelectedItem(R.id.item_charges);
-                        } else if (fragment instanceof ThirdPartyTransferFragment) {
-                            setNavigationViewSelectedItem(R.id.item_third_party_transfer);
                         } else if (fragment instanceof BeneficiaryListFragment) {
                             setNavigationViewSelectedItem(R.id.item_beneficiaries);
                         }
@@ -423,7 +460,7 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
     }
 
     public void setNavigationViewSelectedItem(int id) {
-        navigationView.setCheckedItem(id);
+        bottomNavigationView.getMenu().findItem(id).setChecked(true);
     }
 
     @Override

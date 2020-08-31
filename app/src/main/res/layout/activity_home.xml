@@ -11,7 +11,27 @@
     <LinearLayout style="@style/LinearLayout.Base">
         <include layout="@layout/toolbar"/>
 
-        <FrameLayout style="@style/FrameLayout.Container"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout style="@style/FrameLayout.Container"/>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@color/white"
+                app:itemIconTint="@drawable/bottom_navigation_colors"
+                app:itemTextColor="@drawable/bottom_navigation_colors"
+                app:menu="@menu/menu_bottom_navigation"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -22,4 +42,5 @@
         android:layout_width="wrap_content"
         app:headerLayout="@layout/nav_drawer_header"
         app:menu="@menu/menu_nav_drawer"/>
+    
 </androidx.drawerlayout.widget.DrawerLayout>
