@@ -1,29 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_chip"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/value_30dp"
+        android:layout_margin="@dimen/layout_padding_8dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_recurring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            app:chipStrokeWidth="@dimen/value_2dp"
+            android:textColor="@drawable/bg_chip_selector"
+            android:layout_marginRight="@dimen/value_2dp"
+            android:clickable="true"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@drawable/bg_chip_selector"
+            android:text="@string/recurring_savings"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_non_recurring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            app:chipStrokeWidth="@dimen/value_2dp"
+            android:clickable="true"
+            android:textColor="@drawable/bg_chip_selector"
+            android:theme="@style/Theme.MaterialComponents.Light"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeColor="@drawable/bg_chip_selector"
+            android:text="@string/non_recurring_savings"/>
+
+    </LinearLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container"
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:fadeScrollbars="false"
-            android:id="@+id/rv_accounts"
-            android:layout_centerHorizontal="true"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"/>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_accounts"
+                android:fadeScrollbars="false"
+                android:layout_centerHorizontal="true"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+
+            <include
+                layout="@layout/layout_sweet_exception_handler"
+                android:id="@+id/layout_error"
+                android:visibility="gone"/>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <include
-        layout="@layout/layout_sweet_exception_handler"
-        android:id="@+id/layout_error"
-        android:visibility="gone"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

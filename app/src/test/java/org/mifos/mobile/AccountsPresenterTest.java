@@ -91,11 +91,28 @@ public class AccountsPresenterTest {
     }
 
     @Test
-    public void testLoadClientSavingsAccount() {
+    public void testLoadClientRecurringSavingsAccount() {
         when(dataManager.getAccounts(Constants.SAVINGS_ACCOUNTS)).
                 thenReturn(Observable.just(savingsAccount));
 
-        presenter.loadAccounts(Constants.SAVINGS_ACCOUNTS);
+        presenter.loadAccounts(Constants.SAVINGS_ACCOUNTS, true);
+
+        verify(accountsView).showProgress();
+        verify(accountsView).hideProgress();
+        verify(accountsView).showSavingsAccounts(savingsAccount.getSavingsAccounts());
+        verify(accountsView, never()).showLoanAccounts(null);
+        verify(accountsView, never()).showShareAccounts(null);
+        verify(accountsView, never()).showError(context.getString(R.string.
+                error_fetching_accounts));
+
+    }
+
+    @Test
+    public void testLoadClientNonRecurringSavingsAccount() {
+        when(dataManager.getAccounts(Constants.SAVINGS_ACCOUNTS)).
+                thenReturn(Observable.just(savingsAccount));
+
+        presenter.loadAccounts(Constants.SAVINGS_ACCOUNTS, false);
 
         verify(accountsView).showProgress();
         verify(accountsView).hideProgress();
@@ -112,7 +129,7 @@ public class AccountsPresenterTest {
         when(dataManager.getAccounts(Constants.LOAN_ACCOUNTS)).
                 thenReturn(Observable.just(loanAccounts));
 
-        presenter.loadAccounts(Constants.LOAN_ACCOUNTS);
+        presenter.loadAccounts(Constants.LOAN_ACCOUNTS, false);
 
         verify(accountsView).showProgress();
         verify(accountsView).hideProgress();
@@ -129,7 +146,7 @@ public class AccountsPresenterTest {
         when(dataManager.getAccounts(Constants.SHARE_ACCOUNTS)).
                 thenReturn(Observable.just(shareAccounts));
 
-        presenter.loadAccounts(Constants.SHARE_ACCOUNTS);
+        presenter.loadAccounts(Constants.SHARE_ACCOUNTS, false);
 
         verify(accountsView).showProgress();
         verify(accountsView).hideProgress();

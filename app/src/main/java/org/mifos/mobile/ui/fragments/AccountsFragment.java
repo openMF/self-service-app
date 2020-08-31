@@ -6,9 +6,11 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler;
+import com.google.android.material.chip.Chip;
 
 import org.mifos.mobile.R;
 import org.mifos.mobile.models.CheckboxStatus;
@@ -60,6 +62,15 @@ public class AccountsFragment extends BaseFragment implements
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
+    @BindView(R.id.ll_chip)
+    LinearLayout chipLinearLayout;
+
+    @BindView(R.id.chip_recurring)
+    Chip chipRecurring;
+
+    @BindView(R.id.chip_non_recurring)
+    Chip chipNonRecurring;
+
     @BindView(R.id.layout_error)
     View layoutError;
 
@@ -82,6 +93,12 @@ public class AccountsFragment extends BaseFragment implements
     private List<ShareAccount> shareAccounts;
     private List<CheckboxStatus> currentFilterList;
     private SweetUIErrorHandler sweetUIErrorHandler;
+
+    /**
+     * to fetch recurring savings account or not
+     * false for loan and share accounts
+     */
+    private boolean wantRecurring = true;
 
     /**
      * Method to get the current filter list for the fragment
@@ -141,9 +158,11 @@ public class AccountsFragment extends BaseFragment implements
         if (savedInstanceState == null) {
             showProgress();
         }
+        setupChipLayout();
 
         return rootView;
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -191,6 +210,32 @@ public class AccountsFragment extends BaseFragment implements
         }
     }
 
+    private void setupChipLayout() {
+        if (accountType == Constants.SAVINGS_ACCOUNTS) {
+            chipLinearLayout.setVisibility(View.VISIBLE);
+            chipRecurring.setSelected(true);
+            chipNonRecurring.setSelected(false);
+            accountsPresenter.loadAccounts(accountType, true);
+        } else {
+            chipLinearLayout.setVisibility(View.GONE);
+        }
+    }
+
+    @OnClick(R.id.chip_recurring)
+    public void getRecurringSavings() {
+        chipRecurring.setSelected(true);
+        chipNonRecurring.setSelected(false);
+        wantRecurring = true;
+        accountsPresenter.loadAccounts(accountType, true);
+    }
+
+    @OnClick(R.id.chip_non_recurring)
+    public void getNonRecurringSavings() {
+        chipRecurring.setSelected(false);
+        chipNonRecurring.setSelected(true);
+        wantRecurring = false;
+        accountsPresenter.loadAccounts(accountType, false);
+    }
 
     /**
      * Used for reloading account of a particular {@code accountType} in case of a network error.
@@ -200,7 +245,7 @@ public class AccountsFragment extends BaseFragment implements
     void onRetry() {
         if (Network.isConnected(getContext())) {
             sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
-            accountsPresenter.loadAccounts(accountType);
+            accountsPresenter.loadAccounts(accountType, wantRecurring);
         } else {
             Toast.makeText(getContext(), getString(R.string.internet_not_connected),
                     Toast.LENGTH_SHORT).show();
@@ -215,7 +260,7 @@ public class AccountsFragment extends BaseFragment implements
     public void onRefresh() {
         if (Network.isConnected(getContext())) {
             clearFilter();
-            accountsPresenter.loadAccounts(accountType);
+            accountsPresenter.loadAccounts(accountType, wantRecurring);
         } else {
             hideProgress();
             sweetUIErrorHandler.showSweetNoInternetUI(rvAccounts, layoutError);
@@ -229,7 +274,6 @@ public class AccountsFragment extends BaseFragment implements
      * currentFilterList = null
      */
     public void clearFilter() {
-        sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
         currentFilterList = null;
     }
 
@@ -243,6 +287,7 @@ public class AccountsFragment extends BaseFragment implements
     public void showLoanAccounts(List<LoanAccount> loanAccounts) {
         Collections.sort(loanAccounts, new ComparatorBasedOnId());
         this.loanAccounts = loanAccounts;
+        sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
         if (loanAccounts.size() != 0) {
             loanAccountsListAdapter.setLoanAccountsList(loanAccounts);
             rvAccounts.setAdapter(loanAccountsListAdapter);
@@ -261,6 +306,7 @@ public class AccountsFragment extends BaseFragment implements
     public void showSavingsAccounts(List<SavingAccount> savingAccounts) {
         Collections.sort(savingAccounts, new ComparatorBasedOnId());
         this.savingAccounts = savingAccounts;
+        sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
         if (savingAccounts.size() != 0) {
             savingAccountsListAdapter.setSavingAccountsList(savingAccounts);
             rvAccounts.setAdapter(savingAccountsListAdapter);
@@ -279,6 +325,7 @@ public class AccountsFragment extends BaseFragment implements
     public void showShareAccounts(List<ShareAccount> shareAccounts) {
         Collections.sort(shareAccounts, new ComparatorBasedOnId());
         this.shareAccounts = shareAccounts;
+        sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
         if (shareAccounts.size() != 0) {
             shareAccountsListAdapter.setShareAccountsList(shareAccounts);
             rvAccounts.setAdapter(shareAccountsListAdapter);

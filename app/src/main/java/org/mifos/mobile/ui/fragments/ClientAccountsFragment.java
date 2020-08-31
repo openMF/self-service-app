@@ -459,19 +459,19 @@ public class ClientAccountsFragment extends BaseFragment implements AccountsView
                                     getFragmentTag(0))).clearFilter();
                             checkBoxAdapter.setStatusList(StatusUtils.
                                     getSavingsAccountStatusList(getActivity()));
-                            accountsPresenter.loadAccounts(Constants.SAVINGS_ACCOUNTS);
+                            accountsPresenter.loadAccounts(Constants.SAVINGS_ACCOUNTS, true);
                         } else if (account == AccountType.LOAN) {
                             ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
                                     getFragmentTag(1))).clearFilter();
                             checkBoxAdapter.setStatusList(StatusUtils.
                                     getLoanAccountStatusList(getActivity()));
-                            accountsPresenter.loadAccounts(Constants.LOAN_ACCOUNTS);
+                            accountsPresenter.loadAccounts(Constants.LOAN_ACCOUNTS, false);
                         } else if (account == AccountType.SHARE) {
                             ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
                                     getFragmentTag(2))).clearFilter();
                             checkBoxAdapter.setStatusList(StatusUtils.
                                     getShareAccountStatusList(getActivity()));
-                            accountsPresenter.loadAccounts(Constants.SHARE_ACCOUNTS);
+                            accountsPresenter.loadAccounts(Constants.SHARE_ACCOUNTS, false);
                         }
 
                     }

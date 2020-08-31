@@ -101,7 +101,7 @@ public class AccountsPresenter extends BasePresenter<AccountsView> {
      * required details it notifies the view.
      * @param accountType Type of account for which we need to fetch details
      */
-    public void loadAccounts(final String accountType) {
+    public void loadAccounts(final String accountType, final boolean wantRecurring) {
         checkViewAttached();
         getMvpView().showProgress();
         compositeDisposable.add(dataManager.getAccounts(accountType)
@@ -124,8 +124,14 @@ public class AccountsPresenter extends BasePresenter<AccountsView> {
                         getMvpView().hideProgress();
                         switch (accountType) {
                             case Constants.SAVINGS_ACCOUNTS:
-                                getMvpView().showSavingsAccounts(
-                                        clientAccounts.getSavingsAccounts());
+                                if (wantRecurring) {
+                                    getMvpView().showSavingsAccounts(
+                                            clientAccounts.recurringSavingsAccounts());
+                                } else {
+                                    getMvpView().showSavingsAccounts(
+                                            clientAccounts.nonRecurringSavingsAccounts()
+                                    );
+                                }
                                 break;
                             case Constants.LOAN_ACCOUNTS:
                                 getMvpView().showLoanAccounts(clientAccounts.getLoanAccounts());
