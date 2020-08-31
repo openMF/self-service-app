@@ -572,6 +572,8 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+    <string name="image_not_picked">You haven\'t picked image.</string>
+    <string name="something_went_wrong">Something went wrong.</string>
 
     <string-array name="languages" translatable="false">
         <item>English</item>

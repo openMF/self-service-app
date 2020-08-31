@@ -144,6 +144,9 @@ dependencies {
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
 
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
     androidTestImplementation "junit:junit:$rootProject.jUnitVersion"
     androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     androidTestImplementation "org.mockito:mockito-android:$rootProject.mockitoVersion"

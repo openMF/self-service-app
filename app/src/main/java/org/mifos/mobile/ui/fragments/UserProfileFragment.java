@@ -1,8 +1,14 @@
 package org.mifos.mobile.ui.fragments;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,10 +41,13 @@ import javax.inject.Inject;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * Created by dilpreet on 10/7/17.
@@ -48,6 +57,9 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
 
     @BindView(R.id.iv_profile)
     ImageView ivProfile;
+
+    @BindView(R.id.iv_profilepic)
+    ImageView iv_profilepic;
 
     @BindView(R.id.iv_text_drawable)
     ImageView ivTextDrawable;
@@ -110,6 +122,7 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
     private Bitmap userBitmap;
     private Client client;
     private SweetUIErrorHandler sweetUIErrorHandler;
+    private String imgDecodableString;
 
     public static UserProfileFragment newInstance() {
         UserProfileFragment fragment = new UserProfileFragment();
@@ -138,6 +151,13 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
             presenter.getUserDetails();
             presenter.getUserImage();
         }
+        checkPermissions();
+        fabEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadUserImage();
+            }
+        });
         return rootView;
     }
 
@@ -155,6 +175,62 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
             presenter.setUserProfile(preferencesHelper.getUserProfileImage());
             showUserDetails(client);
         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            // When an Image is picked
+            if (requestCode == 1 && resultCode == RESULT_OK
+                    && null != data) {
+                // Get the Image from data
+
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+                // Get the cursor
+                Cursor cursor = getActivity().getApplicationContext().getContentResolver().query(
+                        selectedImage,
+                        filePathColumn, null, null, null);
+                // Move to first row
+                cursor.moveToFirst();
+
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                imgDecodableString = cursor.getString(columnIndex);
+                cursor.close();
+                // Set the Image in ImageView after decoding the String
+                ivProfile.setVisibility(View.GONE);
+                ivTextDrawable.setVisibility(View.GONE);
+                iv_profilepic.setVisibility(View.VISIBLE);
+                iv_profilepic.setImageBitmap(BitmapFactory
+                        .decodeFile(imgDecodableString));
+
+            } else {
+                Toaster.show(rootView, R.string.image_not_picked);
+            }
+        } catch (Exception e) {
+            Toaster.show(rootView, R.string.something_went_wrong);
+        }
+
+    }
+
+    private void checkPermissions() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    1001);
+        }
+    }
+
+    public void uploadUserImage() {
+        // Create intent to Open Image applications like Gallery, Google Photos
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        // Start the Intent
+        startActivityForResult(galleryIntent, 1);
     }
 
     /**
@@ -240,6 +316,7 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
                     ivProfile.setVisibility(View.GONE);
                     ivTextDrawable.setVisibility(View.VISIBLE);
                     ivTextDrawable.setImageDrawable(textDrawable);
+                    iv_profilepic.setVisibility(View.GONE);
                 } else {
                     ivTextDrawable.setVisibility(View.GONE);
                     ivProfile.setVisibility(View.VISIBLE);

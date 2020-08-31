@@ -41,6 +41,11 @@
                     android:layout_width="84dp"
                     android:visibility="gone"/>
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_profilepic"
+                    android:layout_height="84dp"
+                    android:layout_width="84dp" />
+
             </LinearLayout>
 
             <View
