@@ -40,6 +40,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -138,6 +139,9 @@ public class AccountsFragment extends BaseFragment implements
         swipeRefreshLayout.setColorSchemeColors(getActivity()
                 .getResources().getIntArray(R.array.swipeRefreshColors));
         swipeRefreshLayout.setOnRefreshListener(this);
+        if (Network.isConnected(getContext())) {
+            loadAccounts();
+        }
         if (savedInstanceState == null) {
             showProgress();
         }
@@ -199,12 +203,16 @@ public class AccountsFragment extends BaseFragment implements
     @OnClick(R.id.btn_try_again)
     void onRetry() {
         if (Network.isConnected(getContext())) {
-            sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
-            accountsPresenter.loadAccounts(accountType);
+            loadAccounts();
         } else {
             Toast.makeText(getContext(), getString(R.string.internet_not_connected),
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void loadAccounts() {
+        sweetUIErrorHandler.hideSweetErrorLayoutUI(rvAccounts, layoutError);
+        accountsPresenter.loadAccounts(accountType);
     }
 
     /**
@@ -475,7 +483,7 @@ public class AccountsFragment extends BaseFragment implements
     /**
      * This function opens up an activity only if the intent
      * is not null.
-     *
+     * <p>
      * This will prevent the application from crashing if the
      * intent is null.
      */

@@ -2,10 +2,10 @@ package org.mifos.mobile.ui.fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
@@ -16,6 +16,7 @@ import okhttp3.ResponseBody
 import org.mifos.mobile.R
 import org.mifos.mobile.models.payload.LoansPayload
 import org.mifos.mobile.ui.activities.base.BaseActivity
+import org.mifos.mobile.ui.enums.AccountType
 import org.mifos.mobile.ui.enums.LoanState
 import org.mifos.mobile.ui.fragments.base.BaseFragment
 import org.mifos.mobile.utils.MFErrorParser
@@ -155,6 +156,7 @@ class ReviewLoanApplicationFragment : BaseFragment() {
 
     fun showLoanAccountCreatedSuccessfully() {
         Toaster.show(rootView, R.string.loan_application_submitted_successfully)
-        activity!!.supportFragmentManager.popBackStack()
+        activity!!.supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        (activity as BaseActivity?)!!.replaceFragment(ClientAccountsFragment.newInstance(AccountType.LOAN), false, R.id.container)
     }
 }
