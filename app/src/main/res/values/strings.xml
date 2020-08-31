@@ -572,6 +572,24 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+    <string name="next">next</string>
+
+    <!--Introduction Strings-->
+    <string name="slide_1_title">Welcome to Mifos Mobile</string>
+    <string name="slide_1_desc">Your one stop solution to all banking problems
+        </string>
+
+    <string name="slide_2_title">Some Features</string>
+    <string name="slide_2_desc">Check your accounts, apply for loans, transfer money, see charges
+        ...</string>
+
+    <string name="slide_3_title">Permission</string>
+    <string name="slide_3_desc">Please grant the permission</string>
+
+    <string name="slide_4_title">Done</string>
+    <string name="slide_4_desc">You are all set!</string>
+    <string name="dot_string"><![CDATA[&#8226;]]></string>
+    <string name="start">Start</string>
 
     <string-array name="languages" translatable="false">
         <item>English</item>

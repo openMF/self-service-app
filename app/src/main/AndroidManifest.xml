@@ -42,6 +42,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.activities.IntroductionActivity"/>
+
         <activity
             android:configChanges="screenLayout|screenSize"
             android:label="@string/home"
