@@ -36,7 +36,6 @@ import org.mifos.mobile.utils.CircularImageView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.CurrencyUtil;
 import org.mifos.mobile.utils.MaterialDialog;
-import org.mifos.mobile.utils.TextDrawable;
 import org.mifos.mobile.utils.Toaster;
 
 import javax.inject.Inject;
@@ -124,8 +123,11 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
             llContainer.getLayoutTransition()
                     .enableTransitionType(LayoutTransition.CHANGING);
         }
-        if (savedInstanceState == null) {
+        if (preferencesHelper.getBoolean(Constants.FIRST_TIME, true)) {
             loadClientData();
+            preferencesHelper.putBoolean(Constants.FIRST_TIME, false);
+        } else {
+            loadSavedClientData();
         }
 
         setToolbarTitle(getString(R.string.home));
@@ -180,24 +182,6 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
         }
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putDouble(Constants.TOTAL_LOAN, totalLoanAmount);
-        outState.putDouble(Constants.TOTAL_SAVINGS, totalSavingAmount);
-        outState.putParcelable(Constants.USER_DETAILS, client);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (savedInstanceState != null) {
-            showUserDetails((Client) savedInstanceState.getParcelable(Constants.USER_DETAILS));
-            presenter.setUserProfile(preferencesHelper.getUserProfileImage());
-            showLoanAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_LOAN));
-            showSavingAccountDetails(savedInstanceState.getDouble(Constants.TOTAL_SAVINGS));
-        }
-    }
 
     @Override
     public void onRefresh() {
@@ -222,6 +206,18 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     }
 
     /**
+     * Loads data saved in shared preferences
+     */
+    public void loadSavedClientData() {
+        presenter.setUserProfile(preferencesHelper.getUserProfileImage());
+        tvUserName.setText(getString(R.string.hello_client, preferencesHelper.getClientName()));
+        tvLoanTotalAmount.setText(CurrencyUtil.formatCurrency(getContext(),
+                preferencesHelper.getTotalLoan()));
+        tvSavingTotalAmount.setText(CurrencyUtil.formatCurrency(getContext(),
+                preferencesHelper.getTotalSavings()));
+    }
+
+    /**
      * Opens {@link ClientAccountsFragment} according to the {@code accountType} provided
      *
      * @param accountType Enum of {@link AccountType}
@@ -239,6 +235,7 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     @Override
     public void showLoanAccountDetails(double totalLoanAmount) {
         this.totalLoanAmount = totalLoanAmount;
+        preferencesHelper.setTotalLoan(totalLoanAmount);
         tvLoanTotalAmount.setText(CurrencyUtil.formatCurrency(getContext(), totalLoanAmount));
     }
 
@@ -279,6 +276,7 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
     @Override
     public void showUserDetails(Client client) {
         this.client = client;
+        preferencesHelper.setClientName(client.getDisplayName());
         tvUserName.setText(getString(R.string.hello_client, client.getDisplayName()));
     }
 
@@ -293,32 +291,9 @@ public class HomeOldFragment extends BaseFragment implements HomeOldView,
             @Override
             public void run() {
                 if (bitmap != null) {
-
                     ivUserImage.setVisibility(View.GONE);
                     ivCircularUserImage.setVisibility(View.VISIBLE);
                     ivCircularUserImage.setImageBitmap(bitmap);
-
-                } else {
-
-                    String userName;
-                    if (!preferencesHelper.getClientName().isEmpty()) {
-
-                        userName = preferencesHelper.getClientName();
-                    } else {
-
-                        userName = getString(R.string.app_name);
-                    }
-                    TextDrawable drawable = TextDrawable.builder()
-                            .beginConfig()
-                            .toUpperCase()
-                            .endConfig()
-                            .buildRound(userName.substring(0, 1),
-                                    ContextCompat.getColor(
-                                            getContext(), R.color.primary));
-                    ivUserImage.setVisibility(View.VISIBLE);
-                    ivUserImage.setImageDrawable(drawable);
-                    ivCircularUserImage.setVisibility(View.GONE);
-
                 }
             }
         });

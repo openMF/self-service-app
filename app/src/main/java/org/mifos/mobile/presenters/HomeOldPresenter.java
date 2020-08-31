@@ -145,7 +145,6 @@ public class HomeOldPresenter extends BasePresenter<HomeOldView> {
      */
     public void getUserImage() {
         checkViewAttached();
-        setUserProfile(preferencesHelper.getUserProfileImage());
 
         compositeDisposable.add(dataManager.getClientImage()
                 .observeOn(Schedulers.newThread())

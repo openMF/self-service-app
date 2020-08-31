@@ -33,6 +33,8 @@ public class PreferencesHelper {
     private static final String TENANT = "preferences_base_tenant";
     private static final String BASE_URL = "preferences_base_url_key";
     private static final String PROFILE_IMAGE = "preferences_profile_image";
+    private static final String TOTAL_LOAN = "preferences_total_load";
+    private static final String TOTAL_SAVINGS = "preferences_total_savings";
     public static final String CLIENT_NAME = "client_name";
 
     private SharedPreferences sharedPreferences;
@@ -194,5 +196,23 @@ public class PreferencesHelper {
 
     public String getBaseUrl() {
         return getString(BASE_URL, new BaseURL().getDefaultBaseUrl());
+    }
+
+    public void setTotalLoan(double totalLoanAmount) {
+        sharedPreferences.edit().putLong(TOTAL_LOAN, Double.doubleToRawLongBits(totalLoanAmount));
+    }
+
+    public double getTotalLoan() {
+        return Double.longBitsToDouble(sharedPreferences.getLong(TOTAL_LOAN,
+                Double.doubleToRawLongBits(0.0)));
+    }
+
+    public void setTotalSavings(double totalSavings) {
+        sharedPreferences.edit().putLong(TOTAL_SAVINGS, Double.doubleToRawLongBits(totalSavings));
+    }
+
+    public double getTotalSavings() {
+        return Double.longBitsToDouble(sharedPreferences.getLong(TOTAL_SAVINGS,
+                Double.doubleToRawLongBits(0.0)));
     }
 }
