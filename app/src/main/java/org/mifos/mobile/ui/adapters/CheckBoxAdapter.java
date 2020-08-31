@@ -30,6 +30,7 @@ public class CheckBoxAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context context;
     private List<CheckboxStatus> statusList;
+    protected int checkedCount = 0;
 
     @Inject
     public CheckBoxAdapter(@ActivityContext Context context) {
@@ -71,6 +72,10 @@ public class CheckBoxAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return statusList;
     }
 
+    public int getCheckedCount() {
+        return checkedCount;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.cb_status_select)
@@ -86,7 +91,13 @@ public class CheckBoxAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         @OnClick(R.id.ll_row_checkbox)
         public void rowClicked() {
-            cbStatusSelect.setChecked(!cbStatusSelect.isChecked());
+            if (cbStatusSelect.isChecked()) {
+                checkedCount--;
+                cbStatusSelect.setChecked(false);
+            } else {
+                checkedCount++;
+                cbStatusSelect.setChecked(true);
+            }
         }
 
         @OnCheckedChanged(R.id.cb_status_select)

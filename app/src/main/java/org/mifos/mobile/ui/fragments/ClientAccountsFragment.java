@@ -419,34 +419,36 @@ public class ClientAccountsFragment extends BaseFragment implements AccountsView
                         OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         isDialogBoxSelected = false;
-                        if (account == AccountType.SAVINGS) {
-                            ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                                    getFragmentTag(0)))
-                                    .setCurrentFilterList(checkBoxAdapter.getStatusList());
+                        if (checkBoxAdapter.getCheckedCount() == 0) {
+                            dialog.dismiss();
+                        } else {
+                            if (account == AccountType.SAVINGS) {
+                                ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
+                                        getFragmentTag(0)))
+                                        .setCurrentFilterList(checkBoxAdapter.getStatusList());
 
-                            ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                                    getFragmentTag(0)))
-                                    .filterSavingsAccount(checkBoxAdapter.getStatusList());
-                        } else if (account == AccountType.LOAN) {
-                            ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                                    getFragmentTag(1)))
-                                    .setCurrentFilterList(checkBoxAdapter.getStatusList());
+                                ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
+                                        getFragmentTag(0)))
+                                        .filterSavingsAccount(checkBoxAdapter.getStatusList());
+                            } else if (account == AccountType.LOAN) {
+                                ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
+                                        getFragmentTag(1)))
+                                        .setCurrentFilterList(checkBoxAdapter.getStatusList());
 
-                            ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                                    getFragmentTag(1)))
-                                    .filterLoanAccount(checkBoxAdapter.getStatusList());
-                        } else if (account == AccountType.SHARE) {
-                            ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                                    getFragmentTag(2)))
-                                    .setCurrentFilterList(checkBoxAdapter.getStatusList());
+                                ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
+                                        getFragmentTag(1)))
+                                        .filterLoanAccount(checkBoxAdapter.getStatusList());
+                            } else if (account == AccountType.SHARE) {
+                                ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
+                                        getFragmentTag(2)))
+                                        .setCurrentFilterList(checkBoxAdapter.getStatusList());
 
-                            ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
-                                    getFragmentTag(2)))
-                                    .filterShareAccount(checkBoxAdapter.getStatusList());
+                                ((AccountsFragment) getChildFragmentManager().findFragmentByTag(
+                                        getFragmentTag(2)))
+                                        .filterShareAccount(checkBoxAdapter.getStatusList());
+                            }
                         }
-
                     }
                 })
                 .setNeutralButton(R.string.clear_filters, new DialogInterface.OnClickListener() {
