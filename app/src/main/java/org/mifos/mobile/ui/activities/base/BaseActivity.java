@@ -26,6 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.transition.Fade;
 
 /**
  * @author ishan
@@ -69,6 +70,7 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
 
     /**
      * Used for dependency injection
+     *
      * @return {@link ActivityComponent} which is used for injection
      */
     public ActivityComponent getActivityComponent() {
@@ -135,6 +137,7 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
 
     /**
      * Displays a ProgressDialog
+     *
      * @param message Message you want to display in Progress Dialog
      */
     @Override
@@ -161,6 +164,7 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
 
     /**
      * Used for setting title of Toolbar
+     *
      * @param title String you want to display as title
      */
     public void setActionBarTitle(String title) {
@@ -182,6 +186,7 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
 
     /**
      * Calls {@code setActionBarTitle()} to set Toolbar title
+     *
      * @param title String you want to set as title
      */
     @Override
@@ -202,9 +207,9 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
     /**
      * Replace Fragment in FrameLayout Container.
      *
-     * @param fragment Fragment
+     * @param fragment       Fragment
      * @param addToBackStack Add to BackStack
-     * @param containerId Container Id
+     * @param containerId    Container Id
      */
     public void replaceFragment(Fragment fragment, boolean addToBackStack, int containerId) {
         invalidateOptionsMenu();
@@ -214,13 +219,27 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
 
         if (!fragmentPopped && getSupportFragmentManager().findFragmentByTag(backStateName) ==
                 null) {
+            Fragment previousFragment = getSupportFragmentManager().findFragmentById(containerId);
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transition(previousFragment, fragment);
             transaction.replace(containerId, fragment, backStateName);
             if (addToBackStack) {
                 transaction.addToBackStack(backStateName);
             }
-            transaction.commit();
+            transaction.commitAllowingStateLoss();
         }
+    }
+
+    public void transition(Fragment previousFragment, Fragment nextFragment) {
+        if (previousFragment != null) {
+            Fade exitFade = new Fade();
+            exitFade.setDuration(android.R.integer.config_shortAnimTime);
+            previousFragment.setExitTransition(exitFade);
+        }
+
+        Fade enterFade = new Fade();
+        enterFade.setDuration(android.R.integer.config_mediumAnimTime);
+        nextFragment.setEnterTransition(enterFade);
     }
 
     /**
