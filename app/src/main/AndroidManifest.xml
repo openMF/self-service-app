@@ -54,9 +54,9 @@
             android:windowSoftInputMode="adjustResize"/>
 
         <activity android:configChanges="orientation|screenSize"
-                  android:launchMode="singleTask"
-                  android:name="org.mifos.mobile.ui.activities.PassCodeActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+            android:launchMode="singleTask"
+            android:name="org.mifos.mobile.ui.activities.PassCodeActivity"
+            android:windowSoftInputMode="adjustResize"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="org.mifos.mobile.ui.activities.LoanAccountContainerActivity"
@@ -147,7 +147,6 @@
             android:name="org.mifos.mobile.utils.fcm.RegistrationIntentService">
         </service>
 
-        <activity android:name="org.mifos.mobile.ui.activities.SettingsActivity"/>
     </application>
 
 </manifest>

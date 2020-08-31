@@ -91,6 +91,7 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable:$rootProject.supportLibraryVersion"
     implementation "com.google.android.gms:play-services-oss-licenses:$rootProject.oss_licenses"
     implementation "com.isseiaoki:simplecropview:$rootProject.cropviewVersion"
+    implementation "androidx.preference:preference:$preference"
 
     //kotlin dependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"

@@ -126,4 +126,9 @@ public class Constants {
     public static  final String OUTSTANDING_BALANCE = "outstanding_balance";
 
     public static final String LOAN_REPAYMENT = "loan_repayment";
+
+    public static final String CURR_PASSWORD = "currentPassword";
+
+    public static final String IS_TO_UPDATE_PASS_CODE = "updatePassCode";
+
 }
