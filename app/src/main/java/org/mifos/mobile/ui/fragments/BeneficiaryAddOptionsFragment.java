@@ -3,6 +3,7 @@ package org.mifos.mobile.ui.fragments;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,18 +109,34 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
         }
     }
 
+    /**
+     * Checks for the Read/Write permission. If not granted then requests for the same.
+     * For API_level > 19 (KITKAT), there's no need to ask for {@code WRITE_EXTERNAL_STORAGE}
+     * permission separately.
+     */
     public void accessReadWriteAccess() {
-        if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
-                Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            external_storage_read_status = true;
+
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                external_storage_read_status = true;
+                external_storage_write_status = true;
+            } else {
+                requestPermission(RequestAccessType.EXTERNAL_STORAGE_READ);
+            }
         } else {
-            requestPermission(RequestAccessType.EXTERNAL_STORAGE_READ);
-        }
-        if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            external_storage_write_status = true;
-        } else {
-            requestPermission(RequestAccessType.EXTERNAL_STORAGE_WRITE);
+            if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                external_storage_read_status = true;
+            } else {
+                requestPermission(RequestAccessType.EXTERNAL_STORAGE_READ);
+            }
+            if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                external_storage_write_status = true;
+            } else {
+                requestPermission(RequestAccessType.EXTERNAL_STORAGE_WRITE);
+            }
         }
     }
 
@@ -150,7 +167,7 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
                         getResources()
                                 .getString(R.string
                                         .dialog_message_read_storage_permission_never_ask_again),
-                        Constants.PERMISSIONS_STORAGE_STATUS);
+                        Constants.PERMISSIONS_STORAGE_READ_STATUS);
 
             }
             break;
@@ -162,7 +179,7 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
                                 .string.dialog_message_storage_permission_denied_prompt),
                         getResources().getString(R
                                 .string.dialog_message_write_storage_permission_never_ask_again),
-                        Constants.PERMISSIONS_STORAGE_STATUS);
+                        Constants.PERMISSIONS_STORAGE_WRITE_STATUS);
             }
 
         }
@@ -181,7 +198,6 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
                             newInstance(), true, R.id.container);
 
                 } else {
-
                     Toaster.show(rootView, getResources()
                             .getString(R.string.permission_denied_camera));
                 }
@@ -192,11 +208,11 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     external_storage_read_status = true;
+                    addByImportingQrCode();
                 } else {
                     Toaster.show(rootView, getResources()
                             .getString(R.string.permission_denied_storage));
                 }
-
             }
             break;
             case Constants.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {

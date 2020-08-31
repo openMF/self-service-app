@@ -104,6 +104,7 @@ public class CheckSelfPermissionAndRequest {
             PreferencesHelper preferencesHelper = new PreferencesHelper(activity.
                     getApplicationContext());
             if (preferencesHelper.getBoolean(permissionDeniedStatus, true)) {
+
                 preferencesHelper.putBoolean(permissionDeniedStatus, false);
 
                 ActivityCompat.requestPermissions(activity, new String[]{permission},

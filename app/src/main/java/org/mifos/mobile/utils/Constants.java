@@ -69,7 +69,9 @@ public class Constants {
 
     public static final String PERMISSIONS_CAMERA_STATUS = "camera_status";
 
-    public static final  String PERMISSIONS_STORAGE_STATUS = "storage_status";
+    public static final  String PERMISSIONS_STORAGE_WRITE_STATUS = "storage_write_status";
+
+    public static final  String PERMISSIONS_STORAGE_READ_STATUS = "storage_read_status";
 
     public static final String PERMISSIONS_READ_PHONE_STATE_STATUS = "read_phone_status";
 
