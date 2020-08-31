@@ -544,6 +544,7 @@
     <string name="please_wait">Please Wait...</string>
     <string name="message">message</string>
     <string name="no_notification">No Notification</string>
+    <string name="app_description">An Android Application built on top of the MifosX Self-Service platform for end-user customers to view/transact on the accounts and loans they hold.</string>
 
     <string name="pref_base_url_title">Update Endpoint</string>
     <string name="pref_base_url_desc">Click here to change your Endpoint Configurations</string>
@@ -552,6 +553,7 @@
     <string name="enter_tenant">Enter the Tenant</string>
     <string name="account_type_loan" translatable="false">accountType.loan</string>
     <string name="refresh">Refresh</string>
+    <string name="fork_on_github">Fork on Github</string>
 
     <!--Password strength strings-->
     <string name="password_strength_weak">Weak</string>
@@ -572,6 +574,7 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+
 
     <string-array name="languages" translatable="false">
         <item>English</item>

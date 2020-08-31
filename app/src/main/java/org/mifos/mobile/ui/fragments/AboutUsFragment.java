@@ -5,7 +5,11 @@ package org.mifos.mobile.ui.fragments;
 ~See https://github.com/openMF/self-service-app/blob/master/LICENSE.md
 */
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +18,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 
-import org.mifos.mobile.BuildConfig;
 import org.mifos.mobile.R;
 import org.mifos.mobile.ui.activities.PrivacyPolicyActivity;
 import org.mifos.mobile.ui.fragments.base.BaseFragment;
@@ -27,6 +30,10 @@ import butterknife.OnClick;
 
 
 public class AboutUsFragment extends BaseFragment {
+
+    private static final String GITHUB_REPO = "https://github.com/openMF/mifos-mobile";
+
+    private Context mContext;
 
     @BindView(R.id.tv_app_version)
     TextView tvAppVersion;
@@ -50,11 +57,14 @@ public class AboutUsFragment extends BaseFragment {
         ButterKnife.bind(this, rootView);
         setToolbarTitle(getString(R.string.about_us));
 
-        tvAppVersion.setText(getString(R.string.app_version, BuildConfig.VERSION_NAME));
-
-        tvCopyRight.setText(getString(R.string.copy_right_mifos,
-                String.valueOf(Calendar.getInstance().get(Calendar.YEAR))));
-
+        tvCopyRight.setText(getString(R.string.copy_right_mifos, String.valueOf(Calendar.getInstance().get(Calendar.YEAR))));
+        try {
+            PackageInfo pInfo = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0);
+            String version = pInfo.versionName;
+            tvAppVersion.setText(version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.getMessage();
+        }
         return rootView;
     }
 
@@ -66,5 +76,12 @@ public class AboutUsFragment extends BaseFragment {
     @OnClick(R.id.tv_privacy_policy)
     void showPrivacyPolicy() {
         startActivity(new Intent(getActivity(), PrivacyPolicyActivity.class));
+    }
+
+    @OnClick(R.id.cv_fork)
+    public void onForkClicked() {
+        Intent viewIntent =
+                new Intent(Intent.ACTION_VIEW, Uri.parse(GITHUB_REPO));
+        startActivity(viewIntent);
     }
 }
