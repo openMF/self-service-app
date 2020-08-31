@@ -37,6 +37,7 @@ import org.mifos.mobile.ui.views.SavingAccountsTransactionView;
 import org.mifos.mobile.utils.Constants;
 import org.mifos.mobile.utils.DateHelper;
 import org.mifos.mobile.utils.DatePick;
+import org.mifos.mobile.utils.DividerItemDecoration;
 import org.mifos.mobile.utils.MFDatePicker;
 import org.mifos.mobile.utils.MaterialDialog;
 import org.mifos.mobile.utils.Network;
@@ -166,6 +167,8 @@ public class SavingAccountsTransactionFragment extends BaseFragment
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvSavingAccountsTransaction.setHasFixedSize(true);
         rvSavingAccountsTransaction.setLayoutManager(layoutManager);
+        rvSavingAccountsTransaction.addItemDecoration(new DividerItemDecoration(getActivity(),
+                layoutManager.getOrientation()));
         rvSavingAccountsTransaction.setAdapter(transactionListAdapter);
 
 //        radioGroup.setOnCheckedChangeListener(this);
