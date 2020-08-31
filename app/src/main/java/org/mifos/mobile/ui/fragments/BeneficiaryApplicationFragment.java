@@ -174,6 +174,7 @@ public class BeneficiaryApplicationFragment extends BaseFragment implements
         for (AccountTypeOption accountTypeOption : beneficiaryTemplate.getAccountTypeOptions()) {
             listAccountType.add(accountTypeOption.getValue());
         }
+        listAccountType.clear();
         accountTypeAdapter.notifyDataSetChanged();
 
         if (beneficiaryState == BeneficiaryState.UPDATE) {
