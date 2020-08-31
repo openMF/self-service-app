@@ -26,10 +26,10 @@ data class LoanTemplate(
         var clientId: Int? = null,
 
         @SerializedName("clientAccountNo")
-        var clientAccountNo: String,
+        var clientAccountNo: String? = null,
 
         @SerializedName("clientName")
-        var clientName: String,
+        var clientName: String? = null,
 
         @SerializedName("clientOfficeId")
         var clientOfficeId: Int? = null,
@@ -38,7 +38,7 @@ data class LoanTemplate(
         var loanProductId: Int? = null,
 
         @SerializedName("loanProductName")
-        var loanProductName: String,
+        var loanProductName: String? = null,
 
         @SerializedName("isLoanProductLinkedToFloatingRate")
         var loanProductLinkedToFloatingRate: Boolean? = null,
@@ -47,10 +47,10 @@ data class LoanTemplate(
         var fundId: Int? = null,
 
         @SerializedName("fundName")
-        var fundName: String,
+        var fundName: String? = null,
 
         @SerializedName("currency")
-        var currency: Currency,
+        var currency: Currency? = null,
 
         @SerializedName("principal")
         var principal: Double? = null,
@@ -65,7 +65,7 @@ data class LoanTemplate(
         var termFrequency: Int? = null,
 
         @SerializedName("termPeriodFrequencyType")
-        var termPeriodFrequencyType: TermPeriodFrequencyType,
+        var termPeriodFrequencyType: TermPeriodFrequencyType? = null,
 
         @SerializedName("numberOfRepayments")
         var numberOfRepayments: Int? = null,
@@ -74,13 +74,13 @@ data class LoanTemplate(
         var repaymentEvery: Int? = null,
 
         @SerializedName("repaymentFrequencyType")
-        var repaymentFrequencyType: RepaymentFrequencyType,
+        var repaymentFrequencyType: RepaymentFrequencyType? = null,
 
         @SerializedName("interestRatePerPeriod")
         var interestRatePerPeriod: Double? = null,
 
         @SerializedName("interestRateFrequencyType")
-        var interestRateFrequencyType: InterestRateFrequencyType,
+        var interestRateFrequencyType: InterestRateFrequencyType? = null,
 
         @SerializedName("annualInterestRate")
         var annualInterestRate: Double? = null,
@@ -89,13 +89,13 @@ data class LoanTemplate(
         var floatingInterestRate: Boolean? = null,
 
         @SerializedName("amortizationType")
-        var amortizationType: AmortizationType,
+        var amortizationType: AmortizationType? = null,
 
         @SerializedName("interestType")
-        var interestType: InterestType,
+        var interestType: InterestType? = null,
 
         @SerializedName("interestCalculationPeriodType")
-        var interestCalculationPeriodType: InterestCalculationPeriodType,
+        var interestCalculationPeriodType: InterestCalculationPeriodType? = null,
 
         @SerializedName("allowPartialPeriodInterestCalcualtion")
         var allowPartialPeriodInterestCalcualtion: Boolean? = null,
@@ -107,7 +107,7 @@ data class LoanTemplate(
         var graceOnArrearsAgeing: Int? = null,
 
         @SerializedName("timeline")
-        var timeline: Timeline,
+        var timeline: Timeline? = null,
 
         @SerializedName("productOptions")
         var productOptions: List<ProductOptions> = ArrayList(),
@@ -164,13 +164,13 @@ data class LoanTemplate(
         var canDisburse: Boolean? = null,
 
         @SerializedName("product")
-        var product: Product,
+        var product: Product? = null,
 
         @SerializedName("daysInMonthType")
-        var daysInMonthType: DaysInMonthType,
+        var daysInMonthType: DaysInMonthType? = null,
 
         @SerializedName("daysInYearType")
-        var daysInYearType: DaysInYearType,
+        var daysInYearType: DaysInYearType? = null,
 
         @SerializedName("isInterestRecalculationEnabled")
         var interestRecalculationEnabled: Boolean? = null,

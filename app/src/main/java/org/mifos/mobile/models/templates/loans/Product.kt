@@ -24,16 +24,16 @@ data class Product(
         var id: Int? = null,
 
         @SerializedName("name")
-        var name: String,
+        var name: String? = null,
 
         @SerializedName("shortName")
-        var shortName: String,
+        var shortName: String? = null,
 
         @SerializedName("fundId")
         var fundId: Int? = null,
 
         @SerializedName("fundName")
-        var fundName: String,
+        var fundName: String? = null,
 
         @SerializedName("includeInBorrowerCycle")
         var includeInBorrowerCycle: Boolean? = null,
@@ -42,13 +42,13 @@ data class Product(
         var useBorrowerCycle: Boolean? = null,
 
         @SerializedName("startDate")
-        var startDate: List<Int>,
+        var startDate: List<Int>? = null,
 
         @SerializedName("status")
-        var status: String,
+        var status: String? = null,
 
         @SerializedName("currency")
-        var currency: Currency,
+        var currency: Currency? = null,
 
         @SerializedName("principal")
         var principal: Double? = null,
@@ -72,7 +72,7 @@ data class Product(
         var repaymentEvery: Int? = null,
 
         @SerializedName("repaymentFrequencyType")
-        var repaymentFrequencyType: RepaymentFrequencyType,
+        var repaymentFrequencyType: RepaymentFrequencyType? = null,
 
         @SerializedName("interestRatePerPeriod")
         var interestRatePerPeriod: Double? = null,
@@ -84,7 +84,7 @@ data class Product(
         var maxInterestRatePerPeriod: Double? = null,
 
         @SerializedName("interestRateFrequencyType")
-        var interestRateFrequencyType: InterestRateFrequencyType,
+        var interestRateFrequencyType: InterestRateFrequencyType? = null,
 
         @SerializedName("annualInterestRate")
         var annualInterestRate: Double? = null,
@@ -105,13 +105,13 @@ data class Product(
         var maximumGap: Double? = null,
 
         @SerializedName("amortizationType")
-        var amortizationType: AmortizationType,
+        var amortizationType: AmortizationType? = null,
 
         @SerializedName("interestType")
-        var interestType: InterestType,
+        var interestType: InterestType? = null,
 
         @SerializedName("interestCalculationPeriodType")
-        var interestCalculationPeriodType: InterestCalculationPeriodType,
+        var interestCalculationPeriodType: InterestCalculationPeriodType? = null,
 
         @SerializedName("allowPartialPeriodInterestCalcualtion")
         var allowPartialPeriodInterestCalcualtion: Boolean? = null,
@@ -120,7 +120,7 @@ data class Product(
         var transactionProcessingStrategyId: Int? = null,
 
         @SerializedName("transactionProcessingStrategyName")
-        var transactionProcessingStrategyName: String,
+        var transactionProcessingStrategyName: String? = null,
 
         @SerializedName("graceOnArrearsAgeing")
         var graceOnArrearsAgeing: Int? = null,
@@ -129,22 +129,22 @@ data class Product(
         var overdueDaysForNPA: Int? = null,
 
         @SerializedName("daysInMonthType")
-        var daysInMonthType: DaysInMonthType,
+        var daysInMonthType: DaysInMonthType? = null,
 
         @SerializedName("daysInYearType")
-        var daysInYearType: DaysInYearType,
+        var daysInYearType: DaysInYearType? = null,
 
         @SerializedName("isInterestRecalculationEnabled")
         var interestRecalculationEnabled: Boolean? = null,
 
         @SerializedName("interestRecalculationData")
-        var interestRecalculationData: InterestRecalculationData,
+        var interestRecalculationData: InterestRecalculationData? = null,
 
         @SerializedName("canDefineInstallmentAmount")
         var canDefineInstallmentAmount: Boolean? = null,
 
         @SerializedName("accountingRule")
-        var accountingRule: AccountingRule,
+        var accountingRule: AccountingRule? = null,
 
         @SerializedName("multiDisburseLoan")
         var multiDisburseLoan: Boolean? = null,
@@ -162,6 +162,6 @@ data class Product(
         var accountMovesOutOfNPAOnlyOnArrearsCompletion: Boolean? = null,
 
         @SerializedName("allowAttributeOverrides")
-        var allowAttributeOverrides: AllowAttributeOverrides
+        var allowAttributeOverrides: AllowAttributeOverrides? = null
 
 ) : Parcelable
