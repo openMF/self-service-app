@@ -263,7 +263,7 @@ public class UserProfileFragment extends BaseFragment implements UserDetailsView
     public void showError(String message) {
         Toaster.show(rootView, message);
         sweetUIErrorHandler.showSweetCustomErrorUI(getString(R.string.error_fetching_user_profile),
-                R.drawable.ic_assignment_turned_in_black_24dp, appBarLayout,
+                R.drawable.ic_assignment_not_turned_black_24dp, appBarLayout,
                 layoutError);
         fabEdit.setVisibility(View.GONE);
     }
