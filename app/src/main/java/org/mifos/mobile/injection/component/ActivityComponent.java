@@ -22,6 +22,7 @@ import org.mifos.mobile.ui.activities.LoginActivity;
 import org.mifos.mobile.ui.fragments.LoanApplicationFragment;
 import org.mifos.mobile.ui.fragments.NotificationFragment;
 import org.mifos.mobile.ui.fragments.QrCodeImportFragment;
+import org.mifos.mobile.ui.fragments.QrCodeReaderFragment;
 import org.mifos.mobile.ui.fragments.RegistrationFragment;
 import org.mifos.mobile.ui.fragments.RegistrationVerificationFragment;
 import org.mifos.mobile.ui.fragments.ReviewLoanApplicationFragment;
@@ -129,4 +130,6 @@ public interface ActivityComponent {
     void inject(SavingsAccountWithdrawFragment savingsAccountWithdrawFragment);
 
     void inject(ReviewLoanApplicationFragment reviewLoanApplicationFragment);
+
+    void inject(QrCodeReaderFragment qrCodeReaderFragment);
 }

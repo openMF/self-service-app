@@ -74,4 +74,5 @@
     <dimen name="row_header_width">55dp</dimen>
     <dimen name="text_size">14sp</dimen>
     <dimen name="table_header_line">1dp</dimen>
+    <dimen name="value_100dp">100dp</dimen>
 </resources>

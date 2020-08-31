@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,6 +18,10 @@ import org.mifos.mobile.ui.enums.BeneficiaryState;
 import org.mifos.mobile.ui.fragments.base.BaseFragment;
 
 import androidx.annotation.Nullable;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 /**
@@ -25,7 +30,15 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class QrCodeReaderFragment extends BaseFragment implements ZXingScannerView.ResultHandler {
 
-    private ZXingScannerView mScannerView;
+    @BindView(R.id.view_scanner)
+    ZXingScannerView mScannerView;
+
+    @BindView(R.id.btn_flash)
+    ImageButton btnFlash;
+
+
+    private View rootView;
+    private boolean flashOn = false;
 
     public static QrCodeReaderFragment newInstance() {
         QrCodeReaderFragment fragment = new QrCodeReaderFragment();
@@ -35,9 +48,12 @@ public class QrCodeReaderFragment extends BaseFragment implements ZXingScannerVi
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-        mScannerView = new ZXingScannerView(getActivity());
+        rootView = inflater.inflate(R.layout.fragment_scan_qr_code, container, false);
+        setToolbarTitle(getString(R.string.add_beneficiary));
+        ((BaseActivity) getActivity()).getActivityComponent().inject(this);
+        ButterKnife.bind(this, rootView);
         mScannerView.setAutoFocus(true);
-        return mScannerView;
+        return rootView;
     }
 
     /**
@@ -50,6 +66,20 @@ public class QrCodeReaderFragment extends BaseFragment implements ZXingScannerVi
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();
     }
+
+    @OnClick(R.id.btn_flash)
+    public void turnOnFlash() {
+        if (flashOn) {
+            flashOn = false;
+            btnFlash.setImageDrawable(getResources().getDrawable(R.drawable.ic_flash_on));
+            mScannerView.setFlash(false);
+        } else {
+            flashOn = true;
+            btnFlash.setImageDrawable(getResources().getDrawable(R.drawable.ic_flash_off));
+            mScannerView.setFlash(true);
+        }
+    }
+
 
     /**
      * Closes the Camera
