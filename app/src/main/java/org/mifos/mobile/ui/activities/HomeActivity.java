@@ -118,7 +118,7 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
-
+        registerNetworkRegister();
     }
 
     @Override
@@ -142,6 +142,13 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
                     new IntentFilter(Constants.REGISTER_ON_SERVER));
             isReceiverRegistered = true;
         }
+    }
+
+    public void registerNetworkRegister() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
+        registerReceiver(new NetworkChangeReceiver(), filter);
+
     }
 
     /**
