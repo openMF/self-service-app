@@ -26,6 +26,7 @@ import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
 
 /**
  * @author ishan
@@ -40,6 +41,7 @@ public class BaseActivity extends BasePassCodeActivity implements BaseActivityCa
 
     @Override
     public void setContentView(int layoutResID) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.setContentView(layoutResID);
         toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
