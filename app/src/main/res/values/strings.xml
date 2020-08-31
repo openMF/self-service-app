@@ -343,6 +343,7 @@
     <string name="delete">Delete</string>
     <string name="beneficiary_deleted_successfully">Beneficiary deleted successfully</string>
     <string name="third_party_transfer">Third Party Transfer</string>
+    <string name="third_party_transfer_short">3rd Party Transfer</string>
     <string name="total_loan">Total Loan</string>
     <string name="total_saving">Total Savings</string>
     <string name="accounts_overview">Account Overview</string>
@@ -612,5 +613,11 @@
         <item>sw</item>
         <item>fa</item>
     </string-array>
+
+    <string name="defaultAction" translatable="false">android.intent.action.MAIN</string>
+    <string name="shortcutId1" translatable="false">first_shortcut</string>
+    <string name="shortcutId2" translatable="false">second_shortcut</string>
+    <string name="shortcutId3" translatable="false">third_shortcut</string>
+    <string name="shortcutId4" translatable="false">forth_shortcut</string>
 
 </resources>

@@ -17,9 +17,14 @@ import org.mifos.mobile.utils.Toaster;
 
 public class PassCodeActivity extends MifosPassCodeActivity {
 
+    private String actions;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getIntent().getAction() != null &&
+                !getIntent().getAction().trim().equals(getString(R.string.defaultAction))) {
+            actions = getIntent().getAction();
+        }
         if (!CheckSelfPermissionAndRequest.checkSelfPermission(this,
                 Manifest.permission.READ_PHONE_STATE)) {
             requestPermission();
@@ -48,7 +53,9 @@ public class PassCodeActivity extends MifosPassCodeActivity {
 
     @Override
     public void startNextActivity() {
-        startActivity(new Intent(PassCodeActivity.this, HomeActivity.class));
+        Intent intent = new Intent(PassCodeActivity.this, HomeActivity.class);
+        intent.setAction(actions);
+        startActivity(intent);
     }
 
     @Override

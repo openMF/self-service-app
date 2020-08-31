@@ -6,7 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ShortcutInfo;
+import android.content.pm.ShortcutManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -52,6 +55,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import java.util.ArrayList;
+import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -91,12 +97,15 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         clientId = preferencesHelper.getClientId();
-
+        initialiseShortcuts();
         setupNavigationBar();
         setToolbarElevation();
         setToolbarTitle(getString(R.string.home));
         replaceFragment(HomeOldFragment.newInstance(), false, R.id.container);
-
+        if (getIntent().getAction() != null &&
+                !getIntent().getAction().trim().equals(getString(R.string.defaultAction))) {
+            listenForActions(getIntent().getAction());
+        }
         if (getIntent() != null && getIntent().getBooleanExtra(getString(R.string.notification),
                 false)) {
             replaceFragment(NotificationFragment.newInstance(), true, R.id.container);
@@ -118,7 +127,6 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
         }
-
     }
 
     @Override
@@ -143,12 +151,67 @@ public class HomeActivity extends BaseActivity implements UserDetailsView, Navig
             isReceiverRegistered = true;
         }
     }
+    private void listenForActions(String actions) {
+        if (actions.trim().equals(getString(R.string.recent_transactions))) {
+            replaceFragment(RecentTransactionsFragment.newInstance(), true, R.id.container);
+        } else if (actions.trim().equals(getString(R.string.third_party_transfer_short))) {
+            replaceFragment(ThirdPartyTransferFragment.newInstance(), true, R.id.container);
+        } else if (actions.trim().equals(getString(R.string.charges))) {
+            replaceFragment(ClientChargeFragment.newInstance(clientId, ChargeType.CLIENT), true,
+                    R.id.container);
+        } else if (actions.trim().equals(getString(R.string.accounts))) {
+            replaceFragment(ClientAccountsFragment.newInstance(AccountType.SAVINGS),
+                    true, R.id.container);
+        }
+    }
 
-    /**
-     * Called whenever any item is selected in {@link NavigationView}
-     *
-     * @param item {@link MenuItem} which is selected by the user
-     */
+    private void initialiseShortcuts() {
+        ShortcutManager shortcutManager;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N_MR1) {
+            shortcutManager = getSystemService(ShortcutManager.class);
+            Intent homeIntent = new Intent(this, SplashActivity.class);
+            List<ShortcutInfo> shortcutList = new ArrayList<>();
+            shortcutList.add(
+                    new ShortcutInfo.Builder(this, getString(R.string.shortcutId1))
+                            .setShortLabel(getString(R.string.recent_transactions))
+                            .setLongLabel(getString(R.string.recent_transactions))
+                            .setIcon(Icon.createWithResource(this, R.drawable.ic_label_blue_24dp))
+                            .setIntent(homeIntent.setAction(
+                                    getString(R.string.recent_transactions)))
+                            .build()
+            );
+            shortcutList.add(
+                    new ShortcutInfo.Builder(this, getString(R.string.shortcutId2))
+                            .setShortLabel(
+                                    getString(R.string.third_party_transfer_short))
+                            .setLongLabel(getString(R.string.third_party_transfer))
+                            .setIcon(Icon.createWithResource(this,
+                                    R.drawable.ic_compare_arrows_black_24dp))
+                            .setIntent(homeIntent.setAction(
+                                    getString(R.string.third_party_transfer_short)))
+                            .build()
+            );
+            shortcutList.add(
+                    new ShortcutInfo.Builder(this, getString(R.string.shortcutId3))
+                            .setShortLabel(getString(R.string.charges))
+                            .setLongLabel(getString(R.string.charges))
+                            .setIcon(Icon.createWithResource(this, R.drawable.ic_charges))
+                            .setIntent(homeIntent.setAction(getString(R.string.charges)))
+                            .build()
+            );
+            shortcutList.add(
+                    new ShortcutInfo.Builder(this, getString(R.string.shortcutId4))
+                            .setShortLabel(getString(R.string.accounts))
+                            .setLongLabel(getString(R.string.accounts))
+                            .setIcon(Icon.createWithResource(this,
+                                    R.drawable.ic_account_balance_wallet_black_24dp))
+                            .setIntent(homeIntent.setAction(getString(R.string.accounts)))
+                            .build()
+            );
+            shortcutManager.setDynamicShortcuts(shortcutList);
+        }
+    }
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // select which item to open
