@@ -30,7 +30,7 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
 
     private View rootView;
     private boolean external_storage_read_status = false;
-    private boolean external_storage_write_status = false;
+
 
     public static BeneficiaryAddOptionsFragment newInstance() {
         BeneficiaryAddOptionsFragment fragment = new BeneficiaryAddOptionsFragment();
@@ -85,7 +85,7 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
 
         //request permission for writing external storage
         accessReadWriteAccess();
-        if (external_storage_write_status && external_storage_read_status) {
+        if (external_storage_read_status) {
             Intent getIntent = new Intent(Intent.ACTION_GET_CONTENT);
             getIntent.setType("image/*");
             Intent pickIntent = new Intent(Intent.ACTION_PICK,
@@ -114,12 +114,6 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
             external_storage_read_status = true;
         } else {
             requestPermission(RequestAccessType.EXTERNAL_STORAGE_READ);
-        }
-        if (CheckSelfPermissionAndRequest.checkSelfPermission(getActivity(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            external_storage_write_status = true;
-        } else {
-            requestPermission(RequestAccessType.EXTERNAL_STORAGE_WRITE);
         }
     }
 
@@ -152,17 +146,6 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
                                         .dialog_message_read_storage_permission_never_ask_again),
                         Constants.PERMISSIONS_STORAGE_STATUS);
 
-            }
-            break;
-            case EXTERNAL_STORAGE_WRITE: {
-                CheckSelfPermissionAndRequest.requestPermission((BaseActivity) getActivity(),
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Constants.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE,
-                        getResources().getString(R
-                                .string.dialog_message_storage_permission_denied_prompt),
-                        getResources().getString(R
-                                .string.dialog_message_write_storage_permission_never_ask_again),
-                        Constants.PERMISSIONS_STORAGE_STATUS);
             }
 
         }
@@ -198,17 +181,6 @@ public class BeneficiaryAddOptionsFragment extends BaseFragment {
                 }
 
             }
-            break;
-            case Constants.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    external_storage_write_status = true;
-                } else {
-                    Toaster.show(rootView, getResources()
-                            .getString(R.string.permission_denied_storage));
-                }
-            }
-
         }
     }
 }
