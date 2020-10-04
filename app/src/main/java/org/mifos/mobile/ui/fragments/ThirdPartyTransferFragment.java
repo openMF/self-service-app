@@ -234,11 +234,13 @@ public class ThirdPartyTransferFragment extends BaseFragment implements ThirdPar
         TransferPayload transferPayload = new TransferPayload();
         transferPayload.setFromAccountId(fromAccountOption.getAccountId());
         transferPayload.setFromClientId(fromAccountOption.getClientId());
+        transferPayload.setFromAccountNumber(fromAccountOption.getAccountNo());
         transferPayload.setFromAccountType(fromAccountOption.getAccountType().getId());
         transferPayload.setFromOfficeId(fromAccountOption.getOfficeId());
         transferPayload.setToOfficeId(beneficiaryAccountOption.getOfficeId());
         transferPayload.setToAccountId(beneficiaryAccountOption.getAccountId());
         transferPayload.setToClientId(beneficiaryAccountOption.getClientId());
+        transferPayload.setToAccountNumber(beneficiaryAccountOption.getAccountNo());
         transferPayload.setToAccountType(beneficiaryAccountOption.getAccountType().getId());
         transferPayload.setTransferDate(transferDate);
         transferPayload.setTransferAmount(Double.parseDouble(etAmount.getText().toString()));
