@@ -16,8 +16,8 @@
         android:background="@color/accent"
         android:id="@+id/circle_status"
         android:layout_gravity="center_vertical"
-        android:layout_height="25dp"
-        android:layout_width="25dp"/>
+        android:layout_height="@dimen/item_widget_client_charge_img"
+        android:layout_width="@dimen/item_widget_client_charge_img"/>
 
     <LinearLayout
         android:layout_height="wrap_content"

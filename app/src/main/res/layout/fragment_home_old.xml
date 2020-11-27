@@ -31,19 +31,19 @@
 
                 <ImageView
                     android:id="@+id/iv_user_image"
-                    android:layout_height="84dp"
+                    android:layout_height="@dimen/user_img"
                     android:layout_margin="@dimen/margin_16dp"
-                    android:layout_width="84dp"
+                    android:layout_width="@dimen/user_img"
                     android:visibility="invisible"/>
 
                 <org.mifos.mobile.utils.CircularImageView
                     android:id="@+id/iv_circular_user_image"
-                    android:layout_height="84dp"
+                    android:layout_height="@dimen/user_img"
                     android:layout_margin="@dimen/margin_16dp"
-                    android:layout_width="84dp"
+                    android:layout_width="@dimen/user_img"
                     android:visibility="gone"
                     app:border="true"
-                    app:border_width="1dp"
+                    app:border_width="@dimen/app_border_width"
                     tools:src="@drawable/ic_person_black_24dp"/>
 
                 <TextView
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_headline"
+                    android:textSize="@dimen/text_size_headline"
                     tools:text="@string/medium_text"/>
 
             </LinearLayout>
@@ -82,7 +82,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:text="@string/accounts_overview"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                             android:textColor="@color/gray_dark"/>
@@ -107,7 +107,7 @@
                             android:id="@+id/ll_total_savings"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin">
 
@@ -133,14 +133,14 @@
                         <View
                             android:background="@color/gray_dark"
                             android:layout_height="match_parent"
-                            android:layout_width="1dp"/>
+                            android:layout_width="@dimen/view_width"/>
 
                         <LinearLayout
                             android:gravity="center"
                             android:id="@+id/ll_total_loan"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin">
 
@@ -177,7 +177,7 @@
 
                 <LinearLayout
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginBottom="@dimen/margin_2dp"
                     android:layout_marginTop="@dimen/default_margin"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
@@ -204,8 +204,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/home_imgs"
+                                android:layout_width="@dimen/home_imgs"
                                 app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
 
                             <TextView
@@ -241,8 +241,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/home_imgs"
+                                android:layout_width="@dimen/home_imgs"
                                 app:srcCompat="@drawable/ic_compare_arrows_black_24dp"/>
 
                             <TextView
@@ -279,8 +279,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/home_imgs"
+                                android:layout_width="@dimen/home_imgs"
                                 app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp"/>
 
                             <TextView
@@ -322,8 +322,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/home_imgs"
+                                android:layout_width="@dimen/home_imgs"
                                 app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
 
                             <TextView
@@ -358,8 +358,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/home_imgs"
+                                android:layout_width="@dimen/home_imgs"
                                 app:srcCompat="@drawable/ic_beneficiaries_48px"/>
 
                             <TextView
@@ -396,8 +396,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/home_imgs"
+                                android:layout_width="@dimen/home_imgs"
                                 app:srcCompat="@drawable/ic_surveys_48px"/>
 
                             <TextView
@@ -430,7 +430,7 @@
                     android:layout_marginStart="@dimen/row_padding_right"
                     android:layout_marginTop="@dimen/divider_margin"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/need_help"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 

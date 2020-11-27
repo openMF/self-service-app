@@ -66,8 +66,8 @@
                         <org.mifos.mobile.utils.CircularImageView
                             android:id="@+id/iv_circle_status"
                             android:layout_gravity="start"
-                            android:layout_height="25dp"
-                            android:layout_width="25dp"
+                            android:layout_height="@dimen/saving_account_details_img"
+                            android:layout_width="@dimen/saving_account_details_img"
                             android:visibility="visible"
                         />
 
@@ -284,8 +284,8 @@
                         <ImageView
                             style="@style/circleLayout"
                             android:contentDescription="@string/transactions"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/saving_account_details_35_img"
+                            android:layout_width="@dimen/saving_account_details_35_img"
                             app:srcCompat="@drawable/ic_compare_arrows_black_24dp"/>
 
                         <LinearLayout
@@ -294,7 +294,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -327,8 +327,8 @@
                         <ImageView
                             style="@style/circleLayout"
                             android:contentDescription="@string/charges"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/saving_account_details_35_img"
+                            android:layout_width="@dimen/saving_account_details_35_img"
                             app:srcCompat="@drawable/ic_charges"/>
 
                         <LinearLayout
@@ -337,7 +337,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -370,8 +370,8 @@
                         <ImageView
                             style="@style/circleLayout"
                             android:contentDescription="@string/qr_code"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/saving_account_details_35_img"
+                            android:layout_width="@dimen/saving_account_details_35_img"
                             app:srcCompat="@drawable/ic_qrcode_scan"/>
 
                         <LinearLayout
@@ -380,7 +380,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -412,8 +412,8 @@
 
                 <TextView
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="@dimen/margin_5dp"
+                    android:layout_marginRight="@dimen/margin_5dp"
                     android:layout_width="wrap_content"
                     android:text="@string/need_help"/>
 

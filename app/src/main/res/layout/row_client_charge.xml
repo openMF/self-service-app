@@ -55,7 +55,7 @@
 
             <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/margin_4dp"
                 android:layout_width="match_parent"
                 android:orientation="horizontal">
 
@@ -63,7 +63,7 @@
                     android:ellipsize="end"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:lines="1"
                     android:text="@string/amount_due"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -87,7 +87,7 @@
                     android:ellipsize="end"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:lines="1"
                     android:text="@string/amount_paid"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -111,7 +111,7 @@
                     android:ellipsize="end"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:lines="1"
                     android:text="@string/amount_waived"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -135,7 +135,7 @@
                     android:ellipsize="end"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:lines="1"
                     android:text="@string/amount_outstanding"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"

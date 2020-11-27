@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:padding="10dp">
+            android:padding="@dimen/layout_padding_10dp">
 
             <TextView
                 android:layout_height="wrap_content"

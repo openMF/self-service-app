@@ -34,15 +34,15 @@
 
                     <org.mifos.mobile.utils.ProcessView
                         android:id="@+id/process_one"
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
+                        android:layout_height="@dimen/saving_make_transfer_process"
+                        android:layout_width="@dimen/saving_make_transfer_process"
                         app:value="1"/>
 
                     <View
                         android:background="@color/light_grey"
                         android:layout_gravity="center"
                         android:layout_height="match_parent"
-                        android:layout_width="4dp"/>
+                        android:layout_width="@dimen/saving_make_transfer_view_width"/>
 
                 </LinearLayout>
 
@@ -67,7 +67,7 @@
                         android:id="@+id/sp_pay_from"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:paddingTop="10dp"
+                        android:paddingTop="@dimen/layout_padding_10dp"
                         android:prompt="@string/select_pay_from"
                         android:spinnerMode="dialog"/>
 
@@ -93,15 +93,15 @@
 
                     <org.mifos.mobile.utils.ProcessView
                         android:id="@+id/process_two"
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
+                        android:layout_height="@dimen/saving_make_transfer_process"
+                        android:layout_width="@dimen/saving_make_transfer_process"
                         app:value="2"/>
 
                     <View
                         android:background="@color/light_grey"
                         android:layout_gravity="center"
                         android:layout_height="match_parent"
-                        android:layout_width="4dp"/>
+                        android:layout_width="@dimen/saving_make_transfer_view_width"/>
 
                 </LinearLayout>
 
@@ -144,7 +144,7 @@
                         android:id="@+id/sp_beneficiary"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:paddingTop="10dp"
+                        android:paddingTop="@dimen/layout_padding_10dp"
                         android:prompt="@string/select_beneficiary"
                         android:spinnerMode="dialog"
                         android:visibility="gone"/>
@@ -180,15 +180,15 @@
 
                     <org.mifos.mobile.utils.ProcessView
                         android:id="@+id/process_three"
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
+                        android:layout_height="@dimen/saving_make_transfer_process"
+                        android:layout_width="@dimen/saving_make_transfer_process"
                         app:value="3"/>
 
                     <View
                         android:background="@color/light_grey"
                         android:layout_gravity="center"
                         android:layout_height="match_parent"
-                        android:layout_width="4dp"/>
+                        android:layout_width="@dimen/saving_make_transfer_view_width"/>
 
                 </LinearLayout>
 
@@ -225,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:maxLines="1"
-                        android:paddingBottom="16dp"
+                        android:paddingBottom="@dimen/layout_padding_16dp"
                         android:visibility="gone"/>
 
                     <androidx.appcompat.widget.AppCompatButton
@@ -250,8 +250,8 @@
 
                     <org.mifos.mobile.utils.ProcessView
                         android:id="@+id/process_four"
-                        android:layout_height="40dp"
-                        android:layout_width="40dp"
+                        android:layout_height="@dimen/saving_make_transfer_process"
+                        android:layout_width="@dimen/saving_make_transfer_process"
                         app:value="4"/>
 
                 </LinearLayout>
@@ -280,7 +280,7 @@
                         android:inputType="text"
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
-                        android:paddingBottom="16dp"
+                        android:paddingBottom="@dimen/layout_padding_16dp"
                         android:visibility="gone"/>
 
                     <TextView
@@ -299,8 +299,8 @@
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btn_cancel_transfer"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="@dimen/margin_16dp"
+                            android:layout_marginTop="@dimen/margin_10dp"
                             android:layout_weight="0.5"
                             android:layout_width="match_parent"
                             android:text="@string/cancel"
@@ -310,8 +310,8 @@
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btn_review_transfer"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="@dimen/margin_16dp"
+                            android:layout_marginTop="@dimen/margin_10dp"
                             android:layout_weight="0.5"
                             android:layout_width="match_parent"
                             android:text="@string/review_transfer"

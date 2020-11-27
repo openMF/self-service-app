@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/width_none"
         android:orientation="vertical"
         android:paddingEnd="@dimen/layout_padding_8dp"
         android:paddingLeft="@dimen/row_padding_left"
@@ -54,7 +54,7 @@
         android:layout_marginEnd="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
         android:layout_weight="0.4"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/width_none"
         android:orientation="vertical">
 
         <TextView

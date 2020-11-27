@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/iv_qr_code"
-        android:layout_height="300dp"
+        android:layout_height="@dimen/qr_code_height"
         android:layout_width="match_parent"/>
 
 </LinearLayout>

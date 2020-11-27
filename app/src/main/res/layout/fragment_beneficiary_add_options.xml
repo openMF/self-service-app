@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:text="@string/select_mode"
-                android:textSize="@dimen/text_headline"/>
+                android:textSize="@dimen/text_size_headline"/>
 
             <TextView
                 android:layout_height="wrap_content"
@@ -44,13 +44,13 @@
                     android:id="@+id/ll_add_beneficiary_manually"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:orientation="vertical"
                     android:padding="@dimen/default_margin">
 
                     <ImageView
-                        android:layout_height="70dp"
-                        android:layout_width="70dp"
+                        android:layout_height="@dimen/icon_big"
+                        android:layout_width="@dimen/icon_big"
                         app:srcCompat="@drawable/ic_beneficiary_add_48px"/>
 
                     <TextView
@@ -72,13 +72,13 @@
                     android:id="@+id/ll_add_beneficiary_qrcode"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:orientation="vertical"
                     android:padding="@dimen/default_margin">
 
                     <ImageView
-                        android:layout_height="70dp"
-                        android:layout_width="70dp"
+                        android:layout_height="@dimen/icon_big"
+                        android:layout_width="@dimen/icon_big"
                         app:srcCompat="@drawable/ic_qrcode_scan"/>
 
                     <TextView
@@ -108,13 +108,13 @@
                     android:id="@+id/ll_upload_beneficiary_qrcode"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:orientation="vertical"
                     android:padding="@dimen/default_margin">
 
                     <ImageView
-                        android:layout_height="70dp"
-                        android:layout_width="70dp"
+                        android:layout_height="@dimen/icon_big"
+                        android:layout_width="@dimen/icon_big"
                         app:srcCompat="@drawable/ic_file_upload_black_24dp"/>
 
                     <TextView

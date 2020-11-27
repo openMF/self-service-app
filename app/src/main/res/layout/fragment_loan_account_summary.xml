@@ -42,7 +42,7 @@
                         android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_none"
                         android:lines="1"
                         android:text="@string/account_short"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -53,7 +53,7 @@
                         android:layout_marginLeft="@dimen/default_margin"
                         android:layout_marginStart="@dimen/default_margin"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_none"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black"
                         tools:text="loanAccountNumber"/>
@@ -70,7 +70,7 @@
                         android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_none"
                         android:lines="1"
                         android:text="@string/loan_product"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -81,7 +81,7 @@
                         android:layout_marginLeft="@dimen/default_margin"
                         android:layout_marginStart="@dimen/default_margin"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_none"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black"
                         tools:text="@string/loan_product"/>
@@ -100,7 +100,7 @@
                         android:ellipsize="end"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_none"
                         android:lines="1"
                         android:text="@string/loan_purpose"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -110,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/default_margin"
                         android:layout_weight="1"
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/width_none"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:textColor="@color/black"
                         tools:text="loanPurpose"/>
@@ -143,7 +143,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/principal"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -152,7 +152,7 @@
                             android:id="@+id/tv_principal"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="@string/principal"/>
@@ -169,7 +169,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/interest"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -178,7 +178,7 @@
                             android:id="@+id/tv_interest_charged"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="Interest"/>
@@ -195,7 +195,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/fees"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -204,7 +204,7 @@
                             android:id="@+id/tv_fees"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="fees"/>
@@ -221,7 +221,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/penalties"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -230,7 +230,7 @@
                             android:id="@+id/tv_penalties"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="Penalties"/>
@@ -266,7 +266,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/total_repayment"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -275,7 +275,7 @@
                             android:id="@+id/tv_total_repayment"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="repayment"/>
@@ -292,7 +292,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/total_paid"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -301,7 +301,7 @@
                             android:id="@+id/tv_total_paid"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="paid"/>
@@ -318,7 +318,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/interest_waived"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -327,7 +327,7 @@
                             android:id="@+id/tv_interest_waived"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="@string/interest_waived"/>
@@ -344,7 +344,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/penalties_waived"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -353,7 +353,7 @@
                             android:id="@+id/tv_penalties_waived"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="penalties_waived"/>
@@ -370,7 +370,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/fees_waived"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
@@ -379,7 +379,7 @@
                             android:id="@+id/tv_fees_waived"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="fees_waived"/>
@@ -415,7 +415,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/outstanding_balance"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -425,7 +425,7 @@
                             android:id="@+id/tv_outstanding_balance"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/black"
                             tools:text="balance"/>
@@ -442,7 +442,7 @@
                             android:ellipsize="end"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:lines="1"
                             android:text="@string/account_status"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
@@ -451,7 +451,7 @@
                         <LinearLayout
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="horizontal">
 
                             <TextView

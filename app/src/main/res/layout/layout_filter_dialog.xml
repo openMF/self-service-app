@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:textSize="17sp"
+        android:textSize="@dimen/text_medium"
         android:layout_margin="@dimen/margin_16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                     android:id="@+id/rg_date_filter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="@dimen/margin_4dp"
                     android:orientation="vertical">
 
                     <RadioButton

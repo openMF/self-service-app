@@ -62,7 +62,7 @@
                 android:layout_marginRight="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_width="fill_parent"
-                android:paddingTop="10dp"
+                android:paddingTop="@dimen/sp_loan_padding_top"
                 android:prompt="@string/select_loan_product"/>
 
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_marginRight="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_width="fill_parent"
-                android:paddingTop="10dp"
+                android:paddingTop="@dimen/sp_loan_padding_top"
                 android:prompt="@string/purpose_of_loan"/>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +107,7 @@
                     android:layout_marginRight="@dimen/default_padding"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="@dimen/default_padding"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -120,7 +120,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/currency"
                     android:textColor="@color/light_grey"/>
 
@@ -131,7 +131,7 @@
                     android:layout_marginEnd="@dimen/default_padding"
                     android:layout_marginRight="@dimen/default_padding"
                     android:layout_weight="0.5"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
 
             </LinearLayout>
@@ -148,7 +148,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/submission_date"
                     android:textColor="@color/light_grey"/>
 
@@ -184,7 +184,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/expected_disbursement_date"
                     android:textColor="@color/light_grey"/>
 
@@ -205,7 +205,7 @@
 
                     <ImageView
                         android:layout_height="match_parent"
-                        android:layout_width="30dp"
+                        android:layout_width="@dimen/edit_black_img_width"
                         app:srcCompat="@drawable/ic_edit_black_24dp"/>
 
                 </LinearLayout>
@@ -219,7 +219,7 @@
                 android:layout_marginLeft="@dimen/default_padding"
                 android:layout_marginRight="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
                 android:text="@string/review" />
 
         </LinearLayout>

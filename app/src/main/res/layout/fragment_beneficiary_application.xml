@@ -20,9 +20,9 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:paddingTop="16dp"
+                android:paddingTop="@dimen/default_padding"
                 android:text="@string/select_account_type"
-                android:textSize="16sp"/>
+                android:textSize="@dimen/text_medium"/>
 
             <Spinner
                 style="@style/Widget.AppCompat.Spinner.Underlined"
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="@dimen/default_padding"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="@dimen/default_padding"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:maxLength="9"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="@dimen/default_padding"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -98,13 +98,13 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="@dimen/default_padding"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 style="@style/Button.Base"
                 android:id="@+id/btn_beneficiary_submit"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
                 android:text="@string/submit_beneficiary"/>
 
         </LinearLayout>

@@ -20,7 +20,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:text="@string/client_name"
                 android:textColor="@color/light_grey"/>
 
@@ -28,7 +28,7 @@
                 android:id="@+id/tv_client_name"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 tools:text="@string/medium_text"/>
 
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:text="@string/account_number"
 
                 android:textColor="@color/light_grey"/>
@@ -51,7 +51,7 @@
                 android:id="@+id/tv_account_number"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 tools:text="@string/medium_text"/>
 
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:text="@string/withdrawal_date"
                 android:textColor="@color/light_grey"/>
 
@@ -73,7 +73,7 @@
                 android:id="@+id/tv_withdrawal_date"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 tools:text="@string/medium_text"/>
 

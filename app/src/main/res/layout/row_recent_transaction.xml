@@ -29,8 +29,8 @@
             android:contentDescription="@string/recent_transactions"
             android:id="@+id/iv_transaction"
             android:layout_gravity="center_vertical"
-            android:layout_height="45dp"
-            android:layout_width="45dp"
+            android:layout_height="@dimen/row_recent_transaction_img"
+            android:layout_width="@dimen/row_recent_transaction_img"
             android:tint="@color/primary"
             app:srcCompat="@drawable/ic_local_atm_black_24dp"/>
 
@@ -40,7 +40,7 @@
         android:gravity="center_vertical"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/width_none"
         android:orientation="vertical"
         android:paddingEnd="@dimen/layout_padding_8dp"
         android:paddingLeft="@dimen/default_padding"

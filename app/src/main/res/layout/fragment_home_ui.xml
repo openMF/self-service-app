@@ -35,9 +35,9 @@
                     <ImageView
                         android:id="@+id/iv_user_image"
                         android:layout_gravity="center"
-                        android:layout_height="65dp"
+                        android:layout_height="@dimen/home_ui_user_img"
                         android:layout_margin="@dimen/margin_16dp"
-                        android:layout_width="65dp"
+                        android:layout_width="@dimen/home_ui_user_img"
                         android:visibility="visible"
                         android:background="?selectableItemBackgroundBorderless"
                         android:clickable="true"
@@ -46,9 +46,9 @@
                     <org.mifos.mobile.utils.CircularImageView
                         android:id="@+id/iv_circular_user_image"
                         android:layout_gravity="center"
-                        android:layout_height="65dp"
+                        android:layout_height="@dimen/home_ui_user_img"
                         android:layout_margin="@dimen/margin_16dp"
-                        android:layout_width="65dp"
+                        android:layout_width="@dimen/home_ui_user_img"
                         android:visibility="gone"
                         android:background="?selectableItemBackgroundBorderless"
                         android:clickable="true"
@@ -102,7 +102,7 @@
                                 android:layout_width="wrap_content"
                                 android:text="@string/accounts_overview"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="@dimen/text_small"/>
 
                             <ImageView
                                 android:layout_alignParentEnd="true"
@@ -143,7 +143,7 @@
                                 android:layout_width="wrap_content"
                                 android:text="@string/recent_transactions"
                                 android:textColor="@color/white"
-                                android:textSize="14sp"/>
+                                android:textSize="@dimen/text_small"/>
 
                             <ImageView
                                 android:layout_alignParentEnd="true"
@@ -165,7 +165,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:cardElevation="1dp">
+                app:cardElevation="@dimen/home_ui_card_elevation">
 
                 <LinearLayout
                     android:background="@color/primary_dark"
@@ -176,20 +176,20 @@
 
                     <TextView
                         android:gravity="center"
-                        android:layout_height="0dp"
+                        android:layout_height="@dimen/dimen_0dp"
                         android:layout_marginTop="@dimen/layout_padding_8dp"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:text="@string/manage_accounts"
                         android:textColor="@color/white"
-                        android:textSize="14sp"/>
+                        android:textSize="@dimen/text_small"/>
 
                     <LinearLayout
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:orientation="horizontal"
                         android:paddingBottom="@dimen/layout_padding_16dp"
-                        android:paddingTop="24dp">
+                        android:paddingTop="@dimen/layout_padding_24dp">
 
                         <LinearLayout
                             android:background="?selectableItemBackgroundBorderless"
@@ -198,25 +198,25 @@
                             android:id="@+id/ll_accounts"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin"
                             tools:ignore="UseCompoundDrawables">
 
                             <androidx.cardview.widget.CardView
-                                android:innerRadius="0dp"
-                                android:layout_height="60dp"
-                                android:layout_width="60dp"
+                                android:innerRadius="@dimen/home_ui_card_inner_radius"
+                                android:layout_height="@dimen/home_ui_card_height"
+                                android:layout_width="@dimen/home_ui_card_width"
                                 android:shape="ring"
                                 android:thicknessRatio="1.9"
                                 app:cardBackgroundColor="@color/primary"
-                                app:cardCornerRadius="30dp">
+                                app:cardCornerRadius="@dimen/home_ui_card_corner_radius">
 
                                 <ImageView
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_gravity="center"
-                                    android:layout_height="60dp"
+                                    android:layout_height="@dimen/home_ui_img_height"
                                     android:layout_width="wrap_content"
                                     android:padding="@dimen/layout_padding_16dp"
                                     android:tint="@color/white"
@@ -246,26 +246,26 @@
                             android:id="@+id/ll_transfer"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin"
                             tools:ignore="UseCompoundDrawables">
 
                             <androidx.cardview.widget.CardView
-                                android:innerRadius="0dp"
-                                android:layout_height="60dp"
-                                android:layout_width="60dp"
+                                android:innerRadius="@dimen/home_ui_card_inner_radius"
+                                android:layout_height="@dimen/home_ui_card_height"
+                                android:layout_width="@dimen/home_ui_card_width"
                                 android:shape="ring"
                                 android:thicknessRatio="1.9"
                                 app:cardBackgroundColor="@color/primary"
-                                app:cardCornerRadius="30dp">
+                                app:cardCornerRadius="@dimen/home_ui_card_corner_radius">
 
                                 <ImageView
                                     android:contentDescription="@string/transfer"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_gravity="center"
-                                    android:layout_height="60dp"
+                                    android:layout_height="@dimen/home_imgs"
                                     android:layout_width="wrap_content"
                                     android:padding="@dimen/layout_padding_16dp"
                                     android:tint="@color/white"
@@ -295,26 +295,26 @@
                             android:id="@+id/ll_apply_for_loan"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin"
                             tools:ignore="UseCompoundDrawables">
 
                             <androidx.cardview.widget.CardView
-                                android:innerRadius="0dp"
-                                android:layout_height="60dp"
-                                android:layout_width="60dp"
+                                android:innerRadius="@dimen/home_ui_card_inner_radius"
+                                android:layout_height="@dimen/home_ui_card_height"
+                                android:layout_width="@dimen/home_ui_card_width"
                                 android:shape="ring"
                                 android:thicknessRatio="1.9"
                                 app:cardBackgroundColor="@color/primary"
-                                app:cardCornerRadius="30dp">
+                                app:cardCornerRadius="@dimen/home_ui_card_corner_radius">
 
                                 <ImageView
                                     android:contentDescription="@string/apply_for_loan"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_gravity="center"
-                                    android:layout_height="60dp"
+                                    android:layout_height="@dimen/home_imgs"
                                     android:layout_width="wrap_content"
                                     android:padding="@dimen/layout_padding_16dp"
                                     android:tint="@color/white"
@@ -341,169 +341,169 @@
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                app:cardElevation="1dp">
+                app:cardElevation="@dimen/home_ui_card_elevation">
 
                 <LinearLayout
-                    android:background="@color/dashboard_gray_background"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dashboard_gray_background"
                     android:orientation="vertical"
                     android:paddingTop="@dimen/default_margin">
 
                     <TextView
-                        android:gravity="center"
-                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_0dp"
                         android:layout_marginTop="@dimen/layout_padding_8dp"
                         android:layout_weight="1"
-                        android:layout_width="match_parent"
+                        android:gravity="center"
                         android:text="@string/more"
                         android:textColor="@color/black"
-                        android:textSize="14sp"/>
+                        android:textSize="@dimen/text_small" />
 
                     <LinearLayout
-                        android:layout_height="wrap_content"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:paddingBottom="@dimen/layout_padding_16dp"
-                        android:paddingTop="24dp">
+                        android:paddingTop="@dimen/layout_padding_24dp"
+                        android:paddingBottom="@dimen/layout_padding_16dp">
 
                         <LinearLayout
+                            android:id="@+id/ll_beneficiaries"
+                            android:layout_width="@dimen/width_none"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:background="?selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:gravity="center"
-                            android:id="@+id/ll_beneficiaries"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin"
                             tools:ignore="UseCompoundDrawables">
 
                             <androidx.cardview.widget.CardView
-                                android:innerRadius="0dp"
-                                android:layout_height="60dp"
-                                android:layout_width="60dp"
+                                android:layout_width="@dimen/home_ui_card_width"
+                                android:layout_height="@dimen/home_ui_card_height"
+                                android:innerRadius="@dimen/home_ui_card_inner_radius"
                                 android:shape="ring"
                                 android:thicknessRatio="1.9"
-                                app:cardCornerRadius="30dp">
+                                app:cardCornerRadius="@dimen/home_ui_card_corner_radius">
 
                                 <ImageView
-                                    android:contentDescription="@string/beneficiaries"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/home_imgs"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_gravity="center"
-                                    android:layout_height="60dp"
-                                    android:layout_width="wrap_content"
+                                    android:contentDescription="@string/beneficiaries"
                                     android:padding="@dimen/layout_padding_16dp"
                                     android:tint="@color/black"
-                                    app:srcCompat="@drawable/ic_supervisor_account_black_24dp"/>
+                                    app:srcCompat="@drawable/ic_supervisor_account_black_24dp" />
 
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
-                                android:layout_width="wrap_content"
                                 android:paddingTop="@dimen/layout_padding_8dp"
                                 android:text="@string/beneficiaries"
-                                android:textColor="@color/black"/>
+                                android:textColor="@color/black" />
 
                         </LinearLayout>
 
                         <View
-                            android:background="@color/white"
+                            android:layout_width="@dimen/view_width"
                             android:layout_height="match_parent"
-                            android:layout_width="0.2dp"/>
+                            android:background="@color/white" />
 
                         <LinearLayout
+                            android:id="@+id/ll_charges"
+                            android:layout_width="@dimen/width_none"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:background="?selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:focusable="true"
                             android:gravity="center"
-                            android:id="@+id/ll_charges"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin"
                             tools:ignore="UseCompoundDrawables">
 
                             <androidx.cardview.widget.CardView
-                                android:innerRadius="0dp"
-                                android:layout_height="60dp"
-                                android:layout_width="60dp"
+                                android:layout_width="@dimen/home_ui_card_width"
+                                android:layout_height="@dimen/home_ui_card_height"
+                                android:innerRadius="@dimen/home_ui_card_inner_radius"
                                 android:shape="ring"
                                 android:thicknessRatio="1.9"
-                                app:cardCornerRadius="30dp">
+                                app:cardCornerRadius="@dimen/home_ui_card_corner_radius">
 
                                 <ImageView
-                                    android:contentDescription="@string/charges"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/home_imgs"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_gravity="center"
-                                    android:layout_height="60dp"
-                                    android:layout_width="wrap_content"
+                                    android:contentDescription="@string/charges"
                                     android:padding="@dimen/layout_padding_16dp"
                                     android:tint="@color/black"
-                                    app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp"/>
+                                    app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp" />
 
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
-                                android:layout_width="wrap_content"
                                 android:paddingTop="@dimen/layout_padding_8dp"
                                 android:text="@string/charges"
-                                android:textColor="@color/black"/>
+                                android:textColor="@color/black" />
 
                         </LinearLayout>
 
                         <View
-                            android:background="@color/white"
+                            android:layout_width="@dimen/view_width"
                             android:layout_height="match_parent"
-                            android:layout_width="0.2dp"/>
+                            android:background="@color/white" />
 
                         <LinearLayout
+                            android:id="@+id/ll_surveys"
+                            android:layout_width="@dimen/width_none"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:background="?selectableItemBackgroundBorderless"
                             android:clickable="true"
                             android:gravity="center"
-                            android:id="@+id/ll_surveys"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
                             android:orientation="vertical"
                             android:padding="@dimen/default_margin"
                             tools:ignore="UseCompoundDrawables">
 
                             <androidx.cardview.widget.CardView
-                                android:innerRadius="0dp"
-                                android:layout_height="60dp"
-                                android:layout_width="60dp"
+                                android:layout_width="@dimen/home_ui_card_width"
+                                android:layout_height="@dimen/home_ui_card_height"
+                                android:innerRadius="@dimen/home_ui_card_inner_radius"
                                 android:shape="ring"
                                 android:thicknessRatio="1.9"
-                                app:cardCornerRadius="30dp">
+                                app:cardCornerRadius="@dimen/home_ui_card_corner_radius">
 
                                 <ImageView
-                                    android:contentDescription="@string/survey"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/home_imgs"
                                     android:layout_alignParentTop="true"
                                     android:layout_centerHorizontal="true"
                                     android:layout_gravity="center"
-                                    android:layout_height="60dp"
-                                    android:layout_width="wrap_content"
+                                    android:contentDescription="@string/survey"
                                     android:padding="@dimen/layout_padding_16dp"
                                     android:tint="@color/black"
-                                    app:srcCompat="@drawable/ic_surveys_48px"/>
+                                    app:srcCompat="@drawable/ic_surveys_48px" />
 
                             </androidx.cardview.widget.CardView>
 
                             <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/divider_margin"
-                                android:layout_width="wrap_content"
                                 android:paddingTop="@dimen/layout_padding_8dp"
                                 android:text="@string/survey"
-                                android:textColor="@color/black"/>
+                                android:textColor="@color/black" />
 
                         </LinearLayout>
 
@@ -528,10 +528,10 @@
                     android:layout_marginStart="@dimen/row_padding_right"
                     android:layout_marginTop="@dimen/divider_margin"
                     android:layout_weight="1"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/need_help"
                     android:textColor="@color/black"
-                    android:textSize="14sp"/>
+                    android:textSize="@dimen/text_small"/>
 
                 <LinearLayout
                     android:layout_height="wrap_content"

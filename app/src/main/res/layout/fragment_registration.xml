@@ -100,7 +100,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width_none"
             android:layout_height="wrap_content"
             android:indeterminate="false"
             android:maxHeight="20dip"
@@ -140,7 +140,7 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width_none"
             android:text="@string/verification_mode"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
@@ -148,7 +148,7 @@
             android:id="@+id/rg_verification_mode"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width_none"
             android:orientation="horizontal">
 
             <RadioButton

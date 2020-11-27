@@ -151,7 +151,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="@dimen/margin_6dp"
                 android:layout_width="match_parent">
 
                 <LinearLayout
@@ -171,8 +171,8 @@
 
                         <ImageView
                             style="@style/circleLayout"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/loan_account_details_img"
+                            android:layout_width="@dimen/loan_account_details_img"
                             app:srcCompat="@drawable/ic_surveys_48px"/>
 
                         <LinearLayout
@@ -181,7 +181,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -213,8 +213,8 @@
 
                         <ImageView
                             style="@style/circleLayout"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/loan_account_details_img"
+                            android:layout_width="@dimen/loan_account_details_img"
                             app:srcCompat="@drawable/ic_charges"/>
 
                         <LinearLayout
@@ -223,7 +223,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -255,8 +255,8 @@
 
                         <ImageView
                             style="@style/circleLayout"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/loan_account_details_img"
+                            android:layout_width="@dimen/loan_account_details_img"
                             app:srcCompat="@drawable/ic_charges"/>
 
                         <LinearLayout
@@ -265,7 +265,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -297,8 +297,8 @@
 
                         <ImageView
                             style="@style/circleLayout"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/loan_account_details_img"
+                            android:layout_width="@dimen/loan_account_details_img"
                             app:srcCompat="@drawable/ic_compare_arrows_black_24dp"/>
 
                         <LinearLayout
@@ -307,7 +307,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView
@@ -339,8 +339,8 @@
 
                         <ImageView
                             style="@style/circleLayout"
-                            android:layout_height="35dp"
-                            android:layout_width="35dp"
+                            android:layout_height="@dimen/loan_account_details_img"
+                            android:layout_width="@dimen/loan_account_details_img"
                             app:srcCompat="@drawable/ic_qrcode_scan"/>
 
                         <LinearLayout
@@ -349,7 +349,7 @@
                             android:layout_marginLeft="@dimen/default_margin"
                             android:layout_marginStart="@dimen/default_margin"
                             android:layout_weight="1"
-                            android:layout_width="0dp"
+                            android:layout_width="@dimen/width_none"
                             android:orientation="vertical">
 
                             <TextView

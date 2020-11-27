@@ -25,9 +25,9 @@
                 <ImageView
                     android:id="@+id/iv_success"
                     android:layout_gravity="center"
-                    android:layout_height="72dp"
+                    android:layout_height="@dimen/login_height"
                     android:layout_marginTop="@dimen/login_margin_top"
-                    android:layout_width="72dp"
+                    android:layout_width="@dimen/login_height"
                     android:visibility="gone"
                     app:srcCompat="@drawable/animated_check"/>
 
@@ -79,7 +79,7 @@
                     tools:text="@string/medium_text"/>
                 <View
                     android:background="@color/light_grey"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/dimen_1dp"
                     android:layout_marginBottom="@dimen/divider_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     android:layout_width="match_parent"/>
@@ -105,7 +105,7 @@
 
                 <View
                     android:background="@color/light_grey"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/dimen_1dp"
                     android:layout_marginBottom="@dimen/divider_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     android:layout_width="match_parent"/>
@@ -132,7 +132,7 @@
 
                 <View
                     android:background="@color/light_grey"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/dimen_1dp"
                     android:layout_marginBottom="@dimen/divider_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     android:layout_width="match_parent"/>
@@ -159,7 +159,7 @@
 
                 <View
                     android:background="@color/light_grey"
-                    android:layout_height="1dp"
+                    android:layout_height="@dimen/dimen_1dp"
                     android:layout_marginBottom="@dimen/divider_margin"
                     android:layout_marginTop="@dimen/default_margin"
                     android:layout_width="match_parent"/>

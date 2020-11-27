@@ -5,7 +5,7 @@
     style="@style/Toolbar.Common"
     android:id="@+id/toolbar"
     android:theme="@style/Toolbar.Common"
-    app:contentInsetStartWithNavigation="0dp"
+    app:contentInsetStartWithNavigation="@dimen/contentInsetStartWithNavigation"
     app:layout_scrollFlags="scroll|enterAlways"
     app:popupTheme="@style/AppToolbarPopup"
     app:titleTextAppearance="@style/ToolbarTitle">

@@ -21,7 +21,7 @@
             android:id="@+id/tv_qs"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/width_none"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/black"
             tools:text="@string/small_text"/>

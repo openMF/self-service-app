@@ -32,13 +32,13 @@
                 android:gravity="bottom"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_32dp"
-                android:layout_width="150dp"
+                android:layout_width="@dimen/user_profile_layout_width"
                 app:layout_collapseMode="parallax">
 
                 <ImageView
                     android:id="@+id/iv_text_drawable"
-                    android:layout_height="84dp"
-                    android:layout_width="84dp"
+                    android:layout_height="@dimen/user_profile_text_drawable"
+                    android:layout_width="@dimen/user_profile_text_drawable"
                     android:visibility="gone"/>
 
             </LinearLayout>
@@ -77,7 +77,7 @@
                 android:background="@color/white"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                app:cardElevation="4dp">
+                app:cardElevation="@dimen/user_profile_card_elevation">
 
                 <LinearLayout
                     android:layout_height="match_parent"
@@ -103,7 +103,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <TextView
@@ -125,7 +125,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <TextView
@@ -146,7 +146,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <TextView
@@ -167,7 +167,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <TextView
@@ -188,7 +188,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <TextView
@@ -209,7 +209,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <TextView
@@ -230,7 +230,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <LinearLayout
@@ -282,7 +282,7 @@
 
                     <View
                         android:background="@color/light_grey"
-                        android:layout_height="1dp"
+                        android:layout_height="@dimen/dimen_1dp"
                         android:layout_width="match_parent"/>
 
                     <androidx.appcompat.widget.AppCompatButton

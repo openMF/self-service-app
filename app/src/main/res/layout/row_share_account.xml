@@ -58,7 +58,7 @@
                 android:id="@+id/tv_shares_pending"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/width_none"
                 android:text="@string/medium_text"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"/>
 

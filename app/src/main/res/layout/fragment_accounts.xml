@@ -15,7 +15,7 @@
             android:fadeScrollbars="false"
             android:id="@+id/rv_accounts"
             android:layout_centerHorizontal="true"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dimen_0dp"
             android:layout_weight="1"
             android:layout_width="wrap_content"/>
 

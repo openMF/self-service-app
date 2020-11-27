@@ -117,7 +117,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/currency"
                     android:textColor="@color/black" />
 
@@ -128,7 +128,7 @@
                     android:layout_marginEnd="@dimen/default_padding"
                     android:layout_marginRight="@dimen/default_padding"
                     android:layout_weight="0.5"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             </LinearLayout>
@@ -145,7 +145,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/submission_date"
                     android:textColor="@color/black" />
 
@@ -156,7 +156,7 @@
                     android:layout_marginEnd="@dimen/default_padding"
                     android:layout_marginRight="@dimen/default_padding"
                     android:layout_weight="0.5"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             </LinearLayout>
@@ -172,7 +172,7 @@
                 <TextView
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:text="@string/expected_disbursement_date"
                     android:textColor="@color/black" />
 
@@ -183,7 +183,7 @@
                     android:layout_marginEnd="@dimen/default_padding"
                     android:layout_marginRight="@dimen/default_padding"
                     android:layout_weight="0.5"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/width_none"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             </LinearLayout>
@@ -195,7 +195,7 @@
                 android:layout_marginLeft="@dimen/default_padding"
                 android:layout_marginRight="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_10dp"
                 android:text="@string/submit_loan" />
 
         </LinearLayout>
