@@ -81,12 +81,12 @@
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
-                  android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+                  android:theme="@style/oss_license_title_theme"
                   android:windowSoftInputMode="adjustResize"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
-                  android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
+                  android:theme="@style/oss_license_title_theme"
                   android:windowSoftInputMode="adjustResize"/>
 
         <activity android:configChanges="orientation|screenSize"
