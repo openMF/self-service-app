@@ -8,12 +8,18 @@
     <dimen name="login_height">72dp</dimen>
 
     <!-- Dimen values for padding -->
+    <dimen name="layout_padding_negative_50dp">-50dp</dimen>
+    <dimen name="layout_padding_0dp">0dp</dimen>
     <dimen name="layout_padding_4dp">4dp</dimen>
     <dimen name="layout_padding_8dp">8dp</dimen>
+    <dimen name="layout_padding_10dp">10dp</dimen>
     <dimen name="layout_padding_16dp">16dp</dimen>
+    <dimen name="layout_padding_20dp">20dp</dimen>
     <dimen name="layout_padding_24dp">24dp</dimen>
     <dimen name="layout_padding_30dp">30dp</dimen>
     <dimen name="layout_padding_48dp">48dp</dimen>
+    <dimen name="layout_padding_50dp">50dp</dimen>
+    <dimen name="layout_padding_75dp">75dp</dimen>
     <dimen name="default_padding">16dp</dimen>
     <dimen name="row_padding_left">16dp</dimen>
     <dimen name="row_padding_right">16dp</dimen>
@@ -42,6 +48,7 @@
     <dimen name="text_large">20sp</dimen>
     <dimen name="text_medium">16sp</dimen>
     <dimen name="text_small">14sp</dimen>
+    <dimen name="text_size_30sp">30sp</dimen>
 
     <!-- Dimen values for Account Status-->
     <dimen name="account_status_width">25dp</dimen>
@@ -66,7 +73,6 @@
     <dimen name="side_bar_width">5dp</dimen>
     <dimen name="pie_chart_height">160dp</dimen>
     <dimen name="app_bar_height">225dp</dimen>
-
     <dimen name="min_frame_size">50dp</dimen>
     <dimen name="stroke_weight">1dp</dimen>
     <dimen name="scv_handle_size">14dp</dimen>
@@ -74,4 +80,12 @@
     <dimen name="row_header_width">55dp</dimen>
     <dimen name="text_size">14sp</dimen>
     <dimen name="table_header_line">1dp</dimen>
+    <dimen name="layout_width_25dp">25dp</dimen>
+    <dimen name="layout_height_25dp">25dp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="text_size_60sp">60sp</dimen>
+    <dimen name="layout_corner_radius_50dp">50dp</dimen>
+    <dimen name="text_size_25sp">25sp</dimen>
+    <dimen name="layout_corner_radius_10dp">10dp</dimen>
+    <dimen name="elevation_25dp">25dp</dimen>
 </resources>

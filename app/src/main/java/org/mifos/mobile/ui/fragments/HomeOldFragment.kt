@@ -25,10 +25,7 @@ import org.mifos.mobile.R
 import org.mifos.mobile.api.local.PreferencesHelper
 import org.mifos.mobile.models.client.Client
 import org.mifos.mobile.presenters.HomeOldPresenter
-import org.mifos.mobile.ui.activities.HomeActivity
-import org.mifos.mobile.ui.activities.LoanApplicationActivity
-import org.mifos.mobile.ui.activities.NotificationActivity
-import org.mifos.mobile.ui.activities.UserProfileActivity
+import org.mifos.mobile.ui.activities.*
 import org.mifos.mobile.ui.activities.base.BaseActivity
 import org.mifos.mobile.ui.enums.AccountType
 import org.mifos.mobile.ui.enums.ChargeType
@@ -391,6 +388,7 @@ class HomeOldFragment : BaseFragment(), HomeOldView, OnRefreshListener {
 
     @OnClick(R.id.ll_surveys)
     fun surveys() {
+        startActivity(Intent(activity, MainActivity::class.java))
     }
 
     /**

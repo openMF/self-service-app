@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/accent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_padding_20dp"
+        android:layout_marginRight="@dimen/layout_padding_20dp"
+        android:layout_marginEnd="@dimen/layout_padding_20dp"
+        android:gravity="end" >
+
+        <ImageView
+            android:id="@+id/iv_notification"
+            android:layout_width="@dimen/layout_width_25dp"
+            android:layout_height="@dimen/layout_height_25dp"
+            app:srcCompat="@drawable/ic_notifications" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/total_balance"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18sp"
+        android:layout_marginTop="@dimen/layout_padding_10dp"
+        android:layout_marginLeft="@dimen/layout_padding_30dp"
+        android:layout_marginStart="@dimen/layout_padding_30dp"
+        android:fontFamily="@font/productsans"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_60sp"
+        android:text="@string/four_twenty_dollars"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/layout_padding_30dp"
+        android:layout_marginStart="@dimen/layout_padding_30dp"
+        android:layout_marginTop="@dimen/layout_padding_10dp"
+        android:fontFamily="@font/airbnb_cereal_book"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/layout_padding_30dp"
+        android:layout_marginLeft="@dimen/layout_padding_30dp"
+        android:layout_marginStart="@dimen/layout_padding_30dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:theme="@style/Theme.MaterialComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_send"
+            style="@style/Widget.MaterialComponents.Button"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="@dimen/layout_corner_radius_50dp"
+            android:text="@string/send"
+            android:textColor="@color/accent"
+            android:textAllCaps="false"
+            android:fontFamily="@font/productsans"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:theme="@style/Theme.MaterialComponents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_padding_50dp"
+            android:layout_marginStart="@dimen/layout_padding_50dp"
+            android:id="@+id/btn_receive"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:cornerRadius="@dimen/layout_corner_radius_50dp"
+            app:strokeColor="@color/white"
+            android:text="@string/receive"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:fontFamily="@font/productsans"/>
+
+    </LinearLayout>
+
+</LinearLayout>

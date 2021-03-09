@@ -53,13 +53,15 @@
     <color name="primary">#03A9F4</color>
     <color name="primary_dark">#0288D1</color>
     <color name="primary_light">#B3E5FC</color>
-    <color name="accent">#FF4081</color>
+    <color name="accent">#4C56C0</color>
+    <color name="colorAccentBlue50">#3C46B1</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="cell_background_color">#ffffff</color>
     <color name="header_line_color">@color/blue_light</color>
+    <color name="light_gray">#EBECF0</color>
 
     <!--Swipe Refresh Colors-->
     <array name="swipeRefreshColors">

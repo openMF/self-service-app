@@ -112,6 +112,8 @@
         <activity android:name="org.mifos.mobile.ui.activities.PrivacyPolicyActivity"
                   android:windowSoftInputMode="adjustResize"/>
 
+        <activity android:name=".ui.activities.MainActivity"/>
+
         <receiver android:name="org.mifos.mobile.ui.widgets.ChargeAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>

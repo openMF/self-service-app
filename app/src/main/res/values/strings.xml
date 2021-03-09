@@ -574,6 +574,13 @@
     <string name="transaction_type">Transaction Type</string>
     <string name="questions">Questions</string>
     <string name="logged_out_successfully">Logged out successfully</string>
+    <string name="profile">Profile</string>
+    <string name="total_balance">Total Balance</string>
+    <string name="four_twenty_dollars">$420</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="third_party">Third Party</string>
+    <string name="self">Self</string>
 
     <string-array name="languages" translatable="false">
         <item>English</item>

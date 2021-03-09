@@ -18,70 +18,63 @@
     android:paddingRight="@dimen/default_padding"
     android:paddingStart="@dimen/default_padding">
 
-    <LinearLayout
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="vertical">
-
-        <ImageView
-            style="@style/circleLayout"
-            android:contentDescription="@string/recent_transactions"
-            android:id="@+id/iv_transaction"
-            android:layout_gravity="center_vertical"
-            android:layout_height="45dp"
-            android:layout_width="45dp"
-            android:tint="@color/primary"
-            app:srcCompat="@drawable/ic_local_atm_black_24dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:gravity="center_vertical"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/layout_padding_8dp"
-        android:paddingLeft="@dimen/default_padding"
-        android:paddingRight="@dimen/layout_padding_8dp"
-        android:paddingStart="@dimen/default_padding">
-
-        <TextView
-            android:ellipsize="end"
-            android:id="@+id/tv_value"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:lines="1"
-            android:text="@string/medium_text"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"/>
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_padding_75dp"
+        app:cardCornerRadius="@dimen/layout_corner_radius_10dp"
+        android:layout_marginBottom="@dimen/layout_padding_10dp">
 
         <LinearLayout
-            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/layout_padding_8dp"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/layout_padding_8dp"
+            android:paddingStart="@dimen/default_padding">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:ellipsize="end"
+                    android:id="@+id/tv_value"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:lines="1"
+                    android:text="@string/medium_text"
+                    android:textSize="@dimen/text_size_20sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/productsans"/>
+
+                <TextView
+                    android:id="@+id/tv_transactionDate"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/small_text"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@color/gray_dark"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_amount"
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@string/small_text"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/gray_dark"/>
-
-            <TextView
-                android:gravity="end"
-                android:id="@+id/tv_transactionDate"
-                android:layout_gravity="end"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:text="@string/small_text"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                android:textColor="@color/gray_dark"/>
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_size_30sp"
+                android:text="@string/four_twenty_dollars"
+                android:textStyle="bold"
+                android:textColor="@color/accent"
+                android:fontFamily="@font/airbnb_cereal_book"/>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
