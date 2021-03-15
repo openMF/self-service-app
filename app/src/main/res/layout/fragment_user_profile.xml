@@ -29,7 +29,7 @@
                 tools:src="@drawable/mifos_logo"/>
 
             <LinearLayout
-                android:gravity="bottom"
+                android:gravity="center_vertical"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/margin_32dp"
                 android:layout_width="150dp"
