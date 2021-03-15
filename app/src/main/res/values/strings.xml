@@ -153,6 +153,7 @@
     <string name="no">No</string>
     <string name="found">found</string>x
 
+    <string name="password_key">Password</string>
     <string name="change_passcode">Change Passcode</string>
     <string name="change_app_passcode">Change App Passcode</string>
     <string name="change_password">Change Password</string>

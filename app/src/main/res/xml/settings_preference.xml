@@ -4,7 +4,7 @@
 
     <PreferenceCategory android:title="@string/accounts">
         <Preference
-            android:key="@string/password"
+            android:key="@string/password_key"
             android:persistent="false"
             android:icon="@drawable/ic_lock_black_24dp"
             android:summary="@string/change_account_password"
