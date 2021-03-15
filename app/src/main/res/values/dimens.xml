@@ -1,77 +1,162 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+<!-- Default screen margins, per the Android Design guidelines. -->
 
-    <!-- Dimen values for height -->
+<!-- Dimen values for height -->
 
-    <dimen name="toolbar_height">32dp</dimen>
-    <dimen name="tab_layout_height">28dp</dimen>
-    <dimen name="login_height">72dp</dimen>
+<dimen name="toolbar_height">32dp</dimen>
+<dimen name="tab_layout_height">28dp</dimen>
+<dimen name="login_height">72dp</dimen>
+<dimen name="dimen_1dp">1dp</dimen>
+<dimen name="dimen_0dp">0dp</dimen>
 
-    <!-- Dimen values for padding -->
-    <dimen name="layout_padding_4dp">4dp</dimen>
-    <dimen name="layout_padding_8dp">8dp</dimen>
-    <dimen name="layout_padding_16dp">16dp</dimen>
-    <dimen name="layout_padding_24dp">24dp</dimen>
-    <dimen name="layout_padding_30dp">30dp</dimen>
-    <dimen name="layout_padding_48dp">48dp</dimen>
-    <dimen name="default_padding">16dp</dimen>
-    <dimen name="row_padding_left">16dp</dimen>
-    <dimen name="row_padding_right">16dp</dimen>
-    <dimen name="login_padding_left">30dp</dimen>
-    <dimen name="login_padding_right">30dp</dimen>
-    <dimen name="login_padding_top">56dp</dimen>
-    <dimen name="login_padding_button">12dp</dimen>
-    <dimen name="ticker">24dp</dimen>
-    <dimen name="table_row_padding_top">15dp</dimen>
+<!-- Dimen values for width -->
+<dimen name="width_none">0dp</dimen>
 
-    <!-- Dimen values for margins-->
-    <dimen name="login_margin_top">20dp</dimen>
-    <dimen name="login_margin_bottom">30dp</dimen>
-    <dimen name="recent_transaction_text_view_margin_left">20dp</dimen>
-    <dimen name="saving_accounts_text_view_margin_left">50dp</dimen>
-    <dimen name="loan_accounts_text_view_margin_left">50dp</dimen>
-    <dimen name="client_charge_text_view_margin_left">20dp</dimen>
-    <dimen name="default_margin">8dp</dimen>
-    <dimen name="margin_top">36dp</dimen>
-    <dimen name="margin_4dp">4dp</dimen>
-    <dimen name="margin_16dp">16dp</dimen>
-    <dimen name="margin_32dp">32dp</dimen>
+<!-- Dimen values for padding -->
+<dimen name="layout_padding_4dp">4dp</dimen>
+<dimen name="layout_padding_8dp">8dp</dimen>
+<dimen name="layout_padding_10dp">10dp</dimen>
+<dimen name="layout_padding_16dp">16dp</dimen>
+<dimen name="layout_padding_24dp">24dp</dimen>
+<dimen name="layout_padding_30dp">30dp</dimen>
+<dimen name="layout_padding_48dp">48dp</dimen>
+<dimen name="default_padding">16dp</dimen>
+<dimen name="row_padding_left">16dp</dimen>
+<dimen name="row_padding_right">16dp</dimen>
+<dimen name="login_padding_left">30dp</dimen>
+<dimen name="login_padding_right">30dp</dimen>
+<dimen name="login_padding_top">56dp</dimen>
+<dimen name="login_padding_button">12dp</dimen>
+<dimen name="ticker">24dp</dimen>
+<dimen name="table_row_padding_top">15dp</dimen>
 
-    <!-- Dimen values for text size -->
-    <dimen name="text_headline">24sp</dimen>
-    <dimen name="text_large">20sp</dimen>
-    <dimen name="text_medium">16sp</dimen>
-    <dimen name="text_small">14sp</dimen>
+<!-- Dimen values for margins-->
+<dimen name="login_margin_top">20dp</dimen>
+<dimen name="login_margin_bottom">30dp</dimen>
+<dimen name="recent_transaction_text_view_margin_left">20dp</dimen>
+<dimen name="saving_accounts_text_view_margin_left">50dp</dimen>
+<dimen name="loan_accounts_text_view_margin_left">50dp</dimen>
+<dimen name="client_charge_text_view_margin_left">20dp</dimen>
+<dimen name="default_margin">8dp</dimen>
+<dimen name="margin_top">36dp</dimen>
+<dimen name="margin_6dp">6dp</dimen>
+<dimen name="margin_5dp">5dp</dimen>
+<dimen name="margin_4dp">4dp</dimen>
+<dimen name="margin_2dp">2dp</dimen>
+<dimen name="margin_16dp">16dp</dimen>
+<dimen name="margin_20dp">20dp</dimen>
+<dimen name="margin_32dp">32dp</dimen>
+<dimen name="margin_10dp">10dp</dimen>
 
-    <!-- Dimen values for Account Status-->
-    <dimen name="account_status_width">25dp</dimen>
-    <dimen name="account_status_height">25dp</dimen>
+<!-- Dimen values for text size -->
+<dimen name="text_headline">24sp</dimen>
+<dimen name="text_large">20sp</dimen>
+<dimen name="text_medium">16sp</dimen>
+<dimen name="text_small">14sp</dimen>
+<dimen name="text_size_smaller">12sp</dimen>
 
-    <!-- Dimen values for Account Status-->
-    <dimen name="dashboard_status_width">55dp</dimen>
-    <dimen name="dashboard_status_height">55dp</dimen>
+<!-- Dimen values for Account Status-->
+<dimen name="account_status_width">25dp</dimen>
+<dimen name="account_status_height">25dp</dimen>
 
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+<!-- Dimen values for Account Status-->
+<dimen name="dashboard_status_width">55dp</dimen>
+<dimen name="dashboard_status_height">55dp</dimen>
+
+<!-- Default screen margins, per the Android Design guidelines. -->
+<dimen name="activity_horizontal_margin">16dp</dimen>
+<dimen name="activity_vertical_margin">16dp</dimen>
 
 
-    <dimen name="widget_margin">8dp</dimen>
-    <dimen name="widget_header_padding">8dp</dimen>
+<dimen name="widget_margin">8dp</dimen>
+<dimen name="widget_header_padding">8dp</dimen>
 
-    <dimen name="icon_small">15dp</dimen>
-    <dimen name="icon_medium">24dp</dimen>
+<dimen name="icon_small">15dp</dimen>
+<dimen name="icon_medium">24dp</dimen>
+<dimen name="icon_big">70dp</dimen>
 
-    <dimen name="divider_margin">3dp</dimen>
-    <dimen name="side_bar_width">5dp</dimen>
-    <dimen name="pie_chart_height">160dp</dimen>
-    <dimen name="app_bar_height">225dp</dimen>
+<dimen name="divider_margin">3dp</dimen>
+<dimen name="side_bar_width">5dp</dimen>
+<dimen name="pie_chart_height">160dp</dimen>
+<dimen name="app_bar_height">225dp</dimen>
 
-    <dimen name="min_frame_size">50dp</dimen>
-    <dimen name="stroke_weight">1dp</dimen>
-    <dimen name="scv_handle_size">14dp</dimen>
-    <dimen name="cell_height">40dp</dimen>
-    <dimen name="row_header_width">55dp</dimen>
-    <dimen name="text_size">14sp</dimen>
-    <dimen name="table_header_line">1dp</dimen>
+<dimen name="min_frame_size">50dp</dimen>
+<dimen name="stroke_weight">1dp</dimen>
+<dimen name="scv_handle_size">14dp</dimen>
+<dimen name="cell_height">40dp</dimen>
+<dimen name="row_header_width">55dp</dimen>
+<dimen name="text_size">14sp</dimen>
+<dimen name="table_header_line">1dp</dimen>
+
+<!-- Dimen values for tv_notification_indicator -->
+<dimen name="tv_notification_indicator_padding_left">3dp</dimen>
+<dimen name="tv_notification_indicator_padding_right">3dp</dimen>
+<dimen name="tv_notification_indicator_text_size">10sp</dimen>
+
+<!-- Dimen values for widget_layout_main -->
+<dimen name="widget_layout_main_padding_left">5dp</dimen>
+<dimen name="widget_layout_main_padding_right">5dp</dimen>
+
+<!-- Dimen values for widget_img_launcher -->
+<dimen name="widget_img_launcher_height">32dp</dimen>
+<dimen name="widget_img_launcher_width">32dp</dimen>
+
+<!-- Dimen values for fragment_about_us_img -->
+<dimen name="fragment_about_us_img_height">100dp</dimen>
+<dimen name="fragment_about_us_img_width">100dp</dimen>
+
+<!-- Dimen values for fragment_add_loan_application -->
+<dimen name="edit_black_img_width">30dp</dimen>
+<dimen name="sp_loan_padding_top">10dp</dimen>
+
+<!-- Dimen values for fragment_home -->
+<dimen name="user_img">84dp</dimen>
+<dimen name="app_border_width">1dp</dimen>
+<dimen name="view_width">1dp</dimen>
+
+<!-- Dimen values for fragment_home_ui -->
+<dimen name="home_imgs">56dp</dimen>
+<dimen name="home_ui_user_img">65dp</dimen>
+<dimen name="home_ui_card_elevation">1dp</dimen>
+<dimen name="home_ui_card_inner_radius">0dp</dimen>
+<dimen name="home_ui_card_height">60dp</dimen>
+<dimen name="home_ui_card_width">60dp</dimen>
+<dimen name="home_ui_card_corner_radius">30dp</dimen>
+<dimen name="home_ui_img_height">60dp</dimen>
+
+<!-- Dimen values for fragment_loan_account_details -->
+<dimen name="loan_account_details_img">35dp</dimen>
+
+<!-- Dimen values for qr_code -->
+<dimen name="qr_code_height">300dp</dimen>
+
+<!-- Dimen values for fragment_saving_account_details -->
+<dimen name="saving_account_details_img">25dp</dimen>
+<dimen name="saving_account_details_35_img">35dp</dimen>
+
+<!-- Dimen values for fragment_saving_make_transfer -->
+<dimen name="saving_make_transfer_process">40dp</dimen>
+<dimen name="saving_make_transfer_view_width">4dp</dimen>
+
+<!-- Dimen values for fragment_user_profile -->
+<dimen name="user_profile_layout_width">150dp</dimen>
+<dimen name="user_profile_text_drawable">84dp</dimen>
+<dimen name="user_profile_card_elevation">4dp</dimen>
+
+<!-- Dimen values for item_widget_client_charge_img -->
+<dimen name="item_widget_client_charge_img">25dp</dimen>
+
+<!-- Dimen values for layout_error -->
+<dimen name="error_img">48dp</dimen>
+
+<!-- Dimen values for nav_drawer_header -->
+<dimen name="nav_drawer_header_height">192dp</dimen>
+<dimen name="nav_drawer_header_img">65dp</dimen>
+
+<!-- Dimen values for row_recent_transaction -->
+<dimen name="row_recent_transaction_img">45dp</dimen>
+
+<!-- Dimen values for toolbar  -->
+<dimen name="contentInsetStartWithNavigation">0dp</dimen>
+
 </resources>

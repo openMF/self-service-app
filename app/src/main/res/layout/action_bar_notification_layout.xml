@@ -27,10 +27,10 @@
         android:layout_alignTop="@id/iv_notification_icon"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:paddingLeft="3dp"
-        android:paddingRight="3dp"
+        android:paddingLeft="@dimen/tv_notification_indicator_padding_left"
+        android:paddingRight="@dimen/tv_notification_indicator_padding_right"
         android:textColor="@color/white"
-        android:textSize="10sp"
+        android:textSize="@dimen/tv_notification_indicator_text_size"
         android:visibility="gone"/>
 
 </RelativeLayout>

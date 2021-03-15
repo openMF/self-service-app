@@ -33,9 +33,9 @@
 
         <ImageView
             android:layout_gravity="center"
-            android:layout_height="100dp"
+            android:layout_height="@dimen/fragment_about_us_img_height"
             android:layout_margin="@dimen/layout_padding_16dp"
-            android:layout_width="100dp"
+            android:layout_width="@dimen/fragment_about_us_img_width"
             android:src="@mipmap/mifos_icon"/>
 
         <TextView

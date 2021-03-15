@@ -32,7 +32,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="@dimen/text_headline"
                         android:textStyle="bold"
                         tools:text="244566334.555"/>
 
@@ -43,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:text="@string/total_loan_balance"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/text_size_smaller"
                         android:textStyle="bold"/>
 
                     <View
@@ -69,7 +69,7 @@
                         android:layout_height="wrap_content"
                         android:layout_width="match_parent"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
+                        android:textSize="@dimen/text_headline"
                         android:textStyle="bold"
                         tools:text="244566334.555"/>
 
@@ -80,7 +80,7 @@
                         android:layout_width="match_parent"
                         android:text="@string/total_saving_balance"
                         android:textColor="@color/white"
-                        android:textSize="12sp"
+                        android:textSize="@dimen/text_size_smaller"
                         android:textStyle="bold"/>
 
                     <View
