@@ -17,7 +17,7 @@ data class BeneficiaryPayload(
 
         var accountType: Int? = 0,
 
-        var transferLimit: Float? = 0f,
+        var transferLimit: Int? = 0,
 
         var officeName: String? = null
 ) : Parcelable

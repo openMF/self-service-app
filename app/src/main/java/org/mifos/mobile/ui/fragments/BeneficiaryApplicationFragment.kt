@@ -165,7 +165,7 @@ class BeneficiaryApplicationFragment : BaseFragment(), BeneficiaryApplicationVie
             tilOfficeName?.editText?.setText(beneficiary?.officeName)
             tilOfficeName?.isEnabled = false
             tilBeneficiaryName?.editText?.setText(beneficiary?.name)
-            tilTransferLimit?.editText?.setText(beneficiary?.transferLimit.toString())
+            tilTransferLimit?.editText?.setText(beneficiary?.transferLimit?.toInt().toString())
         } else if (beneficiaryState == BeneficiaryState.CREATE_QR) {
             spAccountType?.setSelection(beneficiary?.accountType?.id!!)
             tilAccountNumber?.editText?.setText(beneficiary?.accountNumber)
@@ -231,7 +231,7 @@ class BeneficiaryApplicationFragment : BaseFragment(), BeneficiaryApplicationVie
         beneficiaryPayload.officeName = tilOfficeName?.editText?.text.toString()
         beneficiaryPayload.accountType = accountTypeId
         beneficiaryPayload.name = tilBeneficiaryName?.editText?.text.toString()
-        beneficiaryPayload.transferLimit = tilTransferLimit?.editText?.text.toString().toInt().toFloat()
+        beneficiaryPayload.transferLimit = tilTransferLimit?.editText?.text.toString().toInt()
         presenter?.createBeneficiary(beneficiaryPayload)
     }
 
@@ -241,7 +241,7 @@ class BeneficiaryApplicationFragment : BaseFragment(), BeneficiaryApplicationVie
     private fun submitUpdateBeneficiaryApplication() {
         val payload = BeneficiaryUpdatePayload()
         payload.name = tilBeneficiaryName?.editText?.text.toString()
-        payload.transferLimit = tilTransferLimit?.editText?.text.toString().toFloat()
+        payload.transferLimit = tilTransferLimit?.editText?.text.toString().toInt()
         presenter?.updateBeneficiary(beneficiary?.id?.toLong(), payload)
     }
 
