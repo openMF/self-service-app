@@ -46,7 +46,8 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="16dp"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +64,8 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="16dp"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -81,7 +83,8 @@
                     android:layout_width="match_parent"
                     android:maxLength="9"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="16dp"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -98,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:maxLines="1"
-                    android:paddingBottom="16dp"/>
+                    android:paddingBottom="16dp"
+                    android:singleLine="true"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatButton
