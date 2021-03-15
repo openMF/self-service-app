@@ -1,5 +1,6 @@
 package org.mifos.mobile.ui.fragments
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
@@ -31,6 +32,7 @@ import org.mifos.mobile.ui.activities.base.BaseActivity
 import org.mifos.mobile.ui.adapters.LoanAccountsListAdapter
 import org.mifos.mobile.ui.adapters.SavingAccountsListAdapter
 import org.mifos.mobile.ui.adapters.ShareAccountsListAdapter
+import org.mifos.mobile.ui.enums.LoanState
 import org.mifos.mobile.ui.fragments.base.BaseFragment
 import org.mifos.mobile.ui.views.AccountsView
 import org.mifos.mobile.utils.*
@@ -76,6 +78,7 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
     private var savingAccounts: List<SavingAccount?>? = null
     private var shareAccounts: List<ShareAccount?>? = null
     private var currentFilterList: List<CheckboxStatus?>? = null
+    lateinit var rootView: View
 
     /**
      * Method to get the current filter list for the fragment
@@ -109,7 +112,7 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_accounts, container, false)
+        rootView = inflater.inflate(R.layout.fragment_accounts, container, false)
         ButterKnife.bind(this, rootView)
         accountsPresenter?.attachView(this)
         sweetUIErrorHandler = SweetUIErrorHandler(activity, rootView)
@@ -430,20 +433,21 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
     }
 
     override fun onItemClick(childView: View?, position: Int) {
-        var intent: Intent? = null
+        val intent: Intent?
         when (accountType) {
             Constants.SAVINGS_ACCOUNTS -> {
                 intent = Intent(activity, SavingsAccountContainerActivity::class.java)
                 intent.putExtra(Constants.SAVINGS_ID, savingAccountsListAdapter
                         ?.getSavingAccountsList()?.get(position)?.id)
+                openActivity(intent)
             }
             Constants.LOAN_ACCOUNTS -> {
                 intent = Intent(activity, LoanAccountContainerActivity::class.java)
                 intent.putExtra(Constants.LOAN_ID, loanAccountsListAdapter?.getLoanAccountsList()
                         ?.get(position)?.id)
+                startActivityForResult(intent, Constants.APPLY_LOAN)
             }
         }
-        openActivity(intent)
     }
 
     override fun onItemLongPress(childView: View?, position: Int) {}
@@ -468,5 +472,24 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == Constants.APPLY_LOAN && resultCode == Activity.RESULT_OK && data != null) {
+            val state = data.getStringExtra(getString(R.string.loan_type))
+            if (state == LoanState.CREATE.name)
+                showLoanAccountCreatedSuccessfully()
+            else if (state == LoanState.UPDATE.name)
+                showLoanAccountUpdatedSuccessfully()
+        }
+    }
+
+    private fun showLoanAccountCreatedSuccessfully() {
+        Toaster.show(rootView, R.string.loan_application_submitted_successfully)
+    }
+
+    private fun showLoanAccountUpdatedSuccessfully() {
+        Toaster.show(rootView, R.string.loan_application_updated_successfully)
     }
 }

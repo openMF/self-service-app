@@ -1,5 +1,7 @@
 package org.mifos.mobile.ui.fragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -112,11 +114,10 @@ class ReviewLoanApplicationFragment : BaseFragment() {
                         }
 
                         override fun onNext(t: ResponseBody) {
-                            hideProgress()
-                            if (viewModel.getLoanState() == LoanState.CREATE)
-                                showLoanAccountCreatedSuccessfully()
-                            else
-                                showLoanAccountUpdatedSuccessfully()
+                            val data = Intent()
+                            data.putExtra(getString(R.string.loan_type),viewModel.getLoanState().name)
+                            activity?.setResult(RESULT_OK,data)
+                            activity?.finish()
                         }
 
                         override fun onError(e: Throwable) {
@@ -125,11 +126,6 @@ class ReviewLoanApplicationFragment : BaseFragment() {
                         }
                     })
         }
-    }
-
-    fun showLoanAccountUpdatedSuccessfully() {
-        Toaster.show(rootView, R.string.loan_application_updated_successfully)
-        activity?.supportFragmentManager?.popBackStack()
     }
 
     fun showError(message: String?) = if (!Network.isConnected(activity)) {
@@ -149,10 +145,5 @@ class ReviewLoanApplicationFragment : BaseFragment() {
     fun hideProgress() {
         ll_add_loan.visibility = View.VISIBLE
         hideProgressBar()
-    }
-
-    fun showLoanAccountCreatedSuccessfully() {
-        Toaster.show(rootView, R.string.loan_application_submitted_successfully)
-        activity?.supportFragmentManager?.popBackStack()
     }
 }

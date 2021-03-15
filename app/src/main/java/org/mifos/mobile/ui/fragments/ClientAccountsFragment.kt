@@ -1,5 +1,6 @@
 package org.mifos.mobile.ui.fragments
 
+import android.app.Activity
 import android.app.SearchManager
 import android.content.Context
 import android.content.DialogInterface
@@ -34,11 +35,14 @@ import org.mifos.mobile.ui.activities.base.BaseActivity
 import org.mifos.mobile.ui.adapters.CheckBoxAdapter
 import org.mifos.mobile.ui.adapters.ViewPagerAdapter
 import org.mifos.mobile.ui.enums.AccountType
+import org.mifos.mobile.ui.enums.LoanState
 import org.mifos.mobile.ui.fragments.base.BaseFragment
 import org.mifos.mobile.ui.views.AccountsView
 import org.mifos.mobile.utils.Constants
+import org.mifos.mobile.utils.Constants.APPLY_LOAN
 import org.mifos.mobile.utils.MaterialDialog
 import org.mifos.mobile.utils.StatusUtils
+import org.mifos.mobile.utils.Toaster
 
 import javax.inject.Inject
 
@@ -68,6 +72,8 @@ import javax.inject.Inject
     private var checkBoxRecyclerView: RecyclerView? = null
     private var accountType: AccountType? = null
     private var isDialogBoxSelected = false
+    lateinit var rootView: View
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -77,16 +83,16 @@ import javax.inject.Inject
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_client_accounts, container, false)
+        rootView = inflater.inflate(R.layout.fragment_client_accounts, container, false)
         (activity as BaseActivity?)?.activityComponent?.inject(this)
-        ButterKnife.bind(this, view)
+        ButterKnife.bind(this, rootView)
         accountsPresenter?.attachView(this)
         setToolbarTitle(getString(R.string.accounts))
         setUpViewPagerAndTabLayout()
         if (savedInstanceState == null) {
             accountsPresenter?.loadClientAccounts()
         }
-        return view
+        return rootView
     }
 
     /**
@@ -184,7 +190,7 @@ import javax.inject.Inject
     fun createLoan() {
         when (viewPager?.currentItem) {
             0 -> startActivity(Intent(activity, SavingsAccountApplicationActivity::class.java))
-            1 -> startActivity(Intent(activity, LoanApplicationActivity::class.java))
+            1 -> startActivityForResult(Intent(activity, LoanApplicationActivity::class.java), APPLY_LOAN)
         }
     }
 
@@ -437,5 +443,24 @@ import javax.inject.Inject
             clientAccountsFragment.arguments = args
             return clientAccountsFragment
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == APPLY_LOAN && resultCode == Activity.RESULT_OK && data != null) {
+            val state = data.getStringExtra(getString(R.string.loan_type))
+            if (state == LoanState.CREATE.name)
+                showLoanAccountCreatedSuccessfully()
+            else if (state == LoanState.UPDATE.name)
+                showLoanAccountUpdatedSuccessfully()
+        }
+    }
+
+    private fun showLoanAccountCreatedSuccessfully() {
+        Toaster.show(rootView, R.string.loan_application_submitted_successfully)
+    }
+
+    private fun showLoanAccountUpdatedSuccessfully() {
+        Toaster.show(rootView, R.string.loan_application_updated_successfully)
     }
 }

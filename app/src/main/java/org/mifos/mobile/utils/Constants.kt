@@ -54,6 +54,7 @@ object Constants {
     const val NOTIFY_HOME_FRAGMENT = "NotifyHomeFragment"
     const val QR_IMAGE_URI = "qr_image_uri"
     const val GALLERY_QR_PICK = 1
+    const val APPLY_LOAN = 25
     const val FRAME_RECT = "FrameRect"
     const val SOURCE_URI = "SourceUri"
     const val GUARANTOR_DETAILS = "guarantorDetails"

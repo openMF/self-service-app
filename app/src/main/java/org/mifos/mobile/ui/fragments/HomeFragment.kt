@@ -1,5 +1,6 @@
 package org.mifos.mobile.ui.fragments
 
+import android.app.Activity.RESULT_OK
 import android.content.*
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -27,9 +28,11 @@ import org.mifos.mobile.ui.activities.UserProfileActivity
 import org.mifos.mobile.ui.activities.base.BaseActivity
 import org.mifos.mobile.ui.enums.AccountType
 import org.mifos.mobile.ui.enums.ChargeType
+import org.mifos.mobile.ui.enums.LoanState
 import org.mifos.mobile.ui.fragments.base.BaseFragment
 import org.mifos.mobile.ui.views.HomeView
 import org.mifos.mobile.utils.*
+import org.mifos.mobile.utils.Constants.APPLY_LOAN
 
 import javax.inject.Inject
 
@@ -276,7 +279,7 @@ class HomeFragment : BaseFragment(), HomeView, OnRefreshListener {
      */
     @OnClick(R.id.ll_apply_for_loan)
     fun applyForLoan() {
-        startActivity(Intent(activity, LoanApplicationActivity::class.java))
+        startActivityForResult(Intent(activity, LoanApplicationActivity::class.java), APPLY_LOAN)
     }
 
     /**
@@ -347,5 +350,24 @@ class HomeFragment : BaseFragment(), HomeView, OnRefreshListener {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == APPLY_LOAN && resultCode == RESULT_OK && data != null) {
+            val state = data.getStringExtra(getString(R.string.loan_type))
+            if (state == LoanState.CREATE.name)
+                showLoanAccountCreatedSuccessfully()
+            else if (state == LoanState.UPDATE.name)
+                showLoanAccountUpdatedSuccessfully()
+        }
+    }
+
+    private fun showLoanAccountCreatedSuccessfully() {
+        Toaster.show(rootView, R.string.loan_application_submitted_successfully)
+    }
+
+    private fun showLoanAccountUpdatedSuccessfully() {
+        Toaster.show(rootView, R.string.loan_application_updated_successfully)
     }
 }
