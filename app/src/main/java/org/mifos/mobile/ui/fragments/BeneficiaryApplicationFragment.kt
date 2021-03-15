@@ -251,7 +251,8 @@ class BeneficiaryApplicationFragment : BaseFragment(), BeneficiaryApplicationVie
      */
     override fun showBeneficiaryCreatedSuccessfully() {
         Toaster.show(rootView, getString(R.string.beneficiary_created_successfully))
-        activity?.finish()
+        (activity as BaseActivity?)?.clearFragmentBackStack()
+        (activity as BaseActivity?)?.replaceFragment(BeneficiaryListFragment.newInstance(), false, R.id.container)
     }
 
     /**
