@@ -3,48 +3,57 @@
   ~ This project is licensed under the open source MPL V2.
   ~ See https://github.com/openMF/self-service-app/blob/master/LICENSE.md
   -->
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/default_margin">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_4dp"
+    <LinearLayout
+        android:layout_above="@id/bnv_help"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:paddingLeft="@dimen/default_padding"
-        android:paddingRight="@dimen/default_padding"
-        android:paddingStart="@dimen/default_padding"
-        android:text="@string/faq"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        android:textStyle="bold"/>
+        android:orientation="vertical"
+        android:paddingTop="@dimen/default_margin">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_faq"
-        android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:layout_marginRight="@dimen/default_margin"
-        android:layout_marginStart="@dimen/default_margin"
-        android:layout_weight="1"
-        android:layout_width="match_parent"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:paddingStart="@dimen/default_padding"
+            android:text="@string/faq"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"/>
 
-    <include
-        layout="@layout/layout_sweet_exception_handler"
-        android:id="@+id/layout_error"
-        android:visibility="gone" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_faq"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_weight="1"
+            android:layout_width="match_parent"/>
+
+        <include
+            layout="@layout/layout_sweet_exception_handler"
+            android:id="@+id/layout_error"
+            android:visibility="gone" />
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_help"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
         app:itemBackground="@color/white"
         app:itemIconTint="@drawable/bottom_nav_item_color_state"
         app:itemTextColor="@drawable/bottom_nav_item_color_state"
         app:menu="@menu/menu_help_bottom_bar"/>
 
-</LinearLayout>
+</RelativeLayout>
