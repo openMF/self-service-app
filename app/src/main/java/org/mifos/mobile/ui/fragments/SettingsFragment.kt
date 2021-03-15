@@ -3,7 +3,9 @@ package org.mifos.mobile.ui.fragments
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.preference.ListPreference
 import androidx.preference.Preference
@@ -20,6 +22,9 @@ import org.mifos.mobile.utils.LanguageHelper
  */
 class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeListener {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        if (Build.VERSION.SDK_INT >= 26) {
+            activity?.window?.decorView?.layoutDirection = if (LanguageHelper.isRTL()) View.LAYOUT_DIRECTION_RTL else View.LAYOUT_DIRECTION_LTR
+        }
         addPreferencesFromResource(R.xml.settings_preference)
     }
 

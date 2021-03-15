@@ -3,6 +3,8 @@ package org.mifos.mobile.utils
 import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
+import android.view.View
+import androidx.core.text.TextUtilsCompat
 
 import androidx.preference.PreferenceManager
 
@@ -30,6 +32,11 @@ object LanguageHelper {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             updateResources(context!!, language)
         } else updateResourcesLegacy(context, language)
+    }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    fun isRTL(): Boolean {
+        return TextUtilsCompat.getLayoutDirectionFromLocale(Locale.getDefault()) == View.LAYOUT_DIRECTION_LOCALE;
     }
 
     private fun getPersistedData(context: Context, defaultLanguage: String): String? {
