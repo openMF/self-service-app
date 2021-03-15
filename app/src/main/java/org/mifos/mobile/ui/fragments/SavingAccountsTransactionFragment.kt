@@ -273,13 +273,14 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         //setup listeners
         tvStartDate?.setOnClickListener { startDatePick() }
         tvEndDate?.setOnClickListener { endDatePick() }
-        llcheckBoxPeriod?.setOnClickListener { checkBoxPeriod?.isChecked = (checkBoxPeriod?.isChecked != true) }
+        llcheckBoxPeriod?.setOnClickListener { checkBoxPeriod?.isChecked = !checkBoxPeriod?.isChecked!! }
         checkBoxPeriod?.setOnCheckedChangeListener { _, isChecked ->
             isCheckBoxPeriod = isChecked
             if (!isChecked) {
                 isReady = false
                 radioGroupFilter?.clearCheck()
                 selectedRadioButtonId = -1
+                checkBoxPeriod.isChecked = false
             } else {
                 if (selectedRadioButtonId == -1) {
                     val btn = dialogView.findViewById<RadioButton>(R.id.rb_date)
@@ -288,8 +289,9 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
             }
         }
         radioGroupFilter?.setOnCheckedChangeListener { radioGroup, _ ->
-            isCheckBoxPeriod = true
             selectedRadioButtonId = radioGroup.checkedRadioButtonId
+            isCheckBoxPeriod = true
+            if (!checkBoxPeriod?.isChecked!!)checkBoxPeriod.isChecked = true
             when (radioGroup.checkedRadioButtonId) {
                 R.id.rb_four_weeks -> {
                     tvStartDate?.isEnabled = false
