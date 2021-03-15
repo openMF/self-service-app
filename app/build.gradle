@@ -81,6 +81,8 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.dbflowVersion"
     implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.dbflowVersion"
 
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
     implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
     implementation "com.google.android.material:material:$rootProject.designLibraryVersion"
     implementation "androidx.cardview:cardview:$rootProject.designLibraryVersion"
