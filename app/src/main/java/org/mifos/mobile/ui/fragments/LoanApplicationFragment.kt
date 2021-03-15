@@ -419,13 +419,16 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
         tilPrincipalAmount?.editText?.setText(loanTemplate?.principal.toString())
         tvCurrency?.text = loanTemplate?.currency?.displayLabel
         listLoanPurpose.clear()
+        var index = -1;
         listLoanPurpose.add(activity?.getString(R.string.loan_purpose_not_provided))
         if (loanTemplate?.loanPurposeOptions != null)
             for (loanPurposeOptions in loanTemplate.loanPurposeOptions) {
+                if (purposeId!! > 0 && loanPurposeOptions.id?.equals(purposeId)!!)
+                    index = loanTemplate.loanPurposeOptions.indexOf(loanPurposeOptions)
                 listLoanPurpose.add(loanPurposeOptions.name)
             }
         loanPurposeAdapter?.notifyDataSetChanged()
-        spLoanPurpose?.setSelection(0)
+        spLoanPurpose?.setSelection(index + 1)
     }
 
     /**
@@ -437,13 +440,16 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
     override fun showUpdateLoanTemplateByProduct(loanTemplate: LoanTemplate?) {
         this.loanTemplate = loanTemplate
         listLoanPurpose.clear()
+        var index = -1;
         listLoanPurpose.add(activity?.getString(R.string.loan_purpose_not_provided))
         if (loanTemplate?.loanPurposeOptions != null)
             for (loanPurposeOptions in loanTemplate.loanPurposeOptions) {
+                if (purposeId!! > 0 && loanPurposeOptions.id?.equals(purposeId)!!)
+                    index = loanTemplate.loanPurposeOptions.indexOf(loanPurposeOptions)
                 listLoanPurpose.add(loanPurposeOptions.name)
             }
         loanPurposeAdapter?.notifyDataSetChanged()
-        spLoanPurpose?.setSelection(0)
+        spLoanPurpose?.setSelection(index + 1)
         if (isLoanUpdatePurposesInitialization &&
                 loanWithAssociations?.loanPurposeName != null) {
             spLoanPurpose?.setSelection(loanPurposeAdapter!!
@@ -488,16 +494,24 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         when (parent?.id) {
             R.id.sp_loan_products -> {
-                productId = loanTemplate?.productOptions?.get(position)?.id
-                if (loanState == LoanState.CREATE) {
-                    loanApplicationPresenter?.loadLoanApplicationTemplateByProduct(productId,
-                            LoanState.CREATE)
-                } else {
-                    loanApplicationPresenter?.loadLoanApplicationTemplateByProduct(productId,
-                            LoanState.UPDATE)
+                if (loanTemplate?.productOptions?.size!! > position) {
+                    if (loanTemplate?.productOptions?.get(position)?.id != productId)
+                        purposeId = -1
+                    productId = loanTemplate?.productOptions?.get(position)?.id
+                    if (loanState == LoanState.CREATE) {
+                        loanApplicationPresenter?.loadLoanApplicationTemplateByProduct(productId,
+                                LoanState.CREATE)
+                    } else {
+                        loanApplicationPresenter?.loadLoanApplicationTemplateByProduct(productId,
+                                LoanState.UPDATE)
+                    }
                 }
             }
-            R.id.sp_loan_purpose -> purposeId = loanTemplate?.loanPurposeOptions?.get(position)?.id
+            R.id.sp_loan_purpose -> {
+                if (position == 0) purposeId = -1
+                else if (loanTemplate?.loanPurposeOptions?.size!! > position - 1)
+                    purposeId = loanTemplate?.loanPurposeOptions?.get(position - 1)?.id
+            }
         }
     }
 
