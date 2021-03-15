@@ -44,7 +44,7 @@ class SettingsFragment : PreferenceFragmentCompat(), OnSharedPreferenceChangeLis
         }
         if (dialogFragment != null) {
             dialogFragment.setTargetFragment(this, 0)
-            dialogFragment.show(this.fragmentManager,
+            dialogFragment.show(this.fragmentManager!!,
                     "android.support.v7.preference.PreferenceFragment.DIALOG")
         } else {
             super.onDisplayPreferenceDialog(preference)

@@ -326,7 +326,7 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
     @OnClick(R.id.ll_expected_disbursement_date_edit)
     fun setTvDisbursementOnDate() {
         isDisbursementDate = true
-        mfDatePicker?.show(activity?.supportFragmentManager, Constants.DFRAG_DATE_PICKER)
+        mfDatePicker?.show(activity?.supportFragmentManager!!, Constants.DFRAG_DATE_PICKER)
     }
 
     /**

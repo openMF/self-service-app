@@ -9,11 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-
+import com.hbb20.CountryCodePicker
 import org.mifos.mobile.R
 import org.mifos.mobile.models.register.RegisterPayload
 import org.mifos.mobile.presenters.RegistrationPresenter
@@ -23,7 +22,6 @@ import org.mifos.mobile.ui.views.RegistrationView
 import org.mifos.mobile.utils.Network
 import org.mifos.mobile.utils.PasswordStrength
 import org.mifos.mobile.utils.Toaster
-
 import javax.inject.Inject
 
 /**
@@ -49,6 +47,10 @@ class RegistrationFragment : BaseFragment(), RegistrationView {
     @JvmField
     @BindView(R.id.et_phone_number)
     var etPhoneNumber: EditText? = null
+
+    @JvmField
+    @BindView(R.id.ccp)
+    var countryCode: CountryCodePicker? = null
 
     @JvmField
     @BindView(R.id.et_email)
@@ -142,7 +144,7 @@ class RegistrationFragment : BaseFragment(), RegistrationView {
             payload.email = etEmail?.text.toString()
             payload.firstName = etFirstName?.text.toString()
             payload.lastName = etLastName?.text.toString()
-            payload.mobileNumber = etPhoneNumber?.text.toString()
+            payload.mobileNumber = countryCode!!.selectedCountryCode.toString() + etPhoneNumber?.text.toString()
             if (etPassword?.text.toString() != etConfirmPassword?.text.toString()) {
                 Toaster.show(rootView, getString(R.string.error_password_not_match))
                 return

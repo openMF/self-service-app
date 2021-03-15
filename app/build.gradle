@@ -140,6 +140,9 @@ dependencies {
     //TableView
     implementation "com.evrencoskun.library:tableview:$rootProject.tableViewVersion"
 
+    //Country Code Picker
+    implementation 'com.hbb20:ccp:2.4.5'
+
     // Unit tests dependencies
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"

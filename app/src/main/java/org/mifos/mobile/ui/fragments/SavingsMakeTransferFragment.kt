@@ -405,7 +405,7 @@ class SavingsMakeTransferFragment : BaseFragment(), SavingsMakeTransferMvpView, 
         Utils.setToolbarIconColor(activity, menu, R.color.white)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item?.itemId == R.id.menu_refresh_transfer) {
             val transaction = fragmentManager?.beginTransaction()
             val currFragment = activity?.supportFragmentManager

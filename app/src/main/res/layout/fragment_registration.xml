@@ -54,18 +54,32 @@
                   android:layout_width="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin"
-        android:layout_width="match_parent">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_margin">
 
-        <EditText
-            android:hint="@string/phone_number"
-            android:id="@+id/et_phone_number"
-            android:inputType="number"
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            app:ccp_autoDetectCountry="true"
+            app:ccp_showNameCode="false"
+            android:layout_marginTop="@dimen/default_margin"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <EditText
+                android:hint="@string/phone_number"
+                android:id="@+id/et_phone_number"
+                android:inputType="number"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_height="wrap_content"

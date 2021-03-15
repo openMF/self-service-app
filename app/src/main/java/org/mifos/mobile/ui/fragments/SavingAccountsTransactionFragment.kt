@@ -210,12 +210,12 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
 
     private fun startDatePick() {
         datePick = DatePick.START
-        mfDatePicker?.show(activity?.supportFragmentManager, Constants.DFRAG_DATE_PICKER)
+        mfDatePicker?.show(activity?.supportFragmentManager!!, Constants.DFRAG_DATE_PICKER)
     }
 
     private fun endDatePick() {
         datePick = DatePick.END
-        mfDatePicker?.show(activity?.supportFragmentManager, Constants.DFRAG_DATE_PICKER)
+        mfDatePicker?.show(activity?.supportFragmentManager!!, Constants.DFRAG_DATE_PICKER)
     }
 
     /**

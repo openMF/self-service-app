@@ -56,7 +56,7 @@ open class BaseFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        super.onAttach(LanguageHelper.onAttach(context))
+        super.onAttach(LanguageHelper.onAttach(context)!!)
         val activity = if (context is Activity) context else null
         callback = try {
             activity as BaseActivityCallback?
