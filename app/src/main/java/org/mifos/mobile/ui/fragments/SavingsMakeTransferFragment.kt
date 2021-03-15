@@ -342,13 +342,27 @@ class SavingsMakeTransferFragment : BaseFragment(), SavingsMakeTransferMvpView, 
      */
     @OnClick(R.id.btn_pay_to)
     fun payToSelected() {
-        pvOne?.setCurrentCompleted()
-        pvTwo?.setCurrentActive()
-        btnPayTo?.visibility = View.GONE
-        tvSelectPayFrom?.visibility = View.GONE
-        btnPayFrom?.visibility = View.VISIBLE
-        spPayFrom?.visibility = View.VISIBLE
-        spPayTo?.isEnabled = false
+        if(arguments?.getString(Constants.TRANSFER_TYPE) == "transfer_pay_from"){
+            if (payTo == payFrom) {
+                showToaster(getString(R.string.error_same_account_transfer))
+                return
+            }
+            pvOne?.setCurrentCompleted()
+            btnPayTo?.visibility = View.GONE
+            tvSelectPayFrom?.visibility = View.GONE
+            spPayTo?.isEnabled = false
+            pvThree?.setCurrentActive()
+            etAmount?.visibility = View.VISIBLE
+            btnAmount?.visibility = View.VISIBLE
+        } else{
+            pvOne?.setCurrentCompleted()
+            btnPayTo?.visibility = View.GONE
+            tvSelectPayFrom?.visibility = View.GONE
+            spPayTo?.isEnabled = false
+            pvTwo?.setCurrentActive()
+            btnPayFrom?.visibility = View.VISIBLE
+            spPayFrom?.visibility = View.VISIBLE
+        }
     }
 
     /**
