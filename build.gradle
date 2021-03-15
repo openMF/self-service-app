@@ -68,7 +68,7 @@ ext {
     rxjavaVersion = '2.2.20'
     rxandroidVersion = '2.1.1'
     sweeterrorVersion = '1.0.0'
-    mifosPasscodeVersion = '0.3.0'
+    mifosPasscodeVersion = '1.0.0'
     cropviewVersion = '1.1.8'
     multiDexVersion = '2.0.1'
     annotationLibraryVersion ='1.1.0'
