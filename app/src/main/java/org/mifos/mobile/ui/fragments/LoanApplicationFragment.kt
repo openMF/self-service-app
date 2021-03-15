@@ -247,10 +247,16 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
         loansPayload.amortizationType = loanTemplate?.amortizationType?.id
         loansPayload.interestCalculationPeriodType = loanTemplate?.interestCalculationPeriodType?.id
         loansPayload.interestType = loanTemplate?.interestType?.id
-        (activity as BaseActivity?)?.replaceFragment(newInstance(loanState!!, loansPayload,
-                tvNewLoanApplication?.text.toString(),
-                tvAccountNumber?.text.toString()),
-                true, R.id.container)
+        (activity as BaseActivity?)?.supportFragmentManager
+                ?.beginTransaction()
+                ?.add(
+                        R.id.container,
+                        newInstance(
+                                loanState!!, loansPayload,
+                                tvNewLoanApplication?.text.toString(),
+                                tvAccountNumber?.text.toString()))
+                ?.addToBackStack(null)
+                ?.commit()
     }
 
     /**
@@ -275,12 +281,17 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
         loansPayload.amortizationType = loanTemplate?.amortizationType?.id
         loansPayload.transactionProcessingStrategyId = loanTemplate?.transactionProcessingStrategyId
         loansPayload.expectedDisbursementDate = disbursementDate
-        (activity as BaseActivity?)?.replaceFragment(newInstance(loanState,
-                loansPayload,
-                loanWithAssociations?.id?.toLong(),
-                tvNewLoanApplication?.text.toString(),
-                tvAccountNumber?.text.toString()),
-                false, R.id.container)
+        (activity as BaseActivity?)?.supportFragmentManager
+                ?.beginTransaction()
+                ?.add(
+                        R.id.container,
+                        newInstance(
+                                loanState!!, loansPayload,
+                                loanWithAssociations?.id?.toLong(),
+                                tvNewLoanApplication?.text.toString(),
+                                tvAccountNumber?.text.toString()))
+                ?.addToBackStack(null)
+                ?.commit()
     }
 
     /**
