@@ -179,6 +179,9 @@ class RegistrationFragment : BaseFragment(), RegistrationView {
         } else if (etLastName?.text.toString().trim { it <= ' ' }.isEmpty()) {
             Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.last_name)))
             return false
+        } else if (etPhoneNumber?.text.toString().trim { it <= ' ' }.isEmpty()) {
+            Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.phone_number)))
+            return false 
         } else if (etEmail?.text.toString().trim { it <= ' ' }.isEmpty()) {
             Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.email)))
             return false
