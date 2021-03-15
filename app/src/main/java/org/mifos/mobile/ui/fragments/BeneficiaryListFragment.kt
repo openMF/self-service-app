@@ -130,9 +130,6 @@ class BeneficiaryListFragment : BaseFragment(), RecyclerItemClickListener.OnItem
      * Refreshes `beneficiaryList` by calling `loadBeneficiaries()`
      */
     override fun onRefresh() {
-        if (layoutError?.visibility == View.VISIBLE) {
-            sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvBeneficiaries, layoutError)
-        }
         beneficiaryListPresenter?.loadBeneficiaries()
     }
 
@@ -172,6 +169,7 @@ class BeneficiaryListFragment : BaseFragment(), RecyclerItemClickListener.OnItem
         this.beneficiaryList = beneficiaryList
         if (beneficiaryList?.isNotEmpty() == true) {
             beneficiaryListAdapter?.setBeneficiaryList(beneficiaryList)
+            sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvBeneficiaries, layoutError)
         } else {
             showEmptyBeneficiary()
         }

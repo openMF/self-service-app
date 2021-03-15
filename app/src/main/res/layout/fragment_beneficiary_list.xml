@@ -10,14 +10,23 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <include
+            layout="@layout/layout_sweet_exception_handler"
+            android:id="@+id/layout_error"
+            android:visibility="gone"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:background="@color/white"
             android:id="@+id/rv_beneficiaries"
             android:layout_centerHorizontal="true"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/default_margin"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"/>
+            android:layout_width="match_parent"/>
+
+        </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -28,10 +37,5 @@
         android:layout_width="wrap_content"
         app:srcCompat="@drawable/ic_add_white_24dp"
         style="@style/FloatingActionButtonTheme"/>
-
-    <include
-        layout="@layout/layout_sweet_exception_handler"
-        android:id="@+id/layout_error"
-        android:visibility="gone"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
