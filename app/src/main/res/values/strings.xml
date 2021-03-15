@@ -618,4 +618,14 @@
         <item>fa</item>
     </string-array>
 
+    <!--Transactions Sort Menu strings-->
+    <string name="sort_by">Sort Transactions By</string>
+    <string name="sort">Sort</string>
+    <string name="date_asc">Date Ascending</string>
+    <string name="date_dsc">Date Descending</string>
+    <string name="amount_asc">Transaction Amount Ascending</string>
+    <string name="amount_dsc">Transaction Amount Descending</string>
+    <string name="balance_asc">Balance Ascending</string>
+    <string name="balance_dsc">Balance Descending</string>
+
 </resources>

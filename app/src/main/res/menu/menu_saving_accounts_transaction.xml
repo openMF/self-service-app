@@ -8,4 +8,10 @@
         android:title="@string/savings_account_transaction"
         android:icon="@drawable/ic_filter_list_white_36dp" />
 
+    <item
+        android:id="@+id/menu_sort_savings_transactions"
+        app:showAsAction="always"
+        android:title="@string/sort_by"
+        android:icon="@drawable/ic_sort_white_36dp" />
+
 </menu>

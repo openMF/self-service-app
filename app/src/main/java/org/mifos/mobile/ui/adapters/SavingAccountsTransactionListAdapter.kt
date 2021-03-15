@@ -41,6 +41,10 @@ class SavingAccountsTransactionListAdapter @Inject constructor() :
         notifyDataSetChanged()
     }
 
+    fun getSavingAccountsTransactionList(): List<Transactions?>? {
+        return savingAccountsTransactionList
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val vh: RecyclerView.ViewHolder
         val v = LayoutInflater.from(parent.context).inflate(

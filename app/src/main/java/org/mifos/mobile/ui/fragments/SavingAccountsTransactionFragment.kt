@@ -78,6 +78,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
     private var isCheckBoxPeriod = false
     private var selectedRadioButtonId = 0
     var active = false
+    private var selectedSortOption: Int = R.id.date_asc
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -100,6 +101,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
             savingAccountsTransactionPresenter?.loadSavingsWithAssociations(savingsId)
         }
         initializeFilterVariables()
+        setHasOptionsMenu(true)
         return rootView
     }
 
@@ -152,6 +154,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         if (transactionsList != null && transactionsList?.isNotEmpty() == true) {
             transactionListAdapter?.setContext(context)
             transactionListAdapter?.setSavingAccountsTransactionList(transactionsList)
+            sortTransactions()
         } else {
             showEmptyTransactions()
         }
@@ -188,6 +191,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         if (list != null && list.isNotEmpty()) {
             Toaster.show(rootView, getString(R.string.filtered))
             transactionListAdapter?.setSavingAccountsTransactionList(list)
+            sortTransactions()
         } else {
             showEmptyTransactions()
         }
@@ -354,12 +358,42 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                         DialogInterface.OnClickListener { _, _ ->
                             transactionListAdapter
                                     ?.setSavingAccountsTransactionList(transactionsList)
+                            sortTransactions()
                             initializeFilterVariables()
                         }
                 )
                 .setNegativeButton(R.string.cancel)
                 .createMaterialDialog()
                 .show()
+    }
+
+    private fun showSortDialog(){
+        val inflater = activity?.layoutInflater
+        val dialogView = inflater?.inflate(R.layout.layout_sort_dialog, null, false)
+        val radioGroupFilter = dialogView?.findViewById<RadioGroup>(R.id.rg_sort_dialog)
+        radioGroupFilter?.findViewById<RadioButton>(selectedSortOption)?.isChecked = true
+        MaterialDialog.Builder().init(activity)
+                .setTitle(R.string.sort_by)
+                .addView(dialogView)
+                .setPositiveButton(R.string.sort, DialogInterface.OnClickListener{ _,_ ->
+                    selectedSortOption = radioGroupFilter?.checkedRadioButtonId!!
+                    sortTransactions()
+                })
+                .setNegativeButton(R.string.cancel)
+                .createMaterialDialog()
+                .show()
+    }
+
+    private fun sortTransactions(){
+        val list = transactionListAdapter?.getSavingAccountsTransactionList()
+        when (selectedSortOption){
+            R.id.date_asc -> transactionListAdapter?.setSavingAccountsTransactionList(list?.sortedWith(compareBy({ it?.date?.get(0) }, { it?.date?.get(1) }, {it?.date?.get(2)})))
+            R.id.date_dsc -> transactionListAdapter?.setSavingAccountsTransactionList(list?.sortedWith(compareBy({ it?.date?.get(0) }, { it?.date?.get(1) }, {it?.date?.get(2)}))?.reversed())
+            R.id.amount_asc -> transactionListAdapter?.setSavingAccountsTransactionList(list?.sortedBy{ it?.amount})
+            R.id.amount_dsc -> transactionListAdapter?.setSavingAccountsTransactionList(list?.sortedByDescending{ it?.amount})
+            R.id.balance_asc -> transactionListAdapter?.setSavingAccountsTransactionList(list?.sortedBy{ it?.runningBalance})
+            R.id.balance_dsc -> transactionListAdapter?.setSavingAccountsTransactionList(list?.sortedByDescending{ it?.runningBalance})
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -406,6 +440,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_filter_savings_transactions -> showFilterDialog()
+            R.id.menu_sort_savings_transactions -> showSortDialog()
         }
         return true
     }
