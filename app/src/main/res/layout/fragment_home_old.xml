@@ -324,7 +324,7 @@
                             <ImageView
                                 android:layout_height="56dp"
                                 android:layout_width="56dp"
-                                app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
+                                app:srcCompat="@drawable/ic_apply_for_loan_24dp"/>
 
                             <TextView
                                 android:gravity="center"
