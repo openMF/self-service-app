@@ -129,10 +129,6 @@
     <string name="guarantor_details">Подробная информация об гаранте</string>
     <string name="joined_date">Дата присоединения</string>
     <string name="submit">Представить</string>
-
-    <string name="account_not_active_to_perform_deposit">Аккаунт должен быть активным для внесения депозита</string>
-    <string name="account_not_active_to_perform_transfer">Аккаунт должен быть активным, чтобы сделать передачу</string>
-
     <string name="empty_savings_accounts">Нет сберегательных счетов, связанных с вами</string>
     <string name="empty_loan_accounts">С вами не связаны ссудные счета</string>
     <string name="empty_share_accounts">С вами не связаны общие аккаунты</string>

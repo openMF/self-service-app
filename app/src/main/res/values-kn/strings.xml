@@ -129,10 +129,6 @@
     <string name="guarantor_details">ಖಾತರಿಯ ವಿವರಗಳು</string>
     <string name="joined_date">ಲಗತ್ತು ದಿನಾಂಕ</string>
     <string name="submit">ಸಲ್ಲಿಸಿ</string>
-
-    <string name="account_not_active_to_perform_deposit">ಠೇವಣಿ ಮಾಡಲು ಖಾತೆ ಸಕ್ರಿಯವಾಗಿರಬೇಕು</string>
-    <string name="account_not_active_to_perform_transfer">ವರ್ಗಾವಣೆ ಮಾಡಲು ಖಾತೆ ಸಕ್ರಿಯವಾಗಿರಬೇಕು</string>
-
     <string name="empty_savings_accounts">ನಿಮ್ಮೊಂದಿಗೆ ಯಾವುದೇ ಉಳಿತಾಯ ಖಾತೆಗಳಿಲ್ಲ</string>
     <string name="empty_loan_accounts">ನಿಮ್ಮೊಂದಿಗೆ ಯಾವುದೇ ಸಾಲ ಖಾತೆಗಳಿಲ್ಲ</string>
     <string name="empty_share_accounts">ನಿಮ್ಮೊಂದಿಗೆ ಸಂಯೋಜಿತವಾಗಿರುವ ಯಾವುದೇ ಖಾತೆಗಳಿಲ್ಲ</string>

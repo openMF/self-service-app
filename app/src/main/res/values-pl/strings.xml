@@ -129,10 +129,6 @@
     <string name="guarantor_details">Dane Poręczyciela</string>
     <string name="joined_date">Data dołączenia</string>
     <string name="submit">Zatwierdź</string>
-
-    <string name="account_not_active_to_perform_deposit">Konto powinno być aktywne, aby dokonać kaucji</string>
-    <string name="account_not_active_to_perform_transfer">Konto powinno być aktywne, aby wykonać przelew</string>
-
     <string name="empty_savings_accounts">Brak powiązanych z tobą kont oszczędnościowych</string>
     <string name="empty_loan_accounts">Brak powiązanych z tobą kont pożyczkowych</string>
     <string name="empty_share_accounts">Brak powiązanych z tobą kont współdzielonych</string>

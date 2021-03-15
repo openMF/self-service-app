@@ -129,10 +129,6 @@
     <string name="guarantor_details">গ্যারান্টি বিস্তারিত</string>
     <string name="joined_date">সংযুক্তি তারিখ</string>
     <string name="submit">জমা দিন</string>
-
-    <string name="account_not_active_to_perform_deposit">অ্যাকাউন্ট একটি আমানত করতে সক্রিয় করা উচিত</string>
-    <string name="account_not_active_to_perform_transfer">অ্যাকাউন্ট একটি স্থানান্তর করতে সক্রিয় করা উচিত</string>
-
     <string name="empty_savings_accounts">আপনার সাথে সংযুক্ত কোন সঞ্চয় অ্যাকাউন্ট আছে</string>
     <string name="empty_loan_accounts">আপনার সাথে যুক্ত কোন ঋণ অ্যাকাউন্ট আছে</string>
     <string name="empty_share_accounts">আপনার সাথে যুক্ত কোন ভাগ অ্যাকাউন্ট আছে</string>

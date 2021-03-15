@@ -130,10 +130,6 @@
     <string name="guarantor_details">گارنٹیور تفصیلات</string>
     <string name="joined_date">شامل ہونے کی تاریخ</string>
     <string name="submit">جمع</string>
-
-    <string name="account_not_active_to_perform_deposit">جمع کرنے کے لئے اکاؤنٹ فعال ہونا چاہئے</string>
-    <string name="account_not_active_to_perform_transfer">منتقلی انجام دینے کے لئے اکاؤنٹ ہونا چاہئے</string>
-
     <string name="empty_savings_accounts">آپ کے ساتھ منسلک کوئی بچت اکاؤنٹ نہیں ہے</string>
     <string name="empty_loan_accounts">آپ کے ساتھ منسلک کوئی قرض اکاؤنٹ نہیں ہے</string>
     <string name="empty_share_accounts">آپ کے ساتھ منسلک کوئی شریک اکاؤنٹ نہیں ہے</string>

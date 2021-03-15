@@ -129,10 +129,6 @@
     <string name="guarantor_details">Détails du garant</string>
     <string name="joined_date">Date de fixation</string>
     <string name="submit">Soumettre</string>
-
-    <string name="account_not_active_to_perform_deposit">Le compte doit être actif pour effectuer un dépôt</string>
-    <string name="account_not_active_to_perform_transfer">Le compte doit être actif pour effectuer un transfert</string>
-
     <string name="empty_savings_accounts">Il n\'y a pas de compte d\'épargne lié à vous</string>
     <string name="empty_loan_accounts">Aucun compte de prêt ne vous est associé.</string>
     <string name="empty_share_accounts">Aucun compte partagé ne vous est associé.</string>

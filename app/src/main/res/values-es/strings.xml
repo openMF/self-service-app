@@ -129,10 +129,6 @@
     <string name="guarantor_details">Detalles del garante.</string>
     <string name="joined_date">Fecha de apego</string>
     <string name="submit">Presentar</string>
-
-    <string name="account_not_active_to_perform_deposit">La cuenta debe estar activa para hacer un depósito.</string>
-    <string name="account_not_active_to_perform_transfer">La cuenta debe estar activa para realizar una transferencia.</string>
-
     <string name="empty_savings_accounts">No hay cuentas de ahorro vinculadas a usted.</string>
     <string name="empty_loan_accounts">No hay cuentas de préstamo asociadas con usted</string>
     <string name="empty_share_accounts">No hay cuentas compartidas asociadas con usted</string>

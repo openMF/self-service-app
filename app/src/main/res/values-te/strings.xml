@@ -130,10 +130,6 @@
     <string name="guarantor_details">హామీ వివరాలు</string>
     <string name="joined_date">తేదీన చేరారు</string>
     <string name="submit">సమర్పించండి</string>
-
-    <string name="account_not_active_to_perform_deposit">ఖాతా డిపాజిట్ కోసం చురుకుగా ఉండాలి</string>
-    <string name="account_not_active_to_perform_transfer">బదిలీ కోసం ఖాతా క్రియాశీలకంగా ఉండాలి</string>
-
     <string name="empty_savings_accounts">మీకు పొదుపు ఖాతాలు లేవు</string>
     <string name="empty_loan_accounts">మీకు రుణ ఖాతాలు లేవు</string>
     <string name="empty_share_accounts">మీతో సంబంధం ఉన్న ఖాతాలు ఏవీ లేవు</string>

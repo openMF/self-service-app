@@ -164,7 +164,8 @@
                             android:layout_width="wrap_content"
                             android:text="@string/deposit"
                             android:textAppearance="?android:textAppearanceMedium"
-                            android:textColor="@android:color/white"/>
+                            android:textColor="@android:color/white"
+                            android:visibility="gone"/>
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/tv_make_a_transfer"
@@ -173,7 +174,8 @@
                             android:layout_width="wrap_content"
                             android:text="@string/make_transfer"
                             android:textAppearance="?android:textAppearanceMedium"
-                            android:textColor="@android:color/white"/>
+                            android:textColor="@android:color/white"
+                            android:visibility="gone"/>
 
                     </LinearLayout>
 

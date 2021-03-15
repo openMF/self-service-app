@@ -129,10 +129,6 @@
     <string name="guarantor_details">Rincian penjamin</string>
     <string name="joined_date">Tanggal lampiran</string>
     <string name="submit">Menyerahkan</string>
-
-    <string name="account_not_active_to_perform_deposit">Akun harus aktif untuk melakukan setoran</string>
-    <string name="account_not_active_to_perform_transfer">Akun harus aktif untuk melakukan transfer</string>
-
     <string name="empty_savings_accounts">Tidak ada rekening tabungan yang terhubung dengan Anda</string>
     <string name="empty_loan_accounts">Tidak ada rekening pinjaman yang terkait dengan Anda</string>
     <string name="empty_share_accounts">Tidak ada akun bersama yang dikaitkan dengan Anda</string>

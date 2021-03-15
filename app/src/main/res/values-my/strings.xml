@@ -131,10 +131,6 @@
     <string name="guarantor_details">အာမခံအသေးစိတ်</string>
     <string name="joined_date">ဝင်ရောက်ခဲ့ပြီးနေ့စွဲ</string>
     <string name="submit">Submit</string>
-
-    <string name="account_not_active_to_perform_deposit">အကောင့်တစ်ခုဖျော်ဖြေဖို့ Active ကိုဖြစ်သင့်တယ်အပျငှေ</string>
-    <string name="account_not_active_to_perform_transfer">အကောင့်တစ်ခုဖျော်ဖြေဖို့ Active ကိုဖြစ်သင့်တယ်လွှဲပြောင်း</string>
-
     <string name="empty_savings_accounts">သင်နှင့်အတူဆက်နွယ်ခြင်းမရှိ SavingsAccount ရှိပါတယ်</string>
     <string name="empty_loan_accounts">သင်နှင့်အတူဆက်နွယ်ခြင်းမရှိ LoanAccount ရှိပါတယ်</string>
     <string name="empty_share_accounts">သင်နှင့်အတူဆက်နွယ်ခြင်းမရှိ ShareAccount ရှိပါတယ်</string>

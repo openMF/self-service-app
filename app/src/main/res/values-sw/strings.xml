@@ -129,10 +129,6 @@
     <string name="guarantor_details">Maelezo ya mdhamini</string>
     <string name="joined_date">Tarehe ya kushikilia</string>
     <string name="submit">Wasilisha</string>
-
-    <string name="account_not_active_to_perform_deposit">Akaunti inapaswa kuwa hai kufanya amana</string>
-    <string name="account_not_active_to_perform_transfer">Akaunti inapaswa kuwa hai kufanya uhamisho</string>
-
     <string name="empty_savings_accounts">Hakuna akaunti za akiba zilizounganishwa na wewe</string>
     <string name="empty_loan_accounts">Hakuna akaunti za mkopo zilizohusishwa na wewe</string>
     <string name="empty_share_accounts">Hakuna akaunti zilizoshirikiwa zinazohusiana na wewe</string>

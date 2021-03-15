@@ -160,14 +160,6 @@
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
     <string name="string_changed_successfully">%1$s changed successfully</string>
-
-    <string name="account_not_active_to_perform_deposit">Account should to be Active to perform a
-        deposit
-    </string>
-    <string name="account_not_active_to_perform_transfer">Account should to be Active to perform a
-        transfer
-    </string>
-
     <string name="empty_savings_accounts">There is no SavingsAccount associated with you</string>
     <string name="empty_loan_accounts">There is no LoanAccount associated with you</string>
     <string name="empty_share_accounts">There is no ShareAccount associated with you</string>

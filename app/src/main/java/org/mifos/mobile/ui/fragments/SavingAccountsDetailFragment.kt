@@ -8,6 +8,7 @@ import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -150,11 +151,7 @@ class SavingAccountsDetailFragment : BaseFragment(), SavingAccountsDetailView {
      */
     @OnClick(R.id.tv_deposit)
     fun deposit() {
-        if (status?.active == true) {
             (activity as BaseActivity?)?.replaceFragment(SavingsMakeTransferFragment.newInstance(savingsId, Constants.TRANSFER_PAY_TO), true, R.id.container)
-        } else {
-            Toaster.show(rootView, getString(R.string.account_not_active_to_perform_deposit))
-        }
     }
 
     /**
@@ -163,11 +160,7 @@ class SavingAccountsDetailFragment : BaseFragment(), SavingAccountsDetailView {
      */
     @OnClick(R.id.tv_make_a_transfer)
     fun transfer() {
-        if (status?.active == true) {
             (activity as BaseActivity?)?.replaceFragment(SavingsMakeTransferFragment.newInstance(savingsId, Constants.TRANSFER_PAY_FROM), true, R.id.container)
-        } else {
-            Toaster.show(rootView, getString(R.string.account_not_active_to_perform_transfer))
-        }
     }
 
     /**
@@ -185,6 +178,10 @@ class SavingAccountsDetailFragment : BaseFragment(), SavingAccountsDetailView {
             val currencySymbol = savingsWithAssociations?.currency?.displaySymbol
             val accountBalance = savingsWithAssociations?.summary?.accountBalance
             tvAccountStatus?.text = savingsWithAssociations?.clientName
+            if (savingsWithAssociations?.status?.active == true) {
+                activity?.findViewById<AppCompatButton>(R.id.tv_deposit)?.visibility = View.VISIBLE
+                activity?.findViewById<AppCompatButton>(R.id.tv_make_a_transfer)?.visibility = View.VISIBLE
+            }
             if (savingsWithAssociations?.minRequiredOpeningBalance != null) {
                 tvMiniRequiredBalance?.text = getString(R.string.string_and_string, currencySymbol,
                         CurrencyUtil.formatCurrency(activity, savingsWithAssociations.minRequiredOpeningBalance!!))

@@ -129,10 +129,6 @@
     <string name="guarantor_details">ព័ត៌មានលម្អិតអំពីអ្នកធានា</string>
     <string name="joined_date">កាលបរិច្ឆេទនៃឯកសារភ្ជាប់</string>
     <string name="submit">ដាក់ស្នើ</string>
-
-    <string name="account_not_active_to_perform_deposit">គណនីគួរតែសកម្មដើម្បីដាក់ប្រាក់</string>
-    <string name="account_not_active_to_perform_transfer">គណនីគួរតែសកម្មដើម្បីធ្វើការផ្ទេរ</string>
-
     <string name="empty_savings_accounts">មិនមានគណនីសន្សំមានទំនាក់ទំនងជាមួយអ្នកទេ</string>
     <string name="empty_loan_accounts">មិនមានគណនីប្រាក់កម្ចីដែលជាប់ទាក់ទងជាមួយអ្នកទេ</string>
     <string name="empty_share_accounts">មិនមានគណនីចែករំលែកត្រូវបានភ្ជាប់ជាមួយអ្នកទេ</string>

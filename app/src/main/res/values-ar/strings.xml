@@ -131,10 +131,6 @@
     <string name="guarantor_details">تفاصيل الضامن</string>
     <string name="joined_date">تاريخ الانضمام</string>
     <string name="submit">خضع</string>
-
-    <string name="account_not_active_to_perform_deposit">يجب أن يكون الحساب نشطًا لتنفيذ الوديعة</string>
-    <string name="account_not_active_to_perform_transfer">يجب أن يكون الحساب نشطًا لتنفيذ نقل</string>
-
     <string name="empty_savings_accounts">لا يوجد حساب SavingsAccount مرتبط بك</string>
     <string name="empty_loan_accounts">لا يوجد LoanAccount مرتبط بك</string>
     <string name="empty_share_accounts">لا يوجد ShareAccount مرتبط بك</string>

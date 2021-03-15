@@ -5,8 +5,6 @@
     <string name="about_us_under_construction">"درباره ما در  ساخت و ساز "</string>
     <string name="account_balance">موجودی حساب</string>
     <string name="account_id">شناسه حساب</string>
-    <string name="account_not_active_to_perform_deposit">برای انجام سپرده باید حساب فعال باشد</string>
-    <string name="account_not_active_to_perform_transfer">برای انجام انتقال باید حساب کاربری فعال باشد</string>
     <string name="account_number">شماره حساب</string>
     <string name="account_short">A/C</string>
     <string name="account_status">وضعیت حساب</string>

@@ -129,14 +129,6 @@
     <string name="guarantor_details">Detalhes de fiador</string>
     <string name="joined_date">Data de ingresso</string>
     <string name="submit">Submeter</string>
-
-    <string name="account_not_active_to_perform_deposit">Conta deve estar ativa para depositar</string>
-	
-
-    <string name="account_not_active_to_perform_transfer">Conta deve estar ativa para transferir</string>
-	
-	
-
     <string name="empty_savings_accounts">Não existe nenhuma Conta Poupança associada</string>
     <string name="empty_loan_accounts">Não existe nenhuma Conta de Empréstimo associada</string>
     <string name="empty_share_accounts">Não existe nenhuma Conta Partilha associada</string>
