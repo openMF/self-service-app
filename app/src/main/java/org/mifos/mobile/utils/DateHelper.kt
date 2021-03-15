@@ -148,4 +148,8 @@ object DateHelper {
         val sdf = SimpleDateFormat("HH:mm a dd MMM yyyy")
         return sdf.format(timeInMillis?.let { Date(it) })
     }
+
+    fun equals(dateOne: List<Int>, dateTwo: List<Int>): Boolean {
+        return dateOne[0] == dateTwo[0] && dateOne[1] == dateTwo[1] && dateOne[2] == dateTwo[2]
+    }
 }

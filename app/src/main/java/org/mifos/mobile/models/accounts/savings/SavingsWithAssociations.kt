@@ -3,6 +3,7 @@ package org.mifos.mobile.models.accounts.savings
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import org.mifos.mobile.models.client.DepositType
+import org.mifos.mobile.utils.DateHelper
 import java.util.*
 
 /**
@@ -77,5 +78,15 @@ data class SavingsWithAssociations(
         this.nominalAnnualInterestRate = nominalAnnualInterestRate
     }
 
+    fun getLastTransaction() : Transactions? {
+        lastActiveTransactionDate?.let {
+            for (transaction in transactions) {
+                if (DateHelper.equals(transaction.date, it)) {
+                    return transaction
+                }
+            }
+        }
+        return null
+    }
 
 }

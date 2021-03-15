@@ -212,9 +212,9 @@ class SavingAccountsDetailFragment : BaseFragment(), SavingAccountsDetailView {
             if (savingsWithAssociations.transactions.isNotEmpty()) {
                 tvLastTransaction?.text = getString(R.string.string_and_double,
                         currencySymbol,
-                        savingsWithAssociations.transactions[0].amount)
+                        savingsWithAssociations.getLastTransaction()?.amount)
                 tvMadeOnTransaction?.text = DateHelper.getDateAsString(
-                        savingsWithAssociations.lastActiveTransactionDate)
+                        savingsWithAssociations.getLastTransaction()?.date)
             } else {
                 tvLastTransaction?.setText(R.string.no_transaction)
                 tvMadeOnTransaction?.visibility = View.GONE
