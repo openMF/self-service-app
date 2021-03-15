@@ -11,11 +11,13 @@ import io.reactivex.schedulers.Schedulers
 import org.mifos.mobile.R
 import org.mifos.mobile.api.DataManager
 import org.mifos.mobile.injection.ApplicationContext
+import org.mifos.mobile.models.accounts.savings.SavingsWithAssociations
 import org.mifos.mobile.models.payload.AccountDetail
 import org.mifos.mobile.models.templates.account.AccountOption
 import org.mifos.mobile.models.templates.account.AccountOptionsTemplate
 import org.mifos.mobile.presenters.base.BasePresenter
 import org.mifos.mobile.ui.views.SavingsMakeTransferMvpView
+import org.mifos.mobile.utils.Constants
 
 import java.util.*
 import javax.inject.Inject
@@ -100,4 +102,28 @@ class SavingsMakeTransferPresenter @Inject constructor(
         return accountOption[0]
     }
 
+    fun getBalanceForAccountID(accountId: Long?) {
+        checkViewAttached()
+        mvpView?.showProgress()
+        dataManager?.getSavingsWithAssociations(accountId,
+        Constants.TRANSACTIONS)
+        ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribeOn(Schedulers.io())
+                ?.subscribeWith(object : DisposableObserver<SavingsWithAssociations?>() {
+                    override fun onComplete() {}
+                    override fun onError(e: Throwable) {
+                        mvpView?.hideProgress()
+                        mvpView?.showError(
+                                context?.getString(R.string.error_saving_account_details_loading))
+                    }
+
+                    override fun onNext(savingAccount: SavingsWithAssociations) {
+                        mvpView?.hideProgress()
+                        mvpView?.updateAccountBalance(savingAccount.summary?.accountBalance!!)
+                    }
+                })?.let {
+                    compositeDisposables.add(it
+                    )
+                }
+    }
 }

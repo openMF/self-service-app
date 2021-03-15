@@ -121,6 +121,7 @@ class SavingsMakeTransferFragment : BaseFragment(), SavingsMakeTransferMvpView, 
     private var payFrom: String? = null
     private var accountId: Long? = 0
     private var outStandingBalance: Double? = 0.0
+    private var fromAccountBalance: Double = 0.0
     private var isLoanRepayment = false
     private var sweetUIErrorHandler: SweetUIErrorHandler? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -378,6 +379,11 @@ class SavingsMakeTransferFragment : BaseFragment(), SavingsMakeTransferMvpView, 
      */
     @OnClick(R.id.btn_amount)
     fun amountSet() {
+        savingsMakeTransferPresenter?.getBalanceForAccountID(fromAccountOption?.accountNo?.toLong())
+    }
+
+    override fun updateAccountBalance(accountBalance: Double) {
+        fromAccountBalance = accountBalance
         if (etAmount?.text.toString() == "") {
             showToaster(getString(R.string.enter_amount))
             return
@@ -388,6 +394,10 @@ class SavingsMakeTransferFragment : BaseFragment(), SavingsMakeTransferMvpView, 
         }
         if (etAmount?.text.toString().toDouble() == 0.0) {
             showToaster(getString(R.string.amount_greater_than_zero))
+            return
+        }
+        if(etAmount?.text.toString().toDouble().compareTo(fromAccountBalance) > 0){
+            showToaster(getString(R.string.insufficent_balance))
             return
         }
         pvThree?.setCurrentCompleted()

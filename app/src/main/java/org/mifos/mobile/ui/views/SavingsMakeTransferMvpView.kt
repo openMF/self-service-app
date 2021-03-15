@@ -13,4 +13,5 @@ interface SavingsMakeTransferMvpView : MVPView {
     fun showError(message: String?)
     fun showProgressDialog()
     fun hideProgressDialog()
+    fun updateAccountBalance(accountBalance: Double)
 }

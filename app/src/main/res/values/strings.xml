@@ -138,6 +138,7 @@
     <string name="new_saving_account_application">New Saving Account Application</string>
     <string name="update_savings_account">Update Savings Account</string>
     <string name="withdraw_savings_account">Withdraw Savings Account</string>
+    <string name="insufficent_balance">Insufficient Account Balance</string>
     <string name="withdrawal_date">Withdrawal Date</string>
     <string name="new_saving_account_created_successfully">New Saving Account created successfully.</string>
     <string name="saving_account_updated_successfully">Saving Account Updated Successfully</string>
