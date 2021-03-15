@@ -21,6 +21,7 @@ import org.mifos.mobile.utils.Network
 import org.mifos.mobile.utils.Toaster
 import org.mifos.mobile.viewModels.ReviewLoanApplicationViewModel
 import org.mifos.mobile.viewModels.ReviewLoanApplicationViewModelFactory
+import java.util.*
 import javax.inject.Inject
 
 class ReviewLoanApplicationFragment : BaseFragment() {
@@ -95,7 +96,8 @@ class ReviewLoanApplicationFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         tv_loan_product.text = viewModel.getLoanProduct()
         tv_loan_purpose.text = viewModel.getLoanPurpose()
-        tv_principal_amount.text = viewModel.getPrincipal().toString()
+        tv_principal_amount?.text = String.format(Locale.getDefault(),
+                "%.2f", viewModel.getPrincipal())
         tv_expected_disbursement_date.text = viewModel.getDisbursementDate()
         tv_submission_date.text = viewModel.getSubmissionDate()
         tv_currency.text = viewModel.getCurrency()
