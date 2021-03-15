@@ -1,5 +1,7 @@
 package org.mifos.mobile.ui.fragments
 
+import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -103,8 +105,10 @@ class SavingsAccountWithdrawFragment : BaseFragment(), SavingsAccountWithdrawVie
     }
 
     override fun showSavingsAccountWithdrawSuccessfully() {
-        showMessage(getString(R.string.savings_account_withdraw_successful))
-        activity?.supportFragmentManager?.popBackStack()
+        val data = Intent()
+        data.putExtra("message", getString(R.string.savings_account_withdraw_successful))
+        activity?.setResult(RESULT_OK, data)
+        activity?.finish()
     }
 
     override fun showMessage(message: String?) {

@@ -63,6 +63,7 @@ object Constants {
     const val HAS_SETTINGS_CHANGED = "hasSettingsChanged"
     const val PASSWORD = "Password"
     const val SAVINGS_ACCOUNT_STATE = "savingsaccountstate"
+    const val SAVINGS_ACCOUNT_DETAILS = 20
     const val OUTSTANDING_BALANCE = "outstanding_balance"
     const val LOAN_REPAYMENT = "loan_repayment"
 }
