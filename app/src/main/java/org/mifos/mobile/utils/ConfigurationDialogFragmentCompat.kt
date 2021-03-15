@@ -59,15 +59,17 @@ class ConfigurationDialogFragmentCompat : PreferenceDialogFragmentCompat(), Targ
     override fun onDialogClosed(positiveResult: Boolean) {
         if (positiveResult && !isFieldEmpty && isUrlValid) {
             val preference = preference as ConfigurationPreference
-            preference.updateConfigurations(etBaseUrl?.text.toString(), etTenant?.text.toString())
-            preferencesHelper?.clear()
-            val baseUrl = preferencesHelper?.baseUrl
-            val tenant = preferencesHelper?.tenant
-            createService(baseUrl, tenant, "")
-            val loginIntent = Intent(activity, LoginActivity::class.java)
-            loginIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(loginIntent)
-            activity?.finish()
+            if (!(preference.baseUrl.toString().equals(etBaseUrl!!.text.toString()) && preference.tenant.toString().equals(etTenant!!.text.toString()))) {
+                preference.updateConfigurations(etBaseUrl?.text.toString(), etTenant?.text.toString())
+                preferencesHelper?.clear()
+                val baseUrl = preferencesHelper?.baseUrl
+                val tenant = preferencesHelper?.tenant
+                createService(baseUrl, tenant, "")
+                val loginIntent = Intent(activity, LoginActivity::class.java)
+                loginIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(loginIntent)
+                activity?.finish()
+            }
         }
     }
 
