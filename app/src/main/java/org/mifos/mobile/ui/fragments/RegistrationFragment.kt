@@ -170,8 +170,7 @@ class RegistrationFragment : BaseFragment(), RegistrationView {
             Toaster.show(rootView, getString(R.string.error_username_greater_than_six))
             return false
         } else if (etUsername?.text.toString().trim { it <= ' ' }.contains(" ")) {
-            Toaster.show(rootView, getString(R.string.error_validation_cannot_contain_spaces,
-                    getString(R.string.username), getString(R.string.not_contain_username)))
+            Toaster.show(rootView, getString(R.string.error_validation_cannot_contain_spaces, getString(R.string.username), getString(R.string.not_contain_username)))
             return false
         } else if (etFirstName?.text?.isEmpty() == true) {
             Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.first_name)))
@@ -179,25 +178,23 @@ class RegistrationFragment : BaseFragment(), RegistrationView {
         } else if (etLastName?.text.toString().trim { it <= ' ' }.isEmpty()) {
             Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.last_name)))
             return false
+        }else if (etPhoneNumber?.text.toString().trim { it <= ' ' }.isEmpty()) {
+            Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.phone_number)))
+            return false
         } else if (etEmail?.text.toString().trim { it <= ' ' }.isEmpty()) {
             Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.email)))
             return false
         } else if (etPassword?.text.toString().trim { it <= ' ' }.isEmpty()) {
             Toaster.show(rootView, getString(R.string.error_validation_blank, getString(R.string.password)))
             return false
-        } else if (etPassword?.text.toString().trim { it <= ' ' }.length
-                < etPassword?.text.toString().length) {
-            Toaster.show(rootView,
-                    getString(R.string.error_validation_cannot_contain_leading_or_trailing_spaces,
-                            getString(R.string.password)))
+        } else if (etPassword?.text.toString().trim { it <= ' ' }.length < etPassword?.text.toString().length) {
+            Toaster.show(rootView, getString(R.string.error_validation_cannot_contain_leading_or_trailing_spaces, getString(R.string.password)))
             return false
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail?.text.toString().trim { it <= ' ' })
-                        .matches()) {
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(etEmail?.text.toString().trim { it <= ' ' }).matches()) {
             Toaster.show(rootView, getString(R.string.error_invalid_email))
             return false
         } else if (etPassword?.text.toString().trim { it <= ' ' }.length < 6) {
-            Toaster.show(rootView, getString(R.string.error_validation_minimum_chars,
-                    getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
+            Toaster.show(rootView, getString(R.string.error_validation_minimum_chars, getString(R.string.password), resources.getInteger(R.integer.password_minimum_length)))
             return false
         }
         return true
