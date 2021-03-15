@@ -47,17 +47,19 @@ class PassCodeActivity : MifosPassCodeActivity() {
     }
 
     override fun startLoginActivity() {
+        val i = Intent(this@PassCodeActivity,
+                LoginActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(i)
+        finish()
+    }
+
+    override fun forgotPassCode(v: View?) {
         MaterialDialog.Builder().init(this@PassCodeActivity)
                 .setCancelable(false)
                 .setMessage(R.string.login_using_password_confirmation)
                 .setPositiveButton(getString(R.string.logout),
-                        DialogInterface.OnClickListener { _, _ ->
-                            val i = Intent(this@PassCodeActivity,
-                                    LoginActivity::class.java)
-                            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(i)
-                            finish()
-                        })
+                        DialogInterface.OnClickListener { _, _ -> startLoginActivity() })
                 .setNegativeButton(getString(R.string.cancel),
                         DialogInterface.OnClickListener { dialog, _ -> dialog.dismiss() })
                 .createMaterialDialog()
