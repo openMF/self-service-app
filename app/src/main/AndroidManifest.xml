@@ -46,12 +46,14 @@
             android:configChanges="screenLayout|screenSize"
             android:label="@string/home"
             android:name="org.mifos.mobile.ui.activities.HomeActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
         <activity
             android:configChanges="orientation|screenSize"
             android:label="@string/saving_account_details"
             android:name="org.mifos.mobile.ui.activities.SavingsAccountContainerActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:launchMode="singleTask"
@@ -61,7 +63,8 @@
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="org.mifos.mobile.ui.activities.LoanAccountContainerActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="org.mifos.mobile.ui.activities.UserProfileActivity"
@@ -77,17 +80,20 @@
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="org.mifos.mobile.ui.activities.AccountOverviewActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
                   android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="com.google.android.gms.oss.licenses.OssLicensesActivity"
                   android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="org.mifos.mobile.ui.activities.NotificationActivity"
@@ -95,13 +101,16 @@
 
         <activity android:configChanges="orientation|screenSize"
                   android:name="org.mifos.mobile.ui.activities.AddBeneficiaryActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:name="org.mifos.mobile.ui.activities.EditUserDetailActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:name="org.mifos.mobile.ui.activities.SavingsAccountApplicationActivity"
-                  android:windowSoftInputMode="adjustResize"/>
+                  android:windowSoftInputMode="adjustResize"
+                  android:screenOrientation="portrait"/>
 
         <activity android:name="org.mifos.mobile.ui.activities.AboutUsActivity"
                   android:windowSoftInputMode="adjustResize"/>
