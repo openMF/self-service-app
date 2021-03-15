@@ -5,7 +5,8 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/ll_background">
 
     <androidx.core.widget.NestedScrollView
         android:fitsSystemWindows="true"

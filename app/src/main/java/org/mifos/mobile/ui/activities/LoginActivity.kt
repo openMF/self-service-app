@@ -1,19 +1,18 @@
 package org.mifos.mobile.ui.activities
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.Toast
-
 import androidx.appcompat.widget.AppCompatButton
-
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-
 import com.google.android.material.textfield.TextInputLayout
-
 import org.mifos.mobile.R
 import org.mifos.mobile.models.payload.LoginPayload
 import org.mifos.mobile.presenters.LoginPresenter
@@ -22,7 +21,7 @@ import org.mifos.mobile.ui.views.LoginView
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.Network
 import org.mifos.mobile.utils.Toaster
-
+import org.mifos.mobile.utils.Utils
 import javax.inject.Inject
 
 /**
@@ -57,6 +56,7 @@ class LoginActivity : BaseActivity(), LoginView {
         setContentView(R.layout.activity_login)
         ButterKnife.bind(this)
         loginPresenter?.attachView(this)
+        dismissKeyboardOnBackgroundTap(findViewById(R.id.ll_background))
     }
 
     /**
@@ -151,5 +151,25 @@ class LoginActivity : BaseActivity(), LoginView {
         intent.putExtra(Constants.INTIAL_LOGIN, true)
         startActivity(intent)
         finish()
+    }
+
+    //Method to setup ui to dismiss soft keyboard on background tap
+    private fun dismissKeyboardOnBackgroundTap(view: View) {
+
+        // Set up touch listener for non-text box views to hide keyboard.
+        if (view !is TextInputLayout) {
+            view.setOnTouchListener { v, event ->
+                Utils.hideSoftKeyboard(this@LoginActivity)
+                false
+            }
+        }
+
+        //If a layout container, iterate over children and seed recursion.
+        if (view is ViewGroup) {
+            for (i in 0 until view.childCount) {
+                val innerView = view.getChildAt(i)
+                dismissKeyboardOnBackgroundTap(innerView)
+            }
+        }
     }
 }
