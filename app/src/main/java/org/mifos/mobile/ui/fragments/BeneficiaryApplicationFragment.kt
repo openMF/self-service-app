@@ -152,6 +152,7 @@ class BeneficiaryApplicationFragment : BaseFragment(), BeneficiaryApplicationVie
      */
     override fun showBeneficiaryTemplate(beneficiaryTemplate: BeneficiaryTemplate?) {
         this.beneficiaryTemplate = beneficiaryTemplate
+        listAccountType.clear()
         for ((_, _, value) in beneficiaryTemplate?.accountTypeOptions!!) {
             listAccountType.add(value)
         }
