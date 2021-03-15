@@ -374,20 +374,26 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
      * @param statusModelList [List] of [CheckboxStatus]
      */
     fun filterShareAccount(statusModelList: List<CheckboxStatus?>?) {
+        sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvAccounts, layoutError)
+        var nonEmpty = false
+        statusModelList!!.forEach { s ->
+            if (s!!.isChecked) nonEmpty = true
+        }
         val filteredSavings: MutableList<ShareAccount?>? = ArrayList()
-        when {
-            accountsPresenter != null && accountsPresenter?.getCheckedStatus(statusModelList) != null -> {
+        if (accountsPresenter?.getCheckedStatus(statusModelList) != null &&
+                accountsPresenter != null && nonEmpty) {
+            if (accountsPresenter != null && accountsPresenter?.getCheckedStatus(statusModelList) != null) {
                 for (status in accountsPresenter?.getCheckedStatus(statusModelList)!!) {
                     accountsPresenter?.getFilteredShareAccount(shareAccounts,
                             status)?.let { filteredSavings?.addAll(it) }
                 }
             }
-            filteredSavings?.size == 0 -> {
-                showEmptyAccounts(getString(R.string.no_sharing_account))
-            }
-            else -> {
-                shareAccountsListAdapter?.setShareAccountsList(filteredSavings)
-            }
+        } else filteredSavings?.addAll(shareAccounts!!)
+
+        if (filteredSavings?.size == 0) {
+            showEmptyAccounts(getString(R.string.no_sharing_account))
+        } else {
+            shareAccountsListAdapter?.setShareAccountsList(filteredSavings)
         }
     }
 
