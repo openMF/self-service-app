@@ -50,7 +50,7 @@ ext {
     daggerVersion = '2.30.1'
     retrofitVersion = '2.2.0'
     okHttp3Version = '3.6.0'
-    butterKnifeVersion = '8.0.1'
+    butterKnifeVersion = '10.2.3'
     dbflowVersion = '4.1.2'
     playServicesVersion = '17.0.0'
     firebaseMessagingVersion = '21.0.1'
