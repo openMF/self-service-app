@@ -57,6 +57,8 @@ class SavingAccountsTransactionListAdapter @Inject constructor() :
         if (paymentDetailData != null) {
             holder.tvTransactionDetailData?.visibility = View.VISIBLE
             holder.tvTransactionDetailData?.text = paymentDetailData.paymentType.name
+        } else {
+            holder.tvTransactionDetailData?.visibility = View.GONE
         }
         holder.tvTransactionDate?.text = getDateAsString(date)
         val color = getColor(transactionType)
