@@ -1,6 +1,7 @@
 package org.mifos.mobile.ui.fragments
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -444,6 +445,9 @@ class LoanApplicationFragment : BaseFragment(), LoanApplicationMvpView, OnDatePi
             }
         loanPurposeAdapter?.notifyDataSetChanged()
         spLoanPurpose?.setSelection(0)
+        tvExpectedDisbursementDate?.text = DateFormat.format( "dd-MM-yyyy",
+                MFDatePicker.mCalendar?.timeInMillis!!).toString()
+        setSubmissionDisburseDate()
         if (isLoanUpdatePurposesInitialization &&
                 loanWithAssociations?.loanPurposeName != null) {
             spLoanPurpose?.setSelection(loanPurposeAdapter!!
