@@ -186,7 +186,10 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
      */
     override fun showFilteredList(list: List<Transactions?>?) {
         if (list != null && list.isNotEmpty()) {
-            Toaster.show(rootView, getString(R.string.filtered))
+            if(list.size == transactionsList?.size) {
+                Toaster.show(rootView, getString(R.string.no_filters))
+            } else
+                Toaster.show(rootView, getString(R.string.filtered))
             transactionListAdapter?.setSavingAccountsTransactionList(list)
         } else {
             showEmptyTransactions()
@@ -335,6 +338,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 .setTitle(R.string.savings_account_transaction)
                 .addView(dialogView)
                 .setPositiveButton(getString(R.string.filter), DialogInterface.OnClickListener { _, _ ->
+                    sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvSavingAccountsTransaction, layoutError)
                     if (checkBoxPeriod?.isChecked == true) {
                         if (!isReady) {
                             Toaster.show(rootView, getString(R.string.select_date))
@@ -352,6 +356,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 })
                 .setNeutralButton(getString(R.string.clear_filters),
                         DialogInterface.OnClickListener { _, _ ->
+                            sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvSavingAccountsTransaction, layoutError)
                             transactionListAdapter
                                     ?.setSavingAccountsTransactionList(transactionsList)
                             initializeFilterVariables()
@@ -394,12 +399,17 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
      */
     private fun filterSavingsAccountTransactionsbyType(statusModelList: List<CheckboxStatus?>?): List<Transactions?>? {
         val filteredSavingsTransactions: MutableList<Transactions?>? = ArrayList()
-        if (savingAccountsTransactionPresenter != null)
+        var nonEmpty = false
+        statusModelList!!.forEach { s ->
+            if (s!!.isChecked) nonEmpty =  true
+        }
+        if (nonEmpty && savingAccountsTransactionPresenter != null) {
             for (status in savingAccountsTransactionPresenter
                     ?.getCheckedStatus(statusModelList)!!) {
                 savingAccountsTransactionPresenter
                         ?.filterTranactionListbyType(transactionsList, status)?.let { filteredSavingsTransactions?.addAll(it) }
             }
+        } else filteredSavingsTransactions?.addAll(transactionsList!!)
         return filteredSavingsTransactions
     }
 

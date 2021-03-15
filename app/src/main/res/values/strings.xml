@@ -303,6 +303,7 @@
     <string name="start_date">Start Date</string>
     <string name="end_date">End Date</string>
     <string name="filtered">Filtered</string>
+    <string name="no_filters">No Filters Applied</string>
     <string name="select_date">Please select start date and end date</string>
     <string name="end_date_must_be_greater">End date must be greater than Start date</string>
     <string name="saving_account_transactions_details">Saving Account Transactions</string>
