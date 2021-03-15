@@ -107,7 +107,8 @@ import javax.inject.Inject
     override fun showPasswordUpdatedSuccessfully() {
         Toast.makeText(context, getString(R.string.string_changed_successfully,
                 getString(R.string.password)), Toast.LENGTH_SHORT).show()
-        startActivity(Intent(context, SettingsActivity::class.java))
+        (activity as BaseActivity).clearFragmentBackStack()
+        (activity as BaseActivity).replaceFragment(SettingsFragment.newInstance(), true, R.id.container)
     }
 
     override fun showProgress() {
