@@ -109,6 +109,11 @@ class PreferencesHelper @Inject constructor(@ApplicationContext context: Context
         set(officeName) {
             putString(OFFICE_NAME, officeName)
         }
+    var usePasscode: Boolean?
+        get() = getBoolean(USE_PASSCODE, false)
+        set(usePasscode) {
+            putBoolean(USE_PASSCODE, usePasscode!!)
+        }
 
     fun setOverviewState(state: Boolean) {
         putBoolean(OVERVIEW_STATE, state)
@@ -162,6 +167,7 @@ class PreferencesHelper @Inject constructor(@ApplicationContext context: Context
         private const val BASE_URL = "preferences_base_url_key"
         private const val PROFILE_IMAGE = "preferences_profile_image"
         const val CLIENT_NAME = "client_name"
+        private const val USE_PASSCODE = "preferences_use_passcode"
     }
 
 }

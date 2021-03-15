@@ -160,6 +160,8 @@
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
     <string name="string_changed_successfully">%1$s changed successfully</string>
+    <string name="turn_on_passcode">Turn On Passcode</string>
+    <string name="turn_off_passcode">Turn Off Passcode</string>
 
     <string name="account_not_active_to_perform_deposit">Account should to be Active to perform a
         deposit
@@ -574,6 +576,12 @@
     <string name="transaction_type">Transaction Type</string>
     <string name="questions">Questions</string>
     <string name="logged_out_successfully">Logged out successfully</string>
+    <string name="use_passcode">Use Passcode</string>
+    <string name="security">Security</string>
+    <string name="passcode_not_updated">Passcode Not Updated</string>
+    <string name="passcode_set_successfully">Passcode Set Successfully</string>
+    <string name="passcode_updated">Password Updated</string>
+    <string name="do_you_want_to_turn_off_passcode">Do you want to turn off passcode?</string>
 
     <string name="dialog_cancel_registration_message">Do you want to cancel registering New Account ?</string>
     <string name="dialog_cancel_registration_title">Cancel Registration</string>

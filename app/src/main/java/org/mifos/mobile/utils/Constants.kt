@@ -62,7 +62,14 @@ object Constants {
     const val DATE_PICKER_TYPE = "datePickerType"
     const val HAS_SETTINGS_CHANGED = "hasSettingsChanged"
     const val PASSWORD = "Password"
+    const val USE_PASSCODE = "Use Passcode"
+    const val CHANGE_PASSCODE = "Change Passcode"
     const val SAVINGS_ACCOUNT_STATE = "savingsaccountstate"
     const val OUTSTANDING_BALANCE = "outstanding_balance"
     const val LOAN_REPAYMENT = "loan_repayment"
+    const val REQUEST_SET_PASSCODE = "request_set_passcode"
+    const val REQUEST_UPDATE_PASSCODE = "request_update_passcode"
+    const val RC_SET_PASSCODE = 101
+    const val RC_UPDATE_PASSCODE = 102
+    const val PASSWORD_UPDATED = "passwordUpdated"
 }

@@ -9,13 +9,20 @@
             android:icon="@drawable/ic_lock_black_24dp"
             android:summary="@string/change_account_password"
             android:title="@string/change_password"/>
+    </PreferenceCategory>
 
-        <Preference
-            android:key="@string/passcode"
+    <PreferenceCategory android:title="@string/security">
+        <SwitchPreference
+            android:key="@string/use_passcode"
             android:persistent="false"
             android:icon="@drawable/ic_passcode"
-            android:summary="@string/change_app_passcode"
-            android:title="@string/change_passcode"/>
+            android:title="@string/use_passcode"/>
+
+        <Preference
+            android:key="@string/change_passcode"
+            android:persistent="false"
+            android:title="@string/change_passcode"
+            android:dependency="@string/use_passcode"/>
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/other">

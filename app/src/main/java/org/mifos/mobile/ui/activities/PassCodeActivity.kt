@@ -1,6 +1,7 @@
 package org.mifos.mobile.ui.activities
 
 import android.Manifest
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -10,17 +11,30 @@ import com.mifos.mobile.passcode.MifosPassCodeActivity
 import com.mifos.mobile.passcode.utils.EncryptionUtil
 
 import org.mifos.mobile.R
+import org.mifos.mobile.api.local.PreferencesHelper
 import org.mifos.mobile.utils.CheckSelfPermissionAndRequest
 import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.MaterialDialog
 import org.mifos.mobile.utils.Toaster
 
 class PassCodeActivity : MifosPassCodeActivity() {
+
+    private var preferencesHelper: PreferencesHelper? = null
+
+    private var isRequestSetPasscode: Boolean = false
+    private var isRequestPasscodeUpdate: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (!CheckSelfPermissionAndRequest.checkSelfPermission(this,
                         Manifest.permission.READ_PHONE_STATE)) {
             requestPermission()
+        }
+        preferencesHelper = PreferencesHelper(this)
+        preferencesHelper?.usePasscode = true
+        intent?.let {
+            isRequestSetPasscode = it.getBooleanExtra(Constants.REQUEST_SET_PASSCODE, false)
+            isRequestPasscodeUpdate = it.getBooleanExtra(Constants.REQUEST_UPDATE_PASSCODE, false)
         }
     }
 
@@ -43,7 +57,23 @@ class PassCodeActivity : MifosPassCodeActivity() {
     }
 
     override fun startNextActivity() {
-        startActivity(Intent(this@PassCodeActivity, HomeActivity::class.java))
+        when {
+            isRequestPasscodeUpdate -> {
+                val intent = Intent()
+                intent.putExtra(Constants.PASSWORD_UPDATED, true)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            isRequestSetPasscode -> {
+                val intent = Intent()
+                intent.putExtra(Constants.PASSWORD_UPDATED, true)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+            else -> {
+                startActivity(Intent(this@PassCodeActivity, HomeActivity::class.java))
+            }
+        }
     }
 
     override fun startLoginActivity() {
@@ -70,5 +100,21 @@ class PassCodeActivity : MifosPassCodeActivity() {
 
     override fun getEncryptionType(): Int {
         return EncryptionUtil.MOBILE_BANKING
+    }
+
+    override fun skip(v: View?) {
+        preferencesHelper?.usePasscode = false
+        startActivity(Intent(this, HomeActivity::class.java))
+        finish()
+    }
+
+    override fun onBackPressed() {
+        if (isRequestSetPasscode) {
+            val intent = Intent()
+            intent.putExtra(Constants.PASSWORD_UPDATED, false)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
+        super.onBackPressed()
     }
 }
