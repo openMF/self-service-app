@@ -24,6 +24,12 @@
             android:paddingTop="@dimen/login_padding_top">
 
             <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_info"
+                android:layout_gravity="end"/>
+
+            <ImageView
                 android:layout_gravity="center_horizontal"
                 android:layout_height="@dimen/login_height"
                 android:layout_marginBottom="@dimen/login_margin_bottom"
