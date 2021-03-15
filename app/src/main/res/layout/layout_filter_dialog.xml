@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:rsb="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
@@ -27,6 +28,53 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="?selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/ll_row_amount"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/default_margin"
+                android:paddingLeft="@dimen/default_margin"
+                android:paddingRight="@dimen/default_margin"
+                android:paddingStart="@dimen/default_margin">
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/amount_select"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:layout_width="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/amount_status"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:layout_width="wrap_content"
+                    android:text="Transaction Range"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <org.florescu.android.rangeseekbar.RangeSeekBar
+                    android:id="@+id/filter_seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    rsb:absoluteMaxValue="100"
+                    rsb:absoluteMinValue="0"
+                    android:layout_margin="@dimen/margin_16dp"
+                    android:visibility="gone"
+                    rsb:textAboveThumbsColor="@color/black"
+                    android:tint="@color/primary"/>
+
+            </LinearLayout>
             <LinearLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:background="?selectableItemBackground"

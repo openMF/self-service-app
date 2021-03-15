@@ -17,6 +17,7 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 
 import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler
+import org.florescu.android.rangeseekbar.RangeSeekBar
 
 import org.mifos.mobile.R
 import org.mifos.mobile.models.CheckboxStatus
@@ -37,7 +38,7 @@ import javax.inject.Inject
 /**
  * Created by dilpreet on 6/3/17.
  */
-class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransactionView, OnDatePickListener {
+class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransactionView, OnDatePickListener, RangeSeekBar.OnRangeSeekBarChangeListener<Float> {
 
     @kotlin.jvm.JvmField
     @BindView(R.id.ll_account)
@@ -77,6 +78,8 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
     private var statusList: List<CheckboxStatus>? = null
     private var isCheckBoxPeriod = false
     private var selectedRadioButtonId = 0
+    private var filterMinAmount: Float? = 0f
+    private var filterMaxAmount: Float? = 0f
     var active = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -265,12 +268,25 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         val llcheckBoxPeriod = dialogView?.findViewById<LinearLayout>(R.id.ll_row_checkbox)
         val checkBoxPeriod: AppCompatCheckBox? = dialogView?.findViewById(R.id.cb_select)
         val radioGroupFilter = dialogView?.findViewById<RadioGroup>(R.id.rg_date_filter)
+        val amountCheckBox = dialogView?.findViewById<AppCompatCheckBox>(R.id.amount_select)
+        val llRowAmount = dialogView?.findViewById<LinearLayout>(R.id.ll_row_amount)
+        val seekBar: RangeSeekBar<Float> = dialogView!!.findViewById(R.id.filter_seekBar)
         tvStartDate = dialogView?.findViewById(R.id.tv_start_date)
         tvEndDate = dialogView?.findViewById(R.id.tv_end_date)
         tvStartDate?.isEnabled = false
         tvEndDate?.isEnabled = false
 
         //setup listeners
+        seekBar.setRangeValues(getRangeMinValue(),getRangeMaxValue())
+        llRowAmount?.setOnClickListener { amountCheckBox?.isChecked = (amountCheckBox?.isChecked != true) }
+        amountCheckBox?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                seekBar.visibility = View.VISIBLE
+            } else {
+                seekBar.visibility = View.GONE
+            }
+        }
+        seekBar.setOnRangeSeekBarChangeListener(this)
         tvStartDate?.setOnClickListener { startDatePick() }
         tvEndDate?.setOnClickListener { endDatePick() }
         llcheckBoxPeriod?.setOnClickListener { checkBoxPeriod?.isChecked = (checkBoxPeriod?.isChecked != true) }
@@ -335,18 +351,24 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 .setTitle(R.string.savings_account_transaction)
                 .addView(dialogView)
                 .setPositiveButton(getString(R.string.filter), DialogInterface.OnClickListener { _, _ ->
-                    if (checkBoxPeriod?.isChecked == true) {
-                        if (!isReady) {
-                            Toaster.show(rootView, getString(R.string.select_date))
-                            return@OnClickListener
-                        } else if (isEndDateLargeThanStartDate() == false) {
-                            Toaster.show(rootView,
-                                    getString(R.string.end_date_must_be_greater))
-                            return@OnClickListener
+                    when {
+                        amountCheckBox?.isChecked!! -> {
+                            filterByAmount(filterMinAmount,filterMaxAmount)
                         }
-                        filter(startDate, endDate, checkBoxAdapter?.statusList)
-                    } else {
-                        filter(checkBoxAdapter?.statusList)
+                        checkBoxPeriod?.isChecked == true -> {
+                            if (!isReady) {
+                                Toaster.show(rootView, getString(R.string.select_date))
+                                return@OnClickListener
+                            } else if (isEndDateLargeThanStartDate() == false) {
+                                Toaster.show(rootView,
+                                        getString(R.string.end_date_must_be_greater))
+                                return@OnClickListener
+                            }
+                            filter(startDate, endDate, checkBoxAdapter?.statusList)
+                        }
+                        else -> {
+                            filter(checkBoxAdapter?.statusList)
+                        }
                     }
                     filterSavingsAccountTransactionsbyType(checkBoxAdapter?.statusList)
                 })
@@ -362,9 +384,29 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 .show()
     }
 
+    private fun getRangeMinValue(): Float? {
+        var min = transactionsList?.get(0)?.amount
+        for(t in transactionsList!!) if(t?.amount!! < min!!) min = t.amount
+        return min!!.toFloat()
+    }
+
+    private fun getRangeMaxValue(): Float? {
+        var max = transactionsList?.get(0)?.amount
+        for(t in transactionsList!!) if(t?.amount!! > max!!) max = t.amount
+        return max!!.toFloat()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_saving_accounts_transaction, menu)
         super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    private fun filterByAmount(min: Float?, max: Float?): MutableList<Transactions?>? {
+        val filteredSavingsTransactions: MutableList<Transactions?>? = ArrayList()
+        savingAccountsTransactionPresenter?.filterTransactionListByAmount(transactionsList,
+                min, max).let { filteredSavingsTransactions?.addAll(it!!) }
+        showFilteredList(filteredSavingsTransactions)
+        return filteredSavingsTransactions
     }
 
     /**
@@ -424,5 +466,10 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onRangeSeekBarValuesChanged(bar: RangeSeekBar<*>?, minValue: Float?, maxValue: Float?) {
+        filterMaxAmount = maxValue
+        filterMinAmount = minValue
     }
 }

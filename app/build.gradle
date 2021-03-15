@@ -140,6 +140,9 @@ dependencies {
     //TableView
     implementation "com.evrencoskun.library:tableview:$rootProject.tableViewVersion"
 
+    //Range SeekBar
+    implementation 'org.florescu.android.rangeseekbar:rangeseekbar-library:0.3.0'
+
     // Unit tests dependencies
     testImplementation "junit:junit:$rootProject.jUnitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"

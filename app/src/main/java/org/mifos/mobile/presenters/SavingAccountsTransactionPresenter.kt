@@ -160,4 +160,15 @@ class SavingAccountsTransactionPresenter @Inject constructor(
                 }).toList().blockingGet()
     }
 
+    fun filterTransactionListByAmount(
+            savingAccountsTransactionList: List<Transactions?>?,
+            min: Float?, max: Float?
+    ): List<Transactions?>? {
+        return if (min != null && max != null) {
+            val list = mutableListOf<Transactions>()
+            for (t in savingAccountsTransactionList!!) if(t?.amount!! >= min && t.amount!! <= max) list.add(t)
+            return list
+        }else null
+    }
+
 }
