@@ -223,6 +223,8 @@ class ThirdPartyTransferFragment : BaseFragment(), ThirdPartyTransferView, OnIte
         transferPayload.transferDate = transferDate
         transferPayload.transferAmount = etAmount?.text.toString().toDouble()
         transferPayload.transferDescription = etRemark?.text.toString()
+        transferPayload.fromAccountNumber = fromAccountOption?.accountNo
+        transferPayload.toAccountNumber = beneficiaryAccountOption?.accountNo
         (activity as BaseActivity?)?.replaceFragment(TransferProcessFragment.newInstance(transferPayload, TransferType.TPT), true, R.id.container)
     }
 
