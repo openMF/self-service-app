@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 
 import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -17,10 +19,12 @@ import butterknife.ButterKnife
 import butterknife.OnClick
 
 import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler
+import kotlinx.android.synthetic.main.dialog_transaction_details.view.*
 
 import org.mifos.mobile.R
 import org.mifos.mobile.models.CheckboxStatus
 import org.mifos.mobile.models.accounts.savings.SavingsWithAssociations
+import org.mifos.mobile.models.accounts.savings.TransactionType
 import org.mifos.mobile.models.accounts.savings.Transactions
 import org.mifos.mobile.presenters.SavingAccountsTransactionPresenter
 import org.mifos.mobile.ui.activities.base.BaseActivity
@@ -37,7 +41,7 @@ import javax.inject.Inject
 /**
  * Created by dilpreet on 6/3/17.
  */
-class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransactionView, OnDatePickListener {
+class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransactionView, OnDatePickListener, RecyclerItemClickListener.OnItemClickListener {
 
     @kotlin.jvm.JvmField
     @BindView(R.id.ll_account)
@@ -94,6 +98,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 container, false)
         ButterKnife.bind(this, rootView!!)
         savingAccountsTransactionPresenter?.attachView(this)
+        rvSavingAccountsTransaction?.addOnItemTouchListener(RecyclerItemClickListener(activity, this))
         sweetUIErrorHandler = SweetUIErrorHandler(context, rootView)
         showUserInterface()
         if (savedInstanceState == null) {
@@ -414,6 +419,71 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         super.onDestroyView()
         hideProgress()
         savingAccountsTransactionPresenter?.detachView()
+    }
+
+    override fun onItemClick(childView: View?, position: Int) {
+        val dialogBuilder = AlertDialog.Builder(context!!)
+        val inflater = this.layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_transaction_details, null)
+
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.setPositiveButton(getString(R.string.close)) { _, _ ->
+        }
+
+        val alertDialog = dialogBuilder.create()
+
+        dialogView.transaction_dialog_acc_num.text = transactionsList!![position]?.accountNo
+        dialogView.transaction_dialog_trans_id.text = transactionsList!![position]?.id.toString()
+        dialogView.transaction_dialog_amount.setTextColor(ContextCompat.getColor(context!!, getColor(transactionsList!![position]?.transactionType)))
+        dialogView.transaction_dialog_amount.text = context?.getString(R.string.string_and_string, transactionsList!![position]?.currency?.displaySymbol, CurrencyUtil.formatCurrency(context, transactionsList!![position]?.amount))
+        dialogView.transaction_dialog_balance.text = context?.getString(R.string.string_and_string, transactionsList!![position]?.currency?.displaySymbol, CurrencyUtil.formatCurrency(context, transactionsList!![position]?.runningBalance))
+        dialogView.transaction_dialog_currency.text = transactionsList!![position]?.currency?.name
+        dialogView.transaction_dialog_date.text = DateHelper.getDateAsString( transactionsList!![position]?.date)
+        dialogView.transaction_dialog_type.text = transactionsList!![position]?.transactionType?.value
+        if (transactionsList!![position]?.paymentDetailData?.paymentType?.name != null) {
+            dialogView.rl_transaction_dialog_pay_type.visibility = View.VISIBLE
+            dialogView.transaction_dialog_pay_type.text = transactionsList!![position]?.paymentDetailData?.paymentType?.name
+        }
+        dialogView.transaction_dialog_submit.text =  DateHelper.getDateAsString(transactionsList!![position]?.submittedOnDate)
+
+        alertDialog.show()
+    }
+
+    override fun onItemLongPress(childView: View?, position: Int) {
+        Toaster.show(childView,"Click item for Transaction Details")
+    }
+
+    private fun getColor(transactionType: TransactionType?): Int{
+        if (transactionType?.deposit == true) {
+            return R.color.deposit_green
+        }
+        if (transactionType?.dividendPayout == true) {
+            return R.color.red
+        }
+        if (transactionType?.withdrawal == true) {
+            return R.color.red
+        }
+        if (transactionType?.interestPosting == true) {
+            return R.color.deposit_green
+        }
+        if (transactionType?.feeDeduction == true) {
+            return R.color.red
+        }
+        if (transactionType?.initiateTransfer == true) {
+            return R.color.red
+        }
+        if (transactionType?.approveTransfer == true) {
+            return R.color.red
+        }
+        if (transactionType?.withdrawTransfer == true) {
+            return R.color.red
+        }
+        if (transactionType?.rejectTransfer == true) {
+            return R.color.deposit_green
+        }
+        return if (transactionType?.overdraftFee == true) {
+            R.color.red
+        } else R.color.deposit_green
     }
 
     companion object {
