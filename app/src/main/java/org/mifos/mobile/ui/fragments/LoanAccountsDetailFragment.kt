@@ -152,18 +152,19 @@ class LoanAccountsDetailFragment : BaseFragment(), LoanAccountsDetailView {
      * @param loanWithAssociations object containing details of each loan account,
      */
     fun showDetails(loanWithAssociations: LoanWithAssociations?) {
-        tvOutstandingBalanceName?.text = resources.getString(R.string.string_and_string,
-                loanWithAssociations?.summary?.currency?.displaySymbol, CurrencyUtil.formatCurrency(activity,
-                loanWithAssociations?.summary?.totalOutstanding))
+        var currencyRepresentation = loanWithAssociations?.summary?.currency?.displaySymbol
+        if (currencyRepresentation == null) {
+            currencyRepresentation = loanWithAssociations?.summary?.currency?.code
+        }
+        tvOutstandingBalanceName?.text = currencyRepresentation +
+                CurrencyUtil.formatCurrency(activity, loanWithAssociations?.summary?.totalOutstanding)
         if (loanWithAssociations?.repaymentSchedule?.periods != null) for ((_, _, dueDate, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, totalDueForPeriod) in loanWithAssociations.repaymentSchedule?.periods!!) {
             if (dueDate == loanWithAssociations.summary?.getOverdueSinceDate()) {
-                tvNextInstallmentName?.text = resources.getString(R.string.string_and_string,
-                        loanWithAssociations.summary?.currency?.displaySymbol,
-                        CurrencyUtil.formatCurrency(activity,
-                                totalDueForPeriod))
+                tvNextInstallmentName?.text = currencyRepresentation +
+                        CurrencyUtil.formatCurrency(activity, totalDueForPeriod)
                 break
             } else if (loanWithAssociations.summary?.getOverdueSinceDate() == null) {
-                tvNextInstallmentName?.setText(R.string.not_available)
+                tvNextInstallmentName?.text = getString(R.string.not_available)
             }
         }
         tvAccountNumberName?.text = loanWithAssociations?.accountNo
