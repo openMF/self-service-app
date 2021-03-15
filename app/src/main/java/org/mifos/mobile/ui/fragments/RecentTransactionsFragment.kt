@@ -131,9 +131,6 @@ class RecentTransactionsFragment : BaseFragment(), RecentTransactionsView, OnRef
      * Refreshes the List of [Transaction]
      */
     override fun onRefresh() {
-        if (layoutError?.visibility == View.VISIBLE) {
-            resetUI()
-        }
         recentTransactionsPresenter?.loadRecentTransactions(false, 0)
     }
 
@@ -153,6 +150,7 @@ class RecentTransactionsFragment : BaseFragment(), RecentTransactionsView, OnRef
     override fun showRecentTransactions(recentTransactionList: List<Transaction?>?) {
         this.recentTransactionList = recentTransactionList as MutableList<Transaction?>?
         recentTransactionsListAdapter?.setTransactions(recentTransactionList)
+        resetUI()
     }
 
     /**
@@ -163,6 +161,7 @@ class RecentTransactionsFragment : BaseFragment(), RecentTransactionsView, OnRef
     override fun showLoadMoreRecentTransactions(transactions: List<Transaction?>?) {
         this.recentTransactionList?.addAll(recentTransactionList!!)
         recentTransactionsListAdapter?.notifyDataSetChanged()
+        resetUI()
     }
 
     override fun resetUI() {
