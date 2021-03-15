@@ -134,7 +134,6 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         rvSavingAccountsTransaction?.layoutManager = layoutManager
         rvSavingAccountsTransaction?.adapter = transactionListAdapter
 
-//        radioGroup.setOnCheckedChangeListener(this);
         mfDatePicker = MFDatePicker.newInstance(this, MFDatePicker.ALL_DAYS, active)
         active = true
     }
@@ -265,10 +264,10 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         val llcheckBoxPeriod = dialogView?.findViewById<LinearLayout>(R.id.ll_row_checkbox)
         val checkBoxPeriod: AppCompatCheckBox? = dialogView?.findViewById(R.id.cb_select)
         val radioGroupFilter = dialogView?.findViewById<RadioGroup>(R.id.rg_date_filter)
+        val llStartEndDate = dialogView?.findViewById<LinearLayout>(R.id.ll_start_end_date)
         tvStartDate = dialogView?.findViewById(R.id.tv_start_date)
         tvEndDate = dialogView?.findViewById(R.id.tv_end_date)
-        tvStartDate?.isEnabled = false
-        tvEndDate?.isEnabled = false
+        llStartEndDate?.visibility = View.GONE
 
         //setup listeners
         tvStartDate?.setOnClickListener { startDatePick() }
@@ -280,6 +279,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 isReady = false
                 radioGroupFilter?.clearCheck()
                 selectedRadioButtonId = -1
+                llStartEndDate?.visibility = View.GONE
             } else {
                 if (selectedRadioButtonId == -1) {
                     val btn = dialogView.findViewById<RadioButton>(R.id.rb_date)
@@ -292,29 +292,25 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
             selectedRadioButtonId = radioGroup.checkedRadioButtonId
             when (radioGroup.checkedRadioButtonId) {
                 R.id.rb_four_weeks -> {
-                    tvStartDate?.isEnabled = false
-                    tvEndDate?.isEnabled = false
+                    llStartEndDate?.visibility = View.GONE
                     startDate = DateHelper.subtractWeeks(4)
                     endDate = System.currentTimeMillis()
                     isReady = true
                 }
                 R.id.rb_three_months -> {
-                    tvStartDate?.isEnabled = false
-                    tvEndDate?.isEnabled = false
+                    llStartEndDate?.visibility = View.GONE
                     startDate = DateHelper.subtractMonths(3)
                     endDate = System.currentTimeMillis()
                     isReady = true
                 }
                 R.id.rb_six_months -> {
-                    tvStartDate?.isEnabled = false
-                    tvEndDate?.isEnabled = false
+                    llStartEndDate?.visibility = View.GONE
                     startDate = DateHelper.subtractMonths(6)
                     endDate = System.currentTimeMillis()
                     isReady = true
                 }
                 R.id.rb_date -> {
-                    tvStartDate?.isEnabled = true
-                    tvEndDate?.isEnabled = false
+                    llStartEndDate?.visibility = View.VISIBLE
                 }
             }
         }

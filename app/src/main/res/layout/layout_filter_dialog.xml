@@ -79,6 +79,7 @@
                         android:text="@string/date" />
 
                     <LinearLayout
+                        android:id="@+id/ll_start_end_date"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent">
 
