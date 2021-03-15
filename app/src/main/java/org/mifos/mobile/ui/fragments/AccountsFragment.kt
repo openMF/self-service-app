@@ -329,13 +329,19 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
      * @param statusModelList [List] of [CheckboxStatus]
      */
     fun filterSavingsAccount(statusModelList: List<CheckboxStatus?>?) {
+        sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvAccounts, layoutError)
+        var nonEmpty = false
+        statusModelList!!.forEach { s ->
+            if (s!!.isChecked) nonEmpty =  true
+        }
         val filteredSavings: MutableList<SavingAccount?>? = ArrayList()
-        if (accountsPresenter?.getCheckedStatus(statusModelList) != null && accountsPresenter != null) {
+        if (accountsPresenter?.getCheckedStatus(statusModelList) != null &&
+                accountsPresenter != null && nonEmpty) {
             for (status in accountsPresenter?.getCheckedStatus(statusModelList)!!) {
                 accountsPresenter?.getFilteredSavingsAccount(savingAccounts,
                         status)?.let { filteredSavings?.addAll(it) }
             }
-        }
+        } else filteredSavings?.addAll(savingAccounts!!)
         if (filteredSavings?.size == 0) {
             showEmptyAccounts(getString(R.string.no_saving_account))
         } else {
@@ -350,20 +356,24 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
      * @param statusModelList [List] of [CheckboxStatus]
      */
     fun filterLoanAccount(statusModelList: List<CheckboxStatus?>?) {
+        sweetUIErrorHandler?.hideSweetErrorLayoutUI(rvAccounts, layoutError)
+        var nonEmpty = false
+        statusModelList!!.forEach { s ->
+            if (s!!.isChecked) nonEmpty =  true
+        }
         val filteredSavings: MutableList<LoanAccount?>? = ArrayList()
-        when {
-            accountsPresenter != null && accountsPresenter?.getCheckedStatus(statusModelList) != null -> {
+        if (accountsPresenter != null &&
+                accountsPresenter?.getCheckedStatus(statusModelList) != null && nonEmpty) {
                 for (status in accountsPresenter?.getCheckedStatus(statusModelList)!!) {
                     accountsPresenter?.getFilteredLoanAccount(loanAccounts,
                             status)?.let { filteredSavings?.addAll(it) }
                 }
-            }
-            filteredSavings?.size == 0 -> {
-                showEmptyAccounts(getString(R.string.no_loan_account))
-            }
-            else -> {
-                loanAccountsListAdapter?.setLoanAccountsList(filteredSavings)
-            }
+            } else filteredSavings?.addAll(loanAccounts!!)
+        if (filteredSavings?.size == 0) {
+            showEmptyAccounts(getString(R.string.no_loan_account))
+        }
+        else {
+            loanAccountsListAdapter?.setLoanAccountsList(filteredSavings)
         }
     }
 
