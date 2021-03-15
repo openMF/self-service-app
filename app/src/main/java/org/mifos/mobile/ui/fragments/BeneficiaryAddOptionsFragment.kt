@@ -90,16 +90,12 @@ class BeneficiaryAddOptionsFragment : BaseFragment() {
 
     private fun accessReadWriteAccess() {
         if (checkSelfPermission(activity,
-                        Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                        Manifest.permission.READ_EXTERNAL_STORAGE) &&
+                checkSelfPermission(activity,Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             external_storage_read_status = true
-        } else {
-            requestPermission(RequestAccessType.EXTERNAL_STORAGE_READ)
-        }
-        if (checkSelfPermission(activity,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             external_storage_write_status = true
         } else {
-            requestPermission(RequestAccessType.EXTERNAL_STORAGE_WRITE)
+            requestPermission(RequestAccessType.EXTERNAL_STORAGE_READ)
         }
     }
 
@@ -119,21 +115,9 @@ class BeneficiaryAddOptionsFragment : BaseFragment() {
                         Constants.PERMISSIONS_CAMERA_STATUS)
             }
             RequestAccessType.EXTERNAL_STORAGE_READ -> {
-                requestPermission((activity as BaseActivity?)!!,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Constants.PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE,
-                        resources.getString(R.string.dialog_message_storage_permission_denied_prompt),
-                        resources
-                                .getString(R.string.dialog_message_read_storage_permission_never_ask_again),
-                        Constants.PERMISSIONS_STORAGE_STATUS)
-            }
-            RequestAccessType.EXTERNAL_STORAGE_WRITE -> {
-                requestPermission((activity as BaseActivity?)!!,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Constants.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE,
-                        resources.getString(R.string.dialog_message_storage_permission_denied_prompt),
-                        resources.getString(R.string.dialog_message_write_storage_permission_never_ask_again),
-                        Constants.PERMISSIONS_STORAGE_STATUS)
+                requestPermissions( arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        Constants.PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE)
             }
         }
     }
@@ -154,14 +138,6 @@ class BeneficiaryAddOptionsFragment : BaseFragment() {
                 if (grantResults.size > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     external_storage_read_status = true
-                } else {
-                    Toaster.show(rootView, resources
-                            .getString(R.string.permission_denied_storage))
-                }
-            }
-            Constants.PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE -> {
-                if (grantResults.size > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     external_storage_write_status = true
                 } else {
                     Toaster.show(rootView, resources
