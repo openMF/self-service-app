@@ -13,8 +13,7 @@
 
     <LinearLayout
         android:id="@+id/ll_loan_account_trans"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_margin"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:visibility="gone">
@@ -22,8 +21,9 @@
         <TextView
             android:id="@+id/tv_loan_product_name"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginStart="@dimen/margin_16dp"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginTop="@dimen/margin_16dp"
             android:layout_width="wrap_content"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/black"
