@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_home_container"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
@@ -179,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:layout_marginTop="@dimen/default_margin"
-                    android:layout_weight="1"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:weightSum="3">
 
@@ -189,7 +190,7 @@
                         android:layout_marginLeft="@dimen/margin_4dp"
                         android:layout_marginStart="@dimen/margin_4dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content">
+                        android:layout_width="0dp">
 
                         <LinearLayout
                             android:background="@android:color/white"
@@ -204,8 +205,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/margin_32dp"
+                                android:layout_width="@dimen/margin_32dp"
                                 app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
 
                             <TextView
@@ -226,7 +227,7 @@
                         android:layout_marginLeft="@dimen/margin_4dp"
                         android:layout_marginStart="@dimen/margin_4dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content">
+                        android:layout_width="0dp">
 
                         <LinearLayout
                             android:background="@android:color/white"
@@ -241,8 +242,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/margin_32dp"
+                                android:layout_width="@dimen/margin_32dp"
                                 app:srcCompat="@drawable/ic_compare_arrows_black_24dp"/>
 
                             <TextView
@@ -265,7 +266,7 @@
                         android:layout_marginRight="@dimen/margin_4dp"
                         android:layout_marginStart="@dimen/margin_4dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content">
+                        android:layout_width="0dp">
 
                         <LinearLayout
                             android:clickable="true"
@@ -279,8 +280,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/margin_32dp"
+                                android:layout_width="@dimen/margin_32dp"
                                 app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp"/>
 
                             <TextView
@@ -298,8 +299,8 @@
 
                 <LinearLayout
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_width="match_parent"
+                    android:orientation="horizontal"
                     android:weightSum="3">
 
                     <androidx.cardview.widget.CardView
@@ -308,7 +309,7 @@
                         android:layout_marginLeft="@dimen/margin_4dp"
                         android:layout_marginStart="@dimen/margin_4dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content">
+                        android:layout_width="0dp">
 
                         <LinearLayout
                             android:clickable="true"
@@ -322,8 +323,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/margin_32dp"
+                                android:layout_width="@dimen/margin_32dp"
                                 app:srcCompat="@drawable/ic_account_balance_black_24dp"/>
 
                             <TextView
@@ -344,7 +345,7 @@
                         android:layout_marginLeft="@dimen/margin_4dp"
                         android:layout_marginStart="@dimen/margin_4dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content">
+                        android:layout_width="0dp">
 
                         <LinearLayout
                             android:clickable="true"
@@ -358,8 +359,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/margin_32dp"
+                                android:layout_width="@dimen/margin_32dp"
                                 app:srcCompat="@drawable/ic_beneficiaries_48px"/>
 
                             <TextView
@@ -382,7 +383,7 @@
                         android:layout_marginRight="@dimen/margin_4dp"
                         android:layout_marginStart="@dimen/margin_4dp"
                         android:layout_weight="1"
-                        android:layout_width="wrap_content">
+                        android:layout_width="0dp">
 
                         <LinearLayout
                             android:clickable="true"
@@ -396,8 +397,8 @@
                             android:padding="@dimen/default_padding">
 
                             <ImageView
-                                android:layout_height="56dp"
-                                android:layout_width="56dp"
+                                android:layout_height="@dimen/margin_32dp"
+                                android:layout_width="@dimen/margin_32dp"
                                 app:srcCompat="@drawable/ic_surveys_48px"/>
 
                             <TextView
@@ -423,12 +424,18 @@
                 android:paddingBottom="@dimen/default_padding"
                 android:paddingTop="@dimen/default_padding">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/row_padding_right"
+                    android:layout_marginTop="@dimen/divider_margin"
+                    app:srcCompat="@drawable/ic_contact"/>
                 <TextView
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/row_padding_right"
-                    android:layout_marginStart="@dimen/row_padding_right"
                     android:layout_marginTop="@dimen/divider_margin"
+                    android:layout_marginLeft="@dimen/layout_padding_4dp"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:text="@string/need_help"
