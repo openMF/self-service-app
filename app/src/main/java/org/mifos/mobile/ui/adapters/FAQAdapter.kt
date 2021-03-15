@@ -29,9 +29,10 @@ import javax.inject.Inject
 class FAQAdapter @Inject constructor(@ActivityContext context: Context) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    var alreadySelectedPosition = 0
     private var faqArrayList: ArrayList<FAQ?>?
-    private var alreadySelectedPosition = 0
     private val context: Context
+
     fun setFaqArrayList(faqArrayList: ArrayList<FAQ?>?) {
         this.faqArrayList = faqArrayList
         alreadySelectedPosition = -1
@@ -64,16 +65,16 @@ class FAQAdapter @Inject constructor(@ActivityContext context: Context) :
         }
     }
 
-    private fun updateView(position: Int) {
+    fun updateView(position: Int) {
+        if (alreadySelectedPosition != -1) {
+            faqArrayList?.get(alreadySelectedPosition)?.isSelected = false
+            notifyItemChanged(alreadySelectedPosition)
+        }
         if (alreadySelectedPosition == position) {
             faqArrayList?.get(alreadySelectedPosition)?.isSelected = false
             notifyItemChanged(alreadySelectedPosition)
             alreadySelectedPosition = -1
             return
-        }
-        if (alreadySelectedPosition != -1) {
-            faqArrayList?.get(alreadySelectedPosition)?.isSelected = false
-            notifyItemChanged(alreadySelectedPosition)
         }
         faqArrayList?.get(position)?.isSelected = true
         notifyItemChanged(position)

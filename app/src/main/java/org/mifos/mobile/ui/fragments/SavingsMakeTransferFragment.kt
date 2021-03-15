@@ -386,7 +386,7 @@ class SavingsMakeTransferFragment : BaseFragment(), SavingsMakeTransferMvpView, 
             showToaster(getString(R.string.invalid_amount))
             return
         }
-        if (etAmount?.text.toString().toDouble() == 0.0) {
+        if (etAmount?.text.toString().toDouble() < 0.01) {
             showToaster(getString(R.string.amount_greater_than_zero))
             return
         }
