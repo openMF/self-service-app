@@ -22,6 +22,8 @@ class CheckBoxAdapter @Inject constructor() :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var statusList: List<CheckboxStatus?>? = null
+    var checkedBoxCount = 0
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(
                 R.layout.row_checkbox, parent, false)
@@ -33,8 +35,7 @@ class CheckBoxAdapter @Inject constructor() :
         val states = arrayOf(intArrayOf(android.R.attr.state_checked), intArrayOf())
         val colors = intArrayOf(color, color)
         (holder as ViewHolder).cbStatusSelect?.isChecked = isChecked
-        holder.cbStatusSelect?.supportButtonTintList = ColorStateList(states,
-                colors)
+        holder.cbStatusSelect?.supportButtonTintList = ColorStateList(states, colors)
         holder.tvStatus?.text = status
     }
 
@@ -59,11 +60,21 @@ class CheckBoxAdapter @Inject constructor() :
 
         @OnCheckedChanged(R.id.cb_status_select)
         fun checkChanges() {
-            statusList!![adapterPosition]?.isChecked = (cbStatusSelect?.isChecked == true)
+            if (cbStatusSelect?.isChecked == true) {
+                checkedBoxCount++
+                statusList!![adapterPosition]?.isChecked = true
+            } else {
+                checkedBoxCount--
+                statusList!![adapterPosition]?.isChecked = false
+            }
         }
 
         init {
             ButterKnife.bind(this, itemView!!)
         }
+    }
+
+    fun hasCheckedOptions() : Boolean {
+        return checkedBoxCount > 0
     }
 }

@@ -89,18 +89,17 @@ class SavingAccountsTransactionPresenter @Inject constructor(
      * @param startDate                     Starting date for filtering
      * @param lastDate                      Last date for filtering
      */
-    fun filterTransactionList(
+    fun filterTransactionsListByDate(
             savingAccountsTransactionList: List<Transactions?>?,
             startDate: Long?, lastDate: Long?
-    ) {
-        val list = if (startDate != null && lastDate != null)
-            Observable.fromIterable(savingAccountsTransactionList)
-                    .filter { (_, _, _, _, date) ->
-                        (getDateAsLongFromList(date) in startDate..lastDate)
-                    }
-                    .toList().blockingGet()
-        else null
-        mvpView?.showFilteredList(list)
+    ) : MutableList<Transactions>? {
+        var list : MutableList<Transactions>? = mutableListOf()
+        if (startDate != null && lastDate != null) {
+            list = Observable.fromIterable(savingAccountsTransactionList).filter { (_, _, _, _, date) ->
+                (getDateAsLongFromList(date) in startDate..lastDate)
+            }.toList().blockingGet() as MutableList<Transactions>
+        }
+        return list
     }
 
     /**
@@ -110,9 +109,10 @@ class SavingAccountsTransactionPresenter @Inject constructor(
      * @return Returns [List] of filtered [Transactions] according to the
      * `status` provided.
      */
-    fun filterTranactionListbyType(
-            savingAccountsTransactionList: List<Transactions?>?, status: CheckboxStatus?
-    ): Collection<Transactions?>? {
+    fun filterTransactionsListbyType(
+            savingAccountsTransactionList: List<Transactions?>?,
+            status: CheckboxStatus?
+    ): MutableList<Transactions>? {
         return Observable.fromIterable(savingAccountsTransactionList)
                 .filter(Predicate { (_, transactionType) ->
                     if (context?.getString(R.string.deposit)?.let { status?.status?.compareTo(it) } == 0
@@ -157,7 +157,7 @@ class SavingAccountsTransactionPresenter @Inject constructor(
                         return@Predicate true
                     }
                     false
-                }).toList().blockingGet()
+                }).toList().blockingGet() as MutableList<Transactions>
     }
 
 }

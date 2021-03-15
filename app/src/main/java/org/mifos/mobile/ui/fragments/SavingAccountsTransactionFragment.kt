@@ -7,17 +7,13 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.view.*
 import android.widget.*
-
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
-
 import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler
-
 import org.mifos.mobile.R
 import org.mifos.mobile.models.CheckboxStatus
 import org.mifos.mobile.models.accounts.savings.SavingsWithAssociations
@@ -30,8 +26,6 @@ import org.mifos.mobile.ui.fragments.base.BaseFragment
 import org.mifos.mobile.ui.views.SavingAccountsTransactionView
 import org.mifos.mobile.utils.*
 import org.mifos.mobile.utils.MFDatePicker.OnDatePickListener
-
-import java.util.*
 import javax.inject.Inject
 
 /**
@@ -62,12 +56,13 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
     @kotlin.jvm.JvmField
     @Inject
     var checkBoxAdapter: CheckBoxAdapter? = null
+
     private var tvStartDate: TextView? = null
     private var tvEndDate: TextView? = null
     private var sweetUIErrorHandler: SweetUIErrorHandler? = null
     private var rootView: View? = null
     private var savingsId: Long = 0
-    private var transactionsList: List<Transactions?>? = null
+    private var transactionsList: MutableList<Transactions>? = null
     private var savingsWithAssociations: SavingsWithAssociations? = null
     private var datePick: DatePick? = null
     private var mfDatePicker: MFDatePicker? = null
@@ -78,6 +73,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
     private var isCheckBoxPeriod = false
     private var selectedRadioButtonId = 0
     var active = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -134,7 +130,6 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         rvSavingAccountsTransaction?.layoutManager = layoutManager
         rvSavingAccountsTransaction?.adapter = transactionListAdapter
 
-//        radioGroup.setOnCheckedChangeListener(this);
         mfDatePicker = MFDatePicker.newInstance(this, MFDatePicker.ALL_DAYS, active)
         active = true
     }
@@ -148,7 +143,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
     override fun showSavingAccountsDetail(savingsWithAssociations: SavingsWithAssociations?) {
         layoutAccount?.visibility = View.VISIBLE
         this.savingsWithAssociations = savingsWithAssociations
-        transactionsList = savingsWithAssociations?.transactions
+        transactionsList = savingsWithAssociations?.transactions as MutableList<Transactions>?
         if (transactionsList != null && transactionsList?.isNotEmpty() == true) {
             transactionListAdapter?.setContext(context)
             transactionListAdapter?.setSavingAccountsTransactionList(transactionsList)
@@ -233,7 +228,6 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         } else {
             endDate = timeInMillis
             tvEndDate?.text = DateHelper.getDateAsStringFromLong(timeInMillis)
-            isReady = true
         }
     }
 
@@ -315,6 +309,7 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 R.id.rb_date -> {
                     tvStartDate?.isEnabled = true
                     tvEndDate?.isEnabled = false
+                    isReady = true
                 }
             }
         }
@@ -331,24 +326,24 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
         checkBoxRecyclerView?.layoutManager = layoutManager
         checkBoxRecyclerView?.adapter = checkBoxAdapter
         checkBoxAdapter?.statusList = statusList
+        checkBoxAdapter?.checkedBoxCount = 0
         MaterialDialog.Builder().init(activity)
                 .setTitle(R.string.savings_account_transaction)
                 .addView(dialogView)
                 .setPositiveButton(getString(R.string.filter), DialogInterface.OnClickListener { _, _ ->
-                    if (checkBoxPeriod?.isChecked == true) {
-                        if (!isReady) {
-                            Toaster.show(rootView, getString(R.string.select_date))
-                            return@OnClickListener
-                        } else if (isEndDateLargeThanStartDate() == false) {
-                            Toaster.show(rootView,
-                                    getString(R.string.end_date_must_be_greater))
-                            return@OnClickListener
+                    val hasFilterOptions: Boolean? = checkBoxAdapter?.hasCheckedOptions()
+                    val isDateValid = validateCheckBox()
+                    if (isDateValid || hasFilterOptions == true) {
+                        if (isDateValid && hasFilterOptions!!) {
+                            filter(startDate, endDate, checkBoxAdapter?.statusList)
+                        } else if (hasFilterOptions == true) {
+                            filter(checkBoxAdapter?.statusList)
+                        } else {
+                            filter(startDate, endDate)
                         }
-                        filter(startDate, endDate, checkBoxAdapter?.statusList)
                     } else {
-                        filter(checkBoxAdapter?.statusList)
+                        showFilteredList(transactionsList)
                     }
-                    filterSavingsAccountTransactionsbyType(checkBoxAdapter?.statusList)
                 })
                 .setNeutralButton(getString(R.string.clear_filters),
                         DialogInterface.OnClickListener { _, _ ->
@@ -362,45 +357,96 @@ class SavingAccountsTransactionFragment : BaseFragment(), SavingAccountsTransact
                 .show()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_saving_accounts_transaction, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
     /**
-     * Will filter `transactionsList` according to `startDate` and `endDate`
-     *
-     * @param startDate Starting date
-     * @param endDate   Ending date
+     * Validates the Transaction Period CheckBox of filter option
+     * @return true If Transaction Period filter is filled properly else @return false
      */
-    private fun filter(startDate: Long?, endDate: Long?, statusModelList: List<CheckboxStatus?>?) {
-        val dummyTransactionList = filterSavingsAccountTransactionsbyType(statusModelList)
-        savingAccountsTransactionPresenter?.filterTransactionList(dummyTransactionList,
-                startDate, endDate)
+    private fun validateCheckBox(): Boolean {
+        if (!isReady) {
+            Toaster.show(rootView, getString(R.string.select_date))
+            return false
+        } else if (!isEndDateLargeThanStartDate()!!) {
+            Toaster.show(rootView, getString(R.string.end_date_must_be_greater))
+            return false
+        }
+        return true
     }
 
     /**
-     * Will filter `transactionsList` according to `startDate` and `endDate`
-     *
+     * Will filter `transactionsList` according to `startDate` and `endDate
+     * @param startDate start date
+     * @param endDate end date
+     */
+    private fun filter(startDate: Long?, endDate: Long?) {
+        showFilteredList(filterSavingsAccountTransactionsByDate(transactionsList, startDate, endDate))
+    }
+
+    /**
+     * Will filter `transactionsList` according to `statusModelList`
      * @param statusModelList Status Model List
      */
     private fun filter(statusModelList: List<CheckboxStatus?>?) {
-        showFilteredList(filterSavingsAccountTransactionsbyType(statusModelList))
+        showFilteredList(filterSavingsAccountTransactionsByType(transactionsList, statusModelList))
+    }
+
+    /**
+     * Will filter `transactionsList` according to `startDate` and `endDate`and {@code statusModeList}
+     * @param startDate Starting date
+     * @param endDate Ending Date
+     */
+    private fun filter(startDate: Long?, endDate: Long?, statusModelList: List<CheckboxStatus?>?) {
+        val filteredSavingsAccountTransactions: MutableList<Transactions>? = mutableListOf()
+        filterSavingsAccountTransactionsByDate(
+                filterSavingsAccountTransactionsByType(transactionsList, statusModelList),
+                startDate,
+                endDate
+        )?.let {
+            filteredSavingsAccountTransactions?.addAll(it)
+        }
+        showFilteredList(filteredSavingsAccountTransactions)
     }
 
     /**
      * Will filter `transactionsList` according to `startDate` and `endDate`
+     * @param list List of Transactions to be filtered
      * @param statusModelList Status Model List
+     * @return List of filtered transactions
      */
-    private fun filterSavingsAccountTransactionsbyType(statusModelList: List<CheckboxStatus?>?): List<Transactions?>? {
-        val filteredSavingsTransactions: MutableList<Transactions?>? = ArrayList()
-        if (savingAccountsTransactionPresenter != null)
-            for (status in savingAccountsTransactionPresenter
-                    ?.getCheckedStatus(statusModelList)!!) {
-                savingAccountsTransactionPresenter
-                        ?.filterTranactionListbyType(transactionsList, status)?.let { filteredSavingsTransactions?.addAll(it) }
+    private fun filterSavingsAccountTransactionsByType(
+            list: MutableList<Transactions>?,
+            statusModelList: List<CheckboxStatus?>?
+    ): MutableList<Transactions>? {
+        val filteredSavingsTransactions: MutableList<Transactions>? = mutableListOf()
+        for (status in savingAccountsTransactionPresenter?.getCheckedStatus(statusModelList)!!) {
+            savingAccountsTransactionPresenter?.filterTransactionsListbyType(list, status)?.let {
+                filteredSavingsTransactions?.addAll(it)
             }
+        }
         return filteredSavingsTransactions
+    }
+
+    /**
+     * Will filter `transactionsList` according to `startDate` and `endDate`
+     * @param list List of Transactions to be filtered
+     * @param startDate Starting date
+     * @param endDate Ending Date
+     * @return List of filtered transactions
+     */
+    private fun filterSavingsAccountTransactionsByDate(
+            list: MutableList<Transactions>?,
+            startDate: Long?,
+            endDate: Long?
+    ): MutableList<Transactions>? {
+        val filteredSavingsAccountTransactions: MutableList<Transactions>? = mutableListOf()
+        savingAccountsTransactionPresenter?.filterTransactionsListByDate(list, startDate, endDate)?.let {
+            filteredSavingsAccountTransactions?.addAll(it)
+        }
+        return filteredSavingsAccountTransactions
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_saving_accounts_transaction, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
