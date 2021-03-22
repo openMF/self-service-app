@@ -59,7 +59,7 @@ ext {
     tableViewVersion = '0.8.8'
 
     jUnitVersion = '4.12'
-    mockitoVersion = '3.6.28'
+    mockitoVersion = '3.8.0'
     runnerVersion = '1.1.0-alpha4'
     rulesVersion = '1.3.1-alpha02'
     espressoVersion = '3.4.0-alpha02'
