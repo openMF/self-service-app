@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.github.therajanmaurya.sweeterror.SweetUIErrorHandler
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.mifos.mobile.R
 import org.mifos.mobile.models.FAQ
@@ -38,6 +39,10 @@ import javax.inject.Inject
     var bnvHelp: BottomNavigationView? = null
 
     @kotlin.jvm.JvmField
+    @BindView(R.id.layout_error)
+    var layoutError: View? = null
+
+    @kotlin.jvm.JvmField
     @Inject
     var faqAdapter: FAQAdapter? = null
 
@@ -46,6 +51,8 @@ import javax.inject.Inject
     var presenter: HelpPresenter? = null
     private var rootView: View? = null
     private var faqArrayList: ArrayList<FAQ?>? = null
+    private lateinit var sweetUIErrorHandler: SweetUIErrorHandler
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         rootView = inflater.inflate(R.layout.fragment_help, container, false)
@@ -54,6 +61,7 @@ import javax.inject.Inject
         ButterKnife.bind(this, rootView!!)
         presenter?.attachView(this)
         setToolbarTitle(getString(R.string.help))
+        sweetUIErrorHandler = SweetUIErrorHandler(activity, rootView)
         showUserInterface()
         if (savedInstanceState == null) {
             presenter?.loadFaq()
@@ -121,10 +129,23 @@ import javax.inject.Inject
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                faqAdapter?.updateList(presenter?.filterList(faqArrayList, newText))
+                val filteredFAQList = presenter?.filterList(faqArrayList, newText)
+                filteredFAQList?.let {
+                    if (it.isNotEmpty()) {
+                        sweetUIErrorHandler.hideSweetErrorLayoutUI(rvFaq, layoutError)
+                        faqAdapter?.updateList(it)
+                    } else {
+                        showEmptyFAQUI()
+                    }
+                } ?: showEmptyFAQUI()
                 return false
             }
         })
+    }
+
+    private fun showEmptyFAQUI() {
+        sweetUIErrorHandler.showSweetEmptyUI(getString(R.string.questions),
+                R.drawable.ic_help_black_24dp, rvFaq, layoutError)
     }
 
     override fun showProgress() {

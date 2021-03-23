@@ -28,30 +28,22 @@
             android:orientation="vertical"
             android:padding="@dimen/row_padding_left">
 
-            <LinearLayout
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/tv_clientName"
                 android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:lines="1"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/black"
+                tools:text="@string/medium_text" />
+
+            <TextView
+                android:id="@+id/tv_due_date"
                 android:layout_width="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:ellipsize="end"
-                    android:id="@+id/tv_clientName"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:lines="1"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/black"
-                    tools:text="@string/medium_text"/>
-
-                <TextView
-                    android:gravity="right"
-                    android:id="@+id/tv_due_date"
-                    android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    tools:text="@string/medium_text"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                tools:text="@string/medium_text" />
 
             <LinearLayout
                 android:layout_height="wrap_content"

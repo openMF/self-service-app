@@ -82,7 +82,7 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager?, 
                             val authToken = Constants.BASIC +
                                     user.base64EncodedAuthenticationKey
                             saveAuthenticationTokenForSession(userName, userID, authToken)
-                            mvpView?.onLoginSuccess(userName)
+                            mvpView?.onLoginSuccess()
                         }
                     })
             )
@@ -114,10 +114,11 @@ class LoginPresenter @Inject constructor(private val dataManager: DataManager?, 
                         mvpView?.hideProgress()
                         if (clientPage.pageItems.isNotEmpty()) {
                             val clientId = clientPage.pageItems[0]?.id?.toLong()
+                            val clientName = clientPage.pageItems[0]?.displayName
                             preferencesHelper?.clientId = clientId
                             dataManager.clientId = clientId
                             reInitializeService()
-                            mvpView?.showPassCodeActivity()
+                            mvpView?.showPassCodeActivity(clientName)
                         } else {
                             mvpView?.showMessage(context
                                     ?.getString(R.string.error_client_not_found))

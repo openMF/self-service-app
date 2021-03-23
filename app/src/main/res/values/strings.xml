@@ -572,6 +572,11 @@
     <string name="savings_account_transaction">Savings Account Transaction</string>
     <string name="transaction_period">Transaction Period</string>
     <string name="transaction_type">Transaction Type</string>
+    <string name="questions">Questions</string>
+    <string name="logged_out_successfully">Logged out successfully</string>
+
+    <string name="dialog_cancel_registration_message">Do you want to cancel registering New Account ?</string>
+    <string name="dialog_cancel_registration_title">Cancel Registration</string>
 
     <string-array name="languages" translatable="false">
         <item>English</item>

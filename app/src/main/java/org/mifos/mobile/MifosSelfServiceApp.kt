@@ -6,13 +6,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
 
-import com.crashlytics.android.Crashlytics
-
 import com.mifos.mobile.passcode.utils.ForegroundChecker
 import com.raizlabs.android.dbflow.config.FlowConfig
 import com.raizlabs.android.dbflow.config.FlowManager
 
-import io.fabric.sdk.android.Fabric
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 import org.mifos.mobile.injection.component.ApplicationComponent
 import org.mifos.mobile.injection.component.DaggerApplicationComponent
@@ -45,7 +43,7 @@ class MifosSelfServiceApp : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         MultiDex.install(this)
-        Fabric.with(this, Crashlytics())
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true)
         instance = this
         FlowManager.init(FlowConfig.Builder(this).build())
         ForegroundChecker.init(this)

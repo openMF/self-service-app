@@ -256,7 +256,7 @@ class UserProfileFragment : BaseFragment(), UserDetailsView {
     override fun showError(message: String?) {
         Toaster.show(rootView, message)
         sweetUIErrorHandler?.showSweetCustomErrorUI(getString(R.string.error_fetching_user_profile),
-                R.drawable.ic_assignment_turned_in_black_24dp, appBarLayout,
+                R.drawable.ic_error_black_24dp, appBarLayout,
                 layoutError)
         fabEdit?.visibility = View.GONE
     }

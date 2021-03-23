@@ -33,6 +33,11 @@
         android:layout_weight="1"
         android:layout_width="match_parent"/>
 
+    <include
+        layout="@layout/layout_sweet_exception_handler"
+        android:id="@+id/layout_error"
+        android:visibility="gone" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnv_help"
         android:layout_height="wrap_content"

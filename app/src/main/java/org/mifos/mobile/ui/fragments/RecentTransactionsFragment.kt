@@ -28,6 +28,7 @@ import org.mifos.mobile.utils.Constants
 import org.mifos.mobile.utils.DividerItemDecoration
 import org.mifos.mobile.utils.EndlessRecyclerViewScrollListener
 import org.mifos.mobile.utils.Network.isConnected
+import org.mifos.mobile.utils.Toaster
 
 import javax.inject.Inject
 
@@ -112,6 +113,14 @@ class RecentTransactionsFragment : BaseFragment(), RecentTransactionsView, OnRef
                     override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                         recentTransactionsPresenter?.loadRecentTransactions(true, totalItemsCount)
                     }
+
+                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                        super.onScrollStateChanged(recyclerView, newState)
+                        if (!recyclerView.canScrollVertically(1) &&
+                                newState == RecyclerView.SCROLL_STATE_IDLE) {
+                            Toaster.show(rootView, R.string.no_more_transactions_available)
+                        }
+                    }
                 })
         swipeTransactionContainer?.setColorSchemeColors(*activity!!
                 .resources.getIntArray(R.array.swipeRefreshColors))
@@ -165,7 +174,7 @@ class RecentTransactionsFragment : BaseFragment(), RecentTransactionsView, OnRef
      */
     override fun showEmptyTransaction() {
         sweetUIErrorHandler?.showSweetEmptyUI(getString(R.string.recent_transactions),
-                R.drawable.ic_label_black_24dp, rvRecentTransactions, layoutError)
+                R.drawable.ic_error_black_24dp, rvRecentTransactions, layoutError)
     }
 
     /**

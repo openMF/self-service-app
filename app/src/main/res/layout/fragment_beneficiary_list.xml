@@ -21,14 +21,13 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:clickable="true"
-        android:focusable="true"
         android:id="@+id/fab_add_beneficiary"
         android:layout_gravity="bottom|end"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16dp"
         android:layout_width="wrap_content"
-        app:srcCompat="@drawable/ic_add_white_24dp"/>
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        style="@style/FloatingActionButtonTheme"/>
 
     <include
         layout="@layout/layout_sweet_exception_handler"

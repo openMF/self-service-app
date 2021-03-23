@@ -13,7 +13,7 @@
 
         <EditText android:hint="@string/account_number"
                   android:id="@+id/et_account_number"
-                  android:inputType="number"
+                  android:inputType="text"
                   android:layout_height="wrap_content"
                   android:layout_width="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>

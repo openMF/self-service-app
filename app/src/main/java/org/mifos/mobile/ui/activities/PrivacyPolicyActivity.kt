@@ -68,7 +68,7 @@ class PrivacyPolicyActivity : BaseActivity() {
             return true
         }
 
-        override fun onPageStarted(view: WebView, url: String, favicon: Bitmap) {
+        override fun onPageStarted(view: WebView, url: String, favicon: Bitmap?) {
             // only make it invisible the FIRST time the app is run
             if (showOrHideWebViewInitialUse == "show") {
                 webView?.visibility = View.INVISIBLE

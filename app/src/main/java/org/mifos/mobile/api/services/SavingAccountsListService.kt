@@ -44,7 +44,7 @@ interface SavingAccountsListService {
 
     @PUT(ApiEndPoints.SAVINGS_ACCOUNTS + "/{accountsId}")
     fun updateSavingsAccountUpdate(
-            @Path("accountsId") accountsId: String?, @Body payload: SavingsAccountUpdatePayload?
+            @Path("accountsId") accountsId: Long?, @Body payload: SavingsAccountUpdatePayload?
     ): Observable<ResponseBody?>?
 
     @POST(ApiEndPoints.SAVINGS_ACCOUNTS + "/{savingsId}?command=withdrawnByApplicant")

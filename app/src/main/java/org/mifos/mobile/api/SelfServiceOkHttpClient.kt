@@ -20,51 +20,6 @@ class SelfServiceOkHttpClient(private val tenant: String?, private val authToken
     val mifosOkHttpClient: OkHttpClient
         get() {
             val builder = OkHttpClient.Builder()
-            try {
-                // Create a trust manager that does not validate certificate chains
-                val trustAllCerts = arrayOf<TrustManager>(
-                        object : X509TrustManager {
-                            @Throws(CertificateException::class)
-                            override fun checkClientTrusted(
-                                    chain: Array<X509Certificate>,
-                                    authType: String
-                            ) {
-                            }
-
-                            @Throws(CertificateException::class)
-                            override fun checkServerTrusted(
-                                    chain: Array<X509Certificate>,
-                                    authType: String
-                            ) {
-                            }
-
-                            override fun getAcceptedIssuers(): Array<X509Certificate?> {
-                                return arrayOfNulls(0)
-                            }
-                        }
-                )
-
-                // Install the all-trusting trust manager
-                val sslContext = SSLContext.getInstance("SSL")
-                sslContext.init(null, trustAllCerts, SecureRandom())
-                // Create an ssl socket factory with our all-trusting manager
-                val sslSocketFactory = sslContext.socketFactory
-
-                //Enable Full Body Logging
-                val logger = HttpLoggingInterceptor()
-                logger.level = HttpLoggingInterceptor.Level.BODY
-                val trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
-                trustManagerFactory.init(null as KeyStore?)
-                val trustManagers = trustManagerFactory.trustManagers
-                check(!(trustManagers.size != 1 || trustManagers[0] !is X509TrustManager)) { "Unexpected default trust managers:" + Arrays.toString(trustManagers) }
-                val trustManager = trustManagers[0] as X509TrustManager
-
-                //Set SSL certificate to OkHttpClient Builder
-                builder.sslSocketFactory(sslSocketFactory, trustManager)
-                builder.hostnameVerifier { _, _ -> true }
-            } catch (e: Exception) {
-                throw RuntimeException(e)
-            }
 
             //Enable Full Body Logging
             val logger = HttpLoggingInterceptor()

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.gms.oss.licenses.plugin'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -10,7 +10,7 @@ apply from: '../config/quality/quality.gradle'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-
+    
     defaultConfig {
         applicationId "org.mifos.mobile"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -76,7 +76,7 @@ dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$rootProject.dbflowVersion"
     implementation "com.github.Raizlabs.DBFlow:dbflow-core:$rootProject.dbflowVersion"
     implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.dbflowVersion"
@@ -117,9 +117,9 @@ dependencies {
     //Butter Knife
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
     kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
-    implementation('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
-        transitive = true
-    }
+
+    // Firebase Crashlytics dependency
+    implementation "com.google.firebase:firebase-crashlytics:$firebaseCrashlyticsVersion"
 
     //Annotation library
     implementation "androidx.annotation:annotation:$rootProject.annotationLibraryVersion"

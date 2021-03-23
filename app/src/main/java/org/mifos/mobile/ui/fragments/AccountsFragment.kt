@@ -207,6 +207,11 @@ class AccountsFragment : BaseFragment(), OnRefreshListener, AccountsView, Recycl
         currentFilterList = null
     }
 
+    override fun onResume() {
+        super.onResume()
+        onRefresh()
+    }
+
     /**
      * Shows [List] of [LoanAccount] fetched from server using
      * [LoanAccountsListAdapter]

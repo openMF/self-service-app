@@ -114,7 +114,7 @@ class DataManager @Inject constructor(
     }
 
     fun updateSavingsAccount(
-            accountId: String?, payload: SavingsAccountUpdatePayload?
+            accountId: Long?, payload: SavingsAccountUpdatePayload?
     ): Observable<ResponseBody?>? {
         return baseApiManager.savingAccountsListApi
                 ?.updateSavingsAccountUpdate(accountId, payload)

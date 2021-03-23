@@ -50,6 +50,7 @@ class LoginPresenterTest {
     private var clientPage: Page<Client?>? = null
     private var noClientPage: Page<Client?>? = null
     private var loginPayload: LoginPayload? = null
+    private var emptyClientName: String = ""
 
     @Before
     @Throws(Exception::class)
@@ -70,29 +71,28 @@ class LoginPresenterTest {
         Mockito.`when`(dataManager?.login(loginPayload)).thenReturn(Observable.just(user))
         presenter?.login(loginPayload)
         Mockito.verify(view)?.showProgress()
-        Mockito.verify(view)?.onLoginSuccess(user?.username)
+        Mockito.verify(view)?.onLoginSuccess()
     }
 
     @Test
     @Throws(Exception::class)
     fun testLoadClients() {
-        val clientId = clientPage?.pageItems?.get(0)?.id?.toLong()
+        val clientName: String? = clientPage?.pageItems?.get(0)?.displayName
         Mockito.`when`(dataManager?.clients).thenReturn(Observable.just(clientPage))
         presenter?.loadClient()
         Mockito.verify(view)?.hideProgress()
-        Mockito.verify(view)?.showPassCodeActivity()
+        Mockito.verify(view)?.showPassCodeActivity(clientName)
         Mockito.verify(view, Mockito.never())?.showMessage(context?.getString(R.string.error_fetching_client))
     }
 
     @Test
     @Throws(Exception::class)
     fun testLoadNoClients() {
-        val clientId = clientPage?.pageItems?.get(0)?.id?.toLong()
         Mockito.`when`(dataManager?.clients).thenReturn(Observable.just(noClientPage))
         presenter?.loadClient()
         Mockito.verify(view)?.hideProgress()
         Mockito.verify(view)?.showMessage(context?.getString(R.string.error_client_not_found))
-        Mockito.verify(view, Mockito.never())?.showPassCodeActivity()
+        Mockito.verify(view, Mockito.never())?.showPassCodeActivity(emptyClientName)
     }
 
     @Test
@@ -102,7 +102,7 @@ class LoginPresenterTest {
         presenter?.loadClient()
         Mockito.verify(view)?.hideProgress()
         Mockito.verify(view)?.showMessage(context?.getString(R.string.error_fetching_client))
-        Mockito.verify(view, Mockito.never())?.showPassCodeActivity()
+        Mockito.verify(view, Mockito.never())?.showPassCodeActivity(emptyClientName)
     }
 
     @Test
@@ -112,7 +112,7 @@ class LoginPresenterTest {
         presenter?.loadClient()
         Mockito.verify(view)?.hideProgress()
         Mockito.verify(view)?.showMessage(context?.getString(R.string.unauthorized_client))
-        Mockito.verify(view, Mockito.never())?.showPassCodeActivity()
+        Mockito.verify(view, Mockito.never())?.showPassCodeActivity(emptyClientName)
     }
 
     @After

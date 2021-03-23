@@ -20,6 +20,9 @@ object Toaster {
         val imm = MifosSelfServiceApp.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view?.windowToken, 0)
         val snackbar = Snackbar.make(view!!, text!!, duration)
+        MifosSelfServiceApp.context?.resources?.getColor(R.color.primary)?.let {
+            snackbar.setActionTextColor(it)
+        }
         val sbView = snackbar.view
         val textView = sbView.findViewById<TextView>(R.id.snackbar_text)
         textView.setTextColor(Color.WHITE)

@@ -3,10 +3,8 @@
 
     <item android:drawable="@color/white"/>
 
-    <item
-        android:height="100dp"
-        android:width="350dp"
-        android:drawable="@drawable/mifos_logo"
-        android:gravity="center"/>
+    <item>
+        <bitmap android:src="@drawable/mifos_splash_screen_logo" />
+    </item>
 
 </layer-list>

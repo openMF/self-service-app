@@ -10,12 +10,8 @@ interface LoginView : MVPView {
     /**
      * Should be called when the user credentials are successfully
      * authenticated from the API.
-     * The username would be passed to the view so that we can
-     * at least say hello!
-     *
-     * @param userName Username of the user that successfully logged in!
      */
-    fun onLoginSuccess(userName: String?)
+    fun onLoginSuccess()
 
     /**
      * Should be called when there is a problem with the user input that we
@@ -38,7 +34,10 @@ interface LoginView : MVPView {
 
     /**
      * Should be called when the client is fetched successfully from API.
+     * The client's name would be passed to the view so that we can
+     * at least say hello!
      *
+     * @param clientName name of the Client
      */
-    fun showPassCodeActivity()
+    fun showPassCodeActivity(clientName: String?)
 }

@@ -135,7 +135,7 @@ class SavingsAccountApplicationFragment : BaseFragment(), SavingsAccountApplicat
         val payload = SavingsAccountUpdatePayload()
         payload.clientId = template?.clientId?.toLong()
         payload.productId = spProductId?.selectedItemPosition?.let { productOptions?.get(it)?.id }?.toLong()
-        presenter?.updateSavingsAccount(savingsWithAssociations?.accountNo, payload)
+        presenter?.updateSavingsAccount(savingsWithAssociations?.id, payload)
     }
 
     @OnClick(R.id.btn_submit)

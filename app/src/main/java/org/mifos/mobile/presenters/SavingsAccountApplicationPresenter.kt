@@ -84,7 +84,7 @@ class SavingsAccountApplicationPresenter @Inject constructor(
                 })?.let { compositeDisposable.add(it) }
     }
 
-    fun updateSavingsAccount(accountId: String?, payload: SavingsAccountUpdatePayload?) {
+    fun updateSavingsAccount(accountId: Long?, payload: SavingsAccountUpdatePayload?) {
         checkViewAttached()
         mvpView?.showProgress()
         dataManager?.updateSavingsAccount(accountId, payload)

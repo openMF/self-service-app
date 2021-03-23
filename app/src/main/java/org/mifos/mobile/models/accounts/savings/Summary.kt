@@ -27,6 +27,6 @@ data class Summary(
 
         var interestNotPosted: Double? = null,
 
-        var lastInterestCalculationDate: List<Int>
+        var lastInterestCalculationDate: List<Int> = ArrayList()
 
 ) : Parcelable

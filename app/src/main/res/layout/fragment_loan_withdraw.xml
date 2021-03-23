@@ -23,7 +23,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:text="@string/client_name"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
             <TextView
                 android:id="@+id/tv_client_name"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 tools:text="@string/client_name"/>
 
@@ -49,7 +49,7 @@
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:text="@string/account_number"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
 
             <TextView
                 android:id="@+id/tv_account_number"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textColor="@color/black"
                 tools:text="@string/account_number"/>
 

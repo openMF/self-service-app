@@ -50,7 +50,6 @@ class LoginActivity : BaseActivity(), LoginView {
     @JvmField
     @BindView(R.id.ll_login)
     var llLogin: LinearLayout? = null
-    private var userName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,11 +61,8 @@ class LoginActivity : BaseActivity(), LoginView {
 
     /**
      * Called when Login is user has successfully logged in
-     *
-     * @param userName Username of the user that successfully logged in!
      */
-    override fun onLoginSuccess(userName: String?) {
-        this.userName = userName
+    override fun onLoginSuccess() {
         loginPresenter?.loadClient()
     }
 
@@ -87,8 +83,8 @@ class LoginActivity : BaseActivity(), LoginView {
     /**
      * Starts [PassCodeActivity]
      */
-    override fun showPassCodeActivity() {
-        showToast(getString(R.string.toast_welcome, userName))
+    override fun showPassCodeActivity(clientName: String?) {
+        showToast(getString(R.string.toast_welcome, clientName))
         startPassCodeActivity()
     }
 

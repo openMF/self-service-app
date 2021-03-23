@@ -182,6 +182,9 @@ class HomeActivity : BaseActivity(), UserDetailsView, NavigationView.OnNavigatio
                             i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(i)
                             finish()
+                            Toast.makeText(this,
+                                    R.string.logged_out_successfully, Toast.LENGTH_SHORT)
+                                    .show();
                         })
                 .setNegativeButton(getString(R.string.cancel),
                         DialogInterface.OnClickListener { _, _ -> setNavigationViewSelectedItem(R.id.item_home) })

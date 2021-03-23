@@ -23,7 +23,10 @@
 
             <TextView
                 android:id="@+id/tv_new_loan_application"
-                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/default_padding"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_marginRight="@dimen/default_padding"
+                android:layout_marginStart="@dimen/default_padding"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_padding"
                 android:layout_marginTop="@dimen/default_padding"
@@ -34,8 +37,9 @@
             <TextView
                 android:id="@+id/tv_account_number"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/default_padding"
                 android:layout_marginLeft="@dimen/default_padding"
+                android:layout_marginRight="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_width="wrap_content"
                 android:text="@string/account_number"
@@ -95,7 +99,8 @@
                 android:layout_marginLeft="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_marginTop="@dimen/default_padding"
-                android:layout_width="match_parent">
+                android:layout_width="match_parent"
+                app:hintTextAppearance="@style/Base.TextAppearance.AppCompat.Medium">
 
                 <EditText
                     android:gravity="start"
@@ -131,8 +136,7 @@
                     android:layout_marginEnd="@dimen/default_padding"
                     android:layout_marginRight="@dimen/default_padding"
                     android:layout_weight="0.5"
-                    android:layout_width="0dp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"/>
+                    android:layout_width="0dp" />
 
             </LinearLayout>
 

@@ -55,7 +55,7 @@ object Utils {
         }
         val imagePath = File(context?.cacheDir, "images")
         val newFile = File(imagePath, "image.png")
-        return FileProvider.getUriForFile(context!!, "org.mifos.mobilebanking.fileprovider",
+        return FileProvider.getUriForFile(context!!, "org.mifos.mobile.fileprovider",
                 newFile)
     }
 

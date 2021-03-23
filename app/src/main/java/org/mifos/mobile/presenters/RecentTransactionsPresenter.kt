@@ -81,9 +81,6 @@ class RecentTransactionsPresenter @Inject constructor(
                                     ?.showLoadMoreRecentTransactions(transactions.pageItems)
                         } else if (transactions.pageItems.isNotEmpty()) {
                             mvpView?.showRecentTransactions(transactions.pageItems)
-                        } else {
-                            mvpView?.showMessage(
-                                    context?.getString(R.string.no_more_transactions_available))
                         }
                     }
                 })?.let {
