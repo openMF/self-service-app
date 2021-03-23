@@ -124,6 +124,16 @@ import javax.inject.Inject
                 } else {
                     fabCreateLoan?.hide()
                 }
+                if (position != 2) {
+                    viewPager?.getChildAt(position)?.findViewById<RecyclerView>(R.id.rv_accounts)?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                            super.onScrollStateChanged(recyclerView, newState)
+                            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                                fabCreateLoan?.show()
+                            } else fabCreateLoan?.hide()
+                        }
+                    })
+                }
             }
 
             override fun onPageScrollStateChanged(state: Int) {}
@@ -164,6 +174,14 @@ import javax.inject.Inject
                 ?.showLoanAccounts(loanAccounts)
         (childFragmentManager.findFragmentByTag(getFragmentTag(1)) as AccountsView?)
                 ?.hideProgress()
+        viewPager?.getChildAt(1)?.findViewById<RecyclerView>(R.id.rv_accounts)?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    fabCreateLoan?.show()
+                } else fabCreateLoan?.hide()
+            }
+        })
     }
 
     /**
@@ -178,6 +196,14 @@ import javax.inject.Inject
                 ?.showSavingsAccounts(savingAccounts)
         (childFragmentManager.findFragmentByTag(getFragmentTag(0)) as AccountsView?)
                 ?.hideProgress()
+        viewPager?.getChildAt(0)?.findViewById<RecyclerView>(R.id.rv_accounts)?.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    fabCreateLoan?.show()
+                } else fabCreateLoan?.hide()
+            }
+        })
     }
 
     @OnClick(R.id.fab_create_loan)
