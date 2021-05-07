@@ -35,7 +35,7 @@ jobs:
 
         # Upload Built APK
       - name: Upload Build Artifacts
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: mifos-mobile
           path: app/build/outputs/apk/debug/
@@ -51,7 +51,7 @@ jobs:
         run: ./gradlew lint
 
       - name: Upload Static Analysis Report For Mifos-Mobile Module
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         if: failure()
         with:
           name: Static Analysis Report
@@ -68,7 +68,7 @@ jobs:
         run: ./gradlew pmd
 
       - name: Upload PMD Report
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         if: failure()
         with:
           name: PMD Report
